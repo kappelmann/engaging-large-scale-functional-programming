@@ -1,26 +1,24 @@
 \documentclass[12pt]{article}
 
-\input{settings}
+\input{settings.tex}
 
 %------------------------------------------------------------------------------
 \begin{document}
 \pagenumbering{gobble}
 
 \abstract{
-Wow!
+\begin{minted}{haskell}
+appTwice :: (Int -> Int) -> Int -> Int
+appTwice f x = f (f x)
+\end{minted}
+Bla \mintinline{haskell}{appTwice (+1) "bogus"}
 }
 \tableofcontents
 
 \newpage
 \pagenumbering{arabic}
 
-\section{Some Section}
-Blub
-\begin{minted}{haskell}
-appTwice :: (Int -> Int) -> Int -> Int
-appTwice f x = f (f x)
-\end{minted}
-Bla \mintinline{haskell}{appTwice (+1) "bogus"}
+\input{sections/selected_exercises/selected_exercises.tex}
 
 \newpage
 \bibliographystyle{plainnat}
