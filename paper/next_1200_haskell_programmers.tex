@@ -1,0 +1,29 @@
+\documentclass[12pt]{article}
+
+\input{settings}
+
+%------------------------------------------------------------------------------
+\begin{document}
+\pagenumbering{gobble}
+
+\abstract{
+Wow!
+}
+\tableofcontents
+
+\newpage
+\pagenumbering{arabic}
+
+\section{Some Section}
+Blub
+\begin{minted}{haskell}
+appTwice :: (Int -> Int) -> Int -> Int
+appTwice f x = f (f x)
+\end{minted}
+Bla \mintinline{haskell}{appTwice (+1) "bogus"}
+
+\newpage
+\bibliographystyle{plainnat}
+\bibliography{sources}
+\end{document}
+

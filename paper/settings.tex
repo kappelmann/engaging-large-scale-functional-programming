@@ -1,0 +1,108 @@
+\usepackage{proof}
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[final]{microtype}
+\usepackage[bottom]{footmisc}
+
+% paper margins
+\usepackage[margin=1in]{geometry}
+\pagestyle{plain}
+\usepackage{xspace}
+
+% multiple colums
+\usepackage{multicol}
+
+%Title page settings
+\usepackage[affil-it]{authblk}
+
+% Title of document
+% \title{\textbf{The Next 1200 Haskell Programmers}}
+% Author
+% \author{Kevin Kappelmann}
+% \affil{Chair for Logic and Verification}
+\date{\today}
+
+
+%% Bibliography
+\usepackage[authoryear]{natbib}
+% \usepackage[%
+% backend=bibtex,
+% url=true,
+%style=alphabetic,
+% maxnames=4,
+% minnames=3,
+% maxbibnames=99,
+% giveninits,
+% uniquename=init]{biblatex}
+
+%% Graphics
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{float}
+\usepackage{standalone}
+\usetikzlibrary{quotes,angles,calc,arrows.meta,positioning,automata}
+\tikzset{initial text={}}
+\usepackage{tikz-3dplot}
+\usepackage{subcaption}
+
+%% Hyperlinks
+\usepackage{url}
+\definecolor{pastelblue}{RGB}{0,72,205}
+\usepackage[hidelinks]{hyperref}
+\hypersetup{
+ colorlinks,
+ linktoc=page,
+ linkcolor=pastelblue,
+ citecolor=pastelblue,
+ urlcolor=pastelblue
+}
+
+\usepackage{enumitem}
+
+%% Coding
+\usepackage[outputdir=build]{minted}
+
+% Math packages
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{amssymb}
+\usepackage{mathpartir}
+\usepackage{wasysym}
+\usepackage{stmaryrd}
+\usepackage{centernot}
+
+% Proof system
+\usepackage{amsthm}
+%% References
+\usepackage[capitalize,sort,compress,noabbrev]{cleveref}
+\crefdefaultlabelformat{#2\textup{#1}#3}
+\Crefname{thm}{Theorem}{Theorems}
+\Crefname{lem}{Lemma}{Lemmas}
+\Crefname{prop}{Proposition}{Propositions}
+\Crefname{cor}{Corollary}{Corollary}
+\Crefname{defn}{Definition}{Definitions}
+\Crefname{exmpl}{Example}{Examples}
+\Crefname{rmk}{Remark}{Remarks}
+\Crefname{propy}{Property}{Properties}
+\Crefname{claim}{Claim}{Claim}
+\Crefname{assmlisti}{Assumption}{Assumptions}
+\Crefname{invarlisti}{Invariant}{Invariants}
+
+\theoremstyle{plain}
+\newtheorem{thm}[equation]{Theorem}
+\newtheorem{lem}[equation]{Lemma}
+\newtheorem{prop}[equation]{Proposition}
+\newtheorem{cor}[equation]{Corollary}
+\theoremstyle{definition}
+\newtheorem{defn}[equation]{Definition}
+\newtheorem{exmpl}[equation]{Example}
+\newtheorem*{rmk}{Remark}
+
+% Custom commands
+\newcommand{\dotcup}{\mathbin{\mathaccent\cdot\cup}}
+\newcommand{\fromto}[2]{\{#1,\dotsc,#2\}}
+\newcommand{\denot}[1]{\llbracket#1\rrbracket}
+
+\newcommand{\haskell}[1]{\mintinline{haskell}{#1}}
+
