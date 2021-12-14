@@ -2,7 +2,7 @@
 
 ## TODO
 
-1. IO mocking: Lukas
+1. IO mocking: Manuel
 1. Artemis
 1. Tweedback & VSCode setup
 1. Wettbewerb: game setup
