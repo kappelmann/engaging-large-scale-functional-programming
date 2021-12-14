@@ -2,12 +2,14 @@
 
 ## TODO
 
-1. IO mocking: Manuel
+1. IO mocking (Manuel)
+1. Syllabus
+1. Vorlesungsevaluation durchforschen (Jonas)
 1. Artemis
 1. Tweedback & VSCode setup
 1. Wettbewerb: game setup
 1. Statistiken: # Studierende, Korrelation Wettbewerb, Hausaufgaben, Endnote (Jonas)
-1. CYP
+1. CYP (Lukas)
 1. Competetion/Contest Website
 1. Preventing cheating
 1. Incentives: grade bonus, trophies/cash awards, workshops by companies
