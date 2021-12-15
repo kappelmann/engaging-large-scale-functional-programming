@@ -1,0 +1,26 @@
+\section{Check Your Proof}
+As the name ``Functional Programming and Verification'' suggests, the course is also concerned with verification of programs; more specifically functional programs.
+For purely functional programs equational reasoning together with induction (and case analysis) is already sufficient to prove interesting properties.
+Such simple proofs of course lend themselves well to be automatically checked and, as announced by \citet{next_1100}, a tool called ``Check Your Proof'' was developed by Durner and Noschinski\footnote{\url{https://github.com/noschinl/cyp}}.
+The tool ``Check Your Proof'', or CYP for short, allows us to 
+
+\begin{itemize}
+  \item Why cyp? Maybe ask Lars Noschinski about cyp
+  \item \href{https://arxiv.org/pdf/2009.01326.pdf}{Other CYP Paper}. Why is this only in the pre-proceedings of WFLP 2020?
+  \item Use non-standard data types in exam. Some students just copy the induction schema see also other paper.
+  \item Type safety is important for soundness in theory 
+  \item Check student feedback for CYP also reference numbers in other paper
+  \item Added computation induction to CYP. Nevertheless, some theoretical foundation for the prover would be nice. No ifs allowed though. Computation induction would be one of the most helpful things to students since IH is difficult.
+  \item Overlapping equations, non-total, non-terminating
+  \item Kind of exercises throughout the course.
+  \item Integration into standard test infrastructure.
+  \item VSCode/vim syntax extensions for cyp
+  \item Reference Isabelle auto-grading?
+  \item 2020: on two tutorial sheets (3 exercises), Tutorial 4: 1, Homework 4: 2, Tutorial 5: 2, Homework 5: 1, Tutorial 9: 1, Homework 9: 1, Tutorial 13: 1, Exam: 2(Structural, Structural + Aux Lemma)/9, Retake: 2(Structural, Computation)/7
+  \item 2019: Exam 2(Structural, Structural + Generalisation)/8, Retake: 2(Structural, Computation)/7, Tutorial 5: 2, Homework 5: 2, Tutorial 6: 2, Homework 6: 2, Tutorial 7: 1, Homework 7: 1, Tutorial 9: 1, Homework 9: 1, Tutorial 13: 1 
+  \item 2019 Retake has computation induction but no CYP. Maybe compare results?
+  \item 2019 CYP Feedback: positiv 2, negativ 1 
+  \item 2020 CYP Feedback: positiv 18, negativ 3 (Mainly documentation)
+  \item Uses haskell-src-exts for parsing Haskell code
+  \item app assoc example
+\end{itemize}
