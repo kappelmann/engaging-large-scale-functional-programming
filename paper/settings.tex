@@ -62,6 +62,30 @@
 
 %% Coding
 \usepackage[outputdir=build]{minted}
+\usepackage{listings}
+
+
+\lstdefinelanguage{cyp}{
+  keywords={Lemma,goal,Proof,QED},
+  keywordstyle=\color{blue}\bfseries,
+  keywords=[2]{data},
+  keywordstyle=[2]{\color{purple}\bfseries},
+  keywords=[3]{.=.},
+  keywordstyle=[3]{\color{red}\bfseries},
+  comment=[l]{--},
+  commentstyle=\color{purple}\ttfamily,
+}
+
+\lstset{
+  language=cyp,
+  extendedchars=true,
+  basicstyle=\footnotesize\ttfamily,
+  showstringspaces=false,
+  showspaces=false,
+  tabsize=2,
+  breaklines=true,
+  showtabs=false
+}
 
 % Math packages
 \usepackage{amsmath}

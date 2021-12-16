@@ -1,0 +1,6 @@
+data List a = [] | a : List a
+
+[] ++ ys = ys
+(x : xs) ++ ys = x : (xs ++ ys)
+
+goal xs ++ (ys ++ zs) .=. (xs ++ ys) ++ zs

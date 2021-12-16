@@ -1,0 +1,21 @@
+Lemma: xs ++ (ys ++ zs) .=. (xs ++ ys) ++ zs
+Proof by induction on List xs
+  Case []
+    To show: [] ++ (ys ++ zs) .=. ([] ++ ys) ++ zs
+    Proof
+                      [] ++ (ys ++ zs)
+      (by def ++) .=. ys ++ zs
+      (by def ++) .=. ([] ++ ys) ++ zs
+    QED
+
+  Case x : xs
+    To show: (x : xs) ++ (ys ++ zs) .=. ((x : xs) ++ ys) ++ zs
+    IH: xs ++ (ys ++ zs) .=. (xs ++ ys) ++ zs
+    Proof
+                        (x : xs) ++ (ys ++ zs)
+      (by def ++)   .=. x : (xs ++ (ys ++ zs))
+      (by IH)       .=. x : ((xs ++ ys) ++ zs)
+      (by def ++)   .=. (x : (xs ++ ys)) ++ zs
+      (by def ++)   .=. ((x : xs) ++ ys) ++ zs
+    QED
+QED
