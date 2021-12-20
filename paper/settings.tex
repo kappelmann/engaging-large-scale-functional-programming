@@ -16,15 +16,16 @@
 \usepackage[affil-it]{authblk}
 
 % Title of document
-% \title{\textbf{The Next 1200 Haskell Programmers}}
+\title{\textbf{Engaging, Large-Scale On- and Offline Education of Functional Programming}}
+
 % Author
-% \author{Kevin Kappelmann}
+\author{Yours Truly}
 % \affil{Chair for Logic and Verification}
 \date{\today}
 
 
 %% Bibliography
-\usepackage[numbers]{natbib}
+\usepackage[numbers,sort]{natbib}
 % \usepackage[%
 % backend=bibtex,
 % url=true,
@@ -57,13 +58,14 @@
  citecolor=pastelblue,
  urlcolor=pastelblue
 }
+% break urls at dash
+\def\UrlBreaks{\do\/\do-}
 
 \usepackage{enumitem}
 
 %% Coding
 \usepackage[outputdir=build]{minted}
 \usepackage{listings}
-
 
 \lstdefinelanguage{cyp}{
   keywords={Lemma,goal,Proof,QED,To,show,Case},
@@ -124,9 +126,9 @@
 \newtheorem*{rmk}{Remark}
 
 % Custom commands
-\newcommand{\dotcup}{\mathbin{\mathaccent\cdot\cup}}
-\newcommand{\fromto}[2]{\{#1,\dotsc,#2\}}
-\newcommand{\denot}[1]{\llbracket#1\rrbracket}
+\newcommand{\jonas}[1]{\textbf{Jonas}: \textcolor{red}{#1}}
+\newcommand{\kevin}[1]{\textbf{Kevin}: \textcolor{violet}{#1}}
+\newcommand{\lukas}[1]{\textbf{Luaks}: \textcolor{blue}{#1}}
+\newcommand{\manuel}[1]{\textbf{Manuel}: \textcolor{green}{#1}}
 
-\newcommand{\haskell}[1]{\mintinline{haskell}{#1}}
 
