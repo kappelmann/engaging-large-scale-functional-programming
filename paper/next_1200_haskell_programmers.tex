@@ -6,7 +6,9 @@
 \begin{document}
 \pagenumbering{gobble}
 \maketitle
-\abstract{
+\abstract{\input{abstract.tex}}
+
+\tableofcontents
 \begin{minted}{haskell}
 data U = U
 
@@ -14,8 +16,6 @@ appTwice :: (Int -> Int) -> Int -> Int
 appTwice f x = f (f x)
 \end{minted}
 Bla \mintinline{haskell}{appTwice (+1) "bogus"}
-}
-\tableofcontents
 
 \newpage
 \pagenumbering{arabic}

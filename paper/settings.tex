@@ -25,7 +25,7 @@
 
 
 %% Bibliography
-\usepackage[numbers]{natbib}
+\usepackage[numbers,sort]{natbib}
 % \usepackage[%
 % backend=bibtex,
 % url=true,
@@ -64,7 +64,6 @@
 %% Coding
 \usepackage[outputdir=build]{minted}
 \usepackage{listings}
-
 
 \lstdefinelanguage{cyp}{
   keywords={Lemma,goal,Proof,QED},
@@ -125,9 +124,8 @@
 \newtheorem*{rmk}{Remark}
 
 % Custom commands
-\newcommand{\dotcup}{\mathbin{\mathaccent\cdot\cup}}
-\newcommand{\fromto}[2]{\{#1,\dotsc,#2\}}
-\newcommand{\denot}[1]{\llbracket#1\rrbracket}
-
-\newcommand{\haskell}[1]{\mintinline{haskell}{#1}}
+\newcommand{\jonas}[1]{\textbf{Jonas}: \textcolor{red}{#1}}
+\newcommand{\kevin}[1]{\textbf{Kevin}: \textcolor{violet}{#1}}
+\newcommand{\lukas}[1]{\textbf{Luaks}: \textcolor{blue}{#1}}
+\newcommand{\manuel}[1]{\textbf{Manuel}: \textcolor{green}{#1}}
 
