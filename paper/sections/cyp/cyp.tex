@@ -57,31 +57,51 @@ Furthermore, CYP allows proving named lemmas to modularise proofs and to prove g
 
 The simplicity of CYP both in its usage and its implementation brings with it some caveats:
 \begin{itemize}
-    \item The version of CYP that we use is untyped which can cause soundness problems if the background theory contains multiple types as \citet{cyp_holes} demonstrate: if you have a singleton type \lstinline!data U = U! in your background theory, you can prove \lstinline!x .=. y! by case analysis.
-        In an untyped environment you can then use this to prove the equality between any two terms.
+    \item The version of CYP that we use is untyped and thus unsound if the background theory contains multiple types as \citet{cyp_holes} demonstrate: if you have a singleton type \lstinline!data U = U! in your background theory, you can prove \lstinline!x .=. y! by case analysis.
+        In an untyped environment you can then use this to prove equality between any two terms.
     \item Barring soundness issues due to a lack of types, one also needs to ensure that all function definitions are total and that their patterns do not overlap.
-    \item Computation induction only works for functions that don't have recursive calls
+    \item Computation induction is only sound if there are no recursive calls in branches of an if-then-else expression.
+      This is because the induction hypotheses then would need to be conditional rewrite rules which CYP does not support.
 \end{itemize}
+\citet{cyp_holes} discuss the inner workings of CYP in detail and develop an extension to CYP that introduces types thus solving the first issue.
+In the process they also made it possible to leave holes in proofs and in expressions for the students to fill in, which makes it a more flexible tool for teaching.
+Solving the latter issues would incur additional effort.
+We think that CYP should be put on a stronger foundation such as higher-order logic (HOL) without compromising eats simplicity from a user perspective.
+One possibility would be to rewrite CYP as as a frontend to Isabelle/HOL~\cite{isabelle}.
+Since HOL is a typed logic it would solve the first issue and the latter issues could be resolved using Isabelle's function package~\cite{isabelle_functions}.
+A stronger foundation also allows one to more confidently develop further extensions to CYP.
 
-Put future improvements here.
+Our experience with using CYP to teach inductive proofs have been very positive.
+On the instructor's side, CYP has an integration with the same testing framework, Tasty\footnote{\url{https://hackage.haskell.org/package/tasty}}, that is used to mark programming exercises automatically.
+This allows us to deal with programming and proof exercises in a uniform way.
+The feedback of the students has been overwhelmingly positive:
+in the first iteration of the lecture, we received two positive comments and one negative comment without asking for feedback on CYP.
+When asked explicitly about their thoughts on CYP the second time around, the students answered with 18 positive comments and three negative comments which mainly criticised the lack of documentation.
+A cheatsheet developed by a tutor was later added to the repository of CYP to improve the situation.
+In each of the exams, two exercises (out of 7 -- 9) were concerned with inductive proofs.
+The first exercise was a straightforward proof by structural induction while the second exercise required more creativity, e.g.\ generalisation of the goal or a computational induction.
+To prevent the students from earning points for rote copying of the induction schema for a known data type, we often introduced new data types, e.g.\ ternary trees (TODO: did this really happen?). 
+We did not force the students to stick to CYP's syntax but we urged them to follow a similar structure, which worked well overall.
 
-Teaching experiences
-\begin{itemize}
-    \item Should use non-standard data types in the exam since some students just copy the induction schema otherwise.
-    \item Student feedback mostly positive as in the other paper.
-    \item Students write well structured proofs in the exam that resemble cyp proofs.
-    \item VSCode/vim highlighting thanks to students, tutors.
-    \item Proofs can automatically be checked by the submission system.
-\end{itemize}
+Questions for Jonas: where the results for the computation induction better after introducing it to CYP? How well did the students do in the proof exercises compared to the rest of the exam?
 
-\begin{itemize}
-  \item Why cyp? Maybe ask Lars Noschinski about cyp
-  \item \href{https://arxiv.org/pdf/2009.01326.pdf}{Other CYP Paper}. Why is this only in the pre-proceedings of WFLP 2020?
-  \item Kind of exercises throughout the course.
-  \item 2020: on two tutorial sheets (3 exercises), Tutorial 4: 1, Homework 4: 2, Tutorial 5: 2, Homework 5: 1, Tutorial 9: 1, Homework 9: 1, Tutorial 13: 1, Exam: 2(Structural, Structural + Aux Lemma)/9, Retake: 2(Structural, Computation)/7
-  \item 2019: Exam 2(Structural, Structural + Generalisation)/8, Retake: 2(Structural, Computation)/7, Tutorial 5: 2, Homework 5: 2, Tutorial 6: 2, Homework 6: 2, Tutorial 7: 1, Homework 7: 1, Tutorial 9: 1, Homework 9: 1, Tutorial 13: 1
-  \item 2019 Retake has computation induction but no CYP. Maybe compare results?
-  \item 2019 CYP Feedback: positiv 2, negativ 1
-  \item 2020 CYP Feedback: positiv 18, negativ 3 (Mainly documentation)
-  \item Uses haskell-src-exts for parsing Haskell code
-\end{itemize}
+% Teaching experiences
+% \begin{itemize}
+%     \item Should use non-standard data types in the exam since some students just copy the induction schema otherwise.
+%     \item Student feedback mostly positive as in the other paper.
+%     \item Students write well structured proofs in the exam that resemble cyp proofs.
+%     \item VSCode/vim highlighting thanks to students, tutors.
+%     \item Proofs can automatically be checked by the submission system.
+% \end{itemize}
+% 
+% \begin{itemize}
+%   \item Why cyp? Maybe ask Lars Noschinski about cyp
+%   \item \href{https://arxiv.org/pdf/2009.01326.pdf}{Other CYP Paper}. Why is this only in the pre-proceedings of WFLP 2020?
+%   \item Kind of exercises throughout the course.
+%   \item 2020: on two tutorial sheets (3 exercises), Tutorial 4: 1, Homework 4: 2, Tutorial 5: 2, Homework 5: 1, Tutorial 9: 1, Homework 9: 1, Tutorial 13: 1, Exam: 2(Structural, Structural + Aux Lemma)/9, Retake: 2(Structural, Computation)/7
+%   \item 2019: Exam 2(Structural, Structural + Generalisation)/8, Retake: 2(Structural, Computation)/7, Tutorial 5: 2, Homework 5: 2, Tutorial 6: 2, Homework 6: 2, Tutorial 7: 1, Homework 7: 1, Tutorial 9: 1, Homework 9: 1, Tutorial 13: 1
+%   \item 2019 Retake has computation induction but no CYP. Maybe compare results?
+%   \item 2019 CYP Feedback: positiv 2, negativ 1
+%   \item 2020 CYP Feedback: positiv 18, negativ 3 (Mainly documentation)
+%   \item Uses haskell-src-exts for parsing Haskell code
+% \end{itemize}
