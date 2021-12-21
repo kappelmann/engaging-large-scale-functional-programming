@@ -1,4 +1,4 @@
-\section{Check Your Proof by Example}
+\section{Check Your Proof by Example}\label{sec:cyp}
 As the name ``Functional Programming and Verification'' suggests, the course is also concerned with verification of programs; more specifically functional programs.
 For purely functional programs equational reasoning together with induction (and case analysis) is already sufficient to prove interesting properties.
 Such simple proofs of course lend themselves well to be automatically checked and, as announced by \citet{next_1100}, a tool called ``Check Your Proof'' (CYP for short) was developed by Durner and Noschinski\footnote{\url{https://github.com/noschinl/cyp}}.
@@ -53,7 +53,7 @@ Again, CYP requires the user to be explicit: the goal in each inductive case and
 
 The lecture then goes beyond proofs by structural induction and introduces proof by extensionality, case analysis, and computation induction, all of which CYP supports with some conditions applying as we will see shortly.
 Computation induction in particular was not supported in the original version by Durner and Noschinski but only introduced in a fork\footnote{\url{https://github.com/lukasstevens/cyp}}.
-Furthermore, CYP allows proving named lemmas to modularise proofs and to prove generalised versions of the goal, which is for example necessary to show certain properties of \lstinline!fold!. 
+Furthermore, CYP allows proving named lemmas to modularise proofs and to prove generalised versions of the goal, which is for example necessary to show certain properties of \lstinline!fold!.
 
 The simplicity of CYP both in its usage and its implementation brings with it some caveats:
 \begin{itemize}
@@ -80,7 +80,7 @@ When asked explicitly about their thoughts on CYP the second time around, the st
 A cheatsheet developed by a tutor was later added to the repository of CYP to improve the situation.
 In each of the exams, two exercises (out of 7 -- 9) were concerned with inductive proofs.
 The first exercise was a straightforward proof by structural induction while the second exercise required more creativity, e.g.\ generalisation of the goal or a computational induction.
-To prevent the students from earning points for rote copying of the induction schema for a known data type, we often introduced new data types, e.g.\ ternary trees (TODO: did this really happen?). 
+To prevent the students from earning points for rote copying of the induction schema for a known data type, we often introduced new data types, e.g.\ ternary trees (TODO: did this really happen?).
 We did not force the students to stick to CYP's syntax but we urged them to follow a similar structure, which worked well overall.
 
 Questions for Jonas: where the results for the computation induction better after introducing it to CYP? How well did the students do in the proof exercises compared to the rest of the exam?
@@ -93,7 +93,7 @@ Questions for Jonas: where the results for the computation induction better afte
 %     \item VSCode/vim highlighting thanks to students, tutors.
 %     \item Proofs can automatically be checked by the submission system.
 % \end{itemize}
-% 
+%
 % \begin{itemize}
 %   \item Why cyp? Maybe ask Lars Noschinski about cyp
 %   \item \href{https://arxiv.org/pdf/2009.01326.pdf}{Other CYP Paper}. Why is this only in the pre-proceedings of WFLP 2020?
