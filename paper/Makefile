@@ -1,4 +1,4 @@
-FILE := next_1200_haskell_programmers
+FILE := engaging_fp_education
 OUT  := build
 
 .PHONY: pdf
