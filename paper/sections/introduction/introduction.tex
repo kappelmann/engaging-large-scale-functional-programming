@@ -1,12 +1,86 @@
 \section{Introduction}
 
-This paper reports on engagement strategies
-and technical solutions employed to
-run two iterations of a large-scale functional programming and verification course at the Technical University of Munich.
+This paper reports on strategies and solutions employed to
+run two iterations of a large-scale functional programming and verification course at the Technical University of Munich (TUM).
 While the first iteration (winter semester 2019/20, TODO participants)
 took place on campus,
 the second iteration (winter semester 2020/21, TODO participants) was affected by the COVID-19 pandemic and took place in virtual space.
+A similar course was offered before \citep{next_1100};
+however, we were facing two novel and severe challenges:
 
-\input{sections/introduction/challenges.tex}
-\input{sections/introduction/outline.tex}
+\paragraph{Soaring Enrollments}
+The relatively young field of computer science has
+become one of the largest study programmes around the globe.
+The increase of student enrollments is dramatic
+\citep{comp_sci_growth1,comp_sci_growth2}
+while employment of new teaching staff often lacks behind.
+At TUM, the number of new enrollments in computer science between 2013 and 2020 alone
+more than doubled from 1110 to 2508 (225\%)
+while academic staff increased from 435 to 529 (121\%) \citep{tum_numbers}.
+
+This drastic increase not only asks for more physical ressources -- like larger lecture halls and more library spaces --
+but also academic staff for supervision.
+Given the discrepancy in growth of student enrollments and staff employment,
+automation of supervision mechanisms renders inevitable.
+Automation, however, should not
+negatively effect the quality of supervision.
+
+\paragraph{Online Teaching}
+The ongoing COVID-19 pandemic forced a radical
+transition from on-site teaching to online classes.
+Lecturers have to rethink the way they present material and interact with students,
+teaching assistants the way they assist students in tutorial sessions.
+Students, on the other side, suffer from lack of social interaction and communication.
+\kevin{TODO: write more}
+
+All this might not only lead to negative psychological consequences but also \emph{cramming}:
+the practice of showing little participation during the semester
+while studying extensively just before the exam.
+Cramming tends to result in poor long-term retention and shallow understanding of material.
+Indeed, the benefit of spacing learning events apart rather than cramming has been demonstrated in hundreds of experiments \citep{cramming1,cramming2}.
+
+\vspace{\baselineskip}\noindent
+Besides these two general challenges,
+there is a third subject-specific
+question we were keen to answer:
+
+\paragraph{Why Bother About Functional Programming?}
+Feedback has shown that many students
+at TUM question the applicability and usefulness
+of functional languages beyond
+the academic world of universities.
+They are disappointed by a lack of industrial insight
+and real world applications.
+Indeed, some even perceive it as an obstacle;
+after all, they already know how to program imperatively.
+
+Good educators do not just teach but inspire:
+we have to bring the benefits of functional languages
+closer to our students' hearts
+while showing real-world applicability and making functional programming fun and engaging.
+
+
+\vspace{\baselineskip}\noindent
+In this paper,
+we describe our answers to these challenges
+and provide tools for other educators
+to make functional programming lectures engaging,
+large-scale, and work in both physical and virtual space.
+
+\paragraph{Outline}
+\begin{enumerate}
+\item automate feedback
+\item Foster engagement to avoid cramming
+\item Offer chances to go beyond what is taught
+\item Support social interaction
+\item Provide good and uniform tooling
+\end{enumerate}
+
+To prevent cramming,
+we used a variety of engagement mechanisms and incentives as the course progresses.
+Good engagement mechanisms not only keep students busy
+but genuinely make the course more fun.
+Participation should originate from curiosity and enjoyment rather than pressure.
+In the best case, students might even study beyond the material presented
+if given the possibility.
 
