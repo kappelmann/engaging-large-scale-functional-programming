@@ -2,10 +2,10 @@
 
 This paper reports on strategies and solutions employed to
 run two iterations of a large-scale functional programming and verification course at the Technical University of Munich (TUM).
-While the first iteration (winter semester 2019/20, TODO participants)
+While the first iteration (winter semester 2019/20, \kevin{TODO: number by Jonas} participants)
 took place on campus,
-the second iteration (winter semester 2020/21, TODO participants) was affected by the COVID-19 pandemic and took place in virtual space.
-A similar course was offered before \citep{next_1100};
+the second iteration (winter semester 2020/21, \kevin{TODO: number by Jonas} participants) was affected by the COVID-19 pandemic and took place in virtual space.
+A similar course was offered before~\citep{next_1100};
 however, we were facing two novel and severe challenges:
 
 \paragraph{Soaring Enrollments}
@@ -30,8 +30,8 @@ The ongoing COVID-19 pandemic forced a radical
 transition from on-site teaching to online classes.
 Lecturers have to rethink the way they present material and interact with students,
 teaching assistants the way they assist students in tutorial sessions.
-Students, on the other side, suffer from lack of social interaction and communication.
-\kevin{TODO: write more}
+Students, on the other side, suffer from lack of social interaction and communication, leading to higher
+levels of stress, anxiety, loneliness, and depressive symptoms \citep{students_lockdown1}.
 
 All this might not only lead to negative psychological consequences but also \emph{cramming}:
 the practice of showing little participation during the semester
@@ -42,32 +42,50 @@ Indeed, the benefit of spacing learning events apart rather than cramming has be
 \vspace{\baselineskip}\noindent
 Besides these two general challenges,
 there is a third subject-specific
-question we were keen to answer:
+challenge we were keen to tackle:
 
 \paragraph{Why Bother About Functional Programming?}
-Feedback has shown that many students
+Feedback by students and personal experience has shown the authors that many students
 at TUM question the applicability and usefulness
 of functional languages beyond
 the academic world of universities.
 They are disappointed by a lack of industrial insight
-and real world applications.
+and real world -- or at least interactive -- applications.
 Indeed, some even perceive it as an obstacle;
 after all, they already know how to program imperatively.
 
 Good educators do not just teach but inspire:
 we have to bring the benefits of functional languages
 closer to our students' hearts
-while showing real-world applicability and making functional programming fun and engaging.
+by showing real-world applicability and making functional programming fun and engaging.
 
 
 \vspace{\baselineskip}\noindent
 In this paper,
-we describe our answers to these challenges
+we present our answers to these challenges
 and provide tools for other educators
 to make functional programming lectures engaging,
 large-scale, and work in both physical and virtual space.
 
 \paragraph{Outline}
+
+We begin by describing the general framework and underlying conditions of the course and its syllabus in \cref{sec:course_structure_conditions}.
+In \cref{sec:lectures},
+we describe the tools and teaching methods that we used during lectures.
+\cref{sec:practical_part} describes the
+mechanisms and technical setup
+we used to create an engaging experience
+for the practical part of the course,
+including tutorials, homework exercises,
+competition systems, and more.
+\cref{sec:cyp} introduces
+``Check Your Proof'' -- a tool created
+by our lab that automatically checks simple inductive proofs for Haskell programs.
+\cref{sec:exam} \kevin{TODO: Jonas text},
+and \cref{sec:conclusion} concludes with a summary and chances to improve.
+
+\paragraph{Focus of paper}
+\kevin{those are just notes}
 \begin{enumerate}
 \item automate feedback
 \item Foster engagement to avoid cramming
