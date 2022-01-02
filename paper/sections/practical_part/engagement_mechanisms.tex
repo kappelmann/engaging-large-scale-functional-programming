@@ -1,13 +1,100 @@
 \subsection{Engagement Mechanisms}
 
-\paragraph{Grade Bonus}
-Grade bonus: re-introduced after low engagement in last iteration
+Students spend the majority of their time on the practical part of the course.
+This is where they apply the theory explained in the lecture,
+living their own success stories and failures,
+shaping their own adventure.
+As each student has unique interests, strengths and weaknesses, and their own level of commitment,
+we also have to employ a diverse set of mechanisms to keep them engaged.
 
-\paragraph{Instand Feedback}
-TODO
+We want to emphasise that engagement does not simply
+increase by offering more things -- even worse, it might even increase stress --
+but by offering things that serve neglected needs.
+Good engagement mechanisms not only keep students busy
+but genuinely make the course more fun.
+Participation should originate from curiosity and enjoyment rather than pressure.
+
+Here we describe the engagement mechanisms that were particularly valuable for our course:
+
+\paragraph{Grade Bonus}
+The most straightforward of all mechanisms is
+that of the grade bonus.
+For both iterations,
+students were able to obtain a 0.3 bonus on their final exam provided that they achieved certain goals in the practical part of the course.
+This mechanism was already used in a previous iteration
+but subsequently dropped because of negative experiences with plagiarism.
+However, as a result, participation in homework exercises
+severely decreased \citep{next_1100}.
+Moreover, the student council reported to us that one of the most asked for
+wishes by students is that of a grade bonus.
+
+We hence re-introduced the bonus with some changes.
+First, instead of asking for $40\%$ of all achievable points,
+we changed to a pass-or-fail per exercise sheet system.
+Students passed a sheet if they
+passed $\approx 70\%$ of all tests
+and obtained the bonus if they passed $\approx 70\%$ of all sheets.
+We changed to this system so that students
+cannot obtain the grade bonus very early on in the semester and stop participating.
+
+Secondly, in WS20, we introduced additional ways to
+obtain points that can be used for the bonus,
+for example participation in Haskell programming contests or workshops by industry partners.
+This diversified the system and offered new ways for students who were struggling
+with programming tasks but were nevertheless interested in the course material
+to obtain the bonus.
+
+We can report that participation recovered
+back to levels before the grade bonus was dropped in a previous iteration:
+\kevin{TODO: statistics by Jonas}
+In contrast to previous years,
+we have not seen any severe cases of plagiarism.
+
+\paragraph{Instant Feedback}
+An observation we already made in \cref{sec:lectures}
+continues to the practical part of the course:
+feedback must come fast.
+Again, an asynchronous Q\&A forum helps in this regard,
+at least for questions of a general nature.
+Questions and problems specific to the submission of a student (e.g.\ a bug or error in a proof),
+however, must be fixed by the student themselves as 1) it is a critical skill of any programmer to find mistakes and 2) code/proofs cannot be shared in public due to the grade bonus.
+
+Automated tests can fill this gap:
+they provide very direct feedback (e.g.\ failing input and expected output pairs) with little delay
+without giving away too much information.
+Needless to say, they are also an important mechanism to keep such a large
+course going at all.
+We describe our testing infrastructure in more detail in \cref{sec:tech_setup_test}.
+
+However, we still let tutors manually review all final submissions
+in the first iteration of the course.
+We specifically instructed them to provide feedback not covered by automation,
+in particular regarding code quality.
+To our dismay, we have to report that this feedback did very little and
+most of it was probably ignored.
+We suspect that students only cared so long as they passed the tests
+and never had a look at their code again.
+
+In our second iteration, we hence reallocated ressources:
+instead of grading submissions,
+tutors now supported us by creating engaging exercises
+and offering new content (e.g.\ running workshops with industrial partners)
+while we focused on writing exhaustive tests with good feedback and extended our automated proof checking facilities (see \cref{sec:cyp}).
+To provide at least some feedback on
+code quality, we instead instructed students
+to install a linter (see \cref{sec:tech_setup_test}).
+
+We can report very positively on this reallocation:
+we were able to offer a diverser set of exercises and
+had the ressources to offer new content
+while quality of code did not seem to suffer.
 
 \paragraph{Wettbewerb and Awards}
-TODO
+We continued the tradition of running a weekly
+programming competition -- called \emph{the Wettbewerb}.
+
+
+https://dl.acm.org/doi/pdf/10.1145/2775050.2633359
 
 \paragraph{Social Interactions}
 Pair-Programming, FPV\&Chill, Contest
