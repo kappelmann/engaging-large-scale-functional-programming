@@ -1,7 +1,29 @@
 \subsection{Technical Setup and Automated Assessment}\label{sec:tech_setup_test}
 
-We switched to ArTEMiS, an open-source tool developed at TUM \citep{artemis}.
-ArTEMis is a highly scalable,
-automated assessment management system.
+\paragraph{Automated Assessment}
+In WS19, we used an improved version of
+the testing infrastructure introduced in \citep{next_1100}.
+However, this system was not able to manage online exams and mark freeform submissions.
+We thus switched to use a newly written open-source
+tool developed at TUM called ArTEMiS \citep{artemis}.
+ArTEMis is a highly scalable, automated assessment management system.
+It already offered support for a few imperative programming languages
+and we added support for Haskell\footnote{It now also supports OCaml}.
+As ArTEMis takes care of anything from load-balancing to
+automated testing and
+offers a special exam mode and good support for freeform submissions,
+the only thing we were left to do is writing the actual test code.
+More details about ArTEMis and our test setup follow
+in the extended version of this article.
 
-lessons learnt: manual grading is useless
+\paragraph{Online Tutorials}
+% Due to the COVID19 pandemic,
+% we realised that online tutorials will not b
+
+
+% Previous iterations of the course did
+% not make any recommendations about the editor to be used for
+% the practical part of the course.
+% the retake exam of the WS19 iteration had to take place online.
+% \footnote{\url{https://www21.in.tum.de/teaching/fpv/WS20/installation.html}}
+
