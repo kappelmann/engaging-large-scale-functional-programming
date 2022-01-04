@@ -1,34 +1,36 @@
 \subsection{Technical Setup and Automated Assessment}\label{sec:tech_setup_test}
 
 \paragraph{Automated Assessment}
+\jonas{TODO: find other phrasing for freeform submissions?}
 In WS19, we used an improved version of
 the testing infrastructure introduced in \cite{next_1100}.
 However, this system was not able to manage online exams and mark freeform submissions.
-We thus switched to use a newly written open-source
+We thus switched to a newly written open-source
 tool developed at TUM called ArTEMiS \cite{artemis}.
 ArTEMis is a highly scalable, automated assessment management system.
 It already offered support for a few imperative programming languages
 and we added support for Haskell\footnote{It now also supports OCaml}.
-As ArTEMis takes care of anything from load-balancing to
-automated testing and
-offers a special exam mode and good support for freeform submissions,
+As ArTEMis takes care of most things,
+including load-balancing and automated test execution,
+and offers a special exam mode and good support for freeform submissions,
 the only thing we were left to do is writing the actual test code.
-More details about ArTEMis and our test setup follow
+
+More details about ArTEMis and our test setup will follow
 in the final version of this article.
 \kevin{TODO: mention QuickCheck, tasty, etc. and remove ``more details''}
 
 \paragraph{Online Tutorials}
 \jonas{TODO: check phrasing of this section}
 In previous iterations,
-no recommendations about the editor to be used for the practical part of the course
+no recommendations about the programming environment to be used for the practical part of the course
 were given.
 However, due to the COVID19 pandemic,
 this was no longer an option:
 we needed a way for students to share their code in read and write mode
-to other peers (pair-programming) and their tutor (for feedback purposes).
+to other peers (pair-programming) and their teaching assistant (for feedback purposes) during tutorials.
 Moreover, as explained in \cref{sec:engagement},
 we decided to give up on manual feedback on code quality
-and let students use a linter instead.
+and wanted students to use a linter instead.
 Finally, we had very negative experiences with students
 installing no compiler at all
 and instead (mis)using our submission server as a compilation backend.
@@ -36,13 +38,13 @@ We thus introduced a strict policy
 for the technical setup that has to be used as part of
 the tutorials.
 A general overview can be found online\footnote{\url{https://www21.in.tum.de/teaching/fpv/WS20/installation.html}},
-and an extended description and report will follow in the final version of the article.
+and an extended description and report will follow in the final version of this article.
 
-In short, we can report very positvely on the setup.
+In short, we can report very positively on the setup.
 We have experience with running online tutorials for other large lectures and can testify that
 the system in this paper worked best in technical as well as social aspects.
 We can also report that students were more knowledgable
-about the Haskell editor toolchain than in previous iterations.
+about the Haskell programming environment (compilation, dependency management, etc.) than in previous iterations.
 Misappropriation of the submission server as a compiler backend also stopped.
 \jonas{TODO: move sentence and maybe add statistics?}
 

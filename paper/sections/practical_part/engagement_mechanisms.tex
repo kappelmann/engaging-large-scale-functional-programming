@@ -43,16 +43,16 @@ cannot obtain the grade bonus very early on in the semester and stop participati
 Secondly, in WS20, we introduced additional ways to
 obtain points that can be used for the bonus,
 for example participation in Haskell programming contests or workshops by industry partners.
-This diversified the system and offered new ways for students who were struggling
-with programming tasks but nevertheless were interested in the course material
-to obtain the bonus.
+This diversified the system and offered new ways
+to obtain the bonus,
+in particular to those students that were struggling
+with programming tasks but nevertheless were interested in the course material.
 
 We can report that participation recovered
 back to levels before the grade bonus was dropped in a previous iteration.
 In contrast to previous years,
 we have not seen any severe cases of plagiarism despite
-checking all exercises using a plagarism checking tool.
-\kevin{TODO: reference for plagiarism checker}
+checking all exercises using a plagarism checking tool\footnote{We used Moss \url{https://theory.stanford.edu/~aiken/moss/}}.
 \jonas{TODO: statistics}
 
 \paragraph{Instant Feedback}
@@ -62,16 +62,16 @@ feedback must come fast.
 Again, an asynchronous Q\&A forum helps in this regard,
 at least for questions of a general nature.
 Questions and problems specific to the submission of a student (e.g.\ a bug or error in a proof),
-however, must be fixed by the student themselves as 1) it is a critical skill of any computer scientists to disover bugs and 2) code/proofs cannot be shared in public due to the grade bonus.
+however, must be fixed by the student themselves as 1) it is a critical skill of any computer scientists to disover bugs and 2) code/proofs may not be shared before the submission deadline due to the grade bonus.
 
 Automated tests can fill this gap:
 they provide very direct feedback (e.g.\ failing input and expected output pairs) with little delay
 without giving away too much information.
 Needless to say, they are also an important mechanism
-to a large course going at all.
+to make a large course working at all.
 We describe our testing infrastructure in more detail in \cref{sec:tech_setup_test}.
 
-However, we still let tutors manually review all final submissions
+However, we still let student assistants manually review all final submissions
 in the first iteration of the course.
 We specifically instructed them to provide feedback not covered by automation,
 in particular regarding code quality.
@@ -82,19 +82,21 @@ and never looked at their code and code quality feedback again.
 
 In our second iteration, we hence reallocated ressources:
 instead of grading submissions,
-tutors now supported us by creating engaging exercises
-\kevin{TODO: kevin reference}
-and offering new content (e.g.\ running workshops with industrial partners)
+student assistants now supported us by creating engaging exercises
+(see \cref{sec:selected_exercises})
+and offering new content (e.g.\ running workshops with industry partners)
 while we focused on writing exhaustive tests with good feedback and extended our automated proof checking facilities (see \cref{sec:cyp}).
 To provide at least some feedback on
 code quality, we instead instructed students
 to use a linter (see \cref{sec:tech_setup_test}).
-\kevin{TODO: linter gives direct and annoying feedback}
 
 We can report very positively on this reallocation:
 we were able to offer a diverser set of exercises and
 had the ressources to offer new content
 while quality of code did not seem to suffer.
+Indeed, the linter even seemed to increase students' awareness
+to not only write correct code but also use good coding patterns.
+This seems due to the fact that 1) the linter provided instant feedback and 2) it highlighted affected code fragments in red colour and students wanted to get rid of them.
 
 \paragraph{Competition and Awards}
 Due to very positive feedback,
@@ -112,7 +114,9 @@ and creative tasks like composition of music
 and computer art.
 We introduce some of the exercises and share their templates in \cref{sec:selected_exercises}.
 The top 30 entries received prestigious points
-and were presented to the public on a blog\footnote{\href{https://www21.in.tum.de/teaching/fpv/WS19/wettbewerb.html}{WS19} and \href{https://www21.in.tum.de/teaching/fpv/WS20/wettbewerb.html}{WS20}}
+and were presented to the public on a blog\footnote{\url{https://www21.in.tum.de/teaching/fpv/WS19/wettbewerb.html} (WS19) and
+
+\url{https://www21.in.tum.de/teaching/fpv/WS20/wettbewerb.html} (WS20)}
 written using ironic self-important third-person style.
 The top 30 students then received awards at
 a humorously organised award ceremony.
@@ -126,7 +130,7 @@ This initial contact with industry partners
 also sparked the idea to offer real-world Haskell workshops
 ran by software engineers from industry in WS20 (explained further below).
 
-The competition in WS20 also greatly benefitted from incooperating the work of our tutors:
+The competition in WS20 also greatly benefitted from incooperating the work of our student assistants:
 At the beginning of the semester,
 we brainstormed for competition ideas.
 We then formed teams, each one being responsible for the
@@ -138,16 +142,18 @@ As reported in \cite{next_1100},
 we can confirm that the competition works extremely well to motivate talented students.
 They go very well beyond what is taught as part of the course.
 Many of them continue to become major drivers in
-the team of tutors in follow-up iterations.
-\kevin{TODO: mention that there were more applications}
+the team of student assistants in follow-up iterations.
+Indeed, after offering the competition in WS19,
+we received more applications for student assistant positions in WS20 (they more than doubled) than we could hire -- something we have never experienced before.
 We also received testimonies from students that even though they did not perform well or did not participate at all in the competition,
 they nevertheless enjoyed the humorous blog posts and advanced material discussed on it.
-Despite the work of our tutors,
+
+Despite the work of our student assistants,
 however,
 running the competition remains an enormous task,
 in particular the evaluation of submissions and
 writing of the blog post.
-We envisage further assistance by tutors in future iterations in those regards.
+We envisage further assistance by student assistants in future iterations in those regards.
 
 \paragraph{Workshops with Industry Partners}
 Many students at TUM have questioned the applicability and value of functional programming for real-world applications.
@@ -156,19 +162,23 @@ them otherwise.
 Instead, we had the idea to invite people from industry
 to offer special functional programming workshops about
 practical topics not covered in our course.
+
 In WS20,
 we were able to host three workshops on 1) design patterns
 2) networking and advanced IO and 3) user interfaces and multithreading.
 We limited participation to 35 students for each workshop,
-and to our delight, demand exceeded supply.
+and to our delight, demand exceeded supply (more than 120 students applied).
 Both industry partners and workshop participants
 reported very positively to us.
-Moreover, organisational overhead was small.
+In some cases,
+workshops were even extended for multiple hours due to the great curiosity by students.
+Moreover, organisational overhead was small:
+we merely had to communicate the syllabus to our partners and coordinate time and place.
 We envisage offering even more workshops in future iterations and highly recommend this mechanisms to demonstrate real-world applicability to other educators.
 
 \paragraph{Social Interactions}
-Studies confirmed that the COVID19 severly
-students social life,
+Studies confirmed that the COVID19 pandemic
+worsened students social life,
 leading to higher levels of stress, anxiety, loneliness, and depressive symptoms \cite{students_lockdown1}.
 This got us thinking about mechanisms we
 can employ in WS20 to foster social interaction and exchange between students
@@ -177,21 +187,20 @@ can employ in WS20 to foster social interaction and exchange between students
 Firstly, we decided to employ pair-programming (groups of 3--4 students)
 in our online tutorials.
 The technical setup for this is desribed in \cref{sec:tech_setup_test}.
-This not only made social interaction an integral part of the tutorial,
+This not only made social interactions an integral part of the tutorial,
 but also had positive effects on knowledge sharing.
 We can report very positively on this policy.
 
 Secondly, we hosted two informal get-together sessions,
 one at the beginning and one at the end of the semester.
 We started with icebreaker sessions in breakout rooms,
-randomly allocating students and at least one tutor in each group.
+randomly allocating students and at least one student assistant in each group.
 Following these sessions,
 we opened thematic breakoutrooms where students
-could freely move and talk about
-given topic.
+could freely move and talk about a given topic.
 Some students preferred to talk about the course material, others had
 light-hearted conversations about university, yet others started to play online games.
-All in all, we received very positive feedback for these sessions.
+All in all, we received very positive feedback for our get-together sessions.
 
 Thirdly, we organised a special
 ACM-like programming contest
