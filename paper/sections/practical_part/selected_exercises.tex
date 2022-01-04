@@ -1,5 +1,7 @@
 \subsection{Selected Exercises and Tools}\label{sec:selected_exercises}
 
+\kevin{someone please proof-read and maybe update the phrasing in this section}
+
 Many students at TUM have questioned the
 applicability and usefulness
 of functional languages after completing
@@ -13,21 +15,39 @@ in functional programming courses.
 
 Changing the latter appeared unpromising to us:
 we think that students would be confused
-if a ``special'' IO-type and do-notation were to
+if a ``special'' IO type and do notation were to
 be introduced before they are comfortable
 with the very basic features of functional
-programming languages
-We henced tried to instead tackle former reason
+languages.
+Thus we tried to tackle former reason
 by creating diverse exercises that go beyond
-basic interactions with one's terminal.
-\kevin{TODO: write more here}
+simple terminal applications.
+Designing and implementing such exercises,
+however, is labour-intensive.
+As mentioned in \cref{sec:engagement},
+we thus decided to reallocate ressources and
+let our student assistants help us with this work
+rather than providing feedback for homework submissions.
+
+This turned out to be a very fruitful idea:
+the quality of work by our student assistants was often way above what
+we expected.
+The main difficulty we initially faced was the mediocre quality of
+tests written by most assistants.
+They only had the rudimentary knowledge of QuickCheck as taught as part of
+the course.
+We thus hosted a workshop for our assistants that explained
+our testing infrastructure and provided best-practice
+patterns when writing tests.
+The quality of tests greatly increased following this workshop.
 
 In the final version of this article,
-this section will introduce a selected list of
-useful/creative Haskell exercises and tools
-that were created as part of
-the course and can be reused by other educators.
-All exercises will be made available in a central git repository.
+we will introduce a selected list of
+these exercises and some useful tools
+that were created as part of the course.
+We will also make them available in a central repository
+such they can be reused by other educators.
+\kevin{TODO: add link}
 Here are some examples:
 \begin{itemize}
 \item A mocked IO library that allows property-based IO-testing in Haskell.
@@ -41,7 +61,9 @@ interactive, game replay, etc.
 \item A simple framework to run ACM-like programming competitions
 \item A framework for UNO\footnote{\url{https://en.wikipedia.org/wiki/Uno_(card_game)}}.
 \end{itemize}
-Some further examples can be seen on our competition blogs\footnote{\href{https://www21.in.tum.de/teaching/fpv/WS19/wettbewerb.html}{WS19} and \href{https://www21.in.tum.de/teaching/fpv/WS20/wettbewerb.html}{WS20}}.
+Some further examples can be seen on our competition blogs\footnote{\url{https://www21.in.tum.de/teaching/fpv/WS20/wettbewerb.html} (WS20) and
+
+\url{https://www21.in.tum.de/teaching/fpv/WS19/wettbewerb.html} (WS19)}.
 
 % The design philosophy of each exercise sheet
 % can be described as follows:
