@@ -1,25 +1,30 @@
-\documentclass[twocolumn,10pt]{article}
+\documentclass[submission,copyright,creativecommons]{eptcs}
 
+\providecommand{\event}{TFPIE 2022} % Name of the event you are submitting to
 \input{settings.tex}
 
 % Title of document
-\title{\textbf{Engaging, Large-Scale Functional Programming Education in Physical and Virtual Space}}
+\title{Engaging, Large-Scale Functional Programming Education in Physical and Virtual Space}
 
 % Author
-\author{Yours Truly}
-% \affil{Chair for Logic and Verification}
-\date{\today}
+\author{Kevin Kappelmann \qquad\qquad Jonas Rädle \qquad\qquad Lukas Stevens 
+\institute{Fakultät für Informatik\\ Technische Universität München, Germany}
+\email{\quad TODO \quad\qquad raedle@in.tum.de \quad\qquad TODO}
+}
+\def\titlerunning{Engaging Functional Programming Education}
+\def\authorrunning{K. Kappelmann, J. Rädle \& L. Stevens}
 
-%------------------------------------------------------------------------------
 \begin{document}
-\begin{onecolumn}
-\pagenumbering{gobble}
+%\pagenumbering{gobble}
 \maketitle
-\abstract{\input{abstract.tex}}
+
+\begin{abstract}
+  \input{abstract.tex}
+\end{abstract}
 
 \jonas{TODO: COVID19 and tutors word choice}
 \kevin{TODO: acknowledgment section}
-\tableofcontents
+%\tableofcontents
 % \begin{minted}{haskell}
 % data U = U
 
@@ -27,7 +32,6 @@
 % appTwice f x = f (f x)
 % \end{minted}
 % Bla \mintinline{haskell}{appTwice (+1) "bogus"}
-\end{onecolumn}
 % \paragraph{Focus of paper}
 % \kevin{those are just notes}
 % \begin{enumerate}
@@ -38,9 +42,8 @@
 % \item Provide good and uniform tooling
 % \end{enumerate}
 
-\newpage
-\pagenumbering{arabic}
-\begin{twocolumn}
+%\newpage
+%\pagenumbering{arabic}
 \input{sections/introduction/introduction.tex}
 \input{sections/course_structure_conditions/course_structure_conditions.tex}
 \input{sections/lectures/lectures.tex}
@@ -48,11 +51,8 @@
 \input{sections/cyp/cyp.tex}
 \input{sections/exam/exam.tex}
 \input{sections/conclusion/conclusion.tex}
-\end{twocolumn}
-\newpage
-\begin{onecolumn}
-\bibliographystyle{plainnat}
+
+\bibliographystyle{eptcs}
 \bibliography{sources}
-\end{onecolumn}
 \end{document}
 

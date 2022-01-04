@@ -4,7 +4,7 @@
 
 As the name ``Functional Programming and Verification'' suggests, the course is also concerned with verification of programs; more specifically functional programs.
 For purely functional programs equational reasoning together with induction (and case analysis) is already sufficient to prove interesting properties.
-Such simple proofs of course lend themselves well to be automatically checked and, as announced by \citet{next_1100}, a tool called ``Check Your Proof'' (CYP for short) was developed by Durner and Noschinski\footnote{\url{https://github.com/noschinl/cyp}}.
+Such simple proofs of course lend themselves well to be automatically checked and, as announced by \cite{next_1100}, a tool called ``Check Your Proof'' (CYP for short) was developed by Durner and Noschinski\footnote{\url{https://github.com/noschinl/cyp}}.
 The lecture considers the associativity of append on lists as the first example of verifying functional programs.
 Transferring this example to CYP requires us to define the data type of lists.
 We use \lstinline![]! as the constructor of the empty list and the infix operator \lstinline!:! like in Haskell.
@@ -60,13 +60,13 @@ Furthermore, CYP allows proving named lemmas to modularise proofs and to prove g
 
 The simplicity of CYP both in its usage and its implementation brings with it some caveats:
 \begin{itemize}
-    \item The version of CYP that we use is untyped and thus unsound if the background theory contains multiple types as \citet{cyp_holes} demonstrate: if you have a singleton type \lstinline!data U = U! in your background theory, you can prove \lstinline!x .=. y! by case analysis.
+    \item The version of CYP that we use is untyped and thus unsound if the background theory contains multiple types as \cite{cyp_holes} demonstrate: if you have a singleton type \lstinline!data U = U! in your background theory, you can prove \lstinline!x .=. y! by case analysis.
         In an untyped environment you can then use this to prove equality between any two terms.
     \item Barring soundness issues due to a lack of types, one also needs to ensure that all function definitions are total and that their patterns do not overlap.
     \item Computation induction is only sound if there are no recursive calls in branches of an if-then-else expression.
       This is because the induction hypotheses then would need to be conditional rewrite rules which CYP does not support.
 \end{itemize}
-\citet{cyp_holes} discuss the inner workings of CYP in detail and develop an extension to CYP that introduces types thus solving the first issue.
+\cite{cyp_holes} discuss the inner workings of CYP in detail and develop an extension to CYP that introduces types thus solving the first issue.
 In the process they also made it possible to leave holes in proofs and in expressions for the students to fill in, which makes it a more flexible tool for teaching.
 Solving the latter issues would incur additional effort.
 We think that CYP should be put on a stronger foundation such as higher-order logic (HOL) without compromising eats simplicity from a user perspective.
