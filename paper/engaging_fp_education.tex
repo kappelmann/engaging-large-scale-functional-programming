@@ -1,4 +1,4 @@
-\documentclass{article}
+\documentclass[twocolumn,10pt]{article}
 
 \input{settings.tex}
 
@@ -12,6 +12,7 @@
 
 %------------------------------------------------------------------------------
 \begin{document}
+\begin{onecolumn}
 \pagenumbering{gobble}
 \maketitle
 \abstract{\input{abstract.tex}}
@@ -26,19 +27,20 @@
 % appTwice f x = f (f x)
 % \end{minted}
 % Bla \mintinline{haskell}{appTwice (+1) "bogus"}
-\paragraph{Focus of paper}
-\kevin{those are just notes}
-\begin{enumerate}
-\item automate feedback
-\item Foster engagement to avoid cramming
-\item Offer chances to go beyond what is taught
-\item Support social interaction
-\item Provide good and uniform tooling
-\end{enumerate}
+\end{onecolumn}
+% \paragraph{Focus of paper}
+% \kevin{those are just notes}
+% \begin{enumerate}
+% \item automate feedback
+% \item Foster engagement to avoid cramming
+% \item Offer chances to go beyond what is taught
+% \item Support social interaction
+% \item Provide good and uniform tooling
+% \end{enumerate}
 
 \newpage
 \pagenumbering{arabic}
-
+\begin{twocolumn}
 \input{sections/introduction/introduction.tex}
 \input{sections/course_structure_conditions/course_structure_conditions.tex}
 \input{sections/lectures/lectures.tex}
@@ -46,9 +48,11 @@
 \input{sections/cyp/cyp.tex}
 \input{sections/exam/exam.tex}
 \input{sections/conclusion/conclusion.tex}
-
+\end{twocolumn}
 \newpage
+\begin{onecolumn}
 \bibliographystyle{plainnat}
 \bibliography{sources}
+\end{onecolumn}
 \end{document}
 
