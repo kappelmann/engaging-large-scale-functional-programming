@@ -1,2 +1,27 @@
-\section{Exam}\label{sec:exam}
-TODO
+\section{Exams}\label{sec:exam}
+In previous iterations of the course, the exams had been paper-based by necessity, as university regulations made digital exams unfeasible. Due to the COVID-19 pandemic, however, remote exams (either unsupervised or supervised via video conferencing software) were allowed for the repeat exam in WS19 and both exams in WS20.
+
+In the following we will outline how we adapted our exam process to this new reality and the advantages of our approach for students and staff.
+
+\paragraph{Workflow for Students}
+
+We chose the ArTEMiS \citep{artemis} platform, previously described in \cref{sec:tech_setup_test}, for the exams. In WS19, the students were previously mostly unfamiliar with ArTEMiS, but in WS20 they had been submitting their homeworks using the same workflow as during the exam.
+
+Students were able to check out individual exam questions from the ArTEMiS repository and then work on them using their preferred programming environment. In addition to programming exercises, the exams included theory questions and proofs, which were submitted as text using an online editor.
+
+The exams were open-book, including online resources. We feel that the combination of a programming environment customized to the individual student's taste and access to online documentation, forums, etc.~comes close to how programming is done in practice. \jonas{Numbers for value of standardized environment?}
+
+In contrast, previous exams were purely paper-based. This limited the scope of programming exercises we were able to pose, since both writing and grading programs on paper is highly labor intensive. In addition, we were able to expect a higher standard of correctness from the submitted programs,
+
+\paragraph{Grading}
+Grading hundreds of exams on paper is a huge undertaking. In previous semesters, it took 10-20 people (staff and student assistants) about 4-5 days \jonas{actual numbers from endterm 19} to grade an exam. Additionally, grading programming exercises on paper is error prone, as it is not feasible to digitize every submission and run it through a compiler.
+
+Using ArtEMiS, we were able to use automated testing for programming exercises. In most cases we were able to mark submissions which passed all tests as fully correct and manual grading was only needed for submissions which failed some tests or did not compile. This significantly lightened the workload, as even manual grading is much more convenient when there are test results to guide you and when you can re-run tests after fixing compilation errors.
+
+In addition, the feedback for the students is vastly improved by this method of grading, since they are able to check test results in the exam review instead of having to rely on handwritten annotations made by the corrector.
+
+\jonas{how much person hours to correct endterm 20?}
+
+\paragraph{Cheating}
+
+\jonas{anecdotal evidence of little cheating/plagiarism. just leave this out entirely?}
