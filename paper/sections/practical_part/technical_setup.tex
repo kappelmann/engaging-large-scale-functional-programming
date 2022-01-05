@@ -6,18 +6,36 @@ the testing infrastructure introduced in \cite{next_1100}.
 However, this system was not able to manage online exams or mark non-programming tasks.
 We thus switched to a newly written open-source
 tool developed at TUM called ArTEMiS \cite{artemis}.
-ArTEMis is a highly scalable, automated assessment management system.
-It already offered support for a few imperative programming languages
+ArTEMis is a highly scalable, automated assessment management system and is programming language independent --
+it only expects test runners to produce tests results
+adhering to the Apache Ant JUnit XML schema.
+It already offered support for a few imperative programming languages,
 and we added support for Haskell\footnote{It now also supports OCaml}.
+
 As ArTEMis takes care of most things,
 including load-balancing and automated test execution,
 and offers an exam mode and good support for grading non-programming tasks,
 the only thing we were left to do was writing the actual test code.
-
-More details about ArTEMis and our test setup will follow
-in the final version of this article.
-\kevin{TODO: mention QuickCheck, tasty, etc. and remove ``more details''}
-% \footnote{\url{https://hackage.haskell.org/package/tasty}}
+For the most part, we verified the results computed
+by a student's submission by comparing them to those
+computed by a sample solution written by us.
+In some cases, we also tested for efficiency using timeouts.
+Our tests were powered by the following libraries:
+\begin{enumerate}
+  \item QuickCheck \cite{quickcheck}:
+  Although QuickCheck provides means to automatically generate test data (using the typeclass \lstinline!Arbitrary!),
+  most tests and benchmarks used customly written QuickCheck input generators.
+  This was necessery to increase coverage and eliminate non-applicable inputs for tests with preconditions.
+  We also used custom shrinkers to provide better feedback to students in case of a failure.
+  In both cases, the flexible combinators provided by QuickCheck made this a straightforward task.
+  \item SmallCheck \cite{smallcheck}: The exhaustive testing facilities provided by SmallCheck mainly served
+    as a complementary tool that provided small counterexamples for, in many cases, obvious deficiencies.
+  \item Tasty\footnote{\url{https://hackage.haskell.org/package/tasty}}: We used Tasty to put QuickCheck, SmallCheck, and unit tests as well as the checking of CYP proofs into one common framework that is capable to generate results interpretable by ArTEMiS.
+  We used the unit testing facilities by Tasty to complement our QuickCheck/SmallCheck tests with corner cases.
+  Integration of CYP proof checking was pleasently straightforward.
+  Moreover, Tasty supports timeouts for individual test cases,
+  solving the issue of truncated test reports mentioned in~\cite{next_1100}.
+\end{enumerate}
 
 \paragraph{Online Tutorials}
 In previous iterations,
