@@ -1,4 +1,4 @@
-Lemma: xs ++ (ys ++ zs) .=. (xs ++ ys) ++ zs
+/* Lemma: xs ++ (ys ++ zs) .=. (xs ++ ys) ++ zs */
 Proof by induction on List xs
   Case []
     To show: [] ++ (ys ++ zs) .=. ([] ++ ys) ++ zs
