@@ -6,7 +6,7 @@ Many students at TUM have questioned the
 applicability and usefulness
 of functional languages after completing
 their mandatory functional programming course.
-We believe that is mainly due to two reasons:
+We believe this is mainly due to two reasons:
 1) introductory programming courses often stick
 to simple algorithmic or mathematically inspired challenges and
 2) side-effects (in particular IO)
@@ -19,7 +19,7 @@ if a ``special'' IO type and do notation were to
 be introduced before they are comfortable
 with the very basic features of functional
 languages.
-Thus we tried to tackle former reason
+Thus we tried to crank the other handle
 by creating diverse exercises that go beyond
 simple terminal applications.
 Designing and implementing such exercises,
@@ -30,24 +30,24 @@ let our student assistants help us with this work
 rather than providing feedback for homework submissions.
 
 This turned out to be a very fruitful idea:
-the quality of work by our student assistants was often way above what
+the quality of our student assistants' work was often way above what
 we expected.
-The main difficulty we initially faced was the mediocre quality of
+The one difficulty we initially faced was the mediocre quality of
 tests written by most assistants.
-They only had the rudimentary knowledge of QuickCheck as taught as part of
+They only had the rudimentary knowledge of QuickCheck taught as part of
 the course.
 We thus hosted a workshop for our assistants that explained
 our testing infrastructure and provided best-practice
 patterns when writing tests.
-The quality of tests greatly increased following this workshop.
+The quality of tests significantly increased following this workshop,
+though we still had to polish them before publication.
 
 In the final version of this article,
 we will introduce a selected list of
 these exercises and some useful tools
 that were created as part of the course.
-We will also make them available in a central repository
+We will also make them available in this article's repository\footnote{\url{https://github.com/kappelmann/engaging-large-scale-functional-programming}}
 such they can be reused by other educators.
-\kevin{TODO: add link}
 Here are some examples:
 \begin{itemize}
 \item A mocked IO library that allows property-based IO-testing in Haskell.
