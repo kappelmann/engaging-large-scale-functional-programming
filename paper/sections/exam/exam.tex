@@ -9,22 +9,28 @@ We chose the ArTEMiS \cite{artemis} platform, previously described in \cref{sec:
 
 Students were able to check out individual exam questions from the ArTEMiS repository and then work on them using their preferred programming environment. In addition to programming exercises, the exams included theory questions and proofs, which were submitted as text using an online editor.
 
-The exams were open-book, including online resources. We feel that the combination of a programming environment customized to the individual student's taste and access to online documentation, forums, etc.~comes close to how programming is done in practice. \jonas{Numbers for value of standardized environment?}
+The exams were open-book, including online resources. We feel that the combination of a programming environment customized to the individual student's taste and access to online documentation, forums, etc.~comes close to how programming is done in practice.
 
-In contrast, previous exams were purely paper-based. This limited the scope of programming exercises we were able to pose, since both writing and grading programs on paper is highly labor intensive. In addition, we were able to expect a higher standard of correctness from the submitted programs,
+In contrast, previous exams were purely paper-based. This limited the scope of programming exercises we were able to pose, since both writing and grading programs on paper is highly labour-intensive. In addition, we were able to expect a higher standard of correctness from the submitted programs, since minor errors in syntax or program are excusable when programming on paper, but less so when students can test or at least run their programs before submission.
 
 \paragraph{Grading}
-Grading hundreds of exams on paper is a huge undertaking. In previous semesters, it took 10-20 people (staff and student assistants) about 4-5 days \jonas{actual numbers from endterm 19} to grade an exam. Additionally, grading programming exercises on paper is error prone, as it is not feasible to digitize every submission and run it through a compiler.
+Grading hundreds of exams on paper is a huge undertaking. In previous semesters, it took 10-20 people (staff and student assistants) about 4-5 days to grade an exam. Additionally, grading programming exercises on paper is error prone and it is not feasible to digitize every paper submission and run it through a compiler.
 
-\jonas{TODO: mention proporitonality of errors not testable}
-Using ArtEMiS, we were able to use automated testing for programming exercises. In most cases we were able to mark submissions which passed all tests as fully correct and manual grading was only needed for submissions which failed some tests or did not compile. This significantly lightened the workload, as even manual grading is much more convenient when there are test results to guide you and when you can re-run tests after fixing compilation errors.
+Using ArTEMiS, we were able to use automated testing for programming exercises. In most cases we were able to mark submissions which passed all tests as fully correct and manual grading was only needed for submissions which failed some tests or did not compile. In our view, manual grading is still necessary in those cases, because it is generally not possible to write tests that are fine-grained to such a degree that every potential source of error is recognized and scored proportionally. This hybrid approach to grading still significantly lightened the workload, as even manual grading is much more convenient when there are test results to guide you and when you can re-run tests after fixing compilation errors.
 
-In addition, the feedback for the students is vastly improved by this method of grading, since they are able to check test results in the exam review instead of having to rely on handwritten annotations made by the corrector.
+\paragraph{Online Review}
 
-\jonas{TODO: online einsicht}
-\jonas{TODO: cheating and online privacy}
-\jonas{how much person hours to correct endterm 20?}
+After grading is complete, students have the right to review their exams in order to check for errors or unfairness in the grading process. For paper-based exams, students usually had to make an appointment for a time-slot to review their exam under the supervision of the teaching staff. In courses with a high number of participants, this imposed a significant organizational overhead for both staff and students.
+
+Using ArTEMiS, however, every student can simply review their exam and submit complaints through an online interface. After the review period is over, the complaints were approved or rejected by the teaching staff. This resulted in a vastly increased proportion of students reviewing their exam, thus ensuring a higher degree of fairness in the grading process.
+
+In addition, the feedback for the students is vastly improved by this method, since they are able to check test results along with in-line grading comments in the exam review instead of having to rely on handwritten annotations made by the corrector.
 
 \paragraph{Cheating}
 
-\jonas{anecdotal evidence of little cheating/plagiarism. just leave this out entirely?}
+University regulations allow both supervised or unsupervised remote exams. We considered supervision, but ultimately decided against it. Were we to supervise the exam ourselves, each staff member would have to keep track of $\sim$20-30 students via their webcam in a video conferencing software. We feel that this would hardly ensure against cheating, since students would still be able to e.g.\ take advice from someone out of view of the camera or communicate with others online. (It does not seem feasible to simultaneously supervise the screen-share of 20-30 students)
+
+There are also commercial options for exam supervision, but it is unclear how effective they are at preventing cheating, and the options we reviewed raised significant privacy concerns.
+
+We thus decided to rely on an honor system for our exams. Every exam was, however, checked for plagiarism with moss. This turned up only one case of conclusive plagiarism. We suspect and accept that there were likely more cases of cheating that we could not catch, so we aim to improve our anti-cheating measures in future iterations.
+\kevin{Ich finde den Dude nicht mehr in meinen Emails, aber es gab einen den das getroffen hat, oder? Vielleicht war das auch Theo... Gab es noch mehr Fälle?} 
