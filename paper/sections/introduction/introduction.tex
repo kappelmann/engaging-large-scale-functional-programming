@@ -6,34 +6,33 @@ While the first iteration (winter semester 2019, 1057 participants)
 took place on campus,
 the second iteration (winter semester 2020, 1031 participants) was affected by the COVID-19 pandemic and took place in virtual space.
 Previous iterations of the course were introduced in~\cite{next_1100};
-however, we were facing two novel and severe challenges:
+however, we were facing two novel challenges:
 
 \paragraph{Soaring Enrollments}
 The relatively young field of computer science has
 become one of the largest study programmes around the globe.
 The increase of student enrollments is dramatic
 \cite{comp_sci_growth1,comp_sci_growth2}
-while employment of new teaching staff often lacks behind.
-At TUM, the number of new enrollments in computer science between 2013 and 2020 alone
-more than doubled from 1110 to 2508 (an increase of 125\%)
-while academic staff increased from 435 to 529 (an increase of 21\%) \cite{tum_numbers}.
+while employment of new teaching staff often lags behind.
+At TUM, the number of new enrollments in computer science more than doubled between 2013 and 2020 from 1110 to 2508 (an increase of 125\%)
+, while academic staff only increased from 435 to 529 (21\%) \cite{tum_numbers}.
 
-This drastic increase not only asks for more physical ressources -- like larger lecture halls and more library spaces --
+This drastic increase not only requires more physical resources -- like larger lecture halls and more library spaces --
 but also academic staff for supervision.
-Given the discrepancy in growth of student enrollments and staff employment,
-automation of supervision and feedback mechanisms renders inevitable.
+Given the discrepancy in growth between student enrollments and staff employment,
+automation of supervision and feedback mechanisms is inevitable.
 Automation, however, should not
-negatively effect the quality of a course for students.
+negatively affect the quality of the teaching.
 
 \paragraph{Online Teaching}
 The ongoing COVID-19 pandemic forced a radical
 transition from on-site teaching to online classes.
-Lecturers have to rethink the way they present material and interact with students,
+Lecturers had to rethink the way they present material and interact with students,
 teaching assistants the way they assist students in tutorial sessions.
-Students, on the other side, suffer from lack of social interaction and communication, leading to higher
-levels of stress, anxiety, loneliness, and depressive symptoms \cite{students_lockdown1}.
+Students, on the other hand, suffer from a lack of social interaction and communication, leading to higher
+levels of stress, anxiety, loneliness, and symptoms of depression \cite{students_lockdown1}.
 
-All this might not only lead to negative psychological consequences but also \emph{cramming}:
+In our experience, the disconnect between students and lecturers, as well as the lack of on-campus interaction between students may also lead to \emph{cramming}:
 the practice of showing little participation during the semester
 while studying extensively just before the exam.
 Cramming tends to result in poor long-term retention and shallow understanding of material.
@@ -41,17 +40,17 @@ Indeed, the benefit of spacing learning events apart rather than cramming has be
 
 \vspace{\baselineskip}\noindent
 Besides these two general challenges,
-there is a third subject-specific
+there is a third -- subject-specific --
 challenge we were keen to tackle:
 
 \paragraph{Functional Programming is Practical \kevin{TODO: better paragraph title}}
-Feedback by students and personal experience has shown the authors that many students
+Feedback by students and personal experience has shown us that many students
 at TUM question the applicability and usefulness
 of functional languages beyond
-the academic world of universities.
+the academia.
 They are disappointed by a lack of industrial insight
 and real world -- or at least interactive -- applications.
-Indeed, some even perceive it as an obstacle;
+Indeed, some even perceive functional programming as an obstacle;
 after all, they already know how to program imperatively.
 
 Good educators do not just teach but inspire:
@@ -64,8 +63,7 @@ by showing real-world applicability and making functional programming fun and en
 In this paper,
 we present our answers to these challenges
 and provide tools for other educators
-to make functional programming lectures engaging,
-large-scale, and work in both physical and virtual space.
+to make functional programming lectures -- in physical or virtual space -- engaging and scalable.
 
 \paragraph{Outline}
 
@@ -82,5 +80,5 @@ competition systems, and more.
 ``Check Your Proof'' -- a tool created
 by our lab that automatically checks simple inductive proofs for Haskell programs.
 \cref{sec:exam} describes how we adapted our exams to the COVID-19 situation and the large number of participants,
-and \cref{sec:conclusion} concludes with a summary and chances to improve.
+and \cref{sec:conclusion} concludes with a summary and aspects to improve in future.
 
