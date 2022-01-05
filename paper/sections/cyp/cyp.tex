@@ -1,11 +1,9 @@
 \section{Check Your Proof by Example}\label{sec:cyp}
-
-\kevin{TODO: mention strict and total subset for fast and loose reasoning}
-
-As the name ``Functional Programming and Verification'' suggests, the course is also concerned with verification of programs; more specifically functional programs.
-For purely functional programs equational reasoning together with induction (and case analysis) is already sufficient to prove interesting properties.
-Such simple proofs of course lend themselves well to be automatically checked and, as announced by \cite{next_1100}, a tool called ``Check Your Proof'' (CYP for short) was developed by Durner and Noschinski\footnote{\url{https://github.com/noschinl/cyp}}.
-The lecture considers the associativity of append on lists as the first example of verifying functional programs.
+In addition to functional programming, the course we taught is also concerned with verification of programs; more specifically functional programs.
+Even if we only consider a small total subset of Haskell, equational reasoning together with induction (and case analysis) is already sufficient to prove interesting properties.
+Since fast and loose reasoning is morally correct~\cite{fast_and_loose}, valid properties in this sub-language are also valid for Haskell.
+Simple inductive proofs of course lend themselves well to be automatically checked and, as announced by \cite{next_1100}, a tool called ``Check Your Proof'' (CYP for short) was developed at our lab by Durner and Noschinski\footnote{\url{https://github.com/noschinl/cyp}}.
+The first example of an inductive proof in the lecture is the associativity of append on lists.
 Transferring this example to CYP requires us to define the data type of lists.
 We use \lstinline![]! as the constructor of the empty list and the infix operator \lstinline!:! like in Haskell.
 \begin{lstlisting}
@@ -55,7 +53,7 @@ QED
 Again, CYP requires the user to be explicit: the goal in each inductive case and the induction hypotheses have to be spelled out.
 
 The lecture then goes beyond proofs by structural induction and introduces proof by extensionality, case analysis, and computation induction, all of which CYP supports with some conditions applying as we will see shortly.
-Computation induction in particular was not supported in the original version by Durner and Noschinski but only introduced in a fork\footnote{\url{https://github.com/lukasstevens/cyp}}.
+Computation induction in particular was not supported in the original version by Durner and Noschinski but was only introduced in a fork\footnote{\url{https://github.com/lukasstevens/cyp}}.
 Furthermore, CYP allows proving named lemmas to modularise proofs and to prove generalised versions of the goal, which is for example necessary to show certain properties of \lstinline!fold!.
 
 The simplicity of CYP both in its usage and its implementation brings with it some caveats:
@@ -69,24 +67,25 @@ The simplicity of CYP both in its usage and its implementation brings with it so
 \cite{cyp_holes} discuss the inner workings of CYP in detail and develop an extension to CYP that introduces types thus solving the first issue.
 In the process they also made it possible to leave holes in proofs and in expressions for the students to fill in, which makes it a more flexible tool for teaching.
 Solving the latter issues would incur additional effort.
-We think that CYP should be put on a stronger foundation such as higher-order logic (HOL) without compromising eats simplicity from a user perspective.
+We think that CYP should be put on a stronger foundation such as higher-order logic (HOL) without compromising its simplicity from a user perspective.
 One possibility would be to rewrite CYP as as a frontend to Isabelle/HOL~\cite{isabelle}.
 Since HOL is a typed logic it would solve the first issue and the latter issues could be resolved using Isabelle's function package~\cite{isabelle_functions}.
 A stronger foundation also allows one to more confidently develop further extensions to CYP.
 
 Our experience with using CYP to teach inductive proofs have been very positive.
-On the instructor's side, CYP has an integration with the same testing framework, Tasty\footnote{\url{https://hackage.haskell.org/package/tasty}}, that is used to mark programming exercises automatically.
+On the one hand, CYP is scalable since it has an integration with the same testing framework, Tasty\footnote{\url{https://hackage.haskell.org/package/tasty}}, that is used to mark programming exercises automatically.
 This allows us to deal with programming and proof exercises in a uniform way.
-The feedback of the students has been overwhelmingly positive:
+On the other hand, CYP was engaging to the students as their feedback shows:
 in the first iteration of the lecture, we received two positive comments and one negative comment without asking for feedback on CYP.
-When asked explicitly about their thoughts on CYP the second time around, the students answered with 18 positive comments and three negative comments which mainly criticised the lack of documentation.
+When asked explicitly about their thoughts on CYP the second time around, the students answered with 18 positive comments and three negative comments.
+The students liked the instantaneous feedback that CYP provides, which helped them to deepen their understanding of inductive proofs at their own pace.
+The main criticism of CYP was the lack of documentation.
 A cheatsheet developed by a tutor was later added to the repository of CYP to improve the situation.
+
+\lukas{Move this to exam section? Also mention that uniform structure makes it easier to grade}
 In each of the exams, two exercises (out of 7 -- 9) were concerned with inductive proofs.
 The first exercise was a straightforward proof by structural induction while the second exercise required more creativity, e.g.\ generalisation of the goal or a computational induction.
-To prevent the students from earning points for rote copying of the induction schema for a known data type, we often introduced new data types, e.g.\ ternary trees (TODO: did this really happen?).
-We did not force the students to stick to CYP's syntax but we urged them to follow a similar structure, which worked well overall.
-
-\lukas{Questions for Jonas: where the results for the computation induction better after introducing it to CYP? How well did the students do in the proof exercises compared to the rest of the exam?}
+We did not force the students to stick to CYP's syntax in the exam but we urged them to follow a similar structure, which worked well overall.
 
 % Teaching experiences
 % \begin{itemize}
