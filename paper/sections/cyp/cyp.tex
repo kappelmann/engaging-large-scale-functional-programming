@@ -46,7 +46,7 @@ In above listing, the first \lstinline!Proof! marks the beginning of an inductiv
 While CYP allows to arbitrarily nest proofs
 by case analysis or induction,
 the innermost goal must always be discharged by an equational proof.
-An equational proof is a chain of equalities that rewrite the left-hand side of the current goal to the right-hand side.
+An equational proof is a chain of equations that rewrite the left-hand side of the current goal to the right-hand side.
 The user has to justify each rewrite step by a corresponding equation that yields the right-hand side
 when applied to the term or a subterm on the left-hand side.
 Note that in the example \lstinline!(by def ++)! refers to either one of the defining equations of \lstinline!++!,
@@ -61,19 +61,22 @@ Now, consider the inductive case.
                           (x : xs) ++ (ys ++ zs)
         (by def ++)   .=. x : (xs ++ (ys ++ zs))
         (by IH)       .=. x : ((xs ++ ys) ++ zs)
+
+                          ((x : xs) ++ ys) ++ zs
         (by def ++)   .=. (x : (xs ++ ys)) ++ zs
-        (by def ++)   .=. ((x : xs) ++ ys) ++ zs
+        (by def ++)   .=. x : ((xs ++ ys) ++ zs)
       QED
   QED
 \end{lstlisting}
 Again, CYP requires the user to be explicit: the goal in each inductive case and the induction hypotheses have to be spelled out.
+Note that CYP also allows one to start rewriting from the left-hand side as well as the right-hand side of the goal.
 
 The lecture then goes beyond proofs by structural induction and introduces proof by extensionality, case analysis, and computation induction,
 all of which CYP supports with some conditions applying as we will see shortly.
 Computation induction in particular was not supported in the original version by Durner and Noschinski but was only introduced in a fork by us in WS20\footnote{\url{https://github.com/lukasstevens/cyp}}.
 CYP also allows proving named auxiliary lemmas,
 which is useful to modularise proofs
-and often necessery to prove generalised versions of a given goal.
+and often necessary to prove generalised versions of a given goal.
 
 The simplicity of CYP both in its usage and its implementation comes with some caveats:
 \begin{itemize}
@@ -110,7 +113,7 @@ A CYP-cheatsheet developed by a tutor was later added to the repository of CYP t
 \lukas{Move this to exam section? Also mention that uniform structure makes it easier to grade}
 In each of the exams, two exercises (out of $\approx 8$) were concerned with inductive proofs.
 The first exercise was a straightforward proof by structural induction while the second one required more effort, e.g.\ generalisation of the goal or a slightly less trivial computation induction.
-We did not require the students to stick to CYP's syntax in the exam but we urged them to follow a similar structure,
+We did not require the students to stick to CYP's syntax in the exam, but we urged them to follow a similar structure,
 which worked very well overall and simplified the grading.
 
 % Teaching experiences

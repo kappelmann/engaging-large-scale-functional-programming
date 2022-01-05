@@ -15,7 +15,9 @@ Proof by induction on List xs
                         (x : xs) ++ (ys ++ zs)
       (by def ++)   .=. x : (xs ++ (ys ++ zs))
       (by IH)       .=. x : ((xs ++ ys) ++ zs)
+
+                        ((x : xs) ++ ys) ++ zs
       (by def ++)   .=. (x : (xs ++ ys)) ++ zs
-      (by def ++)   .=. ((x : xs) ++ ys) ++ zs
+      (by def ++)   .=. x : ((xs ++ ys) ++ zs)
     QED
 QED

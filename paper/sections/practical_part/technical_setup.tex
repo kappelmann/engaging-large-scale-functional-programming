@@ -3,7 +3,7 @@
 \paragraph{Automated Assessment}
 In WS19, we used an improved version of
 the testing infrastructure introduced in~\cite{next_1100}.
-However, this system was not able to manage online exams or mark non-programming tasks.
+However, this system was not able to manage online exams nor mark non-programming tasks.
 We thus switched to a newly written open-source
 tool developed at TUM called ArTEMiS~\cite{artemis}.
 ArTEMis is a highly scalable, automated assessment management system and is programming language independent --
@@ -24,22 +24,22 @@ Our tests were powered by the following libraries:
 \begin{enumerate}
   \item QuickCheck \cite{quickcheck}:
   Although QuickCheck provides means to automatically generate test data (using the typeclass \lstinline!Arbitrary!),
-  most tests and benchmarks used customly written QuickCheck input generators.
-  This was necessery to increase coverage and eliminate non-applicable inputs for tests with preconditions.
+  most tests and benchmarks used custom QuickCheck input generators.
+  This was necessary to increase coverage and eliminate non-applicable inputs for tests with preconditions.
   We also used custom shrinkers to provide better feedback to students in case of a failure.
   In both cases, the flexible combinators provided by QuickCheck made this a straightforward task.
   \item SmallCheck \cite{smallcheck}: The exhaustive testing facilities provided by SmallCheck mainly served
     as a complementary tool that provided small counterexamples for, in many cases, obvious deficiencies.
   \item Tasty\footnote{\url{https://hackage.haskell.org/package/tasty}}: We used Tasty to put QuickCheck, SmallCheck, and unit tests as well as the checking of ``Check Your Proof'' proofs (see \cref{sec:cyp}) into one common framework that is capable to generate results interpretable by ArTEMiS.
   We used the unit testing facilities by Tasty to complement our QuickCheck/SmallCheck tests with corner cases.
-  Integration of proof checking was pleasently straightforward.
+  Integration of proof checking was pleasantly straightforward.
   Moreover, Tasty supports timeouts for individual test cases,
   solving the issue of truncated test reports mentioned in~\cite{next_1100}.
 \end{enumerate}
 
 \paragraph{Online Tutorials}
 In previous iterations,
-there were no recommendations to the students about the programming environment they should use for the practical part of the course.
+there were no recommendations for students regarding the programming environment they should use for the practical part of the course.
 However, due to the COVID-19 pandemic,
 this was no longer an option:
 we needed a way for students to share their code in read and write mode
