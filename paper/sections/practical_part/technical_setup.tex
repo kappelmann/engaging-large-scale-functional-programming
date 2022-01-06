@@ -30,8 +30,8 @@ Our tests were powered by the following libraries:
   In both cases, the flexible combinators provided by QuickCheck made this a straightforward task.
   \item SmallCheck \cite{smallcheck}: The exhaustive testing facilities provided by SmallCheck mainly served
     as a complementary tool that provided small counterexamples for, in many cases, obvious deficiencies.
-  \item Tasty\footnote{\url{https://hackage.haskell.org/package/tasty}}: We used Tasty to put QuickCheck, SmallCheck, and unit tests as well as the checking of ``Check Your Proof'' proofs (see \cref{sec:cyp}) into one common framework that is capable to generate results interpretable by ArTEMiS.
-  We used the unit testing facilities by Tasty to complement our QuickCheck/SmallCheck tests with corner cases.
+  \item Tasty\footnote{\url{https://hackage.haskell.org/package/tasty}}: We used Tasty to put QuickCheck, SmallCheck, and unit tests as well as the checking of ``Check Your Proof'' proofs (see \cref{sec:cyp}) into one common framework that is capable of generating results interpretable by ArTEMiS.
+  We used the unit testing facilities of Tasty to complement our QuickCheck/SmallCheck tests with corner cases.
   Integration of proof checking was pleasantly straightforward.
   Moreover, Tasty supports timeouts for individual test cases,
   solving the issue of truncated test reports mentioned in~\cite{next_1100}.
