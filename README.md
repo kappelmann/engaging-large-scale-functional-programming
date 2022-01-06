@@ -9,7 +9,7 @@ in physical and virtual space.
 
 ## Abstract
 
-World-wide, computer science departments have experienced a dramatic increase in the number of student enrollments.
+Worldwide, computer science departments have experienced a dramatic increase in the number of student enrolments.
 Moreover, the ongoing COVID-19 pandemic requires institutions to radically replace the traditional way of on-site teaching,
 moving interaction from physical to virtual space.
 We report on our strategies and experience tackling these issues
