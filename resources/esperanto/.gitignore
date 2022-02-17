@@ -8,9 +8,3 @@
 # Test output
 test-reports/
 
-# Subdirectories containing other repositories
-template/
-solution/
-
-# Subdirectories with test submission
-assignment/

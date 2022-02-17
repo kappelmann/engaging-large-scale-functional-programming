@@ -1,0 +1,17 @@
+cabal-version: 2.2
+name: exercise
+version: 0.1
+build-type: Simple
+
+common common-all
+  default-language: Haskell2010
+  build-depends:
+    base == 4.*,
+    QuickCheck == 2.* 
+  ghc-options: -Wall -Wincomplete-patterns -O2
+
+library
+  import: common-all
+  hs-source-dirs: src/
+  other-modules: Types, Generators
+  exposed-modules: Exercise09

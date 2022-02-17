@@ -1,0 +1,18 @@
+cabal-version: 2.2
+name: solution
+version: 0.1
+build-type: Simple
+
+common common-all
+  default-language: Haskell2010
+  build-depends:
+    base == 4.*,
+    containers == 0.*,
+    bytestring == 0.*
+  ghc-options: -O2 -Wall -Wincomplete-patterns
+
+library
+  import: common-all
+  hs-source-dirs: src/
+  other-modules: Types
+  exposed-modules: Exercise09
