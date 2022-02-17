@@ -3,7 +3,7 @@
 \paragraph{Automated Assessment}
 In WS19, we used an improved version of
 the testing infrastructure introduced in~\cite{next_1100}.
-However, this system was not able to manage online exams nor mark non-programming tasks.
+However, this system was not able to manage online exams nor to mark non-programming tasks.
 We thus switched to a newly written open-source
 tool developed at TUM called ArTEMiS~\cite{artemis}.
 ArTEMis is a highly scalable, automated assessment management system and is programming language independent --
@@ -37,9 +37,9 @@ Our tests were powered by the following libraries:
   solving the issue of truncated test reports mentioned in~\cite{next_1100}.
 \end{enumerate}
 
-\paragraph{Online Tutorials}
+\paragraph{Development Environment and Online Tutorials}
 In previous iterations,
-there were no recommendations for students regarding the programming environment they should use for the practical part of the course.
+there were no recommendations for students regarding the development environment they should use for the practical part of the course.
 However, due to the COVID-19 pandemic,
 this was no longer an option:
 we needed a way for students to share their code in read and write mode
@@ -49,14 +49,44 @@ we decided to give up on manual feedback on code quality
 and wanted students to use a linter instead.
 Finally, we had negative experiences with students
 installing no compiler at all
-and instead (mis)using our submission server as a compilation backend.
+and instead (mis)using our submission server as a compiler backend.
 We thus introduced a strict policy
 for the technical setup to be used during
 the tutorials.
-A general overview can be found online\footnote{\url{https://www21.in.tum.de/teaching/fpv/WS20/installation.html}},
-and an extended description and report will follow in the final version of this article.
-
-In short, we can report positively on the setup.
+Detailed installation instructions can be found online\footnote{\url{https://www21.in.tum.de/teaching/fpv/WS20/installation.html}}.
+% and an extended description and report will follow in the final version of this article.
+Here we briefly list the key components and our experiences:
+\begin{enumerate}
+  \item IDE: We used VSCodium\footnote{VSCodium provides free open-source software binaries of VSCode \url{https://vscodium.com/}} due to its cross-platform support,
+    rich library of extensions,
+    widespread adoption,
+    and free open-source software philosophy.
+    We did not receive any negative feedback by students
+    and, besides few exceptions, no major installation problems were reported.
+  \item Build and dependency manager: We used Stack\footnote{\url{https://www.haskellstack.org/}} for these purposes.
+    Since Stack provides curated sets of packages and compiler versions that are checked for compatibility,
+    deterministic builds are guaranteed.
+    Students hence showed little struggle to compile and execute their programs.
+  \item Linter: We used HLint\footnote{\url{https://github.com/ndmitchell/hlint}}, which, among other things,
+    provides suggestions for alternative functions
+    and simplified code and spots redundancies.
+    Students reacted curiously and positively to these suggestions.
+    In particular, simplified code fragments were
+    discussed vividly among pair-programming teams.
+  \item API search engine: Due to Haskell's strong type system,
+    searching its API by type signature often returns better results than searching for function names.
+    For this purpose, we introduced Hoogle\footnote{\url{https://hoogle.haskell.org/}} to our students and let them install an extension that integrates such searches into their IDE.
+    Sadly, we have no data to report on whether this enriched students programming experiences.
+  \item Real-time collaboration: Finally, we used VSLiveShare\footnote{\url{https://visualstudio.microsoft.com/services/live-share/}} to host our pair-programming sessions (in groups of 3--4 students) during the online semester.
+    We can report positively on its connection stability and usability.
+    However, the plugin unfortunately requires a Microsoft or GitHub account,
+    but since almost all students
+    already signed up to the later before,
+    this requirement passed uncontroversially.
+    Nevertheless, for future iterations,
+    we plan to investigate in open-source alternatives.
+\end{enumerate}
+All in all, we can report positively on the setup.
 We have experience with running online tutorials for other large lectures and can testify that
 the system in this paper worked best in technical as well as social aspects.
 We can also report that students were more knowledgeable
