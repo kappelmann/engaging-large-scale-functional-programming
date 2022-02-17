@@ -1,0 +1,26 @@
+cabal-version: 2.2
+name: solution
+version: 0.1
+build-type: Simple
+
+common common-all
+  default-language: Haskell2010
+  build-depends:
+    base == 4.*
+
+library lib
+  import: common-all
+  hs-source-dirs: src/
+  exposed-modules: Exercise06, Types, Effects
+
+executable synth
+  import: common-all
+  build-depends:
+    HCodecs == 0.*,
+    array == 0.*,
+    deepseq == 1.*,
+    lib
+  hs-source-dirs: src/lib/
+  other-modules: Synth
+  main-is: Main.hs
+  ghc-options: -O2
