@@ -1,1 +1,3 @@
-Tools and Haskell exercises for other functional programming educators will be shared and explained here.
+# Resources
+
+1. [synthesiser](synthesiser): A music synthesiser with effects
