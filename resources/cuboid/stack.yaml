@@ -1,0 +1,8 @@
+resolver: lts-16.19
+
+packages:
+- .
+
+extra-deps:
+  - git: https://github.com/lukasstevens/cyp.git
+    commit: 1397235cba5d87ac0168c4377d61e80876ee2621
