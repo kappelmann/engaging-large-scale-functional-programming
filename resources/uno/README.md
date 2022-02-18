@@ -1,10 +1,9 @@
-# Esperanto
+# UNO
 
-This exercise lets students implement a
-function that translates numbers to their corresponding string representation in Esperanto.
-Instructions can be found [here](https://www21.in.tum.de/teaching/fpv/WS20/assets/ex01.pdf), exercise H1.2,
-and some cleverly code-golfed submissions by our students
-can be found [here](https://www21.in.tum.de/teaching/fpv/WS20/wettbewerb.html#week-1).
+This exercise lets students finish
+the implmentation of a UNO game framework and implement
+their own UNO strategies.
+Instructions can be found [here](assignment), exercise H6.1.
 
 ## Requirements
 

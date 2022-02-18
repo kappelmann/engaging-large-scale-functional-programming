@@ -1,0 +1,12 @@
+# Haskell output files
+*.o
+*.hi
+.ghc.environment.*
+
+# Stack output
+.stack-work/
+dist-newstyle/
+
+# Test output
+test-reports/
+

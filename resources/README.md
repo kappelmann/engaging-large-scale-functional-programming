@@ -28,6 +28,9 @@ of the corresponding directories.
 1. [sat\_solver](sat_solver): a simple SAT-solver for propositional logic 
    - Requirements: algebraic datatypes
    - Challenge: optimisation
+1. [uno](uno): a UNO console game framework
+   - Requirements: algebraic datatypes
+   - Challenge: software engineering
 1. [turtle\_graphics](turtle_graphics): a turtle graphics tool based on L-systems
    - Requirements: IO and algebraic datatypes
    - Challenge: creativity
@@ -38,3 +41,4 @@ of the corresponding directories.
 3. other pedagogically useful though not so much exciting exercises?
 4. SVG from WS19...?
 5. CYP exercises
+6. IO mocking
