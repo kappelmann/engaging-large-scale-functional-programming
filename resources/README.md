@@ -7,7 +7,7 @@ ordered by the knowledge required to solve the tasks at hand.
 Exercise instructions are linked in the `README` files
 of the corresponding directories.
 
-1. [esperanto](esperanto): translating numbers to their corrsponding string in Esperanto
+1. [esperanto](esperanto): translating numbers to their corrsponding string representation in Esperanto
    - Requirements: strings and integer operations and recursion on integers
    - Challenge: code-golfing
 1. [sudoku](sudoku): backtracking based Sudoku solver for `n x n`-sized grids
