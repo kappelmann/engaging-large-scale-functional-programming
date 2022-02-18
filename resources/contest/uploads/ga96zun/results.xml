@@ -1,0 +1,35 @@
+<?xml version='1.0' ?><testsuites errors="2" failures="6" tests="13" time="0.006"><testsuite name="Tests" tests="13"><testsuite name="Properties" tests="9"><testsuite name="Checked by SmallCheck" tests="6"><testcase name="Testing filtering in A" time="0.003" classname="Tests.Properties.Checked by SmallCheck" /><testcase name="Testing mapping in A" time="0.000" classname="Tests.Properties.Checked by SmallCheck" /><testcase name="Testing filtering in B" time="0.000" classname="Tests.Properties.Checked by SmallCheck"><failure>Prelude.undefined
+CallStack (from HasCallStack):
+  error, called at libraries/base/GHC/Err.hs:80:14 in base:GHC.Err
+  undefined, called at assignment/src/Exercise04.hs:7:21 in test-0.1-8w5gc60RFWo15yuvK86iDz-submission:Exercise04</failure></testcase><testcase name="Testing mapping in B" time="0.000" classname="Tests.Properties.Checked by SmallCheck"><failure>Prelude.undefined
+CallStack (from HasCallStack):
+  error, called at libraries/base/GHC/Err.hs:80:14 in base:GHC.Err
+  undefined, called at assignment/src/Exercise04.hs:7:21 in test-0.1-8w5gc60RFWo15yuvK86iDz-submission:Exercise04</failure></testcase><testcase name="Testing filtering in C" time="0.000" classname="Tests.Properties.Checked by SmallCheck"><failure>Prelude.undefined
+CallStack (from HasCallStack):
+  error, called at libraries/base/GHC/Err.hs:80:14 in base:GHC.Err
+  undefined, called at assignment/src/Exercise04.hs:10:21 in test-0.1-8w5gc60RFWo15yuvK86iDz-submission:Exercise04</failure></testcase><testcase name="Testing mapping in C" time="0.000" classname="Tests.Properties.Checked by SmallCheck"><failure>Prelude.undefined
+CallStack (from HasCallStack):
+  error, called at libraries/base/GHC/Err.hs:80:14 in base:GHC.Err
+  undefined, called at assignment/src/Exercise04.hs:10:21 in test-0.1-8w5gc60RFWo15yuvK86iDz-submission:Exercise04</failure></testcase></testsuite><testsuite name="Checked by QuickCheck" tests="3"><testcase name="Testing A against sample solution" time="0.001" classname="Tests.Properties.Checked by QuickCheck" /><testcase name="Testing B against sample solution" time="0.000" classname="Tests.Properties.Checked by QuickCheck"><failure>*** Failed! (after 1 test):
+Exception:
+  Prelude.undefined
+  CallStack (from HasCallStack):
+    error, called at libraries/base/GHC/Err.hs:80:14 in base:GHC.Err
+    undefined, called at assignment/src/Exercise04.hs:7:21 in test-0.1-8w5gc60RFWo15yuvK86iDz-submission:Exercise04
+(0,0)
+[]
+Use --quickcheck-replay=866217 to reproduce.</failure></testcase><testcase name="Testing C against sample solution" time="0.000" classname="Tests.Properties.Checked by QuickCheck"><failure>*** Failed! (after 1 test):
+Exception:
+  Prelude.undefined
+  CallStack (from HasCallStack):
+    error, called at libraries/base/GHC/Err.hs:80:14 in base:GHC.Err
+    undefined, called at assignment/src/Exercise04.hs:10:21 in test-0.1-8w5gc60RFWo15yuvK86iDz-submission:Exercise04
+(0,0)
+[]
+Use --quickcheck-replay=678068 to reproduce.</failure></testcase></testsuite></testsuite><testsuite name="Unit Tests" tests="3"><testcase name="Testing selectAndReflectA (0,0) []" time="0.000" classname="Tests.Unit Tests" /><testcase name="Testing selectAndReflectB (0,1) [(0,0)]" time="0.000" classname="Tests.Unit Tests"><failure>Prelude.undefined
+CallStack (from HasCallStack):
+  error, called at libraries/base/GHC/Err.hs:80:14 in base:GHC.Err
+  undefined, called at assignment/src/Exercise04.hs:7:21 in test-0.1-8w5gc60RFWo15yuvK86iDz-submission:Exercise04</failure></testcase><testcase name="Testing selectAndReflectC (0,1) [(-1,-1)]" time="0.000" classname="Tests.Unit Tests"><failure>Prelude.undefined
+CallStack (from HasCallStack):
+  error, called at libraries/base/GHC/Err.hs:80:14 in base:GHC.Err
+  undefined, called at assignment/src/Exercise04.hs:10:21 in test-0.1-8w5gc60RFWo15yuvK86iDz-submission:Exercise04</failure></testcase></testsuite><testsuite name="CYP proofs" tests="1"><testcase name="h51.prf" time="0.001" classname="Tests.CYP proofs" /></testsuite></testsuite></testsuites>

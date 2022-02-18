@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+<title>FPV Programming Contest</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src='https://kit.fontawesome.com/a076d05399.js'></script>
+<style>
+    body, h1, h2, h3, h4, h5, h6 {
+        font-family: "Montserrat", sans-serif
+    }
+
+    .w3-row-padding img {
+        margin-bottom: 12px
+    }
+
+    .w3-sidebar {
+        width: 120px;
+        background: #222222;
+    }
+
+    .hs-blue {
+        color: #3430ba;
+    }
+
+    .hs-yellow {
+        color: #fff332;
+    }
+
+    td {
+        border: 3px solid #000000;
+        text-align: left;
+        padding: 8px;
+        background-color: #222222;
+    }
+
+    th {
+        border: 3px solid #000000;
+        text-align: left;
+        padding: 8px;
+        background-color: #2b0b0b;
+    }
+
+    #main {
+        margin-left: 120px
+    }
+
+    .code {
+        color: black;
+    }
+</style>
+<body class="w3-black">
+
+<!-- Icon Bar (Sidebar - hidden on small screens) -->
+<nav class="w3-sidebar w3-bar-block w3-small w3-hide-small w3-center">
+    <a href="#" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+        <i><img src="static/white_fpv.png" style="width:100%" alt="FPV"></i>
+        <p>CONTEST</p>
+    </a>
+    <a href="#scoreboard" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+        <i class="fa fa-list-alt w3-xxlarge"></i>
+        <p>SCORES</p>
+    </a>
+    <a href="#problem1" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+        <i class="fa fa-group w3-xxlarge"></i>
+        <p>Problem I</p>
+    </a>
+    <a href="#problem2" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+        <i class="fa fa-money w3-xxlarge"></i>
+        <p>Problem II</p>
+    </a>
+    <a href="#problem3" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+        <i class="fa fa-legal w3-xxlarge"></i>
+        <p>Problem III</p>
+    </a>
+    <a href="#problem4" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+        <i class="fa fa-gift w3-xxlarge"></i>
+        <p>Problem IV</p>
+    </a>
+    <a href="#problem5" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+        <i class="fa fa-gamepad w3-xxlarge"></i>
+        <p>Problem V</p>
+    </a>
+    <a href="#problem6" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+        <i class="fa fa-heart w3-xxlarge"></i>
+        <p>Problem VI</p>
+    </a>
+    <a href="#problem7" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+        <i class="fa fa-sitemap w3-xxlarge"></i>
+        <p>Problem VII</p>
+    </a>
+</nav>
+
+<!-- Navbar on small screens (Hidden on medium and large screens) -->
+<div class="w3-top w3-hide-large w3-hide-medium" id="myNavbar">
+    <div class="w3-bar w3-black w3-opacity w3-hover-opacity-off w3-center w3-small">
+        <a href="#" class="w3-bar-item w3-button" style="width:25% !important">CONTEST</a>
+        <a href="#scoreboard" class="w3-bar-item w3-button" style="width:25% !important">SCORES</a>
+        <a href="#problem1" class="w3-bar-item w3-button" style="width:25% !important">PROBLEM I</a>
+        <a href="#problem2" class="w3-bar-item w3-button" style="width:25% !important">PROBLEM II</a>
+        <a href="#problem3" class="w3-bar-item w3-button" style="width:25% !important">PROBLEM III</a>
+        <a href="#problem4" class="w3-bar-item w3-button" style="width:25% !important">PROBLEM IV</a>
+        <a href="#problem5" class="w3-bar-item w3-button" style="width:25% !important">PROBLEM V</a>
+        <a href="#problem6" class="w3-bar-item w3-button" style="width:25% !important">PROBLEM VI</a>
+        <a href="#problem7" class="w3-bar-item w3-button" style="width:25% !important">PROBLEM VII</a>
+    </div>
+</div>
+
+
+<div class="w3-padding-large" id="main">
+
+    <header class="w3-container w3-padding-32 w3-center w3-black" id="home">
+        <img src="static/white_fpv.png" alt="boy" class="w3-image" width="240" height="270">
+        <h1 class="w3-jumbo">Welcome to the FPV Programming Contest!</h1>
+        <p>The FPV Programming contest is hosted by your tutors!</p>
+        <br>
+        <br>
+        <h4>Guidelines:</h4>
+        <p>You will compete in teams of two to three students.</p>
+        <p>Do not share your results with other competitors - this will disqualify you.</p>
+        <br>
+        <br>
+        <h4>Scoring:</h4>
+        <p>The contest consists of a total of 7 problem statements.</p>
+        <p>Each problem is graded as follows: </p>
+        <p><b style="color: #F88989">Fail</b> if the submitted solution does not satisfy the desired functionality.</p>
+        <p><b style="color: #E3CC88">Correct</b> if the submitted solution satisfies the desired functionality but has bad runtime.</p>
+        <p><b style="color: #88E388">Pass</b> iff the solution meets our runtime requirements and satisfies the desired functionality.</p>
+        <p>The Team with the most passes wins.</p>
+        <p>Your job is to pass as many problems as quickly as you can!</p>
+        <p>If there is a tie, we consider correct but inefficient solutions next.</p>
+        <p>If there still is a tie, we consider the team with lower latest timestamp.</p>
+        <p>If we then still have a tie, we call it a tie! :)</p>
+        <br>
+        <br>
+        <h4>Grade bonus:</h4>
+        <p>If you get passes in a minimum of 3 out of the 7 problems, you will earn a coin for this week.</p>
+        <br>
+        <br>
+        <h3>Let's start the Contest!</h3>
+        <p>You can find a scoreboard to keep track of your team's progress underneath!</p>
+        <p><span style="font-size: 20pt">⚔</span>️This also shows you how you do compared to others <span style="font-size: 20pt">⚔</span></p>
+    </header>
+
+    <div class="w3-content w3-justify w3-padding-32 w3-text-grey w3-center" id="scoreboard">
+        <button class="w3-circle w3-button w3-dark-gray w3-right" onclick="loadScoreBoard()"><i
+                class="fa fa-refresh w3-xxlarge"></i></button>
+        <div id="scoreboard-div">
+            <table class="w3-table" style="width:100%">
+
+            </table>
+        </div>
+    </div>
+
+    <div class="w3-content w3-container w3-padding-32">
+        <div id="problem1"></div><br><br>
+        <div id="problem2"></div><br><br>
+        <div id="problem3"></div><br><br>
+        <div id="problem4"></div><br><br>
+        <div id="problem5"></div><br><br>
+        <div id="problem6"></div><br><br>
+        <div id="problem7"></div><br><br>
+    </div>
+
+
+    <footer class="w3-content w3-padding-64 w3-text-grey w3-xlarge">
+        <p class="w3-medium">Powered by <a href="http://www21.in.tum.de" target="_blank"
+                                           class="w3-hover-text-green">TUM Chair for Logic and Verification</a></p>
+    </footer>
+</div>
+
+</body>
+
+<script>
+    const HttpClient = function () {
+        this.get = function (aUrl, aCallback) {
+            const anHttpRequest = new XMLHttpRequest();
+            anHttpRequest.onreadystatechange = function () {
+                if (anHttpRequest.readyState === 4 && anHttpRequest.status === 200)
+                    aCallback(anHttpRequest.responseText);
+            }
+
+            anHttpRequest.open("GET", aUrl, true);
+            anHttpRequest.send(null);
+        }
+    };
+
+    const path = "/contest"
+
+    function loadScoreBoard() {
+        const url = window.location.origin + path + '/scoreboard';
+        console.log(url)
+        console.log(window.location)
+        new HttpClient().get(url, function (response) {
+            document.getElementById('scoreboard-div').innerHTML = $.parseXML(response).getElementById('scoreboard-div').innerHTML;
+        });
+    }
+
+    loadScoreBoard();
+
+    function loadProblem(id) {
+        const url = window.location.origin + path + '/problem' + id
+        new HttpClient().get(url, function (response) {
+            document.getElementById('problem' + id).innerHTML = $.parseXML(response).getElementById('problem' + id).innerHTML;
+        });
+    }
+
+    loadProblem(1);
+    loadProblem(2);
+    loadProblem(3);
+    loadProblem(4);
+    loadProblem(5);
+    loadProblem(6);
+    loadProblem(7);
+
+    <!--Load mathjax after loading problem statements-->
+    async function loadMathJax() {
+        await Sleep(100);
+        const script = document.createElement("script");
+        script.type = "text/javascript";
+        script.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
+        document.getElementsByTagName("head")[0].appendChild(script);
+    }
+
+    function Sleep(milliseconds) {
+        return new Promise(resolve => setTimeout(resolve, milliseconds));
+    }
+
+    loadMathJax()
+
+</script>
+</html>

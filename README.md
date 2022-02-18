@@ -45,3 +45,18 @@ We explain and share our tools and exercises so that they can be reused by other
 - [Kevin Kappelmann](https://www21.in.tum.de/team/kappelmk/index.html)
 - [Jonas Rädle](https://home.in.tum.de/~raedle/)
 - [Lukas Stevens](https://www21.in.tum.de/team/stevensl/index.html)
+
+## Acknowledgements
+
+We want to thank all people involved in the course,
+in particular Tobias Nipkow,
+Manuel Eberl,
+our [student assistants](student_assistants.md),
+the ArTEMiS development team,
+our industry partners
+Active Group,
+QAware,
+TNG Technology Consulting,
+and Well-Typed,
+and last but not least our 2000 Haskell students.
+

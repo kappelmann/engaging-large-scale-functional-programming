@@ -1,0 +1,53 @@
+problems: 
+  contest_teams:
+    path: "/home/fpv/websites/contest2021/01"
+    testhalf: 
+      - "Total"
+    testfull: 
+      - "Total"
+
+  startup_revenue:
+    path: "/home/fpv/websites/contest2021/02"
+    testhalf: 
+      - "Partial"
+    testfull: 
+      - "Total"
+
+  prime_mayor:
+    path: "/home/fpv/websites/contest2021/03"
+    testhalf:
+      - "Test Small Input"
+    testfull:
+      - "Test Big Input"
+
+  help_rudolf:
+    path: "/home/fpv/websites/contest2021/04"
+    testhalf: 
+      - "Empty string"
+      - "One char"
+      - "Only R"
+      - "Partial 1"
+      - "Partial 2"
+    testfull: 
+      - "Total"
+
+  incredible_game:
+    path: "/home/fpv/websites/contest2021/05"
+    testhalf:
+      - "Test Small Input"
+    testfull:
+      - "Test Big Input"
+  
+  terrible_poetry:
+    path: "/home/fpv/websites/contest2021/06"
+    testhalf:
+      - "Test Small Input"
+    testfull:
+      - "Test Large Input" 
+
+  networking:
+    path: "/home/fpv/websites/contest2021/07"
+    testhalf:
+      - "Smol"
+    testfull:
+      - "Beeg" 
