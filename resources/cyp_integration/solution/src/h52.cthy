@@ -1,0 +1,12 @@
+data List a = [] | a : (List a)
+
+[] ++ ys = ys
+(x:xs) ++ ys = x : (xs ++ ys)
+
+map f [] = []
+map f (x:xs) = f x : map f xs
+
+accum f [] ys = ys
+accum f (x:xs) ys = accum f xs (ys ++ [f x]) 
+
+goal accum f xs [] .=. map f xs 

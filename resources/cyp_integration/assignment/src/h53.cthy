@@ -1,0 +1,18 @@
+data List a = [] | a : List a
+
+data Pair a b = Pair a b
+
+splice [] ys = ys
+splice (x : xs) ys = x : splice ys xs
+
+drop2 [] = []
+drop2 [x] = [x]
+drop2 (x : y : xs) = x : drop2 xs
+
+fst (Pair a b) = a
+snd (Pair a b) = b
+
+unsplice [] = Pair [] []
+unsplice (x : xs) = Pair (drop2 (x : xs)) (drop2 xs)
+
+goal splice (fst (unsplice xs)) (snd (unsplice xs)) .=. xs 

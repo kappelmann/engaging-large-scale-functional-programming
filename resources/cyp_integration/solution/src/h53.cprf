@@ -1,0 +1,92 @@
+Lemma fstUnspliceNil: fst (unsplice []) .=. []
+  Proof
+                          fst (unsplice [])
+    (by def unsplice) .=. fst (Pair [] [])
+    (by def fst)      .=. []
+  QED
+
+Lemma sndUnspliceNil: snd (unsplice []) .=. []
+  Proof
+                          snd (unsplice [])
+    (by def unsplice) .=. snd (Pair [] [])
+    (by def snd)      .=. []
+  QED
+
+Lemma fstUnsplice: fst (unsplice (x : xs)) .=. drop2 (x : xs)
+  Proof
+                          fst (unsplice (x : xs))
+    (by def unsplice) .=. fst (Pair (drop2 (x : xs)) (drop2 xs))
+    (by def fst)      .=. drop2 (x : xs)
+  QED
+
+Lemma sndUnsplice: snd (unsplice (x : xs)) .=. drop2 xs
+  Proof
+                          snd (unsplice (x : xs))
+    (by def unsplice) .=. snd (Pair (drop2 (x : xs)) (drop2 xs))
+    (by def snd)      .=. drop2 xs
+  QED
+
+Lemma spliceDrop2: splice (drop2 (x : xs)) (drop2 xs) .=. x : xs
+Proof by computation induction on xs with drop2
+  Case 1
+    To show: splice (drop2 [x]) (drop2 []) .=. [x]
+    Proof
+                                splice (drop2 [x]) (drop2 [])
+      (by def drop2)        .=. splice [x] (drop2 [])
+      (by def drop2)        .=. splice [x] []
+      (by def splice)       .=. x : splice [] []
+      (by def splice)       .=. [x]
+    QED
+
+  Case 2
+    To show: splice (drop2 [x, y]) (drop2 [y]) .=. [x, y]
+    Proof
+                                splice (drop2 [x, y]) (drop2 [y])   
+      (by def drop2)        .=. splice (drop2 [x, y]) [y]
+      (by def drop2)        .=. splice (x : drop2 []) [y]
+      (by def drop2)        .=. splice [x] [y]
+      (by def splice)       .=. x : splice [y] []
+      (by def splice)       .=. x : y : splice [] []
+      (by def splice)       .=. [x, y]
+    QED
+
+  Case 3
+    To show: splice (drop2 (x : y : z : xs)) (drop2 (y : z : xs)) .=. x : y : z : xs
+    IH: splice (drop2 (x : xs)) (drop2 xs) .=. x : xs
+    Proof
+                                splice (drop2 (x : y : z : xs)) (drop2 (y : z : xs))
+      (by def drop2)        .=. splice (x : drop2 (z : xs)) (drop2 (y : z : xs))
+      (by def drop2)        .=. splice (x : drop2 (z : xs)) (y : drop2 xs)
+      (by def splice)       .=. x : splice (y : drop2 xs) (drop2 (z : xs))
+      (by def splice)       .=. x : y : splice (drop2 (z : xs)) (drop2 xs)
+      (by IH)               .=. x : y : z : xs
+    QED
+QED
+        
+Lemma: splice (fst (unsplice xs)) (snd (unsplice xs)) .=. xs
+Proof by case analysis on List xs
+  Case []
+    Assumption: xs .=. []
+    Proof
+                               splice (fst (unsplice xs)) (snd (unsplice xs))
+      (by Assumption)       .=. splice (fst (unsplice [])) (snd (unsplice xs))
+      (by Assumption)       .=. splice (fst (unsplice [])) (snd (unsplice []))
+      (by fstUnspliceNil)   .=. splice [] (snd (unsplice []))
+      (by def splice)       .=. snd (unsplice [])
+      (by sndUnspliceNil)   .=. []
+      (by Assumption)       .=. xs
+    QED
+
+  Case x : xs'
+    Assumption: xs .=. x : xs'
+    Proof
+
+                                splice (fst (unsplice xs)) (snd (unsplice xs))
+      (by Assumption)       .=. splice (fst (unsplice (x : xs'))) (snd (unsplice xs))
+      (by fstUnsplice)      .=. splice (drop2 (x : xs')) (snd (unsplice xs))
+      (by Assumption)       .=. splice (drop2 (x : xs')) (snd (unsplice (x : xs')))
+      (by sndUnsplice)      .=. splice (drop2 (x : xs')) (drop2 xs')
+      (by spliceDrop2)      .=. x : xs'
+      (by Assumption)       .=. xs
+    QED
+QED

@@ -1,0 +1,70 @@
+Lemma appNil: xs ++ [] .=. xs
+Proof by induction on List xs
+Case []
+    To show: [] ++ [] .=. []
+    Proof
+                                   [] ++ []
+            (by def ++)        .=. []
+    QED
+Case (x:xs)
+    To show: (x:xs) ++ [] .=. (x:xs)
+    IH: xs ++ [] .=. xs
+    Proof
+                                   (x:xs) ++ []
+            (by def ++)        .=. x : (xs ++ [])
+            (by IH)            .=. x : xs
+    QED
+QED
+
+Lemma appSingle: (xs ++ [y]) ++ ys .=. xs ++ (y : ys)
+Proof by induction on List xs
+Case []
+    To show: ([] ++ [y]) ++ ys .=. [] ++ (y : ys)
+    Proof
+                                   ([] ++ [y]) ++ ys
+            (by def ++)        .=. [y] ++ ys
+            (by def ++)        .=. y : ([] ++ ys)
+            (by def ++)        .=. y : ys
+            (by def ++)        .=. [] ++ (y : ys)
+    QED
+Case (x:xs)
+    To show: ((x:xs) ++ [y]) ++ ys .=. (x:xs) ++ (y:ys)
+    IH: (xs ++ [y]) ++ ys .=. xs ++ (y:ys)
+    Proof
+                                   ((x:xs) ++ [y]) ++ ys
+            (by def ++)        .=. (x : (xs ++ [y])) ++ ys
+            (by def ++)        .=. x : ((xs ++ [y]) ++ ys)
+            (by IH)            .=. x : (xs ++ (y:ys))
+            (by def ++)        .=. (x:xs) ++ (y:ys)
+    QED
+QED
+
+Lemma general: accum f xs ys .=. ys ++ map f xs
+Proof by induction on List xs 
+Case [] 
+    To show: accum f [] ys .=. ys ++ map f []
+    Proof
+                                   accum f [] ys 
+            (by def accum)     .=. ys 
+            (by appNil)        .=. ys ++ []
+            (by def map)       .=. ys ++ map f []
+    QED
+
+Case (x:xs) 
+    To show: accum f (x:xs) ys .=. ys ++ map f (x:xs)
+    IH: accum f xs ys .=. ys ++ map f xs
+    Proof
+                                   accum f (x:xs) ys
+            (by def accum)     .=. accum f xs (ys ++ [f x])
+            (by IH)            .=. (ys ++ [f x]) ++ map f xs 
+            (by appSingle)     .=. ys ++ (f x : map f xs)
+            (by def map)       .=. ys ++ (map f (x : xs))
+    QED
+QED
+
+Lemma: accum f xs [] .=. map f xs
+Proof
+                                   accum f xs []
+            (by general)       .=. [] ++ map f xs
+            (by def ++)        .=. map f xs
+QED

@@ -2,7 +2,7 @@
 
 This exercise lets students implement a
 function that optimally decomposes a cuboid into cubes.
-Instructions can be found [here](https://www21.in.tum.de/teaching/fpv/WS20/assets/ex05.pdf), exercise H5.1,
+Instructions can be found [here](instructions.pdf), exercise H5.1,
 and the mathematical derivation of an optimal solution, including a proof by our students, can be found
 [here](https://www21.in.tum.de/teaching/fpv/WS20/wettbewerb.html#week-5).
 

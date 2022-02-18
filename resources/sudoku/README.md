@@ -3,7 +3,7 @@
 This exercise lets students implement a
 backtracking based Sudoku solver for `n x n`-sized grids,
 where `n` is a square number.
-Instructions can be found [here](https://www21.in.tum.de/teaching/fpv/WS20/assets/ex03.pdf), exercise H3.1,
+Instructions can be found [here](instructions.pdf), exercise H3.1,
 and some improved strategies by our students
 can be found [here](https://www21.in.tum.de/teaching/fpv/WS20/wettbewerb.html#week-3).
 

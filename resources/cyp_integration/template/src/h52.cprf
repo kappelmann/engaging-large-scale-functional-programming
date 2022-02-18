@@ -1,0 +1,42 @@
+Lemma appNil: xs ++ [] .=. xs
+Proof by induction on List xs
+Case []
+    To show: [] ++ [] .=. []
+    Proof
+                                   [] ++ []
+            (by def ++)        .=. []
+    QED
+Case (x:xs)
+    To show: (x:xs) ++ [] .=. (x:xs)
+    IH: xs ++ [] .=. xs
+    Proof
+                                   (x:xs) ++ []
+            (by def ++)        .=. x : (xs ++ [])
+            (by IH)            .=. x : xs
+    QED
+QED
+
+Lemma appSingle: (xs ++ [y]) ++ ys .=. xs ++ (y : ys)
+Proof by induction on List xs
+Case []
+    To show: ([] ++ [y]) ++ ys .=. [] ++ (y : ys)
+    Proof
+                                   ([] ++ [y]) ++ ys
+            (by def ++)        .=. [y] ++ ys
+            (by def ++)        .=. y : ([] ++ ys)
+            (by def ++)        .=. y : ys
+            (by def ++)        .=. [] ++ (y : ys)
+    QED
+Case (x:xs)
+    To show: ((x:xs) ++ [y]) ++ ys .=. (x:xs) ++ (y:ys)
+    IH: (xs ++ [y]) ++ ys .=. xs ++ (y:ys)
+    Proof
+                                   ((x:xs) ++ [y]) ++ ys
+            (by def ++)        .=. (x : (xs ++ [y])) ++ ys
+            (by def ++)        .=. x : ((xs ++ [y]) ++ ys)
+            (by IH)            .=. x : (xs ++ (y:ys))
+            (by def ++)        .=. (x:xs) ++ (y:ys)
+    QED
+QED
+
+

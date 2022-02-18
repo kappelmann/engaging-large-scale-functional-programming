@@ -3,7 +3,7 @@
 This exercise lets students implement a
 simple function to measure text similarities and
 a spelling correction algorithm based on edit distances.
-Instructions can be found [here](https://www21.in.tum.de/teaching/fpv/WS19/assets/exercise04.pdf), exercise H4.1,
+Instructions can be found [here](instructions.pdf), exercise H4.1,
 and some solutions by our students
 can be found [here](https://www21.in.tum.de/teaching/fpv/WS19/wettbewerb.html#woche4).
 

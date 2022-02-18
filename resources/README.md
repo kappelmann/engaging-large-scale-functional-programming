@@ -1,8 +1,8 @@
 # Resources
 
-## Overview
+## Programming Exercises
 
-Here you can find a list of all exercises
+Here you can find a selected list of exercises
 ordered by the knowledge required to solve the tasks at hand.
 Exercise instructions are linked in the `README` files
 of the corresponding directories.
@@ -35,10 +35,14 @@ of the corresponding directories.
    - Requirements: IO and algebraic datatypes
    - Challenge: creativity
 
+## Check Your Proof (CYP)
+
+Check Your Proof is a verifier for proofs about Haskell-like programs.
+Please refer to the [paper](../paper) for more information.
+You can find the source of CYP including some proof examples [here](https://github.com/lukasstevens/cyp)
+and an exemplary integration of automated CYP proof checking in Tasty in [cyp\_integration](cyp_integration).
+
 ## TODO
 1. Domineering and ChainReaction
 2. programming contest https://www21.in.tum.de/teaching/fpv/WS20/assets/ex12.pdf
-3. other pedagogically useful though not so much exciting exercises?
-4. SVG from WS19...?
-5. CYP exercises
 6. IO mocking

@@ -3,7 +3,7 @@
 This exercise lets students implement a
 resolution prover to propositional logic
 that provides certificates (a series of resolution steps or a model) for its proofs.
-Instructions can be found [here](https://www21.in.tum.de/teaching/fpv/WS20/assets/ex09.pdf), exercise H9.2,
+Instructions can be found [here](instructions.pdf), exercise H9.2,
 and some optimisations submitted by our students
 and further discussion can be found [here](https://www21.in.tum.de/teaching/fpv/WS20/wettbewerb.html#week-8).
 

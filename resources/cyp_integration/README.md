@@ -1,9 +1,7 @@
-# UNO
+# CYP Integration
 
-This exercise lets students finish
-the implmentation of a UNO game framework and implement
-their own UNO strategies.
-Instructions can be found [here](instructions.pdf), exercise H6.1.
+This is an exemplary integration of automated [CYP](https://github.com/lukasstevens/cyp) proof checking in Tasty.
+Note that CYP in particular needs to be added to [stack.yaml](stack.yaml).
 
 ## Requirements
 
@@ -27,4 +25,3 @@ You can run executables specified in `test.cabal` using `stack run <executableNa
 
 By default, Artemis runs `./run.sh -s` to execute the tests.
 You can modify `run.sh` to adapt the build and test process.
-

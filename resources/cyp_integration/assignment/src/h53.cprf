@@ -1,0 +1,28 @@
+Lemma fstUnspliceNil: fst (unsplice []) .=. []
+  Proof
+                          fst (unsplice [])
+    (by def unsplice) .=. fst (Pair [] [])
+    (by def fst)      .=. []
+  QED
+
+Lemma sndUnspliceNil: snd (unsplice []) .=. []
+  Proof
+                          snd (unsplice [])
+    (by def unsplice) .=. snd (Pair [] [])
+    (by def snd)      .=. []
+  QED
+
+Lemma fstUnsplice: fst (unsplice (x : xs)) .=. drop2 (x : xs)
+  Proof
+                          fst (unsplice (x : xs))
+    (by def unsplice) .=. fst (Pair (drop2 (x : xs)) (drop2 xs))
+    (by def fst)      .=. drop2 (x : xs)
+  QED
+
+Lemma sndUnsplice: snd (unsplice (x : xs)) .=. drop2 xs
+  Proof
+                          snd (unsplice (x : xs))
+    (by def unsplice) .=. snd (Pair (drop2 (x : xs)) (drop2 xs))
+    (by def snd)      .=. drop2 xs
+  QED
+

@@ -2,7 +2,7 @@
 
 This exercise lets students implement a
 simple SAT-solver for propositional logic.
-Instructions can be found [here](https://www21.in.tum.de/teaching/fpv/WS19/assets/exercise09.pdf), exercise H9.2,
+Instructions can be found [here](instructions.pdf), exercise H9.2,
 and some optimisations submitted by our students
 and further discussion can be found [here](https://www21.in.tum.de/teaching/fpv/WS19/wettbewerb.html#woche9).
 

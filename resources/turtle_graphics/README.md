@@ -1,13 +1,18 @@
 # Turtle Graphics
 
+Note: This exercise is an extended and updated version of a tutorial by the
+[University of Edinburgh](https://www.inf.ed.ac.uk/teaching/courses/inf1/fp/).
+
 This exercise lets students implement a
 turtle graphics tool based on L-systems.
-Instructions can be found [here](https://www21.in.tum.de/teaching/fpv/WS20/assets/ex10.pdf), exercise H10.1,
+Instructions can be found [here](instructions.pdf), exercise H10.1,
 and some *masterpieces* by our students
 can be found [here](https://www21.in.tum.de/teaching/fpv/WS20/wettbewerb.html#sch%C3%B6nheitswettbewerb-semester-closing).
 
 ## Requirements
 
+As written in the [instructions](instructions.pdf),
+you need a suitable GLUT version to display the turtle graphics.
 Tests are run using [stack](https://docs.haskellstack.org/en/stable/README/).
 
 ## Setup
