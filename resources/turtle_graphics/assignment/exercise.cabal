@@ -1,0 +1,28 @@
+cabal-version: 2.2
+name: exercise
+version: 0.1
+build-type: Simple
+
+common common-all
+  default-language: Haskell2010
+  build-depends:
+    base == 4.*,
+    containers,
+    GLUT,
+    OpenGL,
+    directory,
+    JuicyPixels,
+    vector
+
+
+library
+  import: common-all
+  hs-source-dirs: src/
+  exposed-modules: Exercise10 Turtle
+
+executable display
+  import: common-all
+  build-depends: exercise
+  main-is: src/Display.hs
+  ghc-options:
+    -main-is Display

@@ -22,4 +22,7 @@ of the corresponding directories.
 1. [resolution](resolution): a resolution prover with certificates for propositional logic 
    - Requirements: algebraic datatypes
    - Challenge: optimisation
+1. [turtle graphics](turtle-graphics): a turtle graphics tool based on L-systems
+   - Requirements: IO and algebraic datatypes
+   - Challenge: creativity
 
