@@ -16,6 +16,9 @@ of the corresponding directories.
 1. [cuboid](cuboid): challenge to optimally decompose a cuboid into cubes
    - Requirements: lists
    - Challenge: mathematics, optimisation
+1. [spelling\_correction](spelling_correction): implementing a spelling correction algorithm based on edit distances
+   - Requirements: lists, simple typeclass constraints (e.g. `Eq`, `Ord`)
+   - Challenge: optimisation
 1. [synthesiser](synthesiser): a music synthesiser with effects
    - Requirements: lists and higher-order functions
    - Challenge: creativity
@@ -26,3 +29,8 @@ of the corresponding directories.
    - Requirements: IO and algebraic datatypes
    - Challenge: creativity
 
+## TODO
+0. WS19
+1. Christmas sheet 2020
+2. programming contest https://www21.in.tum.de/teaching/fpv/WS20/assets/ex12.pdf
+3. other pedagogically useful though not so much exciting exercises?
