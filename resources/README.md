@@ -33,8 +33,8 @@ of the corresponding directories.
    - Challenge: creativity
 
 ## TODO
-0. WS19
-1. Christmas sheet 2020
+1. Domineering and ChainReaction
 2. programming contest https://www21.in.tum.de/teaching/fpv/WS20/assets/ex12.pdf
 3. other pedagogically useful though not so much exciting exercises?
-4. CYP exercises
+4. SVG from WS19...?
+5. CYP exercises
