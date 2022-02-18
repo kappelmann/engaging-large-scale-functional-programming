@@ -25,6 +25,9 @@ of the corresponding directories.
 1. [resolution](resolution): a resolution prover with certificates for propositional logic 
    - Requirements: algebraic datatypes
    - Challenge: optimisation
+1. [sat\_solver](sat_solver): a simple SAT-solver for propositional logic 
+   - Requirements: algebraic datatypes
+   - Challenge: optimisation
 1. [turtle\_graphics](turtle_graphics): a turtle graphics tool based on L-systems
    - Requirements: IO and algebraic datatypes
    - Challenge: creativity
@@ -34,3 +37,4 @@ of the corresponding directories.
 1. Christmas sheet 2020
 2. programming contest https://www21.in.tum.de/teaching/fpv/WS20/assets/ex12.pdf
 3. other pedagogically useful though not so much exciting exercises?
+4. CYP exercises
