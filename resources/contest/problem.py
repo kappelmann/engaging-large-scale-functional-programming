@@ -53,10 +53,10 @@ class Problem:
         return (status, timestamp, timesf)
         
 
-    def updatePoints(self, teams, rootpath):
+    def updatePoints(self, teams):
         self.last_checked = time.localtime()
 
-        fullpath = rootpath + self.path + "/uploads"
+        fullpath = self.path + "/uploads"
 
         # failsave
         if not os.path.isdir(fullpath):

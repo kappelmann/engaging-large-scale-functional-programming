@@ -12,23 +12,7 @@ from itertools import groupby
 from functools import cmp_to_key
 import pickle
 
-try:
-    # create backups folder
-    os.mkdir("backups")
-except FileExistsError:
-    pass
-
-cfgs = None
-#with open("problems.yaml", "r") as f:
-with open("backup.yaml", "r") as f:
-    cfgs = yaml.safe_load(f)
-
-PROBLEMS = [Problem(p["path"],p["testhalf"],p["testfull"]) for p in cfgs["problems"].values()]
-    
-
 UPDATE_INTERVAL = 15
-
-UPLOADS_LOCATION = ""
 
 team_lock = Lock()
 
@@ -73,8 +57,25 @@ def cmpTeams(t1, t2):
 class Scoreboard:
 
     def __init__(self, hasCrashed=False):
+        try:
+            # create backups folder
+            os.mkdir("backups")
+        except FileExistsError:
+            pass
+
+        # parse problem configs from yaml
+        cfgs = None
+        with open("problems.yaml", "r") as f:
+            cfgs = yaml.safe_load(f)
+
+        # load into Problem objects
+        cfg_problems = [Problem(prob["path"], prob["testhalf"], prob["testfull"]) 
+            for prob in cfgs["problems"].values()]
+            
+
+
         self.teams = []
-        self.problems = deepcopy(PROBLEMS)
+        self.problems = deepcopy(cfg_problems)
         self.ts = time.localtime()
         self.hasCrashed = hasCrashed
 
@@ -95,10 +96,7 @@ class Scoreboard:
             shadow_teams = pickle.load(open("backups/teams.p", "rb"))
             #print(shadow_teams)
             shadow_problems = [pickle.load(open("backups/problem{}.p".format(i), "rb"))
-            for i in range(len(PROBLEMS))]
-            for p in shadow_problems:
-                #print(p.team_attempts)
-                pass
+                for i in range(len(self.problems))]
 
         else:
             shadow_teams = defaultdict(int)
@@ -106,7 +104,7 @@ class Scoreboard:
 
         while self.t_shouldRun:
             for (i, p) in enumerate(shadow_problems):
-                p.updatePoints(shadow_teams, UPLOADS_LOCATION)
+                p.updatePoints(shadow_teams)
 
                 #after update pickle
                 pickle.dump(p, open("backups/problem{}.p".format(i), "wb"), pickle.HIGHEST_PROTOCOL)
