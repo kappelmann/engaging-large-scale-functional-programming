@@ -7,7 +7,14 @@ app = Flask(__name__, static_url_path='/static')
 
 @app.route('/')
 def home():
-    return render_template('index.html')
+    conn = Client(address=ADDRESS, authkey=SKEY)
+    conn.send("req")
+    (frozen, team_values) = conn.recv()
+    conn.close()
+
+    return render_template('index.html',
+                           teams=team_values,
+                           frstr=frozen)
 
 
 @app.route('/scoreboard')
