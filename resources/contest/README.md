@@ -32,7 +32,6 @@ First install the packages as follows:
 ```
 python3 -m venv venv_app
 source venv_app/bin/activate
-pip install wheel
 pip install -r requirements.txt
 ```
 
