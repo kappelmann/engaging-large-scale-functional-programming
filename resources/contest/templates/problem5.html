@@ -1,82 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <title>Problem 5</title>
-</head>
-<body>
-<div id="problem5">
-    <h1 id="they-see-me-slidin">They See Me Slidin’</h1>
-    <p>Going through your old belongings, you find your old Game Boy. You spent hours playing with it, especially this
-        one addictive sliding game…</p>
-    <p>The rules of the game are like follows: You are in a rectangular ice maze, which is a grid that possibly has
-        rocks on some cells. You can take a step in one of the 4 directions: up, down, left, and right. When you take a
-        step, you keep sliding along that direction until you hit a rock or a border of the field. You can and will only
-        stop in the cell right before the obstacle. One sliding move of the player is considered one step.</p>
-    <p>Initially, you spawn on some random empty cell <span class="math inline">\((r_0,c_0)\)</span> where <span
-            class="math inline">\(r_0\)</span> and <span class="math inline">\(c_0\)</span> are the 0-based row and
-        column index of the player, respectively. The goal is to reach (i.e. slide over or stop at) the flagpole, which
-        is standing on some position <span class="math inline">\((r_p,c_p)\)</span>, to win the game.</p>
-    <p>Now as funny as this sounds, you got old and couldn’t care less about figuring out a winning path on your own
-        anymore. Instead, you use your favourite language Haskell to solve this task automatically: given the dimensions
-        of the field, the positions of the rocks as well as the flagpole and your initial position, find the minimum
-        number of steps necessary to win or return <span class="math inline">\(-1\)</span> if the goal is not reachable.
-    </p>
-    <h2 id="inputoutput-description">Input/Output Description</h2>
-    <h3 id="input">Input</h3>
-    <ol type="1">
-        <li><code>h</code> the height of the field</li>
-        <li><code>w</code> the width of the field</li>
-        <li><code>rocks</code> the list of rocks</li>
-        <li><code>start</code> the start position</li>
-        <li><code>flag</code> the flag position</li>
-    </ol>
-    <p>Note: all positions are 0-based and the walls are outside of the game field.</p>
-    <h3 id="output">Output</h3>
-    <p>A single integer: the minimum number of steps to win if applicable and <span class="math inline">\(-1\)</span>
-        otherwise.</p>
-    <h2 id="constraints">Constraints</h2>
-    <ul>
-        <li><span class="math inline">\(1 \le h \le 10^5\)</span></li>
-        <li><span class="math inline">\(1 \le w \le 10^5\)</span></li>
-    </ul>
-    <h3 id="examples">Examples</h3>
-    <h4 id="input-1">Input</h4>
-    <ol type="1">
-        <li><code>w=h=5</code>, <code>rocks=[(3,3),(4,2)]</code>, <code>start=(0,4)</code>, <code>flag=(1,3)</code>,
-        </li>
-    </ol>
-    <pre><code>  01234
-0 ....S
-1 ...F.
-2 .....
-3 ...X.
-4 ..X..</code></pre>
-    <ol start="2" type="1">
-        <li><code>w=h=10</code>, <code>rocks=[(7,2),(3,3),(4,9)]</code>, <code>start=(7,6)</code>,
-            <code>flag=(4,7)</code></li>
-    </ol>
-    <pre><code>  0123456789
-0 ..........
-1 ..........
-2 ..........
-3 ...X......
-4 .......F.X
-5 ..........
-6 ..........
-7 ..X...S...
-8 ..........
-9 ..........</code></pre>
-    <h4 id="output-1">Output</h4>
-    <ol type="1">
-        <li><code>-1</code></li>
-        <li><code>3</code></li>
-    </ol>
-    <h2 id="hints">Hints</h2>
-    <ol type="1">
-        <li>Representing the maze using lists will be too slow. Use more efficient data structures.</li>
-        <li>You can use <code>showMaze</code> from the template to print a maze</li>
-    </ol>
+<div id="problem6">
+    <h1 id="terrible-poetry">Terrible Poetry</h1>
+<h2 id="description">Description</h2>
+<p><a href="https://en.wikipedia.org/wiki/Tweedledum_and_Tweedledee">Tweedledum and Tweedledee</a>!<br></br> Who are you, my little dear?<br></br> Alice?… What a name!<br></br> No, you cannot pass,<br></br> what a shame!</p>
+<p>Oh no, don’t be mad…<br></br> We did not mean to make you sad.<br></br> Listen now, here is a deal.<br></br> The blockade law,<br></br> we can repeal.</p>
+<p>We have a box,<br></br> filled with cards,<br></br> the deck protected,<br></br> by logic guards…<br></br> At least last time we checked,<br></br> ’cause last night, we got a bit wrecked.</p>
+<p>And so we mingled and mangled,<br></br> we jingled and jangled,<br></br> all our precious cards.<br></br> On the back of them are numbers,<br></br> On the front are just hearts.</p>
+<p>Some numbers are odd,<br></br> but others are not.<br></br> Some hearts of pure gold,<br></br> others rusty and old.<br></br> But what makes them common,<br></br> what is the law?</p>
+<p><strong>When gold can be found,</strong><br></br> <strong>nothing even’s around.</strong></p>
+<p>Now it’s your round,<br></br> your only way out:<br></br> make sure the rule’s sound,<br></br> flipping just few cards around.<br></br></p>
+<h2 id="inputoutput-description">Input/Output Description</h2>
+<h3 id="input">Input</h3>
+<p>A list <code>xs</code> of two-sided cards (coloured hearts and numbers) where you can only see one side.</p>
+<h3 id="output">Output</h3>
+<p>The number of cards you must flip in order to check if Tweedledum and Tweedledee’s law is valid: <em>Every card with a golden heart has no even number on its opposite side.</em></p>
+<h2 id="constraints">Constraints</h2>
+<ul>
+<li><span class="math inline">\(0 \le |xs| \le 10^6\)</span></li>
+</ul>
 
-</div>
-</body>
-</html>
+ </div>

@@ -19,6 +19,7 @@ def main():
         shared_scoreboard = Scoreboard()
         frozen_vals = None
         is_frozen = False
+        n_problems = shared_scoreboard.getNProbs()
 
         while True:
             conn = listener.accept()
@@ -39,9 +40,9 @@ def main():
                     print(t)
             elif (req == "req"):
                 if is_frozen:
-                    conn.send(("(FROZEN)", frozen_vals))
+                    conn.send(("(FROZEN)", frozen_vals, n_problems))
                 else:
-                    conn.send(("", shared_scoreboard.getTeamValues()))
+                    conn.send(("", shared_scoreboard.getTeamValues(), n_problems))
             else:
                 print("Unknown request: {}".format(req))
 
