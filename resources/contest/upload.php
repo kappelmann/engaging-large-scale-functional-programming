@@ -1,4 +1,5 @@
 <?php
+# TODO: Change this here and in the uploading script
 $SECRET="Aalksdfjlksajdflksarrrf9045wm3JKL901L1201lwdfwdm9rf8";
 $STUDENT_ID_PARAM="student_id";
 $TOKEN_PARAM="token";
@@ -13,7 +14,7 @@ $FILE_NAME_PREFIX = "Exercise";
 $MAX_FILE_SIZE = 50000;
 
 
-# TODO set deadline
+# TODO: set deadline if your submission server does not support blocking late submissions
 # if (time() > 1610406420 /*2021-01-12T00:07:00+01:00*/) {
 #   die("Competition ended");
 # }
@@ -120,7 +121,5 @@ file_put_contents($target_commit_file, $commit);
 system("chmod -R 775 " . $target_dir);
 
 echo "Submission by " . $student_id . " for Exercise " . $file_name . " has been uploaded.";
-
-// add competition server backend hooks here
 
 ?>

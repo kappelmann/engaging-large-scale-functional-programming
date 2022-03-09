@@ -1,12 +1,29 @@
 # Programming Contest Framework
 
+This folder contains a simple application to run an [ACM-ICPC-like programming contest](https://en.wikipedia.org/wiki/International_Collegiate_Programming_Contest).
+An example instance can be found [here](https://vmnipkow16.in.tum.de/contest/).
+
+To run the contest, you need
+1. a test server, accepting and testing submissions (e.g. [Artemis](https://github.com/ls1intum/Artemis)),
+2. the scoreboard server contained in this directory, and
+3. some way to transfer results from the former to the latter.
+
 ## Test Server
 
-Both `run.sh` and `upload.php` can be used for this (TODO I didnt make these, what do they do?).
+The test server needs to
+1. accept submissions,
+2. test submissions, producing a result file in Ant JUnit XML format, and
+3. publish the results to the scoreboard server.
 
-## Test Server Setup
+## Transferring Results To The Scoreboard Server
 
-TODO Kevin
+In principle, you may upload the result data to the scoreboard server in any way you like.
+You only need to make sure to include all data required by the scoreboard server (see below).
+
+In `run.sh`, you can find an example script that tests a Haskell submission on Artemis
+(like the ones that can be found in [this repository](https://github.com/kappelmann/engaging-large-scale-functional-programming/tree/main/resources))
+uploading its result to the scoreboard server, serving the `upload.php` script (e.g. by using nginx).
+If your test ans scoreboard server run on the same machine, you may simply copy the data to the appropriate location.
 
 ## Scoreboard Server
 
@@ -21,18 +38,18 @@ The scoreboard data is loaded from the scoreboard manager process.
 
 ### Scoreboard Manager
 
-This process controls a worker thread which crawls the submissions in a regular interval.
-The port of the manager is set in `ADDRESS`
-in `scoreboard_manager.py`
+This process controls a thread which crawls the submissions in a regular interval.
+The port of the manager is set in `ADDRESS` in `scoreboard_manager.py`
 and the update interval in `UPDATE_INTERVAL` in `scoreboard.py`.
 The data is exposed to other processes via sockets/named pipes (Unix/Windows).
 
-Each team's submission is expected in a separate directory with the corresponding teamname. 
+Each team's submission is expected in a separate directory named by the corresponding name of the team. 
 Inside the directory, two files must exist:
-1. `timestamp`: containing the submission timestamp in iso-8601.
+1. `timestamp`: containing the submission's timestamp in iso-8601.
    You can use this bash command to create such a timestamp: `timestamp=$(date --iso-8601=seconds)`.
 2. `results.xml`: containing the test results in Ant JUnit XML format.
    Passing tests contain no children inside their tag while failing tests contain an error message.
+The repository comes with some example data in `example_data`.
 
 ### Running
 
@@ -58,6 +75,7 @@ And finally the webserver:
 ```
 gunicorn wsgi:app
 ```
+gunicorn then prints the URL of the webserver that you can visit.
 Note that outside of local testing, `gunicorn` should be deployed behind a proxy server;
 see [here](https://docs.gunicorn.org/en/stable/deploy.html).
 
@@ -68,6 +86,8 @@ In case of a system crash, you can restart the manager from these backups by run
 ```
 python3 scoreboard_manager.py restore_backup
 ```
+Note that the backups in particular contain transient data like the number of retries,
+which are counted by the scoreboard manager while running.
 
 ### Freezing The Scoreboard
 
@@ -84,7 +104,7 @@ You can then freeze the scoreboard by running
 ```
 python3 send_cmd.py freeze
 ```
-and unfreeze the it again by running
+and unfreeze it again by running
 ```
 python3 send_cmd.py unfreeze
 ```
@@ -99,7 +119,7 @@ Add your problem to the `problems` node in `problem.yaml` as exemplified below:
 ``` yaml
 problems:
   example_problem:
-    path: "path/to/problem"
+    path: "/path/to/problem"
     testhalf: 
       - "PartialA"
       - "PartialB"
@@ -107,7 +127,7 @@ problems:
       - "TotalA"
       - "TotalB"
   another_problem:
-    path: "path/to/another_problem"
+    path: "/path/to/another_problem"
     testhalf: 
       - "PartialA"
     testfull: 
@@ -117,8 +137,8 @@ Explanation:
 - `path`: the path where the problem data can be found.
 - `testhalf`: list of test names that are required to pass 50%
 - `testfull`: list of test names that are required to pass 100%
-Note that the test names must correspond to the ones configured in the test server.
-To obtain 100%, the tests for 50% and 100% must be passed.
+Note that to obtain 100%, the tests for 50% and 100% must be passed.
+The repository comes with some example entries that matches the data in `example_data`.
 
 #### Webserver
 
