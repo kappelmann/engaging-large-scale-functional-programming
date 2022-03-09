@@ -1,27 +1,27 @@
 problems: 
   contest_teams:
-    path: "/home/kev/Documents/uni/tum/phd/my_papers/teaching_fpv/resources/contest/example_data/01/uploads"
+    path: "/some/path/teaching_fpv/resources/contest/example_data/01/uploads"
     testhalf: 
       - "Total"
     testfull: 
       - "Total"
 
   startup_revenue:
-    path: "/home/kev/Documents/uni/tum/phd/my_papers/teaching_fpv/resources/contest/example_data/02/uploads"
+    path: "/some/path/teaching_fpv/resources/contest/example_data/02/uploads"
     testhalf: 
       - "Partial"
     testfull: 
       - "Total"
 
   prime_mayor:
-    path: "/home/kev/Documents/uni/tum/phd/my_papers/teaching_fpv/resources/contest/example_data/03/uploads"
+    path: "/some/path/teaching_fpv/resources/contest/example_data/03/uploads"
     testhalf:
       - "Test Small Input"
     testfull:
       - "Test Big Input"
 
   help_rudolf:
-    path: "/home/kev/Documents/uni/tum/phd/my_papers/teaching_fpv/resources/contest/example_data/04/uploads"
+    path: "/some/path/teaching_fpv/resources/contest/example_data/04/uploads"
     testhalf: 
       - "Empty string"
       - "One char"
@@ -32,21 +32,21 @@ problems:
       - "Total"
 
   incredible_game:
-    path: "/home/kev/Documents/uni/tum/phd/my_papers/teaching_fpv/resources/contest/example_data/05/uploads"
+    path: "/some/path/teaching_fpv/resources/contest/example_data/05/uploads"
     testhalf:
       - "Test Small Input"
     testfull:
       - "Test Big Input"
   
   terrible_poetry:
-    path: "/home/kev/Documents/uni/tum/phd/my_papers/teaching_fpv/resources/contest/example_data/06/uploads"
+    path: "/some/path/teaching_fpv/resources/contest/example_data/06/uploads"
     testhalf:
       - "Test Small Input"
     testfull:
       - "Test Large Input" 
 
   networking:
-    path: "/home/kev/Documents/uni/tum/phd/my_papers/teaching_fpv/resources/contest/example_data/07/uploads"
+    path: "/some/path/teaching_fpv/resources/contest/example_data/07/uploads"
     testhalf:
       - "Smol"
     testfull:

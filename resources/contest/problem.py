@@ -131,7 +131,7 @@ def getTimestamp(path):
 
 if __name__ == "__main__":
     # Just a test printing all parsed tests in the specified XML
-    tree = ET.parse("/home/kev/Documents/uni/tum/phd/my_papers/teaching_fpv/resources/contest/example_data/0/uploads/foobar/results.xml")
+    tree = ET.parse("/some/path/teaching_fpv/resources/contest/example_data/0/uploads/foobar/results.xml")
     print("start dump")
     l = []
     for t in tree.iter():
