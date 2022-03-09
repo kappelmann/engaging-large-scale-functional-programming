@@ -16,7 +16,7 @@ UPDATE_INTERVAL = 15
 
 team_lock = Lock()
 
-# we really weren't sure what we wanted, 
+# we really weren't sure what we wanted
 def allNeutral(x):
     if x == 1:
         return 1
@@ -37,7 +37,7 @@ def cmp(a, b):
 # 1: score (just int)
 # 2: list of problem triples (TODO)
 def cmpTeams(t1, t2):
-    
+
     scorediff = cmp(t1[1], t2[1])
 
     if scorediff:
@@ -78,11 +78,11 @@ class Scoreboard:
             cfgs = yaml.safe_load(f)
 
         # load into Problem objects
-        cfg_problems = [Problem(prob["path"], prob["testhalf"], prob["testfull"]) 
+        cfg_problems = [Problem(prob["path"], prob["testhalf"], prob["testfull"])
             for prob in cfgs["problems"].values()]
-        
+
         self.n_problems = len(cfg_problems)
-            
+
 
 
         self.teams_results = []
@@ -115,7 +115,7 @@ class Scoreboard:
             shadow_problems = deepcopy(self.problems)
 
         while self.t_shouldRun:
-            
+
             # update from artemis data, increments team scores on solve
             for (i, p) in enumerate(shadow_problems):
                 p.updatePoints(team_scores)
@@ -126,29 +126,28 @@ class Scoreboard:
 
             # pickle team scores for backup after all problems are backed up
             pickle.dump(team_scores, open("backups/scores.p", "wb"))
-                
+
             ts = time.localtime()
 
-            # python3 iterators are kinda neat
             # need to sort before rendering, do it in worker thread
             shadow_results = []
             for (tid,score) in team_scores.items():
                 triples = []
                 for p in shadow_problems:
                     triples.append(p.getTriple(tid))
-                
+
                 shadow_results.append((tid, score, triples))
-            
+
             shadow_results.sort(key=cmp_to_key(cmpTeams), reverse=True)
 
             # convert a team's timestamp to string for frontend
-            tsToStr =lambda t: (t[0], t[1], 
-                list(map(lambda tr: (tr[0], datetime.fromtimestamp(tr[1]).strftime("%H:%M:%S"),tr[2]),t[2]))) 
-            
+            tsToStr =lambda t: (t[0], t[1],
+                list(map(lambda tr: (tr[0], datetime.fromtimestamp(tr[1]).strftime("%H:%M:%S"),tr[2]),t[2])))
+
             # convert all timestamps to string
             shadow_results = list(map(tsToStr, shadow_results))
 
-            
+
             # deepcopy shadowed values in a threadsafe manner
             try:
                 team_lock.acquire()
@@ -157,8 +156,8 @@ class Scoreboard:
                 self.ts = ts
             finally:
                 team_lock.release()
-            
-            
+
+
             time.sleep(UPDATE_INTERVAL)
 
     # get teams with all values we decided we wanted
@@ -176,7 +175,7 @@ class Scoreboard:
             return self.problems
         finally:
             team_lock.release()
-    
+
     # get timestamp
     def getTs(self):
         try:

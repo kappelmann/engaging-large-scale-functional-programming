@@ -58,7 +58,7 @@ def main():
                 print("Unknown request: {}".format(req))
 
             conn.close()
-    
+
     finally:
         listener.close()
         if shared_scoreboard:

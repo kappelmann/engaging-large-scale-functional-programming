@@ -1,6 +1,6 @@
 problems: 
   contest_teams:
-    path: "/home/fpv/websites/contest2021/01"
+    path: "/home/kev/Documents/uni/tum/phd/my_papers/teaching_fpv/resources/contest/"
     testhalf: 
       - "Total"
     testfull: 

@@ -1,214 +1,208 @@
 <!DOCTYPE html>
 <html>
-<title>FPV Programming Contest</title>
+<title>Programming Contest</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src='https://kit.fontawesome.com/a076d05399.js'></script>
+<!-- <script src='https://kit.fontawesome.com/a076d05399.js'></script> -->
 <style>
-    body, h1, h2, h3, h4, h5, h6 {
-        font-family: "Montserrat", sans-serif
-    }
+  body, h1, h2, h3, h4, h5, h6 {
+    font-family: "Montserrat", sans-serif;
+  }
 
-    .w3-row-padding img {
-        margin-bottom: 12px
-    }
+  .w3-row-padding img {
+    margin-bottom: 12px;
+  }
 
-    .w3-sidebar {
-        width: 120px;
-        background: #222222;
-    }
+  .w3-sidebar {
+    width: 135px;
+    background: #222222;
+  }
 
-    .hs-blue {
-        color: #3430ba;
-    }
+  #main {
+    margin-left: 135px;
+  }
 
-    .hs-yellow {
-        color: #fff332;
-    }
-
-    td {
-        border: 3px solid #000000;
-        text-align: left;
-        padding: 8px;
-        background-color: #222222;
-    }
-
-    th {
-        border: 3px solid #000000;
-        text-align: left;
-        padding: 8px;
-        background-color: #2b0b0b;
-    }
-
+  @media (max-width: 600px) {
     #main {
-        margin-left: 120px
+      margin-left: 0px;
     }
+  }
 
-    .code {
-        color: black;
-    }
+  #p_navbar a {
+    width: 20%;
+  }
+
+  #scoreboard > table {
+    width: 100%;
+  }
+
+  .color-fail {
+    color: #F88989;
+  }
+
+  .background-color-fail {
+    color: #F88989;
+  }
+
+  .color-correct {
+    color: #E3CC88;
+  }
+
+  .background-color-correct {
+    color: #E3CC88;
+  }
+
+  .color-pass {
+    color: #88E388;
+  }
+
+  .background-color-pass {
+    color: #88E388;
+  }
+
+  .background-color-no-attempt {
+    color: #171717;
+  }
+
+  td {
+    border: 3px solid #000000;
+    text-align: left;
+    padding: 8px;
+    background-color: #222222;
+  }
+
+  th {
+    border: 3px solid #000000;
+    text-align: left;
+    padding: 8px;
+    background-color: #2b0b0b;
+  }
+
+  .code {
+    color: black;
+  }
 </style>
 <body class="w3-black">
 
 <nav class="w3-sidebar w3-bar-block w3-small w3-hide-small w3-center" id="p_sidebar">
-    <a href="#" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
-        <i><img src="static/white_fpv.png" style="width:100%" alt="FPV"></i>
-        <p>CONTEST</p>
+  <a href="#" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+    <i><img src="static/logo.png" style="width:100%" alt="logo"></i>
+    <p>CONTEST</p>
+  </a>
+  <a href="#scoreboard" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+    <p>SCORES</p>
+  </a>
+  {% for id in range(n_probs) %}
+    <a href="#problem{{ id }}" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+      <p>PROBLEM {{ id }}</p>
     </a>
-    <a href="#scoreboard" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
-        <p>SCORES</p>
-    </a>
+  {% endfor %}
 </nav>
 
 <div class="w3-top w3-hide-large w3-hide-medium" id="p_navbar">
-    <div class="w3-bar w3-black w3-opacity w3-hover-opacity-off w3-center w3-small">
-        <a href="#" class="w3-bar-item w3-button" style="width:25% !important">CONTEST</a>
-        <a href="#scoreboard" class="w3-bar-item w3-button" style="width:25% !important">SCORES</a>
-    </div>
+  <div class="w3-bar w3-black w3-opacity w3-hover-opacity-off w3-center w3-small">
+    <a href="#" class="w3-bar-item w3-button">CONTEST</a>
+    <a href="#scoreboard" class="w3-bar-item w3-button">SCORES</a>
+    {% for id in range(n_probs) %}
+      <a href="#problem{{ id }}" class="w3-bar-item w3-button">PROBLEM {{ id }}</a>
+    {% endfor %}
+
+  </div>
 </div>
 
 
 <div class="w3-padding-large" id="main">
 
-    <header class="w3-container w3-padding-32 w3-center w3-black" id="home">
-        <img src="static/white_fpv.png" alt="boy" class="w3-image" width="240" height="270">
-        <h1 class="w3-jumbo">Welcome to the FPV Programming Contest!</h1>
-        <p>The FPV Programming contest is hosted by your tutors!</p>
-        <br>
-        <br>
-        <h4>Guidelines:</h4>
-        <p>You will compete in teams of two to three students.</p>
-        <p>Do not share your results with other competitors - this will disqualify you.</p>
-        <br>
-        <br>
-        <h4>Scoring:</h4>
-        <p>The contest consists of a total of 7 problem statements.</p>
-        <p>Each problem is graded as follows: </p>
-        <p><b style="color: #F88989">Fail</b> if the submitted solution does not satisfy the desired functionality.</p>
-        <p><b style="color: #E3CC88">Correct</b> if the submitted solution satisfies the desired functionality but has bad runtime.</p>
-        <p><b style="color: #88E388">Pass</b> if the solution meets our runtime requirements and satisfies the desired functionality.</p>
-        <p>The Team with the most passes wins.</p>
-        <p>Your job is to pass as many problems as quickly as you can!</p>
-        <p>If there is a tie, we consider correct but inefficient solutions next.</p>
-        <p>If there still is a tie, we consider the team with lower latest timestamp.</p>
-        <p>If we then still have a tie, we call it a tie! :)</p>
-        <br>
-        <br>
-        <h4>Grade bonus:</h4>
-        <p>If you get passes in a minimum of 3 out of the 7 problems, you will earn a coin for this week.</p>
-        <br>
-        <br>
-        <h3>Let's start the Contest!</h3>
-        <p>You can find a scoreboard to keep track of your team's progress underneath!</p>
-        <p><span style="font-size: 20pt">⚔</span>️This also shows you how you do compared to others <span style="font-size: 20pt">⚔</span></p>
-    </header>
+  <header class="w3-container w3-padding-16 w3-center w3-black" id="home">
+    <img src="static/logo.png" alt="boy" class="w3-image" width="240" height="270">
+    <h1>Programming Contest</h1>
+    <h2 id="basic-rules">Basic Rules</h2>
+    <ul>
+      <li>You must compete in teams of 2&ndash;3 students.</li>
+      <li>Sharing your results with other competitors leads to disqualification.</li>
+    </ul>
+    <h2>Scoring</h2>
+    <p>The contest consists of {{ n_probs }} problems. Each problem is graded as follows:</p>
+    <ul>
+      <li><b class="color-fail">Fail</b> if your submission passes the correctness tests.</li>
+      <li><b class="color-correct">Correct</b> if your submission passes the correctness tests but fails the runtime tests.</li>
+      <li><b class="color-pass">Pass</b> if your submission passes the correctness and runtime tests.</li>
+    </ul>
+    <p>Your job is to pass as many problems as quickly as you can!</br>
+    The team with the most passes wins the contest.</p>
+    <p>If there is a tie, we consider correct but inefficient solutions next.</br>
+    If this is still a tie, we take the team with the lower latest timestamp.</br>
+    If then we still have a tie, we call it a tie! :)</p>
+  </header>
 
-    <div id="scoreboard">
-        <h1 class="w3-text-light-grey w3-left">Scoreboard {{ frstr }}</h1>
-        <table class="w3-table" style="width:100%">
-            <tr>
-                <th>Place</th>
-                <th colspan= {{ n_probs }} >Team</th>
-            </tr>
-            {% for t in teams %}
-                <tr>
-                    <!-- team-place -->
-                    <td rowspan="2">{{ loop.index }}.</td>
-                    <!-- team-name -->
-                    <td colspan="7">{{ t[0] }}</td>
-                </tr>
-                <!-- P1 | P2 | P3 | P4 | P5 | P6 | P7 -->
-                <tr>
-                    {% for p in t[2] %}
-                    <!-- Problem -> (score, time, attempts)  -->
-                        {% if p[0] == 2 %}
-                            <!-- PASS -->
-                            <td colspan="1" style="background-color: #88e388"><span class="w3-right">{{ p[2] }}</span><br></br><div class="w3-center">{{ p[1] }}</div><br></br></td>
-                        {% elif p[0] == 1 %}
-                            <!-- SEMI PASS -->
-                            <td colspan="1" style="background-color: #e3cc88"><span class="w3-right">{{ p[2] }}</span><br></br><div class="w3-center">{{ p[1] }}</div><br></br></td>
-                        {% elif p[0] == 0 %}
-                            <!-- FAIL -->
-                            <td colspan="1" style="background-color: #f88989"><span class="w3-right">{{ p[2] }}</span><br></br><div class="w3-center">{{ p[1] }}</div><br></br></td>
-                        {% else %}
-                            <!-- NOT ATTEMPTED -->
-                            <td colspan="1" style="background-color: #171717"><span class="w3-right">-</span><br></br><div class="w3-center">no attempt</div><br></br></td>
-                        {% endif %}
-                    {% endfor %}
-                </tr>
-            {% endfor %}
-        </table>
+  <div id="scoreboard">
+    <h1 id="scoreboard">🏆 Scoreboard {{ frstr }} 🥇</h1>
+    <table class="w3-table">
+      <tr>
+        <th>Place</th>
+        <th colspan= {{ n_probs }} >Team</th>
+      </tr>
+      {% for t in teams %}
+        <tr>
+          <!-- team-place -->
+          <td rowspan="2">{{ loop.index }}.</td>
+          <!-- team-name -->
+          <td colspan="7">{{ t[0] }}</td>
+        </tr>
+        <!-- P1 | P2 | P3 | P4 | P5 | P6 | P7 -->
+        <tr>
+          {% for p in t[2] %}
+          <!-- Problem -> (score, time, attempts)  -->
+            {% if p[0] == 2 %}
+              <!-- PASS -->
+              <td colspan="1" class="background-color-pass"><span class="w3-right">{{ p[2] }}</span><br></br><div class="w3-center">{{ p[1] }}</div><br></br></td>
+            {% elif p[0] == 1 %}
+              <!-- SEMI PASS -->
+              <td colspan="1" class="background-color-correct"><span class="w3-right">{{ p[2] }}</span><br></br><div class="w3-center">{{ p[1] }}</div><br></br></td>
+            {% elif p[0] == 0 %}
+              <!-- FAIL -->
+              <td colspan="1" class="background-color-fail"><span class="w3-right">{{ p[2] }}</span><br></br><div class="w3-center">{{ p[1] }}</div><br></br></td>
+            {% else %}
+              <!-- NOT ATTEMPTED -->
+              <td colspan="1" class="background-color-no-attempt"><span class="w3-right">-</span><br></br><div class="w3-center">no attempt</div><br></br></td>
+            {% endif %}
+          {% endfor %}
+        </tr>
+      {% endfor %}
+    </table>
+  </div>
+
+  <h1>Problems</h1>
+  <p>Below you can find the list of problems. Enjoy and good luck! ⚔</p>
+  <!-- include problem htmls -->
+  {% for id in range(n_probs) %}
+    <hr>
+    <div id="problem{{ id }}">
+      {% include 'problem' + id|string + '.html' %}
     </div>
-
-    <!-- include problem htmls -->
-    {% for id in range(n_probs) %}
-        {% include 'problem' + id|string + '.html' %}
-    {% endfor %}
-
-
-    <footer class="w3-content w3-padding-64 w3-text-grey w3-xlarge">
-        <p class="w3-medium">Powered by <a href="http://www21.in.tum.de" target="_blank"
-                                           class="w3-hover-text-green">TUM Chair for Logic and Verification</a></p>
-    </footer>
+  {% endfor %}
+  <footer class="w3-content w3-text-grey w3-xlarge">
+    <p class="w3-medium">Contest framework powered by
+      <a href="https://github.com/kappelmann/engaging-large-scale-functional-programming" target="_blank" class="w3-hover-text-green">TUM Chair for Logic and Verification</a>
+    </p>
+  </footer>
 </div>
 
 </body>
 
-
 <meta id="n_probs" data-n= {{ n_probs }} >
 
 <script>
-    async function loadMathJax() {
-        await Sleep(100);
-        const script = document.createElement("script");
-        script.type = "text/javascript";
-        script.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-        document.getElementsByTagName("head")[0].appendChild(script);
-    }
-
-    function Sleep(milliseconds) {
-        return new Promise(resolve => setTimeout(resolve, milliseconds));
-    }
-
-
-    // add problem element to sidebar
-    function create_sidebar(id) {
-        var a = document.createElement('a');
-        var p = document.createElement('p');
-        p.innerHTML = "PROBLEM" + id;
-        a.setAttribute('href', '#problem' + id);
-        a.setAttribute('class', 'w3-bar-item w3-button w3-padding-large w3-hover-black');
-        a.appendChild(p)
-        document.getElementById('p_sidebar').appendChild(a);
-    }
-
-    // add problem element to navbar
-    function create_navbar(id) {
-        var a = document.createElement('a');
-        a.innerHTML = "PROBLEM" + id;
-        a.setAttribute('href', '#problem' + id);
-        a.setAttribute('class', 'w3-bar-item w3-button');
-        a.setAttribute('styl', 'width:25% !important');
-        document.getElementById('p_navbar').appendChild(a);
-    }
-
-    function make_navigation() {
-        var n_probs = $('#n_probs').data("n");
-
-        console.log(n_probs)
-        for(i = 0; i < n_probs; i++) {
-            create_sidebar(i)
-            create_navbar(i)
-        }
-    }
-
-    make_navigation()
-
-    loadMathJax()
-
+  window.addEventListener('load', function() {
+    const script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })
 </script>
+
 </html>

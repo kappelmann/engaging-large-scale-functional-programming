@@ -30,7 +30,7 @@ class Problem:
         return self.team_attempts[teamid]
 
     # triple layout
-    # status of problem 
+    # status of problem
     # 0: status : -1 not attempted 0 not passed, 1 half passed, 2 full passed
     # 2: timestamp
     # 3: number of attempts before solve
@@ -39,7 +39,7 @@ class Problem:
         if not teamid in self.team_attempts:
             # dirty but this will work and is easier that rewriting lol
             return (-1, -1, 0)
-        
+
         attempt = self.team_attempts[teamid]
 
         status = 0
@@ -56,7 +56,7 @@ class Problem:
             return (-1,-1,0)
 
         return (status, timestamp, timesf)
-        
+
 
     def updatePoints(self, teamscores):
         self.last_checked = time.localtime()
@@ -93,7 +93,7 @@ class Problem:
             fullp = 0
             for t in tree.iter():
                 if t.tag == "testcase":
-                    
+
                     # testcase failed
                     if t.getchildren():
                         continue
@@ -101,7 +101,7 @@ class Problem:
                     testname = t.get("name")
                     if testname in self.testhalf:
                         halfp += 1
-                    
+
                     if testname in self.testfull:
                         fullp += 1
 
@@ -120,21 +120,21 @@ class Problem:
                 # didn't get full points, so failed attempt!
                 self.team_attempts[teamid][0] += 1
                 teamscores[teamid] += 0
-    
+
 def getTimestamp(path):
     try:
         with open(path+"/timestamp", "r") as f:
-            return int(time.mktime(datetime.fromisoformat(f.read()).timetuple())) 
+            return int(time.mktime(datetime.fromisoformat(f.read()).timetuple()))
     except:
         return int(time.mktime(datetime.max.timetuple()))
 
 
 if __name__ == "__main__":
-    tree = ET.parse("/home/abathur/uni/5_sem_info/fpv/fpv-exercises-tutors/programming-contest/compapp_python/uploads/ga96zun/results.xml")
+    # Just a test printing all parsed tests in the specified XML
+    tree = ET.parse("/home/kev/Documents/uni/tum/phd/my_papers/teaching_fpv/resources/contest/uploads/ga96zun/results.xml")
     print("start dump")
     l = []
     for t in tree.iter():
         if t.tag == "testcase":
                 l.append(t.get("name"))
-    
     print(l)

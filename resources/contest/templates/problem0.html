@@ -1,33 +1,31 @@
-<div id="problem0">
-        <h1 id="team-building">Team Building</h1>
-        <p>The FPV-Übungsleitung is organising an excellent programming contest with only 4 participating teams. The
-            structure of the teams is as follows:</p>
-        <p>The first team has <span class="math inline">\(n_1\)</span> participants, the second one has <span
-                class="math inline">\(n_2=kn_1\)</span> participants, the third team has <span class="math inline">\(n_3=kn_2\)</span>
-            participants, and the fourth team has <span class="math inline">\(n_4=kn_3\)</span> participants. The total
-            number of participants to the contest is <span class="math inline">\(n\)</span>, that is <span
-                    class="math inline">\(n=n_1+n_2+n_3+n_4\)</span>.</p>
-        <p>The FPV-Übungsleitung knows the number of registered students and the value of <span class="math inline">\(k\)</span>.
-            Help them to compute the team sizes <span class="math inline">\(n_1,n_2,n_3,n_4\)</span>.</p>
-        <h2 id="inputoutput-description">Input/Output Description</h2>
-        <h3 id="input">Input</h3>
-        <p>The function parameter is a pair of integers <span class="math inline">\((n, k)\)</span>. It is guaranteed
-            that <span class="math inline">\(n\)</span> and <span class="math inline">\(k\)</span> are chosen in a way
-            such that the Übungsleitung can successfully assign teams with the sizes as described above.</p>
-        <h3 id="output">Output</h3>
-        <p>You should return <span class="math inline">\((n_1,n_2,n_3,n_4)\)</span>.</p>
-        <h3 id="constraints">Constraints</h3>
-        <ul>
-            <li><span class="math inline">\(4 \le n \le 3.3 * 10^{20}\)</span></li>
-            <li><span class="math inline">\(1 \le k \le 200000\)</span></li>
-        </ul>
-        <h3 id="example">Example</h3>
-        <div class="sourceCode" id="cb1">
-            <pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb1-1"><a href="#cb1-1"
-                                                                                                 aria-hidden="true"
-                                                                                                 tabindex="-1"></a>contestTeams (<span
-                    class="dv">40</span>, <span class="dv">3</span>) <span class="ot">=</span> (<span
-                    class="dv">1</span>, <span class="dv">3</span>, <span class="dv">9</span>, <span
-                    class="dv">27</span>)</span></code></pre>
-        </div>
-    </div>
+<h1 id="team-building">Team Building</h1>
+<p>The FPV-Übungsleitung is organising an excellent programming contest with only 4 participating teams. The
+    structure of the teams is as follows:</p>
+<p>The first team has <span class="math inline">\(n_1\)</span> participants, the second one has <span
+        class="math inline">\(n_2=kn_1\)</span> participants, the third team has <span class="math inline">\(n_3=kn_2\)</span>
+    participants, and the fourth team has <span class="math inline">\(n_4=kn_3\)</span> participants. The total
+    number of participants to the contest is <span class="math inline">\(n\)</span>, that is <span
+            class="math inline">\(n=n_1+n_2+n_3+n_4\)</span>.</p>
+<p>The FPV-Übungsleitung knows the number of registered students and the value of <span class="math inline">\(k\)</span>.
+    Help them to compute the team sizes <span class="math inline">\(n_1,n_2,n_3,n_4\)</span>.</p>
+<h2 id="inputoutput-description">Input/Output Description</h2>
+<h3 id="input">Input</h3>
+<p>The function parameter is a pair of integers <span class="math inline">\((n, k)\)</span>. It is guaranteed
+    that <span class="math inline">\(n\)</span> and <span class="math inline">\(k\)</span> are chosen in a way
+    such that the Übungsleitung can successfully assign teams with the sizes as described above.</p>
+<h3 id="output">Output</h3>
+<p>You should return <span class="math inline">\((n_1,n_2,n_3,n_4)\)</span>.</p>
+<h3 id="constraints">Constraints</h3>
+<ul>
+    <li><span class="math inline">\(4 \le n \le 3.3 * 10^{20}\)</span></li>
+    <li><span class="math inline">\(1 \le k \le 200000\)</span></li>
+</ul>
+<h3 id="example">Example</h3>
+<div class="sourceCode" id="cb1">
+    <pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb1-1"><a href="#cb1-1"
+                                                                                         aria-hidden="true"
+                                                                                         tabindex="-1"></a>contestTeams (<span
+            class="dv">40</span>, <span class="dv">3</span>) <span class="ot">=</span> (<span
+            class="dv">1</span>, <span class="dv">3</span>, <span class="dv">9</span>, <span
+            class="dv">27</span>)</span></code></pre>
+</div>
