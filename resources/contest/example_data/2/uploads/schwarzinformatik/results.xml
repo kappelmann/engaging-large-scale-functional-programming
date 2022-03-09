@@ -1,0 +1,3 @@
+<?xml version='1.0' ?><testsuites errors="1" failures="1" tests="2" time="1.010"><testsuite name="Tests" tests="2"><testsuite name="Properties" tests="2"><testsuite name="Checked by SmallCheck" tests="0" /><testsuite name="Checked by QuickCheck" tests="2"><testcase name="Test Small Input" time="0.001" classname="Tests.Properties.Checked by QuickCheck"><failure>*** Failed! Falsified (after 4 tests):
+Wrong Result
+Use --quickcheck-replay=1 to reproduce.</failure></testcase><testcase name="Test Big Input" time="1.009" classname="Tests.Properties.Checked by QuickCheck"><failure>TimeOut</failure></testcase></testsuite></testsuite><testsuite name="Unit Tests" tests="0" /></testsuite></testsuites>

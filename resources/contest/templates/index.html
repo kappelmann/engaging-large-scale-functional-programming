@@ -1,91 +1,17 @@
 <!DOCTYPE html>
 <html>
-<title>Programming Contest</title>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<!-- <script src='https://kit.fontawesome.com/a076d05399.js'></script> -->
-<style>
-  body, h1, h2, h3, h4, h5, h6 {
-    font-family: "Montserrat", sans-serif;
-  }
+<head>
+  <title>Programming Contest</title>
+  <link rel="icon" type="image/x-icon" href="static/favicon.ico">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta id="n_probs" data-n={{ n_probs }} >
 
-  .w3-row-padding img {
-    margin-bottom: 12px;
-  }
-
-  .w3-sidebar {
-    width: 135px;
-    background: #222222;
-  }
-
-  #main {
-    margin-left: 135px;
-  }
-
-  @media (max-width: 600px) {
-    #main {
-      margin-left: 0px;
-    }
-  }
-
-  #p_navbar a {
-    width: 20%;
-  }
-
-  #scoreboard > table {
-    width: 100%;
-  }
-
-  .color-fail {
-    color: #F88989;
-  }
-
-  .background-color-fail {
-    color: #F88989;
-  }
-
-  .color-correct {
-    color: #E3CC88;
-  }
-
-  .background-color-correct {
-    color: #E3CC88;
-  }
-
-  .color-pass {
-    color: #88E388;
-  }
-
-  .background-color-pass {
-    color: #88E388;
-  }
-
-  .background-color-no-attempt {
-    color: #171717;
-  }
-
-  td {
-    border: 3px solid #000000;
-    text-align: left;
-    padding: 8px;
-    background-color: #222222;
-  }
-
-  th {
-    border: 3px solid #000000;
-    text-align: left;
-    padding: 8px;
-    background-color: #2b0b0b;
-  }
-
-  .code {
-    color: black;
-  }
-</style>
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="static/styles.css">
+</head>
 <body class="w3-black">
 
 <nav class="w3-sidebar w3-bar-block w3-small w3-hide-small w3-center" id="p_sidebar">
@@ -139,41 +65,13 @@
     If then we still have a tie, we call it a tie! :)</p>
   </header>
 
-  <div id="scoreboard">
-    <h1 id="scoreboard">🏆 Scoreboard {{ frstr }} 🥇</h1>
-    <table class="w3-table">
-      <tr>
-        <th>Place</th>
-        <th colspan= {{ n_probs }} >Team</th>
-      </tr>
-      {% for t in teams %}
-        <tr>
-          <!-- team-place -->
-          <td rowspan="2">{{ loop.index }}.</td>
-          <!-- team-name -->
-          <td colspan="7">{{ t[0] }}</td>
-        </tr>
-        <!-- P1 | P2 | P3 | P4 | P5 | P6 | P7 -->
-        <tr>
-          {% for p in t[2] %}
-          <!-- Problem -> (score, time, attempts)  -->
-            {% if p[0] == 2 %}
-              <!-- PASS -->
-              <td colspan="1" class="background-color-pass"><span class="w3-right">{{ p[2] }}</span><br></br><div class="w3-center">{{ p[1] }}</div><br></br></td>
-            {% elif p[0] == 1 %}
-              <!-- SEMI PASS -->
-              <td colspan="1" class="background-color-correct"><span class="w3-right">{{ p[2] }}</span><br></br><div class="w3-center">{{ p[1] }}</div><br></br></td>
-            {% elif p[0] == 0 %}
-              <!-- FAIL -->
-              <td colspan="1" class="background-color-fail"><span class="w3-right">{{ p[2] }}</span><br></br><div class="w3-center">{{ p[1] }}</div><br></br></td>
-            {% else %}
-              <!-- NOT ATTEMPTED -->
-              <td colspan="1" class="background-color-no-attempt"><span class="w3-right">-</span><br></br><div class="w3-center">no attempt</div><br></br></td>
-            {% endif %}
-          {% endfor %}
-        </tr>
-      {% endfor %}
-    </table>
+  <div>
+    <button class="w3-circle w3-button w3-dark-gray w3-right" onclick="loadScoreBoard()">
+      <i class="fa fa-refresh w3-xxlarge"></i>
+    </button>
+    <div id="scoreboard-div">
+      {% include 'scoreboard.html' %}
+    </div>
   </div>
 
   <h1>Problems</h1>
@@ -194,15 +92,27 @@
 
 </body>
 
-<meta id="n_probs" data-n= {{ n_probs }} >
-
 <script>
-  window.addEventListener('load', function() {
-    const script = document.createElement("script");
-    script.type = "text/javascript";
-    script.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-    document.getElementsByTagName("head")[0].appendChild(script);
-  })
+  const HttpClient = function () {
+    this.get = function (aUrl, aCallback) {
+      const anHttpRequest = new XMLHttpRequest();
+      anHttpRequest.onreadystatechange = function () {
+        if (anHttpRequest.readyState === 4 && anHttpRequest.status === 200)
+          aCallback(anHttpRequest.responseText);
+      }
+      anHttpRequest.open("GET", aUrl, true);
+      anHttpRequest.send(null);
+    }
+  };
+
+  function loadScoreBoard() {
+    const url = window.location.href.split("#")[0] + "/scoreboard";
+    new HttpClient().get(url, function (response) {
+      document.getElementById("scoreboard-div").innerHTML = response;
+    });
+  }
 </script>
+<!-- load mathjax -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
 </html>

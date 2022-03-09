@@ -12,6 +12,7 @@ from itertools import groupby
 from functools import cmp_to_key
 import pickle
 
+# crawl/update interval in seconds
 UPDATE_INTERVAL = 15
 
 team_lock = Lock()
@@ -35,7 +36,7 @@ def cmp(a, b):
 # TEAM tuple layout:
 # 0: name (id)
 # 1: score (just int)
-# 2: list of problem triples (TODO)
+# 2: list of problem triples (see `problem.py`)
 def cmpTeams(t1, t2):
 
     scorediff = cmp(t1[1], t2[1])
@@ -83,8 +84,6 @@ class Scoreboard:
 
         self.n_problems = len(cfg_problems)
 
-
-
         self.teams_results = []
         self.problems = deepcopy(cfg_problems)
         self.ts = time.localtime()
@@ -116,11 +115,11 @@ class Scoreboard:
 
         while self.t_shouldRun:
 
-            # update from artemis data, increments team scores on solve
+            # update from uploaded data; increments team scores on solve
             for (i, p) in enumerate(shadow_problems):
                 p.updatePoints(team_scores)
 
-                #after update pickle problems for backup
+                #after update, pickle problems for backup
                 pickle.dump(p, open("backups/problem{}.p".format(i), "wb"), pickle.HIGHEST_PROTOCOL)
 
 
@@ -129,7 +128,7 @@ class Scoreboard:
 
             ts = time.localtime()
 
-            # need to sort before rendering, do it in worker thread
+            # need to sort before rendering; do it in worker thread
             shadow_results = []
             for (tid,score) in team_scores.items():
                 triples = []
@@ -193,6 +192,7 @@ class Scoreboard:
         self.t.join()
 
 if __name__ == "__main__":
+    # Just a test querying the scoreboard a few times
     sb = Scoreboard(hasCrashed=False)
     n = 0
     try:

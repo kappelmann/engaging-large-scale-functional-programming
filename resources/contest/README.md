@@ -63,8 +63,8 @@ see [here](https://docs.gunicorn.org/en/stable/deploy.html).
 
 ### Starting From A Backup
 
-After each crawl, the scoreboard manager serialises its data as a backup.
-In case of a system crash, you can restart the manager from this backup by running
+After each crawl, the scoreboard manager serialises its data and saves it in the folder `backups`.
+In case of a system crash, you can restart the manager from these backups by running
 ```
 python3 scoreboard_manager.py restore_backup
 ```
@@ -115,7 +115,6 @@ problems:
 ```
 Explanation:
 - `path`: the path where the problem data can be found.
-  The scoreboard manager crawls the `uploads` directory in this path.
 - `testhalf`: list of test names that are required to pass 50%
 - `testfull`: list of test names that are required to pass 100%
 Note that the test names must correspond to the ones configured in the test server.

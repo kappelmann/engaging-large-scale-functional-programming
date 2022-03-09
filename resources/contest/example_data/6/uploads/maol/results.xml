@@ -1,0 +1,13 @@
+<?xml version='1.0' ?><testsuites errors="0" failures="2" tests="2" time="0.001"><testsuite name="Tests" tests="2"><testcase name="Smol" time="0.000" classname="Tests"><failure>*** Failed! (after 1 test):
+Exception:
+  Mock IO Exception: user error (Wrong result)
+  CallStack (from HasCallStack):
+    error, called at mock/Mock/System/IO/Internal.hs:353:35 in test-0.1-4jLMvT0tlbT6nMD9BVibgj-fpvmocking:Mock.System.IO.Internal
+(*)
+Use --quickcheck-replay=1 --quickcheck-max-size=50 to reproduce.</failure></testcase><testcase name="Beeg" time="0.000" classname="Tests"><failure>*** Failed! (after 1 test):
+Exception:
+  Mock IO Exception: user error (Wrong result)
+  CallStack (from HasCallStack):
+    error, called at mock/Mock/System/IO/Internal.hs:353:35 in test-0.1-4jLMvT0tlbT6nMD9BVibgj-fpvmocking:Mock.System.IO.Internal
+(*)
+Use --quickcheck-replay=1 --quickcheck-max-size=300 to reproduce.</failure></testcase></testsuite></testsuites>

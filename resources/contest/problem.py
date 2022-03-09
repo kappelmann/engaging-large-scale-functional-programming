@@ -31,13 +31,13 @@ class Problem:
 
     # triple layout
     # status of problem
-    # 0: status : -1 not attempted 0 not passed, 1 half passed, 2 full passed
+    # 1: status : -1 not attempted, 0 not passed, 1 half passed, 2 full passed
     # 2: timestamp
     # 3: number of attempts before solve
     def getTriple(self, teamid):
         # has not attempted this problem yet
         if not teamid in self.team_attempts:
-            # dirty but this will work and is easier that rewriting lol
+            # dirty but works
             return (-1, -1, 0)
 
         attempt = self.team_attempts[teamid]
@@ -61,7 +61,7 @@ class Problem:
     def updatePoints(self, teamscores):
         self.last_checked = time.localtime()
 
-        fullpath = self.path + "/uploads"
+        fullpath = self.path
 
         # failsave
         if not os.path.isdir(fullpath):
@@ -76,7 +76,7 @@ class Problem:
             if all(attempt[1]):
                 continue
 
-            ts = getTimestamp(fullpath+"/"+teamid)
+            ts = getTimestamp(fullpath+"/"+teamid+"/timestamp")
 
             if ts != self.team_attempts[teamid][3]:
                 self.team_attempts[teamid][3] = ts
@@ -86,7 +86,7 @@ class Problem:
             try:
                 tree = ET.parse(fullpath+"/"+teamid+"/results.xml")
             except:
-                # some weird race condition might occur; resolved next update
+                # some weird race condition might occur; try again in next update
                 continue
 
             halfp = 0
@@ -112,7 +112,7 @@ class Problem:
                 self.team_attempts[teamid][1][1] = True
 
 
-            # defaultdict; if this isn't yet an element, value is 0;
+            # default dict; if this isn't yet an element, value is 0;
             # also add teams with 0 points (if not yet existing)
             if all(self.team_attempts[teamid][1]):
                 teamscores[teamid] += 1
@@ -123,7 +123,7 @@ class Problem:
 
 def getTimestamp(path):
     try:
-        with open(path+"/timestamp", "r") as f:
+        with open(path, "r") as f:
             return int(time.mktime(datetime.fromisoformat(f.read()).timetuple()))
     except:
         return int(time.mktime(datetime.max.timetuple()))
@@ -131,7 +131,7 @@ def getTimestamp(path):
 
 if __name__ == "__main__":
     # Just a test printing all parsed tests in the specified XML
-    tree = ET.parse("/home/kev/Documents/uni/tum/phd/my_papers/teaching_fpv/resources/contest/uploads/ga96zun/results.xml")
+    tree = ET.parse("/home/kev/Documents/uni/tum/phd/my_papers/teaching_fpv/resources/contest/example_data/0/uploads/foobar/results.xml")
     print("start dump")
     l = []
     for t in tree.iter():

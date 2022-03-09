@@ -1,27 +1,27 @@
 problems: 
   contest_teams:
-    path: "/home/kev/Documents/uni/tum/phd/my_papers/teaching_fpv/resources/contest/"
+    path: "/home/kev/Documents/uni/tum/phd/my_papers/teaching_fpv/resources/contest/example_data/0/uploads"
     testhalf: 
       - "Total"
     testfull: 
       - "Total"
 
   startup_revenue:
-    path: "/home/fpv/websites/contest2021/02"
+    path: "/home/kev/Documents/uni/tum/phd/my_papers/teaching_fpv/resources/contest/example_data/1/uploads"
     testhalf: 
       - "Partial"
     testfull: 
       - "Total"
 
   prime_mayor:
-    path: "/home/fpv/websites/contest2021/03"
+    path: "/home/kev/Documents/uni/tum/phd/my_papers/teaching_fpv/resources/contest/example_data/2/uploads"
     testhalf:
       - "Test Small Input"
     testfull:
       - "Test Big Input"
 
   help_rudolf:
-    path: "/home/fpv/websites/contest2021/04"
+    path: "/home/kev/Documents/uni/tum/phd/my_papers/teaching_fpv/resources/contest/example_data/3/uploads"
     testhalf: 
       - "Empty string"
       - "One char"
@@ -32,21 +32,21 @@ problems:
       - "Total"
 
   incredible_game:
-    path: "/home/fpv/websites/contest2021/05"
+    path: "/home/kev/Documents/uni/tum/phd/my_papers/teaching_fpv/resources/contest/example_data/4/uploads"
     testhalf:
       - "Test Small Input"
     testfull:
       - "Test Big Input"
   
   terrible_poetry:
-    path: "/home/fpv/websites/contest2021/06"
+    path: "/home/kev/Documents/uni/tum/phd/my_papers/teaching_fpv/resources/contest/example_data/5/uploads"
     testhalf:
       - "Test Small Input"
     testfull:
       - "Test Large Input" 
 
   networking:
-    path: "/home/fpv/websites/contest2021/07"
+    path: "/home/kev/Documents/uni/tum/phd/my_papers/teaching_fpv/resources/contest/example_data/6/uploads"
     testhalf:
       - "Smol"
     testfull:

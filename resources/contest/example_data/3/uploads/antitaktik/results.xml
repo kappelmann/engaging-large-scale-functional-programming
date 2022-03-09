@@ -1,0 +1,7 @@
+<?xml version='1.0' ?><testsuites errors="0" failures="3" tests="6" time="0.000"><testsuite name="Tests" tests="6"><testsuite name="Properties" tests="3"><testsuite name="Checked by SmallCheck" tests="0" /><testsuite name="Checked by QuickCheck" tests="3"><testcase name="Partial 1" time="0.000" classname="Tests.Properties.Checked by QuickCheck"><failure>*** Failed! Falsified (after 2 tests):
+Wrong Result
+Use --quickcheck-replay=1 --quickcheck-max-size=2000 to reproduce.</failure></testcase><testcase name="Partial 2" time="0.000" classname="Tests.Properties.Checked by QuickCheck"><failure>*** Failed! Falsified (after 2 tests):
+Wrong Result
+Use --quickcheck-replay=1 --quickcheck-max-size=5000 to reproduce.</failure></testcase><testcase name="Total" time="0.000" classname="Tests.Properties.Checked by QuickCheck"><failure>*** Failed! Falsified (after 2 tests):
+Wrong Result
+Use --quickcheck-replay=1 --quickcheck-max-size=50000 to reproduce.</failure></testcase></testsuite></testsuite><testsuite name="Unit Tests" tests="3"><testcase name="Empty string" time="0.000" classname="Tests.Unit Tests" /><testcase name="One char" time="0.000" classname="Tests.Unit Tests" /><testcase name="Only R" time="0.000" classname="Tests.Unit Tests" /></testsuite></testsuite></testsuites>

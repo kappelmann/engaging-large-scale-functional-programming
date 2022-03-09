@@ -1,0 +1,79 @@
+body, h1, h2, h3, h4, h5, h6 {
+  font-family: "Montserrat", sans-serif;
+}
+
+.w3-row-padding img {
+  margin-bottom: 12px;
+}
+
+.w3-sidebar {
+  width: 135px;
+  background: #222222;
+}
+
+#main {
+  margin-left: 135px;
+}
+
+@media (max-width: 600px) {
+  #main {
+    margin-left: 0px;
+  }
+}
+
+#p_navbar a {
+  width: 20%;
+}
+
+#scoreboard > table {
+  width: 100%;
+}
+
+.color-fail {
+  color: #F88989;
+}
+
+.background-color-fail {
+  color: black;
+  background-color: #F88989;
+}
+
+.color-correct {
+  color: #E3CC88;
+}
+
+.background-color-correct {
+  color: black;
+  background-color: #E3CC88;
+}
+
+.color-pass {
+  color: #88E388;
+}
+
+.background-color-pass {
+  color: black;
+  background-color: #88E388;
+}
+
+.background-color-no-attempt {
+  background-color: #171717;
+}
+
+td {
+  border: 3px solid #000000;
+  text-align: left;
+  padding: 8px;
+  background-color: #222222;
+}
+
+th {
+  border: 3px solid #000000;
+  text-align: left;
+  padding: 8px;
+  background-color: #2b0b0b;
+}
+
+.code {
+  color: black;
+}

@@ -1,0 +1,1 @@
+<?xml version='1.0' ?><testsuites errors="2" failures="0" tests="2" time="33.070"><testsuite name="Tests" tests="2"><testcase name="Smol" time="3.020" classname="Tests"><failure>TimeOut</failure></testcase><testcase name="Beeg" time="30.040" classname="Tests"><failure>TimeOut</failure></testcase></testsuite></testsuites>
