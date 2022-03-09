@@ -54,58 +54,20 @@
 </style>
 <body class="w3-black">
 
-<!-- Icon Bar (Sidebar - hidden on small screens) -->
-<nav class="w3-sidebar w3-bar-block w3-small w3-hide-small w3-center">
+<nav class="w3-sidebar w3-bar-block w3-small w3-hide-small w3-center" id="p_sidebar">
     <a href="#" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
         <i><img src="static/white_fpv.png" style="width:100%" alt="FPV"></i>
         <p>CONTEST</p>
     </a>
     <a href="#scoreboard" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
-        <i class="fa fa-list-alt w3-xxlarge"></i>
         <p>SCORES</p>
-    </a>
-    <a href="#problem1" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
-        <i class="fa fa-group w3-xxlarge"></i>
-        <p>Problem I</p>
-    </a>
-    <a href="#problem2" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
-        <i class="fa fa-money w3-xxlarge"></i>
-        <p>Problem II</p>
-    </a>
-    <a href="#problem3" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
-        <i class="fa fa-legal w3-xxlarge"></i>
-        <p>Problem III</p>
-    </a>
-    <a href="#problem4" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
-        <i class="fa fa-gift w3-xxlarge"></i>
-        <p>Problem IV</p>
-    </a>
-    <a href="#problem5" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
-        <i class="fa fa-gamepad w3-xxlarge"></i>
-        <p>Problem V</p>
-    </a>
-    <a href="#problem6" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
-        <i class="fa fa-heart w3-xxlarge"></i>
-        <p>Problem VI</p>
-    </a>
-    <a href="#problem7" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
-        <i class="fa fa-sitemap w3-xxlarge"></i>
-        <p>Problem VII</p>
     </a>
 </nav>
 
-<!-- Navbar on small screens (Hidden on medium and large screens) -->
-<div class="w3-top w3-hide-large w3-hide-medium" id="myNavbar">
+<div class="w3-top w3-hide-large w3-hide-medium" id="p_navbar">
     <div class="w3-bar w3-black w3-opacity w3-hover-opacity-off w3-center w3-small">
         <a href="#" class="w3-bar-item w3-button" style="width:25% !important">CONTEST</a>
         <a href="#scoreboard" class="w3-bar-item w3-button" style="width:25% !important">SCORES</a>
-        <a href="#problem1" class="w3-bar-item w3-button" style="width:25% !important">PROBLEM I</a>
-        <a href="#problem2" class="w3-bar-item w3-button" style="width:25% !important">PROBLEM II</a>
-        <a href="#problem3" class="w3-bar-item w3-button" style="width:25% !important">PROBLEM III</a>
-        <a href="#problem4" class="w3-bar-item w3-button" style="width:25% !important">PROBLEM IV</a>
-        <a href="#problem5" class="w3-bar-item w3-button" style="width:25% !important">PROBLEM V</a>
-        <a href="#problem6" class="w3-bar-item w3-button" style="width:25% !important">PROBLEM VI</a>
-        <a href="#problem7" class="w3-bar-item w3-button" style="width:25% !important">PROBLEM VII</a>
     </div>
 </div>
 
@@ -128,7 +90,7 @@
         <p>Each problem is graded as follows: </p>
         <p><b style="color: #F88989">Fail</b> if the submitted solution does not satisfy the desired functionality.</p>
         <p><b style="color: #E3CC88">Correct</b> if the submitted solution satisfies the desired functionality but has bad runtime.</p>
-        <p><b style="color: #88E388">Pass</b> iff the solution meets our runtime requirements and satisfies the desired functionality.</p>
+        <p><b style="color: #88E388">Pass</b> if the solution meets our runtime requirements and satisfies the desired functionality.</p>
         <p>The Team with the most passes wins.</p>
         <p>Your job is to pass as many problems as quickly as you can!</p>
         <p>If there is a tie, we consider correct but inefficient solutions next.</p>
@@ -145,25 +107,47 @@
         <p><span style="font-size: 20pt">⚔</span>️This also shows you how you do compared to others <span style="font-size: 20pt">⚔</span></p>
     </header>
 
-    <div class="w3-content w3-justify w3-padding-32 w3-text-grey w3-center" id="scoreboard">
-        <button class="w3-circle w3-button w3-dark-gray w3-right" onclick="loadScoreBoard()"><i
-                class="fa fa-refresh w3-xxlarge"></i></button>
-        <div id="scoreboard-div">
-            <table class="w3-table" style="width:100%">
-
-            </table>
-        </div>
+    <div id="scoreboard">
+        <h1 class="w3-text-light-grey w3-left">Scoreboard {{ frstr }}</h1>
+        <table class="w3-table" style="width:100%">
+            <tr>
+                <th>Place</th>
+                <th colspan= {{ n_probs }} >Team</th>
+            </tr>
+            {% for t in teams %}
+                <tr>
+                    <!-- team-place -->
+                    <td rowspan="2">{{ loop.index }}.</td>
+                    <!-- team-name -->
+                    <td colspan="7">{{ t[0] }}</td>
+                </tr>
+                <!-- P1 | P2 | P3 | P4 | P5 | P6 | P7 -->
+                <tr>
+                    {% for p in t[2] %}
+                    <!-- Problem -> (score, time, attempts)  -->
+                        {% if p[0] == 2 %}
+                            <!-- PASS -->
+                            <td colspan="1" style="background-color: #88e388"><span class="w3-right">{{ p[2] }}</span><br></br><div class="w3-center">{{ p[1] }}</div><br></br></td>
+                        {% elif p[0] == 1 %}
+                            <!-- SEMI PASS -->
+                            <td colspan="1" style="background-color: #e3cc88"><span class="w3-right">{{ p[2] }}</span><br></br><div class="w3-center">{{ p[1] }}</div><br></br></td>
+                        {% elif p[0] == 0 %}
+                            <!-- FAIL -->
+                            <td colspan="1" style="background-color: #f88989"><span class="w3-right">{{ p[2] }}</span><br></br><div class="w3-center">{{ p[1] }}</div><br></br></td>
+                        {% else %}
+                            <!-- NOT ATTEMPTED -->
+                            <td colspan="1" style="background-color: #171717"><span class="w3-right">-</span><br></br><div class="w3-center">no attempt</div><br></br></td>
+                        {% endif %}
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+        </table>
     </div>
 
-    <div class="w3-content w3-container w3-padding-32">
-        <div id="problem1"></div><br><br>
-        <div id="problem2"></div><br><br>
-        <div id="problem3"></div><br><br>
-        <div id="problem4"></div><br><br>
-        <div id="problem5"></div><br><br>
-        <div id="problem6"></div><br><br>
-        <div id="problem7"></div><br><br>
-    </div>
+    <!-- include problem htmls -->
+    {% for id in range(n_probs) %}
+        {% include 'problem' + id|string + '.html' %}
+    {% endfor %}
 
 
     <footer class="w3-content w3-padding-64 w3-text-grey w3-xlarge">
@@ -174,49 +158,10 @@
 
 </body>
 
+
+<meta id="n_probs" data-n= {{ n_probs }} >
+
 <script>
-    const HttpClient = function () {
-        this.get = function (aUrl, aCallback) {
-            const anHttpRequest = new XMLHttpRequest();
-            anHttpRequest.onreadystatechange = function () {
-                if (anHttpRequest.readyState === 4 && anHttpRequest.status === 200)
-                    aCallback(anHttpRequest.responseText);
-            }
-
-            anHttpRequest.open("GET", aUrl, true);
-            anHttpRequest.send(null);
-        }
-    };
-
-    const path = "/contest"
-
-    function loadScoreBoard() {
-        const url = window.location.origin + path + '/scoreboard';
-        console.log(url)
-        console.log(window.location)
-        new HttpClient().get(url, function (response) {
-            document.getElementById('scoreboard-div').innerHTML = $.parseXML(response).getElementById('scoreboard-div').innerHTML;
-        });
-    }
-
-    loadScoreBoard();
-
-    function loadProblem(id) {
-        const url = window.location.origin + path + '/problem' + id
-        new HttpClient().get(url, function (response) {
-            document.getElementById('problem' + id).innerHTML = $.parseXML(response).getElementById('problem' + id).innerHTML;
-        });
-    }
-
-    loadProblem(1);
-    loadProblem(2);
-    loadProblem(3);
-    loadProblem(4);
-    loadProblem(5);
-    loadProblem(6);
-    loadProblem(7);
-
-    <!--Load mathjax after loading problem statements-->
     async function loadMathJax() {
         await Sleep(100);
         const script = document.createElement("script");
@@ -228,6 +173,40 @@
     function Sleep(milliseconds) {
         return new Promise(resolve => setTimeout(resolve, milliseconds));
     }
+
+
+    // add problem element to sidebar
+    function create_sidebar(id) {
+        var a = document.createElement('a');
+        var p = document.createElement('p');
+        p.innerHTML = "PROBLEM" + id;
+        a.setAttribute('href', '#problem' + id);
+        a.setAttribute('class', 'w3-bar-item w3-button w3-padding-large w3-hover-black');
+        a.appendChild(p)
+        document.getElementById('p_sidebar').appendChild(a);
+    }
+
+    // add problem element to navbar
+    function create_navbar(id) {
+        var a = document.createElement('a');
+        a.innerHTML = "PROBLEM" + id;
+        a.setAttribute('href', '#problem' + id);
+        a.setAttribute('class', 'w3-bar-item w3-button');
+        a.setAttribute('styl', 'width:25% !important');
+        document.getElementById('p_navbar').appendChild(a);
+    }
+
+    function make_navigation() {
+        var n_probs = $('#n_probs').data("n");
+
+        console.log(n_probs)
+        for(i = 0; i < n_probs; i++) {
+            create_sidebar(i)
+            create_navbar(i)
+        }
+    }
+
+    make_navigation()
 
     loadMathJax()
 

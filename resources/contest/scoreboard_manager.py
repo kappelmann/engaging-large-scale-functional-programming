@@ -3,6 +3,7 @@ from multiprocessing.managers import BaseManager
 from multiprocessing.connection import Listener
 from copy import deepcopy
 from os import getpid
+from sys import argv
 
 class ScoreboardManager(BaseManager):
     pass
@@ -16,9 +17,20 @@ def main():
     print("Listener running with PID: {}".format(getpid()))
 
     try:
-        shared_scoreboard = Scoreboard()
+        shared_scoreboard = None
+        if len(argv) == 2:
+            if argv[1] == "restore_backup":
+                shared_scoreboard = Scoreboard(hasCrashed=True)
+            else:
+                print("Unknown command: {}".format(argv[1]))
+                listener.close()
+                exit(1)
+        else:
+            shared_scoreboard = Scoreboard()
+
         frozen_vals = None
         is_frozen = False
+        n_problems = shared_scoreboard.getNProbs()
 
         while True:
             conn = listener.accept()
@@ -39,9 +51,9 @@ def main():
                     print(t)
             elif (req == "req"):
                 if is_frozen:
-                    conn.send(("(FROZEN)", frozen_vals))
+                    conn.send(("(FROZEN)", frozen_vals, n_problems))
                 else:
-                    conn.send(("", shared_scoreboard.getTeamValues()))
+                    conn.send(("", shared_scoreboard.getTeamValues(), n_problems))
             else:
                 print("Unknown request: {}".format(req))
 
@@ -49,7 +61,8 @@ def main():
     
     finally:
         listener.close()
-        shared_scoreboard.shutdownWorker()
+        if shared_scoreboard:
+            shared_scoreboard.shutdownWorker()
 
 if __name__ == '__main__':
     main()

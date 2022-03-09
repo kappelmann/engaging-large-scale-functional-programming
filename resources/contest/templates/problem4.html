@@ -1,56 +1,74 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <title>Problem 4</title>
-</head>
-<body>
 <div id="problem4">
-    <h1 id="helping-rudolph">Helping Rudolph</h1>
-    <p>Rudolph has got the special mission to deliver presents to the houses in his village.</p>
-    <p>The elfs gave him instructions with the moves that he has to take such that his route respects the following
-        conditions:</p>
-    <ol type="1">
-        <li>The village is a single row of infinitely many houses, which means Rudolph can only move to the left or to
-            the right.
-        </li>
-        <li>His start and end point is Santa’s warehouse.</li>
-        <li>Santa’s warehouse is the first house in the row, which means Rudolph can’t move to the left if he is at the
-            warehouse.
-        </li>
-        <li>The sequence is composed of “R” and “L” for right and left moves, respectively.</li>
-    </ol>
-    <p>Some valid sequences of moves are <code>"RRRLRLLL"</code>, <code>"RRLL"</code> and <code>"RRLRRLLL"</code>.
-        <code>"LR"</code>, <code>"LLR"</code>, and <code>"RLLR"</code> are not valid because they break conditions 2 and
-        3. Rudolph is now set to start his mission. However, upon looking over the route, he finds that the elfs gave
-        him wrong instructions. Because he doesn’t have time to ask the elfs for new instructions, he decides to form a
-        new route the following way: he takes the longest substring from the old instructions and this substring should
-        be a valid sequence that he can follow. Rudolph is asking you to do the hard part, that is to find the longest
-        substring that represents a valid sequence of moves. You also have to find the total number of such substrings.
+    <h1 id="they-see-me-slidin">They See Me Slidin’</h1>
+    <p>Going through your old belongings, you find your old Game Boy. You spent hours playing with it, especially this
+        one addictive sliding game…</p>
+    <p>The rules of the game are like follows: You are in a rectangular ice maze, which is a grid that possibly has
+        rocks on some cells. You can take a step in one of the 4 directions: up, down, left, and right. When you take a
+        step, you keep sliding along that direction until you hit a rock or a border of the field. You can and will only
+        stop in the cell right before the obstacle. One sliding move of the player is considered one step.</p>
+    <p>Initially, you spawn on some random empty cell <span class="math inline">\((r_0,c_0)\)</span> where <span
+            class="math inline">\(r_0\)</span> and <span class="math inline">\(c_0\)</span> are the 0-based row and
+        column index of the player, respectively. The goal is to reach (i.e. slide over or stop at) the flagpole, which
+        is standing on some position <span class="math inline">\((r_p,c_p)\)</span>, to win the game.</p>
+    <p>Now as funny as this sounds, you got old and couldn’t care less about figuring out a winning path on your own
+        anymore. Instead, you use your favourite language Haskell to solve this task automatically: given the dimensions
+        of the field, the positions of the rocks as well as the flagpole and your initial position, find the minimum
+        number of steps necessary to win or return <span class="math inline">\(-1\)</span> if the goal is not reachable.
     </p>
     <h2 id="inputoutput-description">Input/Output Description</h2>
     <h3 id="input">Input</h3>
-    <p>There is one input parameter: a string <span class="math inline">\(s\)</span> consisting of <code>'R'</code> and
-        <code>'L'</code> characters.</p>
+    <ol type="1">
+        <li><code>h</code> the height of the field</li>
+        <li><code>w</code> the width of the field</li>
+        <li><code>rocks</code> the list of rocks</li>
+        <li><code>start</code> the start position</li>
+        <li><code>flag</code> the flag position</li>
+    </ol>
+    <p>Note: all positions are 0-based and the walls are outside of the game field.</p>
     <h3 id="output">Output</h3>
-    <p>Your function should return a pair of two integers <span class="math inline">\((n, m)\)</span> where <span
-            class="math inline">\(n\)</span> is the length of the longest substring that is a valid sequence of moves
-        and <span class="math inline">\(m\)</span> is the number of such substrings. If there are no valid substrings,
-        return <span class="math inline">\((0, 1)\)</span>.</p>
+    <p>A single integer: the minimum number of steps to win if applicable and <span class="math inline">\(-1\)</span>
+        otherwise.</p>
     <h2 id="constraints">Constraints</h2>
     <ul>
-        <li><span class="math inline">\(0 \le |s| \le 50000\)</span></li>
+        <li><span class="math inline">\(1 \le h \le 10^5\)</span></li>
+        <li><span class="math inline">\(1 \le w \le 10^5\)</span></li>
     </ul>
     <h3 id="examples">Examples</h3>
     <h4 id="input-1">Input</h4>
     <ol type="1">
-        <li>“LRRRLLLLRRLRLL”</li>
-        <li>“LLR”</li>
+        <li><code>w=h=5</code>, <code>rocks=[(3,3),(4,2)]</code>, <code>start=(0,4)</code>, <code>flag=(1,3)</code>,
+        </li>
     </ol>
+    <pre><code>  01234
+0 ....S
+1 ...F.
+2 .....
+3 ...X.
+4 ..X..</code></pre>
+    <ol start="2" type="1">
+        <li><code>w=h=10</code>, <code>rocks=[(7,2),(3,3),(4,9)]</code>, <code>start=(7,6)</code>,
+            <code>flag=(4,7)</code></li>
+    </ol>
+    <pre><code>  0123456789
+0 ..........
+1 ..........
+2 ..........
+3 ...X......
+4 .......F.X
+5 ..........
+6 ..........
+7 ..X...S...
+8 ..........
+9 ..........</code></pre>
     <h4 id="output-1">Output</h4>
     <ol type="1">
-        <li><code>(6, 2)</code></li>
-        <li><code>(0, 1)</code></li>
+        <li><code>-1</code></li>
+        <li><code>3</code></li>
     </ol>
+    <h2 id="hints">Hints</h2>
+    <ol type="1">
+        <li>Representing the maze using lists will be too slow. Use more efficient data structures.</li>
+        <li>You can use <code>showMaze</code> from the template to print a maze</li>
+    </ol>
+
 </div>
-</body>
-</html>

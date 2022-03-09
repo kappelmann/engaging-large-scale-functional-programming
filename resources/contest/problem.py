@@ -29,11 +29,16 @@ class Problem:
 
         return self.team_attempts[teamid]
 
+    # triple layout
+    # status of problem 
+    # 0: status : -1 not attempted 0 not passed, 1 half passed, 2 full passed
+    # 2: timestamp
+    # 3: number of attempts before solve
     def getTriple(self, teamid):
         # has not attempted this problem yet
         if not teamid in self.team_attempts:
             # dirty but this will work and is easier that rewriting lol
-            return (-1,-1, 0)
+            return (-1, -1, 0)
         
         attempt = self.team_attempts[teamid]
 
@@ -53,10 +58,10 @@ class Problem:
         return (status, timestamp, timesf)
         
 
-    def updatePoints(self, teams, rootpath):
+    def updatePoints(self, teamscores):
         self.last_checked = time.localtime()
 
-        fullpath = rootpath + self.path + "/uploads"
+        fullpath = self.path + "/uploads"
 
         # failsave
         if not os.path.isdir(fullpath):
@@ -67,7 +72,7 @@ class Problem:
 
             attempt = self.getAttempt(teamid)
 
-            # already got the point but for some reason resubmitted
+            # already got the point but for some reason resubmitted; ignore
             if all(attempt[1]):
                 continue
 
@@ -110,11 +115,11 @@ class Problem:
             # defaultdict; if this isn't yet an element, value is 0;
             # also add teams with 0 points (if not yet existing)
             if all(self.team_attempts[teamid][1]):
-                teams[teamid] += 1
+                teamscores[teamid] += 1
             else:
                 # didn't get full points, so failed attempt!
                 self.team_attempts[teamid][0] += 1
-                teams[teamid] += 0
+                teamscores[teamid] += 0
     
 def getTimestamp(path):
     try:

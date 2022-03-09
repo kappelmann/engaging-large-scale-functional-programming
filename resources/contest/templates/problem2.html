@@ -1,42 +1,46 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <title>Problem 2</title>
-</head>
-<body>
 <div id="problem2">
-    <h1 id="incubator">🤑 Incubator 🤑</h1>
-    <p>Our innovative students from the TUM School of Money have come up with a revolutionary startup idea. In order to
-        win the game of capitalism, they now need to maximise the revenue by selling their product to the world.</p>
-    <p>So far, there are <span class="math inline">\(n\)</span> interested customers. The <span class="math inline">\(i\)</span>-th
-        customer is willing to pay at most <span class="math inline">\(a_i\)</span> euros for the product. If the price
-        for the product is <span class="math inline">\(m\)</span> euros, then the total money the startup earns is <span
-                class="math inline">\(m\)</span> multiplied by the number of people who are willing to pay <span
-                class="math inline">\(m\)</span> euros or more.</p>
-    <p>Help the capitalistic TUM spin-off maximising their revenue.</p>
+    <h1 id="tax-avoidance-scheme">Tax Avoidance Scheme</h1>
+    <p>Your city has elected a new mayor - Mr Goldbach - who is a big fan of prime numbers. Not only does he call
+        himself “The Prime Mayor”, but he also passed the following new tax law as a part of his <em>prime</em> policy:
+    </p>
+    <p>Each citizen with income <strong><span class="math inline">\(a\)</span></strong> coins has to 1. partition their
+        coins into subsets such that each set contains a prime number of coins and 2. write down this partitioning in
+        their tax declaration and pay exactly the number of paritions.</p>
+    <p>Now of course, all the extremely expensive, legacy tax finance programs (compatible only with Internet Explorer
+        &lt;= 9) of the republic are not worth a dime anymore. You, a young citizen with incredible maths abilities and
+        a captilistic urge, realised that this indeed is your <em>prime</em> time to take over the market.</p>
+    <p>You want to write a novel piece of software, powered by Haskell, that makes everyone pay the least amount of tax
+        under the new regulations. In a next step, you will create some marketing compaign, design a website, etc. but
+        let’s stick to the software for now.</p>
     <h2 id="inputoutput-description">Input/Output Description</h2>
     <h3 id="input">Input</h3>
-    <p>The input parameter is a list of <span class="math inline">\(n\)</span> integers, the <span class="math inline">\(i\)</span>-th
-        integer representing the price that the <span class="math inline">\(i\)</span>-th customer is willing to pay.
-    </p>
+    <p>A single integer <strong><span class="math inline">\(a\)</span></strong>: the income of a citizen.</p>
     <h3 id="output">Output</h3>
-    <p>Your function should return one integer - the maximum income the startup can achieve.</p>
+    <p>One integer: the minimum amount of tax the citizen must pay.</p>
     <h2 id="constraints">Constraints</h2>
     <ul>
-        <li><span class="math inline">\(1 \le n \le 10000\)</span></li>
-        <li><span class="math inline">\(1 \le a_i \le 1012\)</span></li>
+        <li><span class="math inline">\(2 \le a \le 10^{10}\)</span></li>
     </ul>
+    <h2 id="hint">Hint</h2>
+    <p><a href="https://en.wikipedia.org/wiki/Goldbach%27s_conjecture">Goldbach’s conjecture</a> holds for all numbers
+        that will be tested, that is any even <span class="math inline">\(n &gt; 2\)</span> is the sum of two primes.
+    </p>
     <h3 id="examples">Examples</h3>
     <h4 id="input-1">Input</h4>
     <ol type="1">
-        <li><code>[1,2,3,4,5,6,7,8]</code></li>
-        <li><code>[2,4,2]</code></li>
+        <li>27</li>
+        <li>13</li>
+        <li>15</li>
+        <li>44</li>
+        <li>12342</li>
     </ol>
     <h4 id="output-1">Output</h4>
     <ol type="1">
-        <li><code>20</code></li>
-        <li><code>6</code></li>
+        <li>3</li>
+        <li>1</li>
+        <li>2</li>
+        <li>2</li>
+        <li>2</li>
     </ol>
+
 </div>
-</body>
-</html>

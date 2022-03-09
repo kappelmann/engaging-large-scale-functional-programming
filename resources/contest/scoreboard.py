@@ -12,26 +12,11 @@ from itertools import groupby
 from functools import cmp_to_key
 import pickle
 
-try:
-    # create backups folder
-    os.mkdir("backups")
-except FileExistsError:
-    pass
-
-cfgs = None
-#with open("problems.yaml", "r") as f:
-with open("backup.yaml", "r") as f:
-    cfgs = yaml.safe_load(f)
-
-PROBLEMS = [Problem(p["path"],p["testhalf"],p["testfull"]) for p in cfgs["problems"].values()]
-    
-
 UPDATE_INTERVAL = 15
-
-UPLOADS_LOCATION = ""
 
 team_lock = Lock()
 
+# we really weren't sure what we wanted, 
 def allNeutral(x):
     if x == 1:
         return 1
@@ -46,6 +31,11 @@ def isValid(val):
 def cmp(a, b):
     return (a>b) - (a<b)
 
+
+# TEAM tuple layout:
+# 0: name (id)
+# 1: score (just int)
+# 2: list of problem triples (TODO)
 def cmpTeams(t1, t2):
     
     scorediff = cmp(t1[1], t2[1])
@@ -73,83 +63,113 @@ def cmpTeams(t1, t2):
 class Scoreboard:
 
     def __init__(self, hasCrashed=False):
-        self.teams = []
-        self.problems = deepcopy(PROBLEMS)
+        try:
+            # create backups folder
+            os.mkdir("backups")
+        except FileExistsError:
+            pass
+        except:
+            print("Error creating backups folder!")
+            exit(1)
+
+        # parse problem configs from yaml
+        cfgs = None
+        with open("problems.yaml", "r") as f:
+            cfgs = yaml.safe_load(f)
+
+        # load into Problem objects
+        cfg_problems = [Problem(prob["path"], prob["testhalf"], prob["testfull"]) 
+            for prob in cfgs["problems"].values()]
+        
+        self.n_problems = len(cfg_problems)
+            
+
+
+        self.teams_results = []
+        self.problems = deepcopy(cfg_problems)
         self.ts = time.localtime()
         self.hasCrashed = hasCrashed
 
-        # python threads don't play that nicely, but whatever
+        # start worker thread
         self.t_shouldRun = True
         self.t = Thread(target=self._updateLoop)
         self.t.start()
 
-    # decided I don't care wether or not the GIL exists, what matters is
-    # that this is
     def _updateLoop(self):
 
-        # restore from last backup
-        shadow_teams = None
+        # dictionary mapping teams to their score -
+        # details about attempts are saved inside the problems!
+        team_scores = None
+
+        # shadowed copy of the problems
         shadow_problems = None
 
+        # restore from last backup
         if self.hasCrashed:
-            shadow_teams = pickle.load(open("backups/teams.p", "rb"))
-            #print(shadow_teams)
+            team_scores = pickle.load(open("backups/scores.p", "rb"))
             shadow_problems = [pickle.load(open("backups/problem{}.p".format(i), "rb"))
-            for i in range(len(PROBLEMS))]
-            for p in shadow_problems:
-                #print(p.team_attempts)
-                pass
+                for i in range(len(self.problems))]
 
         else:
-            shadow_teams = defaultdict(int)
-            shadow_problems = [Problem(p["path"],p["testhalf"],p["testfull"]) for p in cfgs["problems"].values()]
+            team_scores = defaultdict(int)
+            shadow_problems = deepcopy(self.problems)
 
         while self.t_shouldRun:
+            
+            # update from artemis data, increments team scores on solve
             for (i, p) in enumerate(shadow_problems):
-                p.updatePoints(shadow_teams, UPLOADS_LOCATION)
+                p.updatePoints(team_scores)
 
-                #after update pickle
+                #after update pickle problems for backup
                 pickle.dump(p, open("backups/problem{}.p".format(i), "wb"), pickle.HIGHEST_PROTOCOL)
 
 
-            pickle.dump(shadow_teams, open("backups/teams.p", "wb"))
+            # pickle team scores for backup after all problems are backed up
+            pickle.dump(team_scores, open("backups/scores.p", "wb"))
                 
             ts = time.localtime()
 
             # python3 iterators are kinda neat
             # need to sort before rendering, do it in worker thread
-            values = []
-            for (tid,score) in shadow_teams.items():
+            shadow_results = []
+            for (tid,score) in team_scores.items():
                 triples = []
                 for p in shadow_problems:
                     triples.append(p.getTriple(tid))
                 
-                values.append((tid, score, triples))
+                shadow_results.append((tid, score, triples))
             
-            values.sort(key=cmp_to_key(cmpTeams), reverse=True)
+            shadow_results.sort(key=cmp_to_key(cmpTeams), reverse=True)
 
+            # convert a team's timestamp to string for frontend
             tsToStr =lambda t: (t[0], t[1], 
                 list(map(lambda tr: (tr[0], datetime.fromtimestamp(tr[1]).strftime("%H:%M:%S"),tr[2]),t[2]))) 
             
-            values = list(map(tsToStr, values))
+            # convert all timestamps to string
+            shadow_results = list(map(tsToStr, shadow_results))
 
+            
+            # deepcopy shadowed values in a threadsafe manner
             try:
                 team_lock.acquire()
-                self.teams = deepcopy(values)
+                self.teams_results = deepcopy(shadow_results)
                 self.problems = deepcopy(shadow_problems)
                 self.ts = ts
             finally:
                 team_lock.release()
             
+            
             time.sleep(UPDATE_INTERVAL)
 
+    # get teams with all values we decided we wanted
     def getTeamValues(self):
         try:
             team_lock.acquire()
-            return self.teams
+            return self.teams_results
         finally:
             team_lock.release()
 
+    # get the problems
     def getProblemSolves(self):
         try:
             team_lock.acquire()
@@ -157,6 +177,7 @@ class Scoreboard:
         finally:
             team_lock.release()
     
+    # get timestamp
     def getTs(self):
         try:
             team_lock.acquire()
@@ -164,16 +185,26 @@ class Scoreboard:
         finally:
             team_lock.release()
 
+    # value is never modified and set at construction, no race condition here :)
+    def getNProbs(self):
+        return self.n_problems
+
     def shutdownWorker(self):
         self.t_shouldRun = False
         self.t.join()
 
 if __name__ == "__main__":
-    sb = Scoreboard(hasCrashed=True)
+    sb = Scoreboard(hasCrashed=False)
     n = 0
-    while True:
-        print("Teams: {}".format(sb.getTeamValues()))
-        for p in sb.getProblemSolves():
-            #print(p.team_attempts)
-            pass
-        time.sleep(3)
+    try:
+        while True:
+            i = 0
+            for x in sb.getTeamValues():
+                if(i == 15):
+                    break
+                print(x)
+                i+= 1
+
+            time.sleep(3)
+    except:
+        sb.shutdownWorker
