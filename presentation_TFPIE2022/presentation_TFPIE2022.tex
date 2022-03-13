@@ -1,0 +1,74 @@
+\documentclass{beamer}
+\usepackage{appendixnumberbeamer}
+
+\mode<presentation>{\usetheme[subsectionpage=progressbar,block=fill,numbering=none]{metropolis}}
+
+\usepackage[sfdefault]{FiraSans} %% option 'sfdefault' activates Fira Sans as the default text font
+\usepackage[english]{babel}
+% \usepackage[utf8]{inputenc}
+
+\usepackage{graphicx} % Allows including images
+\usepackage{caption}
+\usepackage{booktabs} % Allows the use of \toprule, \midrule and \bottomrule in tables
+\usepackage{multicol}
+
+% Math packages
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{amssymb}
+\usepackage{mathpartir}
+\usepackage{stmaryrd}
+\usepackage{centernot}
+\usepackage[normalem]{ulem}
+
+%% Coding
+\usepackage[outputdir=build]{minted}
+
+% Coloured boxes
+\usepackage{tcolorbox}
+\colorlet{alert}{mLightBrown}
+\colorlet{mLightBrownTransparent}{white!70!mLightBrown}
+\newtcolorbox{alertbox}
+{standard jigsaw, opacityback=0,colframe=alert}
+\newtcolorbox{tbox}
+{standard jigsaw, opacityback=0,opacityframe=0}
+
+\newcommand{\haskell}[1]{\mintinline{haskell}{#1}}
+
+\title{Engaging, Large-Scale Functional Programming Education in Physical and Virtual Space} % the title on the title page
+
+\author{Kevin Kappelmann, Jonas Rädle, Lukas Stevens} % Your name
+\institute[TU Munich]{Technical University of Munich}
+\date{March 16, 2022} % Date, can be changed to a custom date
+
+\begin{document}
+
+\maketitle
+
+%------------------------------------------------
+\section{Intro}
+
+\begin{frame}[fragile]{Example}
+\begin{minted}{haskell}
+appTwice :: (Int -> Int) -> Int -> Int
+appTwice f x = f (f x)
+\end{minted}
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}[standout]
+\Large{\alert{Any questions?}}
+
+\end{frame}
+%----------------------------------------------------------------------------------------
+%\begin{frame}[allowframebreaks]{References}
+  %\bibliography{../paper/sources.bib}
+  %\bibliographystyle{abbrv}
+%\end{frame}
+
+% \begin{frame}[allowframebreaks]{Image Sources}
+% \begin{itemize}
+% \end{itemize}
+% \end{frame}
+
+\end{document}
