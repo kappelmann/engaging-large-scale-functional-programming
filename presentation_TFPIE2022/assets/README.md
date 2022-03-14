@@ -1,6 +1,6 @@
 # Sources
 
-1. classes: https://unsplash.com/photos/YloghyfD7e8
+1. class: https://unsplash.com/photos/YloghyfD7e8
 2. xkcd_haskell: https://xkcd.com/1312
 2. xkcd_tailrec: https://xkcd.com/1270
 2. zoom: https://unsplash.com/photos/bXqOMf5tvDk
