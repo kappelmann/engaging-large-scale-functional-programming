@@ -44,5 +44,4 @@ and an exemplary integration of automated CYP proof checking in Tasty in [cyp\_i
 
 ## TODO
 1. Domineering and ChainReaction
-2. programming contest https://www21.in.tum.de/teaching/fpv/WS20/assets/ex12.pdf
-6. IO mocking
+2. IO mocking
