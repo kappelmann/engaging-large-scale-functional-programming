@@ -42,6 +42,12 @@ Please refer to the [paper](../paper) for more information.
 You can find the source of CYP including some proof examples [here](https://github.com/lukasstevens/cyp)
 and an exemplary integration of automated CYP proof checking in Tasty in [cyp\_integration](cyp_integration).
 
+## Programming Contest
+
+In [contest](contest),
+you can find a simple application to run an
+[ACM-ICPC-like programming contest](https://en.wikipedia.org/wiki/International_Collegiate_Programming_Contest).
+
 ## TODO
 1. Domineering and ChainReaction
 2. IO mocking
