@@ -60,7 +60,7 @@
 
 \title{Engaging, Large-Scale Functional Programming Education in Physical and Virtual Space} % the title on the title page
 
-\author{Kevin Kappelmann, Jonas Rädle, Lukas Stevens} % Your name
+\author{Kevin Kappelmann (presenting), Jonas Rädle (presenting), and\\Lukas Stevens} % Your name
 \institute[TU Munich]{Technical University of Munich}
 \date{March 16, 2022} % Date, can be changed to a custom date
 
@@ -261,31 +261,6 @@ Note: We used Haskell, but most ideas apply to any functional programming course
 \end{itemize}
 \end{frame}
 
-\begin{frame}[fragile]{Competition and Awards}
-\centerline{\Large{\alert{Offer challenges to go beyond the syllabus!}}}
-\pause
-\begin{itemize}[<+->]
-\item Diverse, weekly competition exercises
-% \begin{itemize}[<3->]
-  % \item Code-golfing
-  % \item Optimisations (SAT and resolution provers, mathematical computations,\dots)
-  % \item Games strategies and tournaments
-  % \item Creative tasks: art and music generation
-% \end{itemize}
-% \item Accompanied by humorously written blog posts
-\item Awards for top 30 students
-\item Works extremely well to motivate talented students\dots
-\item[] \emph{but it is very time-consuming}.
-\end{itemize}
-% \begin{onlyenv}<2>
-% \begin{minted}[fontsize=\small]{haskell}
-% bernoulli = genericIndex $ map head $ iterate
-  % ((*) `zipWith` enumFrom 1 <<< zipWith subtract =<< tail)
-  % recip `map` enumFrom 1
-% \end{minted}
-% \end{onlyenv}
-\end{frame}
-
 \begin{frame}{Workshops With Industry Partners}
 \vspace{\baselineskip}
 
@@ -337,28 +312,32 @@ Note: We used Haskell, but most ideas apply to any functional programming course
 % \includegraphics[width=0.9\linewidth]{assets/workshop_slide_ui.pdf}}
 % \end{frame}
 
-% \begin{frame}{Social Interactions}
-% \centerline{\Large{\alert{The social environment matters!}}}
-% \pause
-% \begin{itemize}[<+->]
-% % \item Truism: students spend more time on courses they like
-% \item Online courses are isolating\dots
-% \item[] so let us foster social interaction:
-% \begin{itemize}[<4->]
-  % \item Pair-programming in tutorials
-  % \item ACM-ICPC-like programming contest
-  % \item Get-together hangout sessions
-  % \item Award ceremonies
-% \end{itemize}
-% \end{itemize}
-% \end{frame}
+\begin{frame}{Social Interactions}
+\centerline{\Large{\alert{The social environment matters!}}}
+\pause
+\begin{itemize}[<+->]
+% \item Truism: students spend more time on courses they like
+\item Online courses are isolating\dots
+\item[] so let us foster social interaction:
+\begin{itemize}[<4->]
+  \item Pair-programming in tutorials
+  \item ACM-ICPC-like programming contest
+  \item Get-together hangout sessions
+  \item Award ceremonies
+\end{itemize}
+\end{itemize}
+\end{frame}
 
-
+\begin{frame}[fragile]{Competitions}
+\centerline{\Large{\alert{Offer challenges to go beyond the syllabus!}}}
+\pause
+\begin{itemize}[<+->]
+\item Diverse, weekly competition exercises
+\end{itemize}
+\end{frame}
 
 %------------------------------------------------
-\subsection{Competition Examples}
-
-\begin{frame}{Weekly Competition}
+\begin{frame}{Competitions}
 \only<1>{\centerline{Code Golf}
 \begin{figure}
 \includegraphics[width=0.75\linewidth]{assets/golf1}
@@ -388,6 +367,32 @@ Note: We used Haskell, but most ideas apply to any functional programming course
 \end{figure}
 }
 \end{frame}
+
+\begin{frame}[fragile]{Competitions}
+\centerline{\Large{\alert{Offer challenges to go beyond the syllabus!}}}
+\begin{itemize}
+\item Diverse, weekly competition exercises
+% \begin{itemize}[<3->]
+  % \item Code-golfing
+  % \item Optimisations (SAT and resolution provers, mathematical computations,\dots)
+  % \item Games strategies and tournaments
+  % \item Creative tasks: art and music generation
+% \end{itemize}
+% \item Accompanied by humorously written blog posts
+\item Awards for top 30 students
+\item<2-> Works extremely well to motivate talented students\dots
+\item[]<3-> \emph{but it is very time-consuming}.
+\end{itemize}
+% \begin{onlyenv}<2>
+% \begin{minted}[fontsize=\small]{haskell}
+% bernoulli = genericIndex $ map head $ iterate
+  % ((*) `zipWith` enumFrom 1 <<< zipWith subtract =<< tail)
+  % recip `map` enumFrom 1
+% \end{minted}
+% \end{onlyenv}
+\end{frame}
+
+
 
 %------------------------------------------------
 \section{Check Your Proof}

@@ -30,3 +30,6 @@ You can run executables specified in `test.cabal` using `stack run <executableNa
 By default, Artemis runs `./run.sh -s` to execute the tests.
 You can modify `run.sh` to adapt the build and test process.
 
+## Acknowledgments
+
+The inital mocking framework was written by [Manuel Eberl](http://pruvisto.org) at TU Munich.
