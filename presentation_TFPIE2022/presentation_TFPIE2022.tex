@@ -157,23 +157,16 @@
 \end{frame}
 
 \begin{frame}
-\only<1>{\centerline{\alert{\huge{It is hopeless!}}}}
-\only<2->{\centerline{\huge{\sout{It is hopeless!}}}}
-
-\vspace{\baselineskip}
-\visible<2->{
-\only<2->{\centerline{\alert{\huge{There is hope!}}}}
-\begin{itemize}
-\visible<3->{
-\item We managed to cope with all these challenges}
-\visible<4->{
-\item We share our insights and tools for other educators}
+\centerline{\alert{\huge{There is hope!}}}
+\pause
+\begin{itemize}[<+->]
+\item We managed to cope with all these challenges
+\item We share our insights, tools, and exercises for other educators
 \end{itemize}
 
-\visible<4->{
+\visible<3->{
   You can find our resources on:\\
   \centerline{\small\url{github.com/kappelmann/engaging-large-scale-functional-programming}}
-}
 }
 \end{frame}
 
@@ -184,22 +177,24 @@
 \begin{itemize}[<+->]
   \item 5 ECTS course (${\sim}150$ hours of work)
   \item 14 weeks; each week: one 90-minute lecture, one 90-minute tutorial, and one homework sheet
+  \item Typical FP introductory course\\
+    Special: Formal proofs and proof checker
   % \item Students took courses on Java, algorithms and data structures, discrete mathematics, and linear algebra.
    \item Winter semster 2019: 1057 students and 13 student assistants\\
      Winter semster 2020 (online): 1031 students and 22 student assistants
 \end{itemize}
 \end{frame}
 
-\begin{frame}{Syllabus Excerpt}
-We used Haskell, but most ideas apply to other functional languages.
-\pause
-\begin{itemize}[<+->]
-  \item Basic FP concepts: recursion and pattern matching (numbers and lists), polymorphism
-  \item Formal proofs by structural and computation induction
-  \item More FP concepts: higher-order functions, type classes, algebraic datatypes
-  \item Specifics: modules, IO, lazy evaluation, tail recursion
-\end{itemize}
-\end{frame}
+% \begin{frame}{Syllabus Excerpt}
+% We used Haskell, but most ideas apply to other functional languages.
+% \pause
+% \begin{itemize}[<+->]
+  % \item Basic FP concepts: recursion and pattern matching (numbers and lists), polymorphism
+  % \item Formal proofs by structural and computation induction
+  % \item More FP concepts: higher-order functions, type classes, algebraic datatypes
+  % \item Specifics: modules, IO, lazy evaluation, tail recursion
+% \end{itemize}
+% \end{frame}
 
 %------------------------------------------------
 \section{Lectures}
@@ -253,9 +248,9 @@ We used Haskell, but most ideas apply to other functional languages.
   \item Creative tasks: art and music generation
 \end{itemize}
 \item Accompanied by humorously written blog posts
-\item Awards for top 30 students (conference tickets, Haskell keychains, prizes by industry partners,\dots)
+\item Awards for top 30 students (conference tickets, Haskell keychains, books, prizes by industry partners,\dots)
 \item Works extremely well to motivate talented students\dots
-\item[] but it is very time-consuming.
+\item[] \emph{but it is very time-consuming}.
 \end{itemize}
 % \begin{onlyenv}<2>
 % \begin{minted}[fontsize=\small]{haskell}
@@ -281,7 +276,7 @@ We used Haskell, but most ideas apply to other functional languages.
 % \end{enumerate}
 \only<6->{
 \visible<6->{
-\item Great success: 105 spots but 120 registrations}
+\item Great success: 120 registrations for 105 spots}
 \visible<7->{
 \item In some cases, workshop extended for multiple hours}
 \visible<8->{
