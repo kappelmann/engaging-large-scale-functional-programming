@@ -18,6 +18,8 @@ common common-all
   build-depends:
     base == 4.*
 
+-- The crucial part happens here: we hide the Prelude, System.IO, and System.Random
+-- and replace it with our mocked modules 
 common common-mocked
   import: common-all
   build-depends: fpvmocking
@@ -51,6 +53,7 @@ common common-tests
   if flag(Prod)
     cpp-options: -DPROD
 
+-- This builds the mocked IO modules located in mock/
 library fpvmocking
   import: common-all
   exposed-modules: Prelude, System.Random, System.IO, Control.Monad.Pause, Mock.System.IO.Internal, Mock.System.IO.RealWorld
