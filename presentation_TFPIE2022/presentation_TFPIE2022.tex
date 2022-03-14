@@ -23,7 +23,29 @@
 \usepackage[normalem]{ulem}
 
 %% Coding
-\usepackage[outputdir=build]{minted}
+% \usepackage[outputdir=build]{minted}
+\usepackage{listings}
+\lstdefinelanguage{cyp}{
+  keywords={Lemma,goal,Proof,QED,To,show,Case},
+  keywordstyle=\color{blue}\bfseries,
+  keywords=[2]{data},
+  keywordstyle=[2]{\color{purple}\bfseries},
+  keywords=[3]{.=.},
+  keywordstyle=[3]{\color{red}\bfseries},
+  comment=[l]{--},
+  commentstyle=\color{purple}\ttfamily,
+}
+
+\lstset{
+  language=cyp,
+  extendedchars=true,
+  basicstyle=\ttfamily,
+  showstringspaces=false,
+  showspaces=false,
+  tabsize=2,
+  breaklines=true,
+  showtabs=false
+}
 
 % Coloured boxes
 \usepackage{tcolorbox}
@@ -34,7 +56,7 @@
 \newtcolorbox{tbox}
 {standard jigsaw, opacityback=0,opacityframe=0}
 
-\newcommand{\haskell}[1]{\mintinline{haskell}{#1}}
+% \newcommand{\haskell}[1]{\mintinline{haskell}{#1}}
 
 \title{Engaging, Large-Scale Functional Programming Education in Physical and Virtual Space} % the title on the title page
 
@@ -334,6 +356,68 @@
 
 %------------------------------------------------
 \section{Check Your Proof}
+
+\begin{frame}{CYP in a Nutshell}
+
+\begin{itemize}[<+->]
+  \item Operates on a strict non-typed subset of Haskell
+  \item Automatically checks simple inductive proofs
+  \item Provides instant feedback
+  \item Integrates with Tasty
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Background Theory}
+  \begin{lstlisting}
+data List a = [] | a : List a
+
+[] ++ ys = ys
+(x : xs) ++ ys = x : (xs ++ ys)
+
+goal xs ++ (ys ++ zs) .=. (xs ++ ys) ++ zs
+  \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{The \texttt{[]} Case}
+  \begin{lstlisting}
+Lemma: xs ++ (ys ++ zs) .=. (xs ++ ys) ++ zs
+Proof by induction on List xs
+  Case []
+    To show: [] ++ (ys ++ zs) .=. ([] ++ ys) ++ zs
+    Proof
+                      [] ++ (ys ++ zs)
+      (by def ++) .=. ys ++ zs
+      (by def ++) .=. ([] ++ ys) ++ zs
+    QED
+  \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{The \texttt{Cons} Case}
+  \begin{lstlisting}
+  Case x : xs
+    To show: (x : xs) ++ (ys ++ zs)
+         .=. ((x : xs) ++ ys) ++ zs
+    IH: xs ++ (ys ++ zs) .=. (xs ++ ys) ++ zs
+    Proof
+                        (x : xs) ++ (ys ++ zs)
+      (by def ++)   .=. x : (xs ++ (ys ++ zs))
+      (by IH)       .=. x : ((xs ++ ys) ++ zs)
+
+                        ((x : xs) ++ ys) ++ zs
+      (by def ++)   .=. (x : (xs ++ ys)) ++ zs
+      (by def ++)   .=. x : ((xs ++ ys) ++ zs)
+    QED
+QED
+  \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Our Experience Teaching with CYP}
+\begin{itemize}[<+->]
+  \item Student feedback (positive/negative): 2/1 in WS19, 18/3 in WS20
+  \item Main criticism: lack of documentation
+  \item Inductive proof exercises in the exam went well overall 
+\end{itemize}
+\end{frame}
 
 %------------------------------------------------
 \section{Future Work}
