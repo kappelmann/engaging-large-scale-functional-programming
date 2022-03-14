@@ -3,7 +3,7 @@
 This exercise lets the students implement a simple I/O program that parses and processes its input and computes the average of a certain part of the input.
 Instructions can be found [here](./instructions.pdf), exercise H12.2.
 
-We test IO programs by replacing the `Prelude`, `System.IO`, and `System.Random` modules by a mocked versions of those modules.
+We test IO programs by replacing the `Prelude`, `System.IO`, and `System.Random` modules by mocked versions of those modules.
 Those modules use a fake version of `RealWorld` where the file system, for example, is modeled as a map from file names to `Text`.
 This lets us observe the IO actions that are performed by the students' code and test it with QuickCheck just as any other piece of code.
 
