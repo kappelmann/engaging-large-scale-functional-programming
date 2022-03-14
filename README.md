@@ -6,7 +6,7 @@ and (automation) tools to successfully run a
 functional programming
 course with more than 1000 students
 in physical and virtual space.
-You can find the paper [here](releases/download/pdf/engaging_fp_education.pdf).
+You can find the paper [here](https://github.com/kappelmann/engaging-large-scale-functional-programming/releases/download/pdf/engaging_fp_education.pdf).
 
 As part of the paper, we also share a selected set of exercises and tools.
 You can find them [here](resources).
