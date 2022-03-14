@@ -6,7 +6,7 @@ and (automation) tools to successfully run a
 functional programming
 course with more than 1000 students
 in physical and virtual space.
-You can find the paper [here](paper).
+You can find the paper [here](releases/download/pdf/engaging_fp_education.pdf).
 
 As part of the paper, we also share a selected set of exercises and tools.
 You can find them [here](resources).
@@ -52,7 +52,7 @@ We want to thank all people involved in the course,
 in particular Tobias Nipkow,
 Manuel Eberl,
 our [student assistants](student_assistants.md),
-the ArTEMiS development team,
+the [ArTEMiS](https://github.com/ls1intum/Artemis/) development team,
 our industry partners
 Active Group,
 QAware,
