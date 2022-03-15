@@ -58,7 +58,7 @@ lets you observe IO actions in student submissions and test them just as any oth
 ## Check Your Proof (CYP)
 
 Check Your Proof is a verifier for proofs about Haskell-like programs.
-Please refer to the [paper](https://github.com/kappelmann/engaging-large-scale-functional-programming/releases/download/pdf/engaging_fp_education.pdf)
+Please refer to the [paper](https://github.com/kappelmann/engaging-large-scale-functional-programming/blob/pdfs/engaging_fp_education.pdf)
 for more information.
 You can find the source of CYP including some proof examples [here](https://github.com/lukasstevens/cyp)
 and an exemplary integration of automated CYP proof checking in Tasty in [cyp\_integration](cyp_integration).
