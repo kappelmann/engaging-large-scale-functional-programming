@@ -28,7 +28,7 @@ jobs:
         uses: shogo82148/actions-upload-release-asset@v1
         if: github.ref == 'refs/heads/main'
         with:
-          upload_url: https://uploads.github.com/repos/kappelmann/engaging-large-scale-functional-programming/releases/tag/pdf/assets
+          upload_url: ${{ github.event.release.upload_url }}
           asset_path: paper/build/engaging_fp_education.pdf
           asset_name: engaging_fp_education.pdf
           asset_content_type: application/pdf
