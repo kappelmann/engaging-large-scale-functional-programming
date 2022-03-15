@@ -22,10 +22,10 @@ common common-all
 -- and replace it with our mocked modules 
 common common-mocked
   import: common-all
-  build-depends: fpvmocking
+  build-depends: iomocking
   mixins:
     base hiding (Prelude, System.IO, System.Random),
-    fpvmocking
+    iomocking
 
 -- dependencies for test targets
 common common-tests
@@ -54,7 +54,7 @@ common common-tests
     cpp-options: -DPROD
 
 -- This builds the mocked IO modules located in mock/
-library fpvmocking
+library iomocking
   import: common-all
   exposed-modules: Prelude, System.Random, System.IO, Control.Monad.Pause, Mock.System.IO.Internal, Mock.System.IO.RealWorld
   hs-source-dirs: mock
