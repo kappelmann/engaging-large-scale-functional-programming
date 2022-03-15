@@ -5,7 +5,7 @@
 
 \usepackage[sfdefault]{FiraSans} %% option 'sfdefault' activates Fira Sans as the default text font
 \usepackage[english]{babel}
-% \usepackage[utf8]{inputenc}
+\usepackage[utf8]{inputenc}
 
 \usepackage{graphicx} % Allows including images
 \usepackage{pgfplots}
@@ -21,6 +21,7 @@
 \usepackage{stmaryrd}
 \usepackage{centernot}
 \usepackage[normalem]{ulem}
+\usepackage[absolute,overlay]{textpos}
 
 %% Coding
 % \usepackage[outputdir=build]{minted}
@@ -60,7 +61,7 @@
 
 \title{Engaging, Large-Scale Functional Programming Education in Physical and Virtual Space} % the title on the title page
 
-\author{Kevin Kappelmann (presenting), Jonas Rädle (presenting), and\\Lukas Stevens} % Your name
+\author{\underline{Kevin Kappelmann}, \underline{Jonas Rädle}, Lukas Stevens} % Your name
 \institute[TU Munich]{Technical University of Munich}
 \date{March 16, 2022} % Date, can be changed to a custom date
 
@@ -337,14 +338,14 @@ Note: We used Haskell, but most ideas apply to any functional programming course
 \end{frame}
 
 %------------------------------------------------
+\lstset{language=Haskell}
 \begin{frame}{Competitions}
-\only<1>{\centerline{Code Golf}
-\begin{figure}
-\includegraphics[width=0.75\linewidth]{assets/golf1}
-\end{figure}
-\begin{figure}
-\includegraphics[width=0.75\linewidth]{assets/golf2}
-\end{figure}
+
+\only<1>{
+
+\centerline{Code Golf}
+
+
 }
 \only<2>{\centerline{Optimization}
 \begin{figure}
@@ -353,7 +354,7 @@ Note: We used Haskell, but most ideas apply to any functional programming course
 }
 \only<3>{\centerline{Strategy}
 \begin{figure}
-\includegraphics[width=0.85\linewidth]{assets/optimization}
+\includegraphics[height=0.85\textheight]{assets/strategy}
 \end{figure}
 }
 \only<4>{\centerline{Creativity}
@@ -408,6 +409,7 @@ Note: We used Haskell, but most ideas apply to any functional programming course
 \end{frame}
 
 \begin{frame}[fragile]{Background Theory}
+\lstset{language=CYP}
   \begin{lstlisting}
 data List a = [] | a : List a
 
