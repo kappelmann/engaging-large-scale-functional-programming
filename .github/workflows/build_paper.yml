@@ -1,9 +1,10 @@
-name: Paper PDF 
+name: Paper PDF
 on:
   push:
     paths:
-      - 'paper/**'
       - '.github/workflows/build_paper.yml'
+      - 'paper/**'
+      - 'presentation_TFPIE2022/**'
 jobs:
   paper:
     runs-on: ubuntu-20.04
@@ -15,21 +16,37 @@ jobs:
         uses: xu-cheng/latex-action@v2
         with:
           root_file: engaging_fp_education.tex
-          working_directory: paper 
+          working_directory: paper
           args: -pdf -file-line-error -halt-on-error -interaction=nonstopmode -outdir=build
+
+      - name: Build presentation TFPIE2022
+        uses: xu-cheng/latex-action@v2
+        with:
+          root_file: presentation_TFPIE2022.tex
+          working_directory: presentation_TFPIE2022
+          args: -xelatex -latexoption="-shell-escape" -interaction=nonstopmode -outdir=build
+
+      - name: Consolidate pdfs
+        run: mkdir -f build/ && cp paper/build/engaging_fp_education.pdf presentation_TFPIE2022/build/presentation_TFPIE2022.pdf build/
 
       - name: Upload pdf artifact
         uses: actions/upload-artifact@v2
         with:
-          name: paper_pdf 
-          path: paper/build/engaging_fp_education.pdf
+          name: build_results
+          path: build
 
-      - name: Upload new pdf to release
-        uses: shogo82148/actions-upload-release-asset@v1
-        if: github.ref == 'refs/heads/main'
-        with:
-          upload_url: ${{ github.event.release.upload_url }}
-          asset_path: paper/build/engaging_fp_education.pdf
-          asset_name: engaging_fp_education.pdf
-          asset_content_type: application/pdf
-          overwrite: true
+      # - name: Upload new pdf to release
+      #   uses: shogo82148/actions-upload-release-asset@v1
+      #   if: github.ref == 'refs/heads/main'
+      #   with:
+      #     upload_url: ${{ github.event.release.upload_url }}
+      #     asset_path: paper/build/engaging_fp_education.pdf
+      #     asset_name: engaging_fp_education.pdf
+      #     asset_content_type: application/pdf
+      #     overwrite: true
+
+    - uses: JamesIves/github-pages-deploy-action@4.1.4
+      with:
+        branch: pdfs
+        folder: build
+        ssh-key: "${{ secrets.DEPLOY_KEY }}"
