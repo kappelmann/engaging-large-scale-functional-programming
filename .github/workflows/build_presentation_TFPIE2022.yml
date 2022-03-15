@@ -1,4 +1,4 @@
-name: Presentationx TFPIE2022 PDF 
+name: Presentation TFPIE2022 PDF 
 on:
   push:
     paths:
@@ -16,7 +16,7 @@ jobs:
         with:
           root_file: presentation_TFPIE2022.tex
           working_directory: presentation_TFPIE2022
-          args: -pdf -file-line-error -halt-on-error -interaction=nonstopmode -outdir=build
+          args: -xelatex -latexoption="-shell-escape" -interaction=nonstopmode -outdir=build
 
       - name: Upload pdf artifact
         uses: actions/upload-artifact@v2
@@ -26,7 +26,7 @@ jobs:
 
       - name: Upload new pdf to release
         uses: shogo82148/actions-upload-release-asset@v1
-        if: github.ref == 'refs/heads/master'
+        if: github.ref == 'refs/heads/main'
         with:
           upload_url: https://uploads.github.com/repos/kappelmann/engaging-large-scale-functional-programming/releases/tag/pdf/assets
           asset_path: presentation_TFPIE2022/build/presentation_TFPIE2022.pdf
