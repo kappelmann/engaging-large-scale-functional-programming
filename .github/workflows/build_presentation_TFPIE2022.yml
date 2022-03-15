@@ -1,35 +1,35 @@
-name: Paper PDF 
+name: Presentationx TFPIE2022 PDF 
 on:
   push:
     paths:
-      - 'paper/**'
-      - '.github/workflows/build_paper.yml'
+      - 'presentation_TFPIE2022/**'
+      - '.github/workflows/build_presentation_TFPIE2022.yml'
 jobs:
-  paper:
+  presentation_TFPIE2022:
     runs-on: ubuntu-20.04
     steps:
       - name: Check out repository code
         uses: actions/checkout@v2
 
-      - name: Build paper
+      - name: Build presentation TFPIE2022
         uses: xu-cheng/latex-action@v2
         with:
-          root_file: engaging_fp_education.tex
-          working_directory: paper 
+          root_file: presentation_TFPIE2022.tex
+          working_directory: presentation_TFPIE2022
           args: -pdf -file-line-error -halt-on-error -interaction=nonstopmode -outdir=build
 
       - name: Upload pdf artifact
         uses: actions/upload-artifact@v2
         with:
-          name: paper_pdf 
-          path: paper/build/engaging_fp_education.pdf
+          name: presentation_TFPIE2022_pdf 
+          path: presentation_TFPIE2022/build/presentation_TFPIE2022.pdf
 
       - name: Upload new pdf to release
         uses: shogo82148/actions-upload-release-asset@v1
         if: github.ref == 'refs/heads/master'
         with:
           upload_url: https://uploads.github.com/repos/kappelmann/engaging-large-scale-functional-programming/releases/tag/pdf/assets
-          asset_path: paper/build/engaging_fp_education.pdf
-          asset_name: engaging_fp_education.pdf
+          asset_path: presentation_TFPIE2022/build/presentation_TFPIE2022.pdf
+          asset_name: presentation_TFPIE2022.pdf
           asset_content_type: application/pdf
           overwrite: true
