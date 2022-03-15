@@ -27,7 +27,7 @@ jobs:
           args: -xelatex -latexoption="-shell-escape" -interaction=nonstopmode -outdir=build
 
       - name: Consolidate pdfs
-        run: mkdir -f build/ && cp paper/build/engaging_fp_education.pdf presentation_TFPIE2022/build/presentation_TFPIE2022.pdf build/
+        run: mkdir -p build/ && cp paper/build/engaging_fp_education.pdf presentation_TFPIE2022/build/presentation_TFPIE2022.pdf build/
 
       - name: Upload pdf artifact
         uses: actions/upload-artifact@v2
