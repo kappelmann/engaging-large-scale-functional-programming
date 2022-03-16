@@ -24,7 +24,7 @@
 \usepackage[absolute,overlay]{textpos}
 
 %% Coding
-%\usepackage[outputdir=build]{minted}
+\usepackage[outputdir=build]{minted}
 \usepackage{listings}
 \lstdefinelanguage{cyp}{
   keywords={Lemma,goal,Proof,QED,To,show,Case},
@@ -353,27 +353,27 @@ Note: We used Haskell, but most ideas apply to any functional programming course
 
 \centerline{Code Golf}
 \vspace{15pt}
-\tiny
-\begin{lstlisting}
-numberToEo = unwords <<< catMaybes <<< reverse <<< flip lookup `zipWith` table <<< chunksOf 3 <<< pack <<< reverse
-\end{lstlisting}
-\begin{lstlisting}
+\begin{minted}[fontsize=\tiny]{haskell}
+numberToEo = unwords <<< catMaybes <<< reverse <<< flip lookup `zipWith` table <<< chunksOf 3
+  <<< pack <<< reverse
+\end{minted}
+\begin{minted}[fontsize=\tiny]{haskell}
 topCycle = concatMap snd . ap zip (iterate . fmap nub . concatMap . dominators <*> copeland)
-\end{lstlisting}
-\begin{lstlisting}
-traceFractran rs n = n : fromMaybe [] (traceFractran rs <$> numerator <$> (liftM2 eqInteger truncate numerator) `find` map (fromIntegral n *) rs)
-\end{lstlisting}
-\begin{lstlisting}
-bernoulli = genericIndex $ map head $ iterate ((*) `zipWith` enumFrom 1 <<< zipWith subtract `ap` tail) $ recip `map` enumFrom 1
-\end{lstlisting}
-
-
+\end{minted}
+\begin{minted}[fontsize=\tiny]{haskell}
+traceFractran rs n = n : fromMaybe [] (traceFractran rs <$> numerator <$>
+  (liftM2 eqInteger truncate numerator) `find` map (fromIntegral n *) rs)
+\end{minted}
+\begin{minted}[fontsize=\tiny]{haskell}
+bernoulli = genericIndex $ map head $ iterate ((*) `zipWith` enumFrom 1 <<< zipWith subtract `ap` tail)
+  $ recip `map` enumFrom 1
+\end{minted}
 
 
 \end{onlyenv}
 \only<2>{\centerline{Optimization}
 \begin{figure}
-\includegraphics[width=0.85\linewidth]{assets/optimization}
+\includegraphics[width=\linewidth]{assets/optimization}
 \end{figure}
 }
 \only<3>{\centerline{Strategy}
@@ -388,7 +388,7 @@ bernoulli = genericIndex $ map head $ iterate ((*) `zipWith` enumFrom 1 <<< zipW
 }
 \only<5>{\centerline{Creativity}
 \begin{figure}
-\includegraphics[width=0.85\linewidth]{assets/creativity2}
+\includegraphics[width=0.95\linewidth]{assets/creativity2}
 \end{figure}
 }
 \end{frame}
