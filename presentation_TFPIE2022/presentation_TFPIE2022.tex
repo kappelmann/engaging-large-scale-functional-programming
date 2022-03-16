@@ -24,7 +24,7 @@
 \usepackage[absolute,overlay]{textpos}
 
 %% Coding
-% \usepackage[outputdir=build]{minted}
+%\usepackage[outputdir=build]{minted}
 \usepackage{listings}
 \lstdefinelanguage{cyp}{
   keywords={Lemma,goal,Proof,QED,To,show,Case},
@@ -338,15 +338,29 @@ Note: We used Haskell, but most ideas apply to any functional programming course
 \end{frame}
 
 %------------------------------------------------
-\lstset{language=Haskell}
-\begin{frame}{Competitions}
-
-\only<1>{
+\begin{frame}[fragile]{Competitions}
+\begin{onlyenv}<1>
 
 \centerline{Code Golf}
+\vspace{15pt}
+\tiny
+\begin{lstlisting}
+numberToEo = unwords <<< catMaybes <<< reverse <<< flip lookup `zipWith` table <<< chunksOf 3 <<< pack <<< reverse
+\end{lstlisting}
+\begin{lstlisting}
+topCycle = concatMap snd . ap zip (iterate . fmap nub . concatMap . dominators <*> copeland)
+\end{lstlisting}
+\begin{lstlisting}
+traceFractran rs n = n : fromMaybe [] (traceFractran rs <$> numerator <$> (liftM2 eqInteger truncate numerator) `find` map (fromIntegral n *) rs)
+\end{lstlisting}
+\begin{lstlisting}
+bernoulli = genericIndex $ map head $ iterate ((*) `zipWith` enumFrom 1 <<< zipWith subtract `ap` tail) $ recip `map` enumFrom 1
+\end{lstlisting}
 
 
-}
+
+
+\end{onlyenv}
 \only<2>{\centerline{Optimization}
 \begin{figure}
 \includegraphics[width=0.85\linewidth]{assets/optimization}
