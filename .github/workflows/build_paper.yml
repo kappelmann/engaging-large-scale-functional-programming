@@ -20,7 +20,7 @@ jobs:
         with:
           root_file: engaging_fp_education.tex
           working_directory: paper
-          args: -pdf -file-line-error -halt-on-error -interaction=nonstopmode -outdir=build
+          args: -pdf -latexoption="-shell-escape" -file-line-error -halt-on-error -interaction=nonstopmode -outdir=build
 
       - name: Build presentation TFPIE2022
         uses: xu-cheng/latex-action@v2
