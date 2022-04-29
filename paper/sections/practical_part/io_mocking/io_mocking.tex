@@ -1,10 +1,10 @@
-\section{I/O Mocking}
+\paragraph{I/O-Mocking Library}
 As discussed in Section~\ref{sec:tech_setup_test}, we primarily use QuickCheck to automatically assess submissions for homework exercises.
 This brings up the question how monadic I/O in Haskell can be tested on the submission system as I/O is an important part of the lecture.
 Since we don't want to actually realise the side effects that the code produces, the obvious solution is to use a mocked version of \mintinline{Haskell}{IO}.
 
-A standard approach to mock \mintinline{Haskell}{IO}, which is put forward by packages such as \texttt{monad-mock}\footnote{\url{https://hackage.haskell.org/package/monad-mock}} and \texttt{HMock}\footnote{\url{https://hackage.haskell.org/package/HMock}}, is to first extract the side effects that are required for a certain computation into its own type class.
-Then, since a type class naturally allows multiple implementations (instantiations) of those effects, we can provide an implementation that actually executes the side effects on the machine on the one hand; on the other hand, we can provide a version that just modifies a mocked version of the environment. 
+A standard approach to mock \mintinline{Haskell}{IO}, which is put forward by packages such as \texttt{monad-mock}\footnote{\url{https://hackage.haskell.org/package/monad-mock}} and \texttt{HMock}\footnote{\url{https://hackage.haskell.org/package/HMock}}, is to first extract the side effects that are required for a certain computation into its own typeclass.
+Then, since a typeclass naturally allows multiple implementations (instantiations) of those effects, we can provide an implementation that actually executes the side effects on the machine on the one hand; on the other hand, we can provide a version that just modifies a mocked version of the environment.
 To implement a function that copies a file, for example, we need two operations: one for reading a file and one for writing a file.
 \begin{minted}{Haskell}
 import qualified Prelude
@@ -21,7 +21,7 @@ copyFile source target = do
   content <- readFile source
   writeFile target content
 \end{minted}
-Due to the definition of \mintinline{Haskell}{MonadFileSystem}, the instance for \mintinline{Haskell}{IO} is trivial. 
+Due to the definition of \mintinline{Haskell}{MonadFileSystem}, the instance for \mintinline{Haskell}{IO} is trivial.
 The mocked version can be implemented as a map from file names to file contents wrapped by the \mintinline{Haskell}{State} monad transformer to make it mutable.
 We omit the instantiation of \mintinline{Haskell}{MonadFileSystem} for brevity.
 Testing \mintinline{Haskell}{copyFile} is now as simple as checking whether the state of the file system is as expected after executing the function.
@@ -57,7 +57,7 @@ data RealWorld = RealWorld {
 }
 
 newtype IO a =
-  IO { unwrapIO :: ExceptT IOException (PauseT (State RealWorld)) a } 
+  IO { unwrapIO :: ExceptT IOException (PauseT (State RealWorld)) a }
 \end{minted}
 While the transformer \mintinline{Haskell}{ExceptT} simply adds I/O exceptions such as errors for insufficient permissions, the purpose of \mintinline{Haskell}{PauseT} is not obvious.
 To understand its role, consider the following simple program that reads the user's name and greets them.
@@ -75,7 +75,7 @@ The mock user then reacts to the output of the program and generates the input t
 When the user is done, they, in turn, yield and the program of the student is resumed.
 
 These considerations lead us to the monad below consisting of two operations: the first one pauses execution whereas the second one runs a computation of the monad until either \texttt{pause} is called or the computation finishes.
-In the former case \mintinline{Haskell}{stepPauseT} returns a \mintinline{Haskell}{Left c} where \texttt{c} represents the rest of the computation; in other words, the part of the computation that is executed when resuming. 
+In the former case \mintinline{Haskell}{stepPauseT} returns a \mintinline{Haskell}{Left c} where \texttt{c} represents the rest of the computation; in other words, the part of the computation that is executed when resuming.
 Otherwise, the final result \texttt{r} of the computation is returned as \mintinline{Haskell}{Right r}.
 It should be noted that the pause monad is an instance of the more general coroutine monad as provided by the \texttt{monad-coroutine}\footnote{\url{https://hackage.haskell.org/package/monad-coroutine}} package.
 For the implementation details of the corresponding monad transformer \mintinline{Haskell}{PauseT} we refer to the repository.
@@ -111,7 +111,7 @@ Figure~\ref{fig:iomocking} illustrates the steps that \mintinline{Haskell}{Mock.
 Note that there are two blocking operation, i.e.\ operations that call \texttt{pause} internally, namely \texttt{getLine} and \texttt{Mock.hGetLine Mock.stdout}.
 When \mintinline{Haskell}{Mock.evalIO} encounters one of those it transfers control between the user and the program as indicated by the black arrows.
 Of course, control is also transferred if the computation runs until completion without seeing a \texttt{pause}.
-The horizontal axis with the white arrows illustrates the return values of \texttt{stepPauseT}. 
+The horizontal axis with the white arrows illustrates the return values of \texttt{stepPauseT}.
 Focussing on the \mintinline{Haskell}{main} method, we see that, when encountering \texttt{getLine}, \texttt{stepPauseT} returns the remaining computation \mintinline{Haskell}{putStrLn $ "Hello " ++ x} wrapped in a \mintinline{Haskell}{Left}.
 After the user provides the input for \texttt{getLine} and yields, the \mintinline{Haskell}{main} method prints the greeting and finishes with the result \mintinline{Haskell}{Right ()}.
 Similarly, the user is blocked on \texttt{Mock.hGetLine} which means that the remaining computation only consists of the \texttt{when} check, which is executed as soon as \mintinline{Haskell}{main} is done.
@@ -122,14 +122,14 @@ All in all, the mocking framework lets us uniformly test student submissions wit
   \centering
 \scalebox{0.75}{
 \begin{tikzpicture}[cnode/.style={draw,rectangle,minimum height=2.5em}, >=stealth]
-  \node[cnode] (P1) {\lstinputlisting[style=Haskell]{./sections/io_mocking/P.hs}};
-  \node[cnode, right=2cm of P1.south east, anchor=south west] (P2) {\lstinputlisting[style=Haskell,firstline=2]{./sections/io_mocking/P.hs}};
+  \node[cnode] (P1) {\lstinputlisting[style=Haskell]{sections/practical_part/io_mocking/P.hs}};
+  \node[cnode, right=2cm of P1.south east, anchor=south west] (P2) {\lstinputlisting[style=Haskell,firstline=2]{sections/practical_part/io_mocking/P.hs}};
   \node[cnode, right=2cm of P2.south east, anchor=south west] (P3) {\texttt{()}};
 
   \path (P1.south east) -- coordinate (MP12) (P2.south west);
   \path (P2.south east) -- coordinate (MP23) (P3.south west);
-  \node[cnode, below=2cm of MP12, anchor=north] (U1) {\lstinputlisting[style=Haskell]{./sections/io_mocking/U.hs}};
-  \node[cnode, below=2cm of MP23, anchor=north] (U2) {\lstinputlisting[style=Haskell,firstline=4]{./sections/io_mocking/U.hs}};
+  \node[cnode, below=2cm of MP12, anchor=north] (U1) {\lstinputlisting[style=Haskell]{sections/practical_part/io_mocking/U.hs}};
+  \node[cnode, below=2cm of MP23, anchor=north] (U2) {\lstinputlisting[style=Haskell,firstline=4]{sections/practical_part/io_mocking/U.hs}};
   \node[cnode, right=2cm of U2.north east, anchor=north west] (U3) {\texttt{()}};
 
   \path (U2.east |- U3) -- coordinate (MU23) (U3);
