@@ -104,15 +104,18 @@ Some further examples can be found on our competition blogs\footnote{\url{https:
 \paragraph{Game Tournament Framework}
 It has become an annual tradition in the course to run a game tournament over the Christmas break.
 In this tournament, the students are tasked with writing an AI for a board game that competes against the AIs of their fellow students.
-To pass the homework sheet, it suffices to implement a basic strategy, but to score well in the competition, students have come up with quite sophisticated strategies in the past years. The framework allows the strategies to use statefulness and randomization, so that there are few limits to the students' creativity.
-The best strategies usually use the Minimax with or without alpha-beta-pruning and a clever evaluation function, which is particularly important in this setting, because the game tree cannot be evaluated very far given the limited resources for each submission in the tournament.
+To pass the homework sheet, it suffices to implement a basic strategy, but to score well in the competition, students have come up with quite sophisticated strategies in the past years.
+The framework allows the strategies to use statefulness and randomization, so that there are few limits to the students' creativity.
+The best strategies usually use the Minimax rule with or without alpha-beta-pruning and a clever evaluation function, which is particularly important in this setting because the game tree cannot be evaluated very far given the limited resources for each submission in the tournament.
 
-The tournament is run continuously over 2-3 weeks and the results are displayed on a website. (see figure \ref{fig:chainreaction} for an example from the 2020 iteration)
-Students can thus get reasonably quick feedback on how their strategy performs, making them stay engaged and allowing them to improve their strategy iteratively.
+The tournament is run continuously over 2-3 weeks and the results are displayed on a website. (see \cref{fig:chainreaction} for an example from the 2020 iteration).
+Students thus get reasonably quick feedback on how their strategy performs,
+which keeps them engaged and allows them to improve their strategy iteratively.
+The tournament has become a popular feature of the course with 182 participating students in 2019 and 220 in 2020.
 
-The tournament has become a popular feature of the course, in 2020, for example, about 50 students submitted their strategies for competition.
-
-In our repository, we provide the framework along with code specific to the game from 2020, which is based on Chain Reaction. \footnote{\url{ https://brilliant.org/wiki/chain-reaction-game/}} Instructions for adapting the framework to a different game can be found there as well.
+In our repository, we provide the framework along with code specific to the game from 2020, which is based on Chain Reaction \footnote{\url{ https://brilliant.org/wiki/chain-reaction-game/}}.
+It evaluates each
+Instructions for adapting the framework to a different game can be found there as well.
 
 \paragraph{Programming Contest Framework}\label{sec:contest}
 To foster social interaction and diversify our bonus system,
