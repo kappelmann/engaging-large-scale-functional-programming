@@ -219,7 +219,7 @@ newtype IO a = IO { unwrapIO :: ExceptT IOException (PauseT (State RealWorld)) a
 
 type StdGen = R.StdGen
 
-data RealWorld = forall u. RealWorld {
+data RealWorld = RealWorld {
   workDir :: FilePath,
   files :: Map File Text,
   isPermitted :: FilePath -> IOMode -> Bool,

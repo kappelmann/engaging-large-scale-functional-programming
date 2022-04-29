@@ -12,12 +12,15 @@ jobs:
       - name: Check out repository code
         uses: actions/checkout@v2
 
+      - name: Install python-pygments
+        run: sudo apt-get install python-pygments
+
       - name: Build paper
         uses: xu-cheng/latex-action@v2
         with:
           root_file: engaging_fp_education.tex
           working_directory: paper
-          args: -pdf -file-line-error -halt-on-error -interaction=nonstopmode -outdir=build
+          args: -pdf -latexoption="-shell-escape" -file-line-error -halt-on-error -interaction=nonstopmode -outdir=build
 
       - name: Build presentation TFPIE2022
         uses: xu-cheng/latex-action@v2

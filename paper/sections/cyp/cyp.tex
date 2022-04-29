@@ -15,13 +15,13 @@ The first example of such a proof presented in the lecture is the proof of assoc
 Proving this example in CYP first requires us
 to define the data type of lists.
 We use
-the constructors \lstinline![]! and \lstinline!(:)!
+the constructors \lstinline[style=cyp]![]! and \lstinline[style=cyp]!:!
 as is standard in Haskell.
-\begin{lstlisting}
+\begin{lstlisting}[style=cyp]
   data List a = [] | a : List a
 \end{lstlisting}
-Now we can define the infix append-operator \lstinline!(++)!
-\begin{lstlisting}
+Now we can define the infix append-operator \lstinline[style=cyp]!++! and state the goal \lstinline[style=cyp]!xs ++ (ys ++ zs) .=. (xs ++ ys) ++ zs! where all variables are implicitly universally quantified.
+\begin{lstlisting}[style=cyp]
   [] ++ ys = ys
   (x : xs) ++ ys = x : (xs ++ ys)
   goal xs ++ (ys ++ zs) .=. (xs ++ ys) ++ zs
@@ -35,8 +35,8 @@ The listings above describe the background theory of the proof.
 The theory is fixed in a file and provided
 to the students by the instructors.
 The students then supply the proof in a separate file.
-In our case, we proceed to prove the statement by structural induction on \lstinline!xs!.
-\begin{lstlisting}
+In our case, we proceed to prove the statement by structural induction on \lstinline[style=cyp]!xs!.
+\begin{lstlisting}[style=cyp]
   Lemma: xs ++ (ys ++ zs) .=. (xs ++ ys) ++ zs
   Proof by induction on List xs
     Case []
@@ -47,18 +47,18 @@ In our case, we proceed to prove the statement by structural induction on \lstin
         (by def ++) .=. ([] ++ ys) ++ zs
       QED
 \end{lstlisting}
-In above listing, the first \lstinline!Proof! marks the beginning of an inductive proof whereas the second \lstinline!Proof!, which has no further arguments, starts an equational proof.
+In above listing, the first \lstinline[style=cyp]!Proof! marks the beginning of an inductive proof whereas the second \lstinline[style=cyp]!Proof!, which has no further arguments, starts an equational proof.
 While CYP allows to arbitrarily nest proofs
 by case analysis or induction,
 the innermost goal must always be discharged by an equational proof.
 An equational proof is a chain of equations that rewrite the left-hand side of the current goal to the right-hand side.
 The user has to justify each rewrite step by a corresponding equation that yields the right-hand side
 when applied to the term or a subterm on the left-hand side.
-Note that in the example \lstinline!(by def ++)! refers to either one of the defining equations of \lstinline!++!,
+Note that in the example \lstinline[style=cyp]!(by def ++)! refers to either one of the defining equations of \lstinline[style=cyp]!++!,
 and CYP will check if any of them justifies the current step.
 
 Now, consider the inductive case.
-\begin{lstlisting}
+\begin{lstlisting}[style=cyp]
     Case x : xs
       To show: (x : xs) ++ (ys ++ zs) .=. ((x : xs) ++ ys) ++ zs
       IH: xs ++ (ys ++ zs) .=. (xs ++ ys) ++ zs
@@ -85,14 +85,14 @@ and often necessary to prove generalised versions of a given goal.
 
 The simplicity of CYP both in its usage and its implementation comes with some caveats:
 \begin{itemize}
-    \item The version of CYP used by us is untyped and thus unsound if the background theory contains multiple types as demonstrated in~\cite{cyp_holes}: given a singleton type \lstinline!data U = U! in the background theory,
-      one can prove \lstinline!x .=. y! by case analysis.
+    \item The version of CYP used by us is untyped and thus unsound if the background theory contains multiple types as demonstrated in~\cite{cyp_holes}: given a singleton type \lstinline[style=cyp]!data U = U! in the background theory,
+      one can prove \lstinline[style=cyp]!x .=. y! by case analysis.
         In an untyped environment, one can then use this lemma to prove equality between any two terms.
     \item Barring soundness issues due to a lack of types, one also needs to ensure that all function definitions are total and that their patterns do not overlap.
     \item Computation induction is unsound if there are recursive calls in branches of an if-then-else expression.
       This is because the induction hypotheses would have to be conditional rewrite rules in such cases, which CYP does not support.
 \end{itemize}
-\cite{cyp_holes} discuss the inner workings of CYP in detail and develop an extension to CYP that introduces types,
+Renz et al.~\cite{cyp_holes} discuss the inner workings of CYP in detail and develop an extension to CYP that introduces types,
 thus solving the first issue.
 They also made it possible to leave holes in proofs and in expressions, which then have to be filled in by students.
 
