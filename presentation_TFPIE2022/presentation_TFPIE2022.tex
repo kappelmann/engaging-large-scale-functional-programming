@@ -24,7 +24,7 @@
 \usepackage[absolute,overlay]{textpos}
 
 %% Coding
-% \usepackage[outputdir=build]{minted}
+\usepackage[outputdir=build]{minted}
 \usepackage{listings}
 \lstdefinelanguage{cyp}{
   keywords={Lemma,goal,Proof,QED,To,show,Case},
@@ -68,6 +68,16 @@
 \begin{document}
 
 \maketitle
+
+\begin{frame}
+Supported by
+\begin{itemize}
+  \item Lecturer: Tobias Nipkow
+  \item Manuel Eberl
+  \item 2019: 13 student assistants
+  \item 2020: 22 student assistants
+\end{itemize}
+\end{frame}
 
 %------------------------------------------------
 \section{Challenges}
@@ -250,7 +260,7 @@ Note: We used Haskell, but most ideas apply to any functional programming course
 \item Asynchronous Q\&A forum
 \item Automated testing and feedback
 \begin{itemize}
-  \item \emph{ArTEMiS} runs tests, balances loads, offers exam mode,\dots
+  \item \emph{ArTEMiS} runs tests, manages scores, offers exam mode,\dots
   \item \emph{Tasty} combines QuickCheck, SmallCheck, and HUnit tests
   \item \emph{Check Your Proof} for automated proof checking
 \end{itemize}
@@ -338,18 +348,32 @@ Note: We used Haskell, but most ideas apply to any functional programming course
 \end{frame}
 
 %------------------------------------------------
-\lstset{language=Haskell}
-\begin{frame}{Competitions}
-
-\only<1>{
+\begin{frame}[fragile]{Competitions}
+\begin{onlyenv}<1>
 
 \centerline{Code Golf}
+\vspace{15pt}
+\begin{minted}[fontsize=\tiny]{haskell}
+numberToEo = unwords <<< catMaybes <<< reverse <<< flip lookup `zipWith` table <<< chunksOf 3
+  <<< pack <<< reverse
+\end{minted}
+\begin{minted}[fontsize=\tiny]{haskell}
+topCycle = concatMap snd . ap zip (iterate . fmap nub . concatMap . dominators <*> copeland)
+\end{minted}
+\begin{minted}[fontsize=\tiny]{haskell}
+traceFractran rs n = n : fromMaybe [] (traceFractran rs <$> numerator <$>
+  (liftM2 eqInteger truncate numerator) `find` map (fromIntegral n *) rs)
+\end{minted}
+\begin{minted}[fontsize=\tiny]{haskell}
+bernoulli = genericIndex $ map head $ iterate ((*) `zipWith` enumFrom 1 <<< zipWith subtract `ap` tail)
+  $ recip `map` enumFrom 1
+\end{minted}
 
 
-}
+\end{onlyenv}
 \only<2>{\centerline{Optimization}
 \begin{figure}
-\includegraphics[width=0.85\linewidth]{assets/optimization}
+\includegraphics[width=\linewidth]{assets/optimization}
 \end{figure}
 }
 \only<3>{\centerline{Strategy}
@@ -364,7 +388,7 @@ Note: We used Haskell, but most ideas apply to any functional programming course
 }
 \only<5>{\centerline{Creativity}
 \begin{figure}
-\includegraphics[width=0.85\linewidth]{assets/creativity2}
+\includegraphics[width=0.95\linewidth]{assets/creativity2}
 \end{figure}
 }
 \end{frame}

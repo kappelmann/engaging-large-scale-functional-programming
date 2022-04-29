@@ -26,6 +26,11 @@ Now we can define the infix append-operator \lstinline[style=cyp]!++! and state 
   (x : xs) ++ ys = x : (xs ++ ys)
   goal xs ++ (ys ++ zs) .=. (xs ++ ys) ++ zs
 \end{lstlisting}
+and state the goal
+\begin{lstlisting}
+  xs ++ (ys ++ zs) .=. (xs ++ ys) ++ zs
+\end{lstlisting}
+where all variables are implicitly universally quantified.
 The listings above describe the background theory of the proof.
 The theory is fixed in a file and provided
 to the students by the instructors.
@@ -94,7 +99,8 @@ They also made it possible to leave holes in proofs and in expressions, which th
 Solving the other issues, however, would incur additional effort.
 We think that CYP should be put on a stronger foundation such as higher-order logic (HOL) without compromising its simplicity from a user perspective.
 One possibility would be to rewrite CYP as as a frontend to Isabelle/HOL~\cite{isabelle}.
-Since HOL is a typed logic it would solve the first issue and the latter issues could be resolved using Isabelle's function package~\cite{isabelle_functions}.
+Since HOL is a typed logic, it would solve the first issue.
+The latter issues could be resolved using Isabelle's function package~\cite{isabelle_functions}.
 A stronger foundation also allows one to more confidently develop new extensions for CYP.
 
 Our teaching experience with CYP has been very positive.
