@@ -31,12 +31,8 @@
 % %% Graphics
 \usepackage{xcolor}
 \usepackage{graphicx}
-\usepackage{tikz}
 \usepackage{float}
 \usepackage{standalone}
- \usetikzlibrary{quotes,angles,calc,arrows.meta,positioning,automata}
-\tikzset{initial text={}}
-\usepackage{tikz-3dplot}
 \usepackage{subcaption}
 
 %% Hyperlinks
@@ -56,7 +52,11 @@
 % \usepackage{enumitem}
 %
 %% Coding
-% \usepackage[outputdir=build]{minted}
+\usepackage[outputdir=build]{minted}
+\usemintedstyle{friendly}
+\BeforeBeginEnvironment{minted}{\smallskip}
+\AfterEndEnvironment{minted}{\smallskip}
+
 \usepackage{listings}
 
 \lstdefinelanguage{cyp}{
@@ -70,7 +70,7 @@
   commentstyle=\color{purple}\ttfamily,
 }
 
-\lstset{
+\lstdefinestyle{cyp}{
   language=cyp,
   extendedchars=true,
   basicstyle=\ttfamily,
@@ -80,6 +80,23 @@
   breaklines=true,
   showtabs=false
 }
+
+\lstdefinestyle{Haskell}{
+  language=Haskell,
+  extendedchars=true,
+  basicstyle=\ttfamily,
+  showstringspaces=false,
+  showspaces=false,
+  tabsize=2,
+  breaklines=true,
+  showtabs=false
+}
+
+\usepackage{tikz}
+\usetikzlibrary{quotes,angles,calc,arrows.meta,positioning,automata}
+\tikzset{initial text={}}
+\usepackage{tikz-3dplot}
+
 %
 % % Math packages
 % \usepackage{amsmath}
