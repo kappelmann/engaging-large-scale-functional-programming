@@ -56,7 +56,8 @@ data RealWorld = RealWorld {
   ...
 }
 
-newtype IO a = IO { unwrapIO :: ExceptT IOException (PauseT (State RealWorld)) a } 
+newtype IO a =
+  IO { unwrapIO :: ExceptT IOException (PauseT (State RealWorld)) a } 
 \end{minted}
 While the transformer \mintinline{Haskell}{ExceptT} simply adds I/O exceptions such as errors for insufficient permissions, the purpose of \mintinline{Haskell}{PauseT} is not obvious.
 To understand its role, consider the following simple program that reads the user's name and greets them.
@@ -103,7 +104,8 @@ user s = do
       ++ "\nActual:\n" ++ output ++ "\n")
 
 prop_hello = forAll (elements ["Karl", "Friedrich", "Rosa"]) $ \s ->
-  Mock.evalIO (Mock.setUser (user s) >> Sub.main >> Mock.runUser) Mock.emptyWorld
+  Mock.evalIO (Mock.setUser (user s) >> Sub.main >> Mock.runUser)
+              Mock.emptyWorld
 \end{minted}
 Figure~\ref{fig:iomocking} illustrates the steps that \mintinline{Haskell}{Mock.evalIO} takes while evaluating the interaction.
 Note that there are two blocking operation, i.e.\ operations that call \texttt{pause} internally, namely \texttt{getLine} and \texttt{Mock.hGetLine Mock.stdout}.
@@ -114,9 +116,11 @@ Focussing on the \mintinline{Haskell}{main} method, we see that, when encounteri
 After the user provides the input for \texttt{getLine} and yields, the \mintinline{Haskell}{main} method prints the greeting and finishes with the result \mintinline{Haskell}{Right ()}.
 Similarly, the user is blocked on \texttt{Mock.hGetLine} which means that the remaining computation only consists of the \texttt{when} check, which is executed as soon as \mintinline{Haskell}{main} is done.
 This explains why we need to run \mintinline{Haskell}{Mock.runUser} after \mintinline{Haskell}{Sub.main} since the crucial \texttt{when} check would never be executed otherwise.
-\begin{figure}[t]
+
+All in all, the mocking framework lets us uniformly test student submissions with the likes of QuickCheck and Smallcheck irregardless of whether they contain I/O programs.
+\begin{figure}[h]
   \centering
-\scalebox{0.7}{
+\scalebox{0.75}{
 \begin{tikzpicture}[cnode/.style={draw,rectangle,minimum height=2.5em}, >=stealth]
   \node[cnode] (P1) {\lstinputlisting[style=Haskell]{./sections/io_mocking/P.hs}};
   \node[cnode, right=2cm of P1.south east, anchor=south west] (P2) {\lstinputlisting[style=Haskell,firstline=2]{./sections/io_mocking/P.hs}};
@@ -141,7 +145,7 @@ This explains why we need to run \mintinline{Haskell}{Mock.runUser} after \minti
   \begin{scope}[>=triangle 45]
     \draw[->] (P1.east |- P2) to[out=0, in=90] (U1);
     \draw[->] (P2.east |- P3) to[out=0, in=90] (U2);
-    \draw[->] (U1.east |- U2) to[out=0, in=-90] (P2);
+    \draw[->] (U1.east |- U2) to[out=0, in=-90, looseness=0.85] (P2);
     \draw[->] (U2.east |- U3) to[out=0, in=-90] (END);
   \end{scope}
 
@@ -153,5 +157,3 @@ This explains why we need to run \mintinline{Haskell}{Mock.runUser} after \minti
   The black dot signifies the end of the interaction.\label{fig:iomocking}
 }
 \end{figure}
-
-All in all, the mocking framework lets us uniformly test student submissions with the likes of QuickCheck and Smallcheck irregardless of whether they contain I/O programs.

@@ -20,7 +20,7 @@ as is standard in Haskell.
 \begin{lstlisting}[style=cyp]
   data List a = [] | a : List a
 \end{lstlisting}
-Now we can define the infix append-operator \lstinline[style=cyp]!++! and state the goal \lstinline[style=cyp]!xs ++ (ys ++ zs) .=. (xs ++ ys) ++ zs! where all variables are implicitly universally quantified.
+Now we can define the infix append-operator \lstinline[style=cyp]!++!
 \begin{lstlisting}[style=cyp]
   [] ++ ys = ys
   (x : xs) ++ ys = x : (xs ++ ys)
