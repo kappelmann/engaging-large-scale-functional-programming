@@ -1,4 +1,3 @@
-{-# LANGUAGE CPP #-}
 module Test where
 
 import qualified Hello as Sub
