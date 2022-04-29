@@ -40,8 +40,8 @@ of the corresponding directories.
 TODO: to be published
 
 When offering exercises in which students implement strategies for games,
-one faces the challenge of having to run each student's submissions against every other submissions.
-We will provide a framework for this purpose, organising this simulation task.
+one faces the challenge of having to run each student's submissions against every other submissions (round-robin).
+We will provide a framework for this purpose that organises this simulation task.
 The framework continuously accepts new submissions and accordingly updates the results for each game and student.
 The generated score data can then easily be displayed, for example, on a tournament website.
 
@@ -52,7 +52,7 @@ An example website for this setup can be found [here](https://vmnipkow16.in.tum.
 ## IO Mocking
 
 In [io\_mocking](io_mocking),
-you can find a mocking framework for Haskell's `IO` type that
+you can find a transparent mocking framework for Haskell's `IO` type that
 lets you observe IO actions in student submissions and test them just as any other piece of code.
 
 ## Check Your Proof (CYP)
