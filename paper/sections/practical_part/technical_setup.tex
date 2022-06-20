@@ -32,7 +32,8 @@ Our tests were powered by the following libraries:
     as a complementary tool that provided small counterexamples for, in many cases, obvious deficiencies.
   \item Tasty\footnote{\url{https://hackage.haskell.org/package/tasty}}: We used Tasty to put QuickCheck, SmallCheck, and unit tests as well as the checking of ``Check Your Proof'' proofs (see \cref{sec:cyp}) into one common framework that is capable of generating results interpretable by ArTEMiS.
   We used the unit testing facilities of Tasty to complement our QuickCheck/SmallCheck tests with corner cases.
-  Integration of proof checking was pleasantly straightforward.
+  Integration of proof checking was pleasantly straightforward:
+  one only has to provide a suitable instance for Tasty's \mintinline{Haskell}{IsTest} typeclass.\footnote{The code can be found in the repository in \href{https://github.com/kappelmann/engaging-large-scale-functional-programming/tree/main/resources/io_mocking/typeclass}{resources/cyp\_integration/test/hs/Test.hs}}
   Moreover, Tasty supports timeouts for individual test cases,
   solving the issue of truncated test reports mentioned in~\cite{next_1100}.
 \end{enumerate}
@@ -81,10 +82,10 @@ Here we briefly list the key components and our experiences:
     We can report positively on its connection stability and usability.
     Unfortunately, the plugin requires a Microsoft or GitHub account,
     but since almost all students
-    already signed up to the later before,
+    already signed up to the latter before,
     this requirement passed uncontroversially.
     Nevertheless, for future iterations,
-    we plan to investigate in open-source alternatives.
+    we plan to investigate open-source alternatives.
 \end{enumerate}
 All in all, we can report positively on the setup.
 We have experience with running online tutorials for other large lectures and can testify that

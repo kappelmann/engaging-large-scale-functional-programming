@@ -28,9 +28,9 @@ copyFile source target = do
 \end{minted}
 Due to the definition of \mintinline{Haskell}{MonadFileSystem}, the instance for \mintinline{Haskell}{IO} is trivial.
 The mocked version can be implemented as a map from file names to file contents wrapped by the \mintinline{Haskell}{State} monad transformer to make it mutable.
-We omit the instantiation of \mintinline{Haskell}{MonadFileSystem} for brevity.
+We omit this instantiation of \mintinline{Haskell}{MonadFileSystem} for brevity.
 Testing \mintinline{Haskell}{copyFile} is now as simple as checking whether the state of the file system is as expected after executing the function.
-An example that includes the instance \mintinline{Haskell}{MonadFileSystem MockFileSystem} and a test can be found in the repository in \href{https://github.com/kappelmann/engaging-large-scale-functional-programming/tree/main/resources/io_mocking/typeclass}{resources/io\_mocking/typeclass}.
+An example that includes the instance \mintinline{Haskell}{MonadFileSystem (State MockFileSystem)} and a test can be found in the repository in \href{https://github.com/kappelmann/engaging-large-scale-functional-programming/tree/main/resources/io_mocking/typeclass}{resources/io\_mocking/typeclass}.
 \begin{minted}{Haskell}
 instance MonadFileSystem IO where
   readFile = Prelude.readFile

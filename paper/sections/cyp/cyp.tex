@@ -24,11 +24,10 @@ Now we can define the infix append-operator \lstinline[style=cyp]!++!
 \begin{lstlisting}[style=cyp]
   [] ++ ys = ys
   (x : xs) ++ ys = x : (xs ++ ys)
-  goal xs ++ (ys ++ zs) .=. (xs ++ ys) ++ zs
 \end{lstlisting}
 and state the goal
-\begin{lstlisting}
-  xs ++ (ys ++ zs) .=. (xs ++ ys) ++ zs
+\begin{lstlisting}[style=cyp]
+  goal xs ++ (ys ++ zs) .=. (xs ++ ys) ++ zs
 \end{lstlisting}
 where all variables are implicitly universally quantified.
 The listings above describe the background theory of the proof.
