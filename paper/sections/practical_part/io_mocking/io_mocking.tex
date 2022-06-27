@@ -46,6 +46,8 @@ it lacks one important property: transparency.
 More specifically, the code submitted by students must contain or import \mintinline{Haskell}{MonadFileSystem} and the signatures of terms that use \mintinline{Haskell}{IO} must be adapted.
 This is especially problematic because the lecture introduces \mintinline{Haskell}{IO} without mentioning monads,
 which are only introduced towards the end of the course.
+Other approaches to test IO
+face similar issues~\cite{iotest1,iotest2}.
 
 Instead of modifying existing code,
 we delay the mocking to a later stage,
