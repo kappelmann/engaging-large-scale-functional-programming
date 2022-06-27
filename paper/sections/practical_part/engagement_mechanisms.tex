@@ -3,9 +3,12 @@
 Students spend the majority of their time on the practical part of the course.
 This is where they apply the theory explained in the lecture to tutorial and homework exercises in the form of programming tasks, proof exercises, and miscellaneous other assignments (type inference, transformation of programs into tail-recursive form, etc.).
 As each student has unique interests, strengths and weaknesses, and different levels of commitment,
-we aim to employ a diverse set of mechanisms to keep them engaged.
+we employed a diverse set of mechanisms to engage them.
 
-As outlined in the introduction, keeping up student engagement is particularly challenging in courses that are taught remotely. We experienced this first hand when we taught a course in theoretical computer science during the first semester affected by the COVID-19 pandemic. We saw a significantly larger decrease in homework and tutorial participation over the course of that semester than in previous iterations. We thus attempted to put a particular emphasis on engaging teaching methods for the functional programming course in WS20.
+As outlined in the introduction, keeping up engagement is particularly challenging in courses that are taught remotely.
+We experienced this first hand when teaching a course in theoretical computer science during the first semester affected by the COVID-19 pandemic.
+We saw a significantly larger decrease in homework and tutorial participation over the course of that semester than in previous years.
+We thus put a particular emphasis on engaging teaching methods for the functional programming course in WS20.
 
 We want to emphasise that engagement does not simply
 increase by offering more things -- this may even increase stress --
@@ -15,15 +18,14 @@ but genuinely make the course more interesting and fun:
 they engage students with the content,
 the instructors,
 and with each other~\cite{onlineengagement3,onlineengagement2,engagementproposals}.
-
-Here we describe the engagement mechanisms that were particularly valuable for our course:
+We now describe the mechanisms that proved particularly valuable to us:
 
 \paragraph{Grade Bonus}
-The most straightforward of all mechanisms is
+The most straightforward mechanisms is
 that of the grade bonus.
 For both iterations,
 students were able to obtain a bonus of one grade step on their final exam provided that they achieved certain goals in the practical part of the course.
-This mechanism was already used in a previous iteration
+This incentive was already used in a previous iteration
 but subsequently dropped because of negative experiences with plagiarism.
 However, as a result, participation in homework exercises
 severely decreased~\cite{next_1100}.
@@ -39,51 +41,50 @@ and obtained the bonus if they passed $\approx 70\%$ of all sheets.
 We changed to this system so that students
 could not obtain the grade bonus early on in the semester and then stop participating,
 leading to cramming.
-
 Secondly, in WS20, we introduced additional ways to
 obtain bonus points,
 for example by participating in programming contests or workshops by industry partners.
 This diversified the system and offered new ways
 to obtain the bonus,
 in particular for those students that were struggling
-with programming tasks but were nevertheless interested in the course material.
-As a result, out of 802 students that interacted with the homework system at all, 298 students obtained the grade bonus in WS20 ($37\%$).
+with programming tasks but were nevertheless interested in the course.
 
-In both iterations of the course,
-almost all students that obtained the bonus
+As a result, out of 802 students that interacted with the homework system at all, 298 students obtained the grade bonus in WS20 ($37\%$).
+More than $96\%$ of all students that obtained the bonus
 also passed the final exam,
 whereas more than half of all students that did not obtain the bonus failed.
-In contrast to previous years,
+Similar numbers can be reported for WS19.
+
+Finally, in contrast to previous years,
 we have not seen any severe cases of plagiarism despite
 running all submissions through a plagiarism checking tool\footnote{We used Moss \url{https://theory.stanford.edu/~aiken/moss/}}.
 
 \paragraph{Instant Feedback}
-An observation we already made in \cref{sec:lectures}
+An observation we made in \cref{sec:lectures}
 extends to the practical part of the course:
 feedback must come fast.
 The benefit of prompt feedback is well supported in the literature~\cite{onlineengagement2,onlineengagement4}.
 Again, an asynchronous Q\&A forum helps in this regard,
 at least for questions of a general nature.
 Questions and problems specific to the submission of a student (e.g.\ a bug or error in a proof),
-however, must be fixed by the student themselves as 1) it is a critical skill of any computer scientists to discover bugs and 2) code/proofs may not be shared before the submission deadline due to the grade bonus.
+however, must be fixed by the student themselves as 1) it is a critical skill of computer scientists to discover bugs and 2) code/proofs may not be shared before the submission deadline due to the grade bonus.
 
 Automated tests can fill this gap:
-they provide direct feedback (e.g.\ failing input and expected output pairs) with little delay
-without giving away too much information.
+they provide prompt feedback without giving away too much information (e.g.\ by only showing a failing input and expected output pairs).
 Needless to say, they are also an important mechanism
 to scale the homework system to a large number of students.
 We describe our testing infrastructure in more detail in \cref{sec:tech_setup_test}.
 
-However, we still let student assistants manually review all final submissions
-in the first iteration of the course.
-We specifically instructed them to provide feedback not covered by automation,
+However, we also let student assistants manually review all final submissions
+in the first iteration of the course
+to provide feedback not covered by automation,
 in particular regarding code quality.
-To our dismay, we have to report that this feedback did very little and
+To our dismay, this feedback did very little and
 most of it was probably ignored.
 In part, this is because it took 1--2 weeks after each submission deadline to provide feedback to all students.
-At that point, the students had already moved on to a fresh set of exercises and were probably not motivated to revisit their old submissions.
+At that point, students had already moved on to a fresh set of exercises and were probably not motivated to revisit their old submissions.
 Some students may also only care about passing the tests
-and are thus not particularly interested in feedback about code quality.
+and are not particularly interested in feedback about code quality.
 
 In our second iteration, we hence reallocated resources:
 instead of grading submissions,
@@ -103,36 +104,31 @@ to not only write correct code but also use good coding patterns.
 This seems to be due to the fact that 1) the linter provides instant feedback and 2) it visually highlights affected code fragments and provides quick fixes.
 
 \paragraph{Competition and Awards}
+
 Due to positive feedback,
 we continued the tradition of running an opt-in weekly
 programming competition as introduced in~\cite{next_1100}.
-Each week, one of the homework assignments
+Each week, one homework assignment
 was selected as a competition problem
 and a criterion for ranking the correct submissions was fixed.
 Participation was optional:
 students could pass the exercise without optimising their code and submitting it to the competition.
-The range of problems and ranking criteria were diverse,
+The set of competition problems was diverse,
 including code golf challenges,
 optimisation problems,
 game strategy competitions,
 an ACM-ICPC-like programming contest,
 and creative tasks like music composition
 and computer art.
-We introduce some of the exercises and share their templates in \cref{sec:selected_exercises}.
+We introduce some of them in \cref{sec:selected_exercises}.
 The top 30 entries received points
 and were presented to the public on a blog\footnote{\url{https://www21.in.tum.de/teaching/fpv/WS20/wettbewerb.html} (WS20) and
 
 \url{https://www21.in.tum.de/teaching/fpv/WS19/wettbewerb.html} (WS19)},
 written using the ironic self-important third-person style established in previous semesters.
-The top 30 students then received awards at
-a humorously organised award ceremony at the end of the semester.
 
-To improve on previous iterations,
-we made participation more exciting by organising better awards.
-To avoid fierce competition -- after all, we do not want to host a fight for money --
-we did not announce the value of the awards nor did we announce any allocation key
-until the very end of the semester.
-However, we added some hints on our blog to make students curious.
+The overall top 30 students received awards at
+a humorously organised award ceremony at the end of the semester.
 We cooperated with industry partners
 to offer prizes such as tickets to functional programming conferences,
 Haskell workshops and programming books, as well as cash and material prizes.
@@ -140,7 +136,7 @@ This initial contact with industry partners
 also sparked the idea to offer real-world Haskell workshops
 run by software engineers from industry in WS20 (explained further below).
 
-The competition in WS20 also greatly benefited from incorporating the work of our student assistants:
+The competition in WS20 greatly benefitted from incorporating the work of our student assistants:
 At the beginning of the semester,
 we brainstormed for competition ideas.
 We then formed teams, each one being responsible for the
@@ -149,30 +145,28 @@ This allowed us to create more extensive, diverse,
 and practical exercises than in previous iterations,
 where all tasks were created by the course organisers.
 
-As reported in \cite{next_1100},
+As reported in~\cite{next_1100},
 we can confirm that the competition works extremely well to motivate talented students.
 They go well beyond what is taught as part of the course when coming up with competitive solutions.
-Many of them continue to become major drivers in
+Many of them became major drivers in
 the team of student assistants in follow-up iterations.
 Indeed, after offering the competition in WS19,
 we received more applications for student assistant positions in WS20 (they more than doubled) than we could hire -- something we had never experienced before.
-In each of the iterations, 144 different students ranked among the top 30 of the week at least once.
-We also received testimonies from students that even though they did not perform well or did not participate at all in the competition,
-they nevertheless enjoyed the humorous blog posts and advanced material discussed on it.
+In each iteration of the course, 144 different students ranked among the top 30 of the week at least once.
+We also received testimonies from students that even though they did not perform well (or at all) in the competition,
+they nevertheless enjoyed the blog posts and advanced material discussed on it.
 
 The competition combines multiple effective
-strategies~\cite{onlineengagement5,engagementproposals}
-to increase engagement:
+engagement strategies~\cite{onlineengagement5,engagementproposals}:
 it is challenging, often practical, humorous,
 and integrates gamification aspects.
-Nevertheless, despite the work of our student assistants,
-running the competition remains an enormously labour-intensive task,
+But despite the help of our student assistants,
+running the competition remained enormously labour-intensive,
 in particular the evaluation of submissions and
 the writing of the blog post.
 We envisage further assistance by student assistants in future iterations in those regards,
-moving to a bi-weekly format,
-or replacing it by more efficient mechanisms
-that motivate talented students.
+cutting down the competition to a bi-weekly format,
+or replacing it by more efficient mechanisms that motivate talented students.
 
 \paragraph{Workshops with Industry Partners}
 Many students at TUM have questioned the applicability and value of functional programming for real-world applications.
@@ -193,17 +187,18 @@ In some cases,
 workshops were even extended for multiple hours due to the great curiosity by students.
 Moreover, organisational overhead was small:
 we merely had to communicate the syllabus to our partners and coordinate time and place.
-We envisage offering even more workshops in future iterations and highly recommend this mechanism to demonstrate real-world applicability to other educators.
+We envisage offering more workshops in future iterations and highly recommend this mechanism to demonstrate real-world applicability to other educators.
 
 \paragraph{Social Interactions}
 Studies confirmed that the COVID-19 pandemic
 worsened students' social life,
-leading to higher levels of stress, anxiety, loneliness, and symptoms of depression \cite{students_lockdown1}.
-This got us thinking about mechanisms we
-can employ in WS20 to foster social interaction and exchange between students
+leading to higher levels of stress, anxiety, loneliness, and symptoms of depression~\cite{students_lockdown1}.
+In WS20,
+we hence investigated mechanisms
+to foster social interaction and exchange between students
 -- which also play an important pedagogical role in general~\cite{impact_social_interaction}.
 Crucially,
-there is no ``one size fits all'' solution,
+there is no one-size-fits-all solution,
 but multiple forms of social interaction
 are needed to increase engagement~\cite{onlineengagement3,onlineengagement2}.
 
@@ -222,13 +217,14 @@ We started with icebreaker sessions in breakout rooms,
 randomly allocating students and at least one student assistant in each group.
 Following these sessions,
 we opened thematic breakout rooms where students
-could freely move and talk about a given topic.
-Some students preferred to talk about the course material, others had
+could freely talk about a given topic.
+Some preferred to talk about the course material, others had
 light-hearted conversations about university, yet others started to play online games.
-All in all, we received very positive feedback for our get-together sessions.
+All in all, we received very positive feedback for these sessions.
 
 Thirdly, we organised an
 ACM-ICPC-like programming contest (see \cref{sec:selected_exercises})
 where students could participate in teams,
 followed again by a light-hearted get-together session
 for participants.
+

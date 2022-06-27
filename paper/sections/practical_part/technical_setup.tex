@@ -3,7 +3,7 @@
 \paragraph{Automated Assessment}
 In WS19, we used an improved version of
 the testing infrastructure introduced in~\cite{next_1100}.
-However, this system was not able to manage online exams nor to mark non-programming tasks.
+However, this system could neither manage online exams nor mark non-programming tasks.
 We thus switched to a newly written open-source
 tool developed at TUM called ArTEMiS~\cite{artemis}.
 ArTEMis is a highly scalable, automated assessment management system and is programming language independent --
@@ -15,7 +15,7 @@ and we added support for Haskell.\footnote{It now also supports OCaml}
 As ArTEMis takes care of most things,
 including automated test execution and score management,
 and offers an exam mode and good support for grading non-programming tasks,
-the only thing we were left to do was writing the actual test code.
+the only thing that was left to do was writing the actual test code.
 For the most part, we verified the results computed
 by a student's submission by comparing them to those
 computed by a sample solution written by us.
@@ -23,15 +23,15 @@ In some cases, we also tested for efficiency using timeouts.
 Our tests were powered by the following libraries:
 \begin{enumerate}
   \item QuickCheck \cite{quickcheck}:
-  Although QuickCheck provides means to automatically generate test data (using the typeclass \lstinline!Arbitrary!),
+  Although QuickCheck can automatically generate test data (using the typeclass \lstinline!Arbitrary!),
   most tests and benchmarks used custom QuickCheck input generators.
   This was necessary to increase coverage and eliminate non-applicable inputs for tests with preconditions.
   We also used custom shrinkers to provide better feedback to students in case of a failure.
   In both cases, the flexible combinators provided by QuickCheck made this a straightforward task.
   \item SmallCheck \cite{smallcheck}: The exhaustive testing facilities provided by SmallCheck mainly served
     as a complementary tool that provided small counterexamples for, in many cases, obvious deficiencies.
-  \item Tasty\footnote{\url{https://hackage.haskell.org/package/tasty}}: We used Tasty to put QuickCheck, SmallCheck, and unit tests as well as the checking of ``Check Your Proof'' proofs (see \cref{sec:cyp}) into one common framework that is capable of generating results interpretable by ArTEMiS.
-  We used the unit testing facilities of Tasty to complement our QuickCheck/SmallCheck tests with corner cases.
+  \item Tasty\footnote{\url{https://hackage.haskell.org/package/tasty}}: We used Tasty to put QuickCheck, SmallCheck, unit tests, and the checking of ``Check Your Proof'' proofs (see \cref{sec:cyp}) into one common framework that is capable of generating results interpretable by ArTEMiS.
+  We used the unit testing facilities of Tasty to complement our tests with corner cases.
   Integration of proof checking was pleasantly straightforward:
   one only has to provide a suitable instance for Tasty's \mintinline{Haskell}{IsTest} typeclass.\footnote{The code can be found in the repository in \href{https://github.com/kappelmann/engaging-large-scale-functional-programming/tree/main/resources/io_mocking/typeclass}{resources/cyp\_integration/test/hs/Test.hs}}
   Moreover, Tasty supports timeouts for individual test cases,
@@ -46,8 +46,7 @@ this was no longer an option:
 we needed a way for students to share their code in read and write mode
 to other peers (pair-programming) and their teaching assistant (for feedback purposes) during online tutorials.
 Moreover, as explained in \cref{sec:engagement},
-we decided to give up on manual feedback on code quality
-and wanted students to use a linter instead.
+we wanted students to use a linter.
 Finally, we had negative experiences with students
 installing no compiler at all
 and instead (mis)using our submission server as a compiler backend.
@@ -71,14 +70,13 @@ Here we briefly list the key components and our experiences:
   \item Linter: We used HLint\footnote{\url{https://github.com/ndmitchell/hlint}}, which, among other things,
     provides suggestions for alternative functions
     and simplified code and spots redundancies.
-    Students reacted curiously and positively to these suggestions.
-    In particular, simplified code fragments were
-    discussed vividly among pair-programming teams.
+    Students reacted curiously and positively to these suggestions
+    and discussed them vividly during pair-programming sessions.
   \item API search engine: Due to Haskell's strong type system,
     searching its API by type signature often returns better results than searching for function names.
     For this purpose, we introduced Hoogle\footnote{\url{https://hoogle.haskell.org/}} to our students and let them install an extension that integrates such searches into their IDE.
     Sadly, we have no data to report on whether this enriched students programming experiences.
-  \item Real-time collaboration: Finally, we used VSLiveShare\footnote{\url{https://visualstudio.microsoft.com/services/live-share/}} to host our pair-programming sessions (in groups of 3--4 students) during the online semester.
+  \item Real-time collaboration: Finally, we used VSLiveShare\footnote{\url{https://visualstudio.microsoft.com/services/live-share/}} to host our pair-programming sessions (groups of 3--4 students) during the online semester.
     We can report positively on its connection stability and usability.
     Unfortunately, the plugin requires a Microsoft or GitHub account,
     but since almost all students

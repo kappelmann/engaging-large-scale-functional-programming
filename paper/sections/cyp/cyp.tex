@@ -8,7 +8,6 @@ equational reasoning together with induction
 is already sufficient to prove interesting properties.
 Since ``fast and loose reasoning is morally correct''~\cite{fast_and_loose},
 valid properties in this sub-language carry over to Haskell.
-
 Simple inductive proofs of course lend themselves well to be automatically checked and, as announced in~\cite{next_1100}, a tool called ``Check Your Proof'' (CYP for short) was developed at our lab by Durner and Noschinski\footnote{\url{https://github.com/noschinl/cyp}}.
 
 The first example of such a proof presented in the lecture is the proof of associativity of the append-operator for lists.
@@ -32,7 +31,7 @@ and state the goal
 where all variables are implicitly universally quantified.
 The listings above describe the background theory of the proof.
 The theory is fixed in a file and provided
-to the students by the instructors.
+to the students.
 The students then supply the proof in a separate file.
 In our case, we proceed to prove the statement by structural induction on \lstinline[style=cyp]!xs!.
 \begin{lstlisting}[style=cyp]
@@ -76,11 +75,11 @@ Again, CYP requires the user to be explicit: the goal in each inductive case and
 Note that CYP also allows one to start rewriting from the left-hand side as well as the right-hand side of the goal.
 
 The lecture then goes beyond proofs by structural induction and introduces proof by extensionality, case analysis, and computation induction,
-all of which CYP supports with some conditions applying as we will see shortly.
-Computation induction in particular was not supported in the original version by Durner and Noschinski but was only introduced in a fork by us in WS20\footnote{\url{https://github.com/lukasstevens/cyp}}.
+all of which CYP supports with some conditions applying as we will describe shortly.
+Computation induction was not supported in the original version by Durner and Noschinski but was only introduced in a fork by us in WS20\footnote{\url{https://github.com/lukasstevens/cyp}}.
 CYP also allows proving named auxiliary lemmas,
 which is useful to modularise proofs
-and often necessary to prove generalised versions of a given goal.
+and often necessary to prove generalisations of a given goal.
 
 The simplicity of CYP both in its usage and its implementation comes with some caveats:
 \begin{itemize}
@@ -91,13 +90,12 @@ The simplicity of CYP both in its usage and its implementation comes with some c
     \item Computation induction is unsound if there are recursive calls in branches of an if-then-else expression.
       This is because the induction hypotheses would have to be conditional rewrite rules in such cases, which CYP does not support.
 \end{itemize}
-Renz et al.~\cite{cyp_holes} discuss the inner workings of CYP in detail and develop an extension to CYP that introduces types,
+Renz et al.~\cite{cyp_holes} discuss the inner workings of CYP in detail and develop an extension that introduces types,
 thus solving the first issue.
 They also made it possible to leave holes in proofs and in expressions, which then have to be filled in by students.
-
 Solving the other issues, however, would incur additional effort.
 We think that CYP should be put on a stronger foundation such as higher-order logic (HOL) without compromising its simplicity from a user perspective.
-One possibility would be to rewrite CYP as as a frontend to Isabelle/HOL~\cite{isabelle}.
+One possibility would be to rewrite CYP as a frontend to Isabelle/HOL~\cite{isabelle}.
 Since HOL is a typed logic, it would solve the first issue.
 The latter issues could be resolved using Isabelle's function package~\cite{isabelle_functions}.
 A stronger foundation also allows one to more confidently develop new extensions for CYP.
@@ -119,6 +117,7 @@ In each of the exams, two exercises (out of $\approx 8$) were concerned with ind
 The first exercise was a straightforward proof by structural induction while the second one required more effort, e.g.\ generalisation of the goal or a slightly less trivial computation induction.
 We did not require the students to stick to CYP's syntax in the exam, but we urged them to follow a similar structure,
 which worked very well overall and simplified the grading.
+However, we have no data on whether CYP also improves students' understanding of induction.
 
 % Teaching experiences
 % \begin{itemize}

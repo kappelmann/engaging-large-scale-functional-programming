@@ -4,11 +4,13 @@ The course deals with the basics of functional programming and the verification 
 Most parts of the course could be done using any functional language.
 We chose Haskell because of its simple syntax, large user community, and good testing facilities (in particular QuickCheck).
 The syllabus of the course stayed close to the one presented in~\cite{next_1100}.
-The changes are the omission of the parser case study (parsing problems were instead introduced in homework exercises), the rigorous introduction of computation induction and type inference, and the decision to split off I/O from monads and introduce it earlier in the lecture.
-The last is done in an effort to show the students that the most important side effects they know from imperative languages can be recovered in pure functional languages.
+The changes are the omission of the parser case study, the rigorous introduction of computation induction and type inference, and the decision to split off I/O from monads and introduce it earlier in the lecture.
+The last is done in an effort to convince
+students more quickly that pure functional languages are not just glorified calculators but may also deal with side effects.
 For ease of reference, we list the syllabus below.
 New or modified topics are marked ($\ast$):
 
+\begin{multicols}{2}
 \begin{enumerate}
   \item Introduction to functional programming
   \item Basic Haskell: \mintinline{Haskell}{Bool}, QuickCheck, \mintinline{Haskell}{Integer} and \mintinline{Haskell}{Int}, guarded equations, recursion on numbers \mintinline{Haskell}{Char}, \mintinline{Haskell}{String}, tuples
@@ -25,6 +27,7 @@ New or modified topics are marked ($\ast$):
   \item Complexity and optimisation
   \item Monads ($\ast$)
 \end{enumerate}
+\end{multicols}
 
 Concepts are introduced in small, self-contained steps.
 Characteristic features of functional programming languages such as

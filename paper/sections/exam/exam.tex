@@ -1,8 +1,7 @@
 \section{Exams}\label{sec:exam}
-In previous iterations of the course, exams had been paper-based by necessity as university regulations made digital exams unfeasible.
+In previous iterations of the course, exams were paper-based by necessity as university regulations made digital exams unfeasible.
 Due to the COVID-19 pandemic, however, remote exams (either unsupervised or supervised via video conferencing software) were allowed for the repeat exam in WS19 and both exams in WS20.
-
-In the following, we will outline how we adapted our exam process to this new reality and the advantages of our approach for students and staff.
+In the following, we outline how we adapted our exam process to this new reality and the advantages of our approach for students and staff.
 
 \paragraph{Workflow for Students}
 
@@ -10,16 +9,15 @@ We chose the ArTEMiS~\cite{artemis} platform, previously described in \cref{sec:
 In WS19, students were mostly unfamiliar with ArTEMiS,
 but in WS20, they had been submitting their homework using the same workflow as during the exam.
 
-Students were able to check out individual exam questions from the ArTEMiS repository and then work on them using their preferred programming environment.
+Students were able to check out individual exam questions from a git repository and then work on them using their preferred programming environment.
 In addition to programming exercises, the exams included theory questions and proofs, which were submitted as text using an online editor.
 
 The exams were open-book, including online resources
-but prohibiting posting questions to chats, forums, etc.
+but prohibited posting questions to chats, forums, etc.
 Usage of third-party code had to be cited using comments.
 We feel that the combination of a programming environment customised to the individual student's taste and access to online resources comes close to how programming is done in practice.
-
 In contrast, previous exams were purely paper-based.
-This limited the scope of programming exercises we were able to pose
+This limited the scope of exercises we were able to pose
 since both writing and grading programs on paper is highly labour-intensive.
 Moreover, we were able to expect a higher standard of correctness
 since minor errors, in particular in syntax, are excusable when programming on paper but less so when students can test, or at least run, their programs before submission.
@@ -27,31 +25,31 @@ since minor errors, in particular in syntax, are excusable when programming on p
 \paragraph{Grading}
 Grading hundreds of exams on paper is a huge undertaking.
 In previous iterations,
-it took 10--20 people (staff and student assistants) about 4--5 days to grade an exam.
+it took 10--20 people about 4--5 days to grade an exam.
 Additionally, grading programming exercises on paper is error-prone, and it is unfeasible to digitise every paper submission and run it through a compiler.
 
 Using ArTEMiS, we were able to use automated testing for programming exercises.
-In most cases, we were able to mark submissions which passed all tests as fully correct
-and manual grading was only needed for submissions that failed some tests or did not compile.
+In most cases, we marked submissions passing all tests as fully correct.
+Manual grading was only needed for submissions that failed some tests or did not compile.
 In our view, manual grading is still necessary in those cases because it is generally not possible to write tests that are fine-grained to such a degree that every potential source of error is recognised and scored proportionally.
-This hybrid approach to grading still significantly lightened the workload, for even manual grading is much more convenient when there are test results for guidance and one can re-run tests after fixing compilation or minor semantic errors.
+Note that manual grading was also facilitated since test results provide valuable guidance when checking for errors in code.
+Moreover, one could re-run tests after fixing compilation and semantic errors and deduct points accordingly.
 As a result, we were able to grade an exam in 3 days.
 
 \paragraph{Online Review}
 
 Once graded, students have the right to review their
-exams in order to check for errors or unfairness in the grading process.
+exams to check for errors or unfairness in the grading process.
 For paper-based exams, students usually had to make an
 appointment for a time-slot to review their exam under
 the supervision of teaching staff.
-In courses with a high number of participants, this imposed a significant organisational overhead for both staff and students.
+In large courses, this imposed a significant organisational overhead for both staff and students.
 
-Using ArTEMiS, however, every student can simply review their exam and submit complaints through an online interface.
+Using ArTEMiS, every student could simply review their exam and submit complaints through an online interface.
 After the review period is over,
 the complaints were approved or rejected by the teaching staff.
 This resulted in a vastly increased proportion of students reviewing their exam,
 thus ensuring a higher degree of fairness in the grading process.
-
 In addition, feedback for students is improved by this method since they are able to check test results along with in-line grading comments in the exam review instead of having to rely on handwritten annotations made by the corrector.
 
 \paragraph{Cheating}
@@ -61,7 +59,6 @@ We considered supervision but ultimately decided against it. Were we to supervis
 each staff member would have to keep track of 20--30 students via their webcam in a video conferencing software.
 We feel that this would hardly ensure against cheating
 since, for example, students would still be able to take advice from someone out of view of the camera or communicate with others online (it does not seem feasible to simultaneously supervise the camera and screen-share of 20--30 students).
-
 There are also commercial options for exam supervision,
 but it is unclear how effective they are at preventing cheating, and the options we reviewed raised significant privacy concerns.
 
@@ -71,6 +68,5 @@ we also checked for plagiarism with Moss.
 This turned up only three cases of conclusive plagiarism.
 We suspect and accept that there were likely more cases of cheating that we could not catch,
 so we aim to improve our anti-cheating measures in future iterations.
-
 We also created 3--4 slight variations of each exam question
 in order to make plagiarism slightly more onerous. ArTEMiS supports the creation of these variants and assigns them randomly during the exam.

@@ -1,6 +1,6 @@
 \paragraph{I/O-Mocking Library}
-As discussed in Section~\ref{sec:tech_setup_test}, we primarily use QuickCheck to automatically assess submissions for homework exercises.
-This raises the question how monadic I/O in Haskell can be tested on the submission system.
+As discussed in Section~\ref{sec:tech_setup_test}, we primarily use QuickCheck to automatically assess homework submissions.
+This raises the question how monadic I/O in Haskell can be tested.
 Since we do not want to actually execute the side effects that the submitted code produces,
 the obvious solution is to use a mocked version of Haskell's \mintinline{Haskell}{IO} type.
 
@@ -46,7 +46,7 @@ it lacks one important property: transparency.
 More specifically, the code submitted by students must contain or import \mintinline{Haskell}{MonadFileSystem} and the signatures of terms that use \mintinline{Haskell}{IO} must be adapted.
 This is especially problematic because the lecture introduces \mintinline{Haskell}{IO} without mentioning monads,
 which are only introduced towards the end of the course.
-Other approaches to test IO
+Other approaches to test I/O
 face similar issues~\cite{iotest1,iotest2}.
 
 Instead of modifying existing code,
@@ -61,9 +61,9 @@ All these aspects of the machine state are summarised in below type \mintinline{
 Crucially, the type also contains a mock user,
 represented by a computation of type \mintinline{Haskell}{IO ()},
 which interacts with a student's submission;
-that is, the user generates the input for and reads the output of the student's submissions.
+that is, the user generates the input for and reads the output of the student's submission.
 For simplicity, we do not show the full type here.
-As before, this type is wrapped by the \mintinline{Haskell}{State} monad transformer as well as two additional transformers \mintinline{Haskell}{PauseT} and \mintinline{Haskell}{ExceptT} in order to form the mocked \mintinline{Haskell}{IO} type.
+Again, this type is wrapped by the \mintinline{Haskell}{State} monad transformer as well as two additional transformers \mintinline{Haskell}{PauseT} and \mintinline{Haskell}{ExceptT} in order to form the mocked \mintinline{Haskell}{IO} type.
 \begin{minted}{Haskell}
 data RealWorld = RealWorld {
   workDir :: FilePath,
@@ -108,7 +108,7 @@ class Monad m => MonadPause m where
   pause :: m ()
   stepPauseT :: m a -> m (Either (m a) a)
 \end{minted}
-We exemplify the mechanics of the mocking framework with a simple test of the \mintinline{Haskell}{main} function from above.
+We exemplify the mechanics of the mocking framework with a simple test of above \mintinline{Haskell}{main} function.
 To this end, we first implement a mock user that takes a name and supplies it to the standard input of \mintinline{Haskell}{main}.
 The user then reads the output of the program and checks whether it printed the expected greeting.
 In the QuickCheck property \mintinline{Haskell}{prop_hello},
@@ -140,7 +140,7 @@ When \mintinline{Haskell}{Mock.evalIO} encounters any such operation,
 it transfers control between the user and the program as indicated by the black arrows.
 Control is also transferred if the computation runs until completion without meeting a \texttt{pause}.
 The horizontal axis with white arrows illustrates the return values of \texttt{stepPauseT}.
-Focussing on the \mintinline{Haskell}{main} function,
+Focussing on \mintinline{Haskell}{main},
 we see that \texttt{stepPauseT}
 returns the remaining computation \mintinline{Haskell}{putStrLn $ "Hello " ++ x} wrapped in a \mintinline{Haskell}{Left}
 when encountering \texttt{getLine}.
