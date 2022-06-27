@@ -1,6 +1,6 @@
 \section{Introduction}\label{sec:intro}
 
-This paper reports on strategies and solutions employed to
+This paper reports on strategies and tools employed to
 run two iterations of a large-scale functional programming and verification course at the Technical University of Munich (TUM).
 While the first iteration (winter semester 2019, 1057 participants)
 took place on campus,
@@ -32,7 +32,7 @@ teaching assistants the way they assist students in tutorial sessions.
 Students, on the other hand, suffer from a lack of social interaction and communication, leading to higher
 levels of stress, anxiety, loneliness, symptoms of depression, and diminished affective engagement~\cite{students_lockdown1,onlineengagement1}.
 
-In our experience, the disconnect between students and lecturers, as well as the lack of on campus interaction between students may also lead to \emph{cramming}:
+In our experience, the disconnect between students and lecturers as well as the lack of on campus interaction between students may also lead to \emph{cramming}:
 the practice of showing little participation during the semester
 while studying extensively just before the exam.
 Cramming tends to result in poor long-term retention and shallow understanding of material.
@@ -57,12 +57,17 @@ we have to bring the benefits of functional languages
 closer to our students' hearts
 by showing real-world applicability and making functional programming fun and engaging.
 
-
-\vspace{\baselineskip}\noindent
+\paragraph{Contributions}
 In this paper,
-we present our answers to these challenges
-and provide tools and exercises for other educators
-to make functional programming lectures -- in physical or virtual space -- engaging and scalable.
+we present our answers to above challenges
+and provide tools and exercises for other educators.
+% to make functional programming lectures -- in physical or virtual space -- engaging and scalable.
+Our contributions are
+1) a description of technical tools that enable large-scale (functional) programming courses in physical and virtual space,
+2) a toolbox of engagement mechanisms
+for programming courses
+and an evaluation therof, and
+3) reusable implementations of exercises and tools for other functional programming educators.
 Our resources can be found in the central repository of this paper.\footnote{\url{https://github.com/kappelmann/engaging-large-scale-functional-programming/}}
 
 \paragraph{Outline}
@@ -78,6 +83,9 @@ that is scalable
 for the practical part of the course,
 including tutorials, homework assignments, and
 competition systems.
+It also includes a framework for IO
+testing in Haskell
+that overcomes a transparency issue prevalent in traditional approaches.
 \cref{sec:cyp} introduces
 ``Check Your Proof'' -- a tool created
 by our lab that automatically checks simple inductive proofs for Haskell programs.
