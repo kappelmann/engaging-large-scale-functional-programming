@@ -57,7 +57,7 @@ The mocked \mintinline{Haskell}{IO} type can be realised in a similar way as abo
 However, to achieve full transparency this time,
 we not only need a file system but also handles, such as standard input and output, as well as a working directory.
 
-All these aspects of the machine state are summarised in below type \mintinline{Haskell}{RealWorld}.
+All these aspects of the machine state are summarised in the type \mintinline{Haskell}{RealWorld} as seen below.
 Crucially, the type also contains a mock user,
 represented by a computation of type \mintinline{Haskell}{IO ()},
 which interacts with a student's submission;
