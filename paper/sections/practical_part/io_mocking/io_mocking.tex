@@ -1,5 +1,5 @@
 \paragraph{I/O-Mocking Library}
-As discussed in Section~\ref{sec:tech_setup_test}, we primarily use QuickCheck to automatically assess homework submissions.
+As discussed in \cref{sec:tech_setup_test}, we primarily use QuickCheck to automatically assess homework submissions.
 This raises the question how monadic I/O in Haskell can be tested.
 Since we do not want to actually execute the side effects that the submitted code produces,
 the obvious solution is to use a mocked version of Haskell's \mintinline{Haskell}{IO} type.
@@ -133,7 +133,7 @@ prop_hello = forAll (elements ["Karl", "Friedrich", "Rosa"]) $ \s ->
   Mock.evalIO (Mock.setUser (user s) >> Sub.main >> Mock.runUser)
               Mock.emptyWorld
 \end{minted}
-Figure~\ref{fig:iomocking} illustrates the evaluation steps of \mintinline{Haskell}{Mock.evalIO}.
+\cref{fig:iomocking} illustrates the evaluation steps of \mintinline{Haskell}{Mock.evalIO}.
 Note that there are two blocking operations (i.e.\ operations that call \texttt{pause} internally),
 namely \texttt{getLine} and \mintinline{Haskell}{Mock.hGetLine Mock.stdout}.
 When \mintinline{Haskell}{Mock.evalIO} encounters any such operation,
@@ -185,7 +185,7 @@ All in all, the mocking framework lets us uniformly test student submissions wit
 }
 \caption{
   Interaction between the mock user and the student's submission.
-  White arrows indicate the return value of \texttt{stepPauseT} whereas black arrows indicate transfer of control.
+  White arrows indicate the return value of \texttt{stepPauseT} and black arrows indicate transfer of control.
   The black dot signifies the end of the interaction.\label{fig:iomocking}
 }
 \end{figure}

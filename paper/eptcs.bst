@@ -7,13 +7,14 @@
 %% merlin.mbs  (with options: `vonx,ed-au,dt-beg,yr-par,xmth,yrp-col,tit-it,atit-u,volp-com,jwdpg,pp-last,num-xser,ser-vol,jnm-x,pre-edn,doi,blknt,pp,xedn,amper,and-xcom,etal-xc,url,url-blk,bibinfo,nfss,')
 %% ----------------------------------------
 %% *** Stylefile for EPTCS ***
-%% 
+%%
 %% Copyright 1994-2004 Patrick W Daly
  % ===============================================================
  % NOTICE:
  % This bibliographic style (bst) file has been generated from one or
  % more master bibliographic style (mbs) files, listed above.
  % Subsequently it has been edited by hand by Rob van Glabbeek
+ % and Kartik Singhal
  %
  % This file can be redistributed and/or modified under the terms
  % of the LaTeX Project Public License Distributed from CTAN
@@ -197,7 +198,7 @@ FUNCTION {emphasize}
 FUNCTION {slant}
 { duplicate$ empty$
     { pop$ "" }
-    { "{\sl " swap$ * "}" * }
+    { "{\slshape " swap$ * "}" * }
   if$
 }
 FUNCTION {tie.or.space.prefix}
@@ -1423,7 +1424,7 @@ FUNCTION {begin.bib}
   write$ newline$
   "\providecommand{\urlalt}[2]{\href{#1}{#2}}"
   write$ newline$
-  "\providecommand{\doi}[1]{doi:\urlalt{http://dx.doi.org/#1}{#1}}"
+  "\providecommand{\doi}[1]{doi:\urlalt{https://doi.org/#1}{#1}}"
   write$ newline$
   "\providecommand{\eprint}[1]{arXiv:\urlalt{https://arxiv.org/abs/#1}{#1}}"
   write$ newline$
