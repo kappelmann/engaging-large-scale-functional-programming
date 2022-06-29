@@ -8,14 +8,14 @@ equational reasoning together with induction
 is already sufficient to prove interesting properties.
 Since ``fast and loose reasoning is morally correct''~\cite{fast_and_loose},
 valid properties in this sub-language carry over to Haskell.
-Simple inductive proofs of course lend themselves well to be automatically checked and, as announced in~\cite{next_1100}, a tool called ``Check Your Proof'' (CYP for short) was developed at our lab by Durner and Noschinski\footnote{\url{https://github.com/noschinl/cyp}}.
+Simple inductive proofs lend themselves well to be automatically checked and, as announced in~\cite{next_1100}, a tool called ``Check Your Proof'' (CYP for short) was developed at our lab by Durner and Noschinski\footnote{\url{https://github.com/noschinl/cyp}}.
 
 The first example of such a proof presented in the lecture is the proof of associativity of the append-operator for lists.
 Proving this example in CYP first requires us
 to define the data type of lists.
-We use
-the constructors \lstinline[style=cyp]![]! and \lstinline[style=cyp]!:!
-as is standard in Haskell.
+% We use
+% the constructors \lstinline[style=cyp]![]! and \lstinline[style=cyp]!:!
+% as is standard in Haskell.
 \begin{lstlisting}[style=cyp]
   data List a = [] | a : List a
 \end{lstlisting}
@@ -50,9 +50,9 @@ While CYP allows to arbitrarily nest proofs
 by case analysis or induction,
 the innermost goal must always be discharged by an equational proof.
 An equational proof is a chain of equations that rewrite the left-hand side of the current goal to the right-hand side.
-The user has to justify each rewrite step by a corresponding equation that yields the right-hand side
+The user has to justify each step by a corresponding equation that yields the right-hand side
 when applied to the term or a subterm on the left-hand side.
-Note that in the example \lstinline[style=cyp]!(by def ++)! refers to either one of the defining equations of \lstinline[style=cyp]!++!,
+Note that in the example, \lstinline[style=cyp]!(by def ++)! refers to either one of the defining equations of \lstinline[style=cyp]!++!
 and CYP will check if any of them justifies the current step.
 
 Now, consider the inductive case.
@@ -74,7 +74,7 @@ Now, consider the inductive case.
 Again, CYP requires the user to be explicit: the goal in each inductive case and the induction hypotheses have to be spelled out.
 Note that CYP also allows one to start rewriting from the left-hand side as well as the right-hand side of the goal.
 
-The lecture then goes beyond proofs by structural induction and introduces proof by extensionality, case analysis, and computation induction,
+The lecture goes beyond proofs by structural induction and introduces proofs by extensionality, case analysis, and computation induction,
 all of which CYP supports with some conditions applying as we will describe shortly.
 Computation induction was not supported in the original version by Durner and Noschinski but was only introduced in a fork by us in WS20\footnote{\url{https://github.com/lukasstevens/cyp}}.
 CYP also allows proving named auxiliary lemmas,
@@ -94,48 +94,31 @@ Renz et al.~\cite{cyp_holes} discuss the inner workings of CYP in detail and dev
 thus solving the first issue.
 They also made it possible to leave holes in proofs and in expressions, which then have to be filled in by students.
 Solving the other issues, however, would incur additional effort.
-We think that CYP should be put on a stronger foundation such as higher-order logic (HOL) without compromising its simplicity from a user perspective.
+We think that CYP should be put on a stronger foundation,
+such as higher-order logic (HOL),
+without compromising its simplicity from a user perspective.
 One possibility would be to rewrite CYP as a frontend to Isabelle/HOL~\cite{isabelle}.
 Since HOL is a typed logic, it would solve the first issue.
 The latter issues could be resolved using Isabelle's function package~\cite{isabelle_functions}.
-A stronger foundation also allows one to more confidently develop new extensions for CYP.
+A stronger foundation would also allow one to develop new extensions for CYP more confidently.
 
 Our teaching experience with CYP has been very positive.
 CYP proof checking is quick and can easily be integrated in the testing framework (Tasty) that we used for our programming exercises.
 This allowed us to deal with programming and proof exercises in a uniform and scalable way.
-CYP was also generally liked by our students as their feedback testifies:
-in WS19,
+CYP was also generally liked by our students:
+% as their feedback testifies:
+In WS19,
 we received two positive comments and one negative comment without asking for feedback on CYP.
 When asked explicitly about their thoughts on CYP in WS20,
 the students answered with 18 positive comments and three negative comments.
 The students liked the instantaneous feedback that CYP provides,
 which helped them to deepen their understanding of inductive proofs at their own pace.
 The main criticism of CYP was the lack of documentation.
-A CYP-cheatsheet developed by a tutor was later added to the repository of CYP to improve the situation.
+A CYP-cheatsheet was later added to the repository of CYP to improve the situation.
 
-In each of the exams, two exercises (out of $\approx 8$) were concerned with inductive proofs.
-The first exercise was a straightforward proof by structural induction while the second one required more effort, e.g.\ generalisation of the goal or a slightly less trivial computation induction.
+In our exams, two exercises (out of $\approx 8$) were concerned with inductive proofs.
+The first exercise was a straightforward proof by structural induction while the second one required more effort, e.g.\ a generalisation of the goal or a slightly less trivial computation induction.
 We did not require the students to stick to CYP's syntax in the exam, but we urged them to follow a similar structure,
 which worked very well overall and simplified the grading.
 However, we have no data on whether CYP also improves students' understanding of induction.
 
-% Teaching experiences
-% \begin{itemize}
-%     \item Should use non-standard data types in the exam since some students just copy the induction schema otherwise.
-%     \item Student feedback mostly positive as in the other paper.
-%     \item Students write well structured proofs in the exam that resemble cyp proofs.
-%     \item VSCode/vim highlighting thanks to students, tutors.
-%     \item Proofs can automatically be checked by the submission system.
-% \end{itemize}
-%
-% \begin{itemize}
-%   \item Why cyp? Maybe ask Lars Noschinski about cyp
-%   \item \href{https://arxiv.org/pdf/2009.01326.pdf}{Other CYP Paper}. Why is this only in the pre-proceedings of WFLP 2020?
-%   \item Kind of exercises throughout the course.
-%   \item 2020: on two tutorial sheets (3 exercises), Tutorial 4: 1, Homework 4: 2, Tutorial 5: 2, Homework 5: 1, Tutorial 9: 1, Homework 9: 1, Tutorial 13: 1, Exam: 2(Structural, Structural + Aux Lemma)/9, Retake: 2(Structural, Computation)/7
-%   \item 2019: Exam 2(Structural, Structural + Generalisation)/8, Retake: 2(Structural, Computation)/7, Tutorial 5: 2, Homework 5: 2, Tutorial 6: 2, Homework 6: 2, Tutorial 7: 1, Homework 7: 1, Tutorial 9: 1, Homework 9: 1, Tutorial 13: 1
-%   \item 2019 Retake has computation induction but no CYP. Maybe compare results?
-%   \item 2019 CYP Feedback: positiv 2, negativ 1
-%   \item 2020 CYP Feedback: positiv 18, negativ 3 (Mainly documentation)
-%   \item Uses haskell-src-exts for parsing Haskell code
-% \end{itemize}

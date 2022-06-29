@@ -56,19 +56,19 @@ of functional languages after completing
 the mandatory functional programming course.
 We believe this is mainly due to two reasons:
 \begin{enumerate*}[label=\arabic*)]
-  \item introductory programming courses often stick
+  \item introductory courses often stick
 to simple algorithmic or mathematically inspired challenges and
 \item side-effects (in particular I/O)
-are often introduced very late
+are often introduced rather late
 in functional programming courses.
 \end{enumerate*}
 
-Changing the latter appeared difficult to us:
+While we were able to introduce I/O midway through the course,
+introducing it even earlier appeared difficult to us:
 we think that students would be confused
-if a ``special'' \mintinline{Haskell}{IO} type and do notation were to
+if a ``special'' \mintinline{Haskell}{IO} type and \mintinline{Haskell}{do} notation were to
 be introduced before they are comfortable
-with the basic features of functional
-languages.
+with the basic features of functional languages.
 We thus focused on the other issue
 and created exercises that go beyond
 simple terminal applications.
@@ -80,12 +80,10 @@ let our student assistants help us with this work
 rather than providing feedback for homework submissions.
 
 This turned out to be a very fruitful idea:
-the quality of our student assistants' work was often way above what
-we expected.
+the quality of our student assistants' work was often way above what we expected.
 The one difficulty we faced was the mediocre quality of
 tests written by most assistants
-since they only had the rudimentary knowledge of QuickCheck taught as part of
-the course.
+since they only had the rudimentary knowledge of QuickCheck taught as part of the course.
 We thus hosted a workshop for them that explained
 our testing infrastructure and best-practice
 patterns when writing tests.
@@ -100,15 +98,15 @@ a music synthesiser framework,
 a turtle graphics framework,
 an UNO framework,
 and guided exercises for DPLL and resolution provers.
-Some further examples can be found on our competition blogs\footnote{\url{https://www21.in.tum.de/teaching/fpv/WS20/wettbewerb.html} (WS20) and
-\url{https://www21.in.tum.de/teaching/fpv/WS19/wettbewerb.html} (WS19)}.
+% Some further examples can be found on our competition blogs\footnote{\url{https://www21.in.tum.de/teaching/fpv/WS20/wettbewerb.html} (WS20) and
+% \url{https://www21.in.tum.de/teaching/fpv/WS19/wettbewerb.html} (WS19)}.
 
 \paragraph{Game Tournament Framework}
 It has become a course tradition to run a game tournament over the Christmas break.
-In this tournament, the students are tasked with writing an AI for a board game that competes against the AIs of their fellow students.
+In this tournament, students are tasked with writing an AI for a board game that competes against the AIs of their fellow students.
 To pass the homework sheet, it suffices to implement a basic strategy, but to score well in the competition, students came up with quite sophisticated strategies in past years.
 The framework allows students to use statefulness and randomisation, so that there are few limits to the students' creativity.
-The best strategies usually use the minimax rule with alpha-beta-pruning and a clever evaluation function, which is particularly important in this setting because the game tree cannot be evaluated very far given the time limit for each submission in the tournament.
+% The best strategies usually use the minimax rule with alpha-beta-pruning and a clever evaluation function, which is particularly important in this setting because the game tree cannot be evaluated very far given the time limit for each submission in the tournament.
 
 The tournament runs continuously for 2--3 weeks and the results are displayed on a website (see \cref{fig:chainreaction} for an example from WS20).
 Students thus get reasonably quick feedback on how their strategy performs,
@@ -134,11 +132,11 @@ and can check their ranking on a live scoreboard.
 % The final results are then revealed by unfreezing the scoreboard again.
 
 We found existing solutions
-to run such contests too heavyweight for our purpose
+to run such contests too complex for our purpose
 and hence created a lightweight alternative.
 Our framework continuously receives test results,
 computes each team's score,
-and displays the live scoreboard and task instructions.
+and displays the live scoreboard and task instructions on a website.
 It is agnostic to the programming language and test runner used.
 It expects tests results adhering to the Apache Ant JUnit XML schema,
 but modifying it to support other formats is straightforward.
@@ -148,19 +146,20 @@ We ran an online iteration of the contest in WS20,
 again using ArTEMiS as a test runner.
 Teams were cooperating on their platform of choice
 and were able to ask for clarifications on a dedicated online channel.
-Our experiences are very positive:
-a total of 27 teams participated in the contest
+Our experiences are positive:
+27 teams participated in the contest
 and most stayed for the social hangout following it.
-Given the presented framework,
+Using our framework,
 the technical setup of the contest requires little time.
 Some significant time, however,
 must be spent on setting up the challenges,
 tests, and solutions,
-though plenty of challenges may be found
+though plenty of them may be found
 online by searching for other contests,
 which one then may modify and reuse.
-In general, we recommend running such contests
-for every lecture concerned with programming concepts.
+We recommend offering such contests
+to programming course instructors in general.
+% for every lecture concerned with programming concepts.
 
 \input{sections/practical_part/io_mocking/io_mocking}
 

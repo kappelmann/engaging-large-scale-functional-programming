@@ -44,17 +44,16 @@ instance MonadFileSystem (State MockFileSystem) where
 While this approach is sufficient for many use cases,
 it lacks one important property: transparency.
 More specifically, the code submitted by students must contain or import \mintinline{Haskell}{MonadFileSystem} and the signatures of terms that use \mintinline{Haskell}{IO} must be adapted.
-This is especially problematic because the lecture introduces \mintinline{Haskell}{IO} without mentioning monads,
-which are only introduced towards the end of the course.
+This is especially problematic because the lecture introduces \mintinline{Haskell}{IO} without mentioning monads.
+% which are only introduced towards the end of the course.
 Other approaches to test I/O
 face similar issues~\cite{iotest1,iotest2}.
 
 Instead of modifying existing code,
-we delay the mocking to a later stage,
-namely the stage of compilation.
+we delay the mocking to the compilation stage.
 We achieve this with a mixin that replaces the \mintinline{Haskell}{IO} module of a submission with a mocked version.
-The mocked \mintinline{Haskell}{IO} type can be realised in a similar way as above mock file system.
-However, to achieve full transparency this time,
+The mocked \mintinline{Haskell}{IO} type can be realised similarly to above mock file system.
+However, to achieve full transparency,
 we not only need a file system but also handles, such as standard input and output, as well as a working directory.
 
 All these aspects of the machine state are summarised in the type \mintinline{Haskell}{RealWorld} as seen below.
@@ -62,8 +61,7 @@ Crucially, the type also contains a mock user,
 represented by a computation of type \mintinline{Haskell}{IO ()},
 which interacts with a student's submission;
 that is, the user generates the input for and reads the output of the student's submission.
-For simplicity, we do not show the full type here.
-Again, this type is wrapped by the \mintinline{Haskell}{State} monad transformer as well as two additional transformers \mintinline{Haskell}{PauseT} and \mintinline{Haskell}{ExceptT} in order to form the mocked \mintinline{Haskell}{IO} type.
+For brevity, we do not show the full type here.
 \begin{minted}{Haskell}
 data RealWorld = RealWorld {
   workDir :: FilePath,
@@ -72,7 +70,9 @@ data RealWorld = RealWorld {
   user :: IO (),
   ...
 }
-
+\end{minted}
+Again, this type is wrapped by the \mintinline{Haskell}{State} monad transformer as well as two additional transformers \mintinline{Haskell}{PauseT} and \mintinline{Haskell}{ExceptT} in order to form the mocked \mintinline{Haskell}{IO} type.
+\begin{minted}{Haskell}
 newtype IO a =
   IO { unwrapIO :: ExceptT IOException (PauseT (State RealWorld)) a }
 \end{minted}
@@ -97,12 +97,12 @@ When the user is done, it yields and the program of the student is resumed.
 
 These considerations lead us to the monad below,
 consisting of two operations:
-the first one pauses execution whereas the second one runs a computation of the monad until either \texttt{pause} is called or the computation finishes.
+The first one pauses execution and the second one runs a computation of the monad until either \texttt{pause} is called or the computation finishes.
 In the former case,
-\texttt{stepPauseT} returns a \mintinline{Haskell}{Left c} where \texttt{c} represents the rest of the computation; in other words, the part of the computation that is executed when resuming.
+\texttt{stepPauseT} returns a \mintinline{Haskell}{Left c} where \texttt{c} represents the rest of the computation, i.e.\ the part of the computation that is executed when resuming.
 Otherwise, the final result \texttt{r} of the computation is returned as \mintinline{Haskell}{Right r}.
 It should be noted that the pause monad is an instance of the more general coroutine monad as provided by the \texttt{monad-coroutine}\footnote{\url{https://hackage.haskell.org/package/monad-coroutine}} package.
-For the implementation details of the corresponding monad transformer \mintinline{Haskell}{PauseT} we refer to the repository.
+For the implementation details of the corresponding monad transformer \mintinline{Haskell}{PauseT}, we refer to the repository.
 \begin{minted}{Haskell}
 class Monad m => MonadPause m where
   pause :: m ()
@@ -116,8 +116,6 @@ we evaluate the interaction between the mock user and the program with \mintinli
 The interaction itself sets the user to \texttt{user s},
 then executes the \mintinline{Haskell}{main} function, and finally runs the user to completion.
 \begin{minted}{Haskell}
-module Test where
-
 import qualified Mock.System.IO.Internal as Mock
 import qualified Hello as Sub
 
@@ -133,24 +131,7 @@ prop_hello = forAll (elements ["Karl", "Friedrich", "Rosa"]) $ \s ->
   Mock.evalIO (Mock.setUser (user s) >> Sub.main >> Mock.runUser)
               Mock.emptyWorld
 \end{minted}
-\cref{fig:iomocking} illustrates the evaluation steps of \mintinline{Haskell}{Mock.evalIO}.
-Note that there are two blocking operations (i.e.\ operations that call \texttt{pause} internally),
-namely \texttt{getLine} and \mintinline{Haskell}{Mock.hGetLine Mock.stdout}.
-When \mintinline{Haskell}{Mock.evalIO} encounters any such operation,
-it transfers control between the user and the program as indicated by the black arrows.
-Control is also transferred if the computation runs until completion without meeting a \texttt{pause}.
-The horizontal axis with white arrows illustrates the return values of \texttt{stepPauseT}.
-Focusing on \mintinline{Haskell}{main},
-we see that \texttt{stepPauseT}
-returns the remaining computation \mintinline{Haskell}{putStrLn $ "Hello " ++ x} wrapped in a \mintinline{Haskell}{Left}
-when encountering \texttt{getLine}.
-After the user provides the input for \texttt{getLine} and yields, the \mintinline{Haskell}{main} function prints the greeting and finishes with the result \mintinline{Haskell}{Right ()}.
-Similarly, the user is blocked on \mintinline{Haskell}{Mock.hGetLine},
-which means that the remaining computation only consists of the \texttt{when} check, which is executed as soon as \mintinline{Haskell}{main} is done.
-This explains why we need to run \mintinline{Haskell}{Mock.runUser} after \mintinline{Haskell}{Sub.main} since the crucial \texttt{when} check would never be executed otherwise.
-
-All in all, the mocking framework lets us uniformly test student submissions with common frameworks like QuickCheck and SmallCheck regardless of whether they contain I/O effects.
-\begin{figure}[ht]
+\begin{figure}[t!]
   \centering
 \scalebox{0.75}{
 \begin{tikzpicture}[cnode/.style={draw,rectangle,minimum height=2.5em}, >=stealth]
@@ -189,3 +170,21 @@ All in all, the mocking framework lets us uniformly test student submissions wit
   The black dot signifies the end of the interaction.\label{fig:iomocking}
 }
 \end{figure}
+\cref{fig:iomocking} illustrates the evaluation steps of \mintinline{Haskell}{Mock.evalIO}.
+Note that there are two blocking operations (i.e.\ operations that call \texttt{pause} internally),
+namely \texttt{getLine} and \mintinline{Haskell}{Mock.hGetLine Mock.stdout}.
+When \mintinline{Haskell}{Mock.evalIO} encounters any such operation,
+it transfers control between the user and the program as indicated by the black arrows.
+Control is also transferred if the computation runs until completion without meeting a \texttt{pause}.
+The horizontal axis with white arrows illustrates the return values of \texttt{stepPauseT}.
+Focusing on \mintinline{Haskell}{main},
+we see that \texttt{stepPauseT}
+returns the remaining computation \mintinline{Haskell}{putStrLn $ "Hello " ++ x} wrapped in a \mintinline{Haskell}{Left}
+when encountering \texttt{getLine}.
+After the user provides the input for \texttt{getLine} and yields, the \mintinline{Haskell}{main} function prints the greeting and finishes with the result \mintinline{Haskell}{Right ()}.
+Similarly, the user is blocked on \mintinline{Haskell}{Mock.hGetLine},
+which means that the remaining computation only consists of the \texttt{when} check, which is executed as soon as \mintinline{Haskell}{main} is done.
+This explains why we need to run \mintinline{Haskell}{Mock.runUser} after \mintinline{Haskell}{Sub.main} since the crucial \texttt{when} check would never be executed otherwise.
+
+All in all, the mocking framework lets us uniformly test student submissions with common frameworks like QuickCheck and SmallCheck regardless of whether they contain I/O effects.
+
