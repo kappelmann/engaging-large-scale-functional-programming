@@ -16,17 +16,36 @@ describe how various existing solutions
 can be put together to
 address the challenges laid out in~\cref{sec:intro}.
 
+To the best of our knowledge,
+there are only few papers about converting physical computer science classes to virtual ones
+and none that deal with all the challenges outlined by us.
+Two experience reports using imperative languages can be found in~\cite{largeprogrammingclass,onlinecourse1}.
+While they use a project-based learning approach,
+that is students work in teams on graded projects,
+our students had to submit their homework individually.
+We fostered social interaction and team-based learning
+in the context of the tutorials, workshops,
+and programming contests instead.
+We believe that this strikes a good balance
+between individual work and team work.
+
+There are several studies and experience reports that corroborate some of our findings, for example
+\begin{itemize}
+  \item increasing engagement using live programming~\cite{fp_first_year_risks_benefits,livecoding1,livecoding2}, pair-programming~\cite{engagingprogramming,teaching_fp_first_year}, and gamification~\cite{soccerfun,teaching_fp_glossy_games,teaching_fp_macedonian},
+  \item letting students ask questions during the lecture via chat~\cite{increase_interest_fp},
+  \item using automated grading for prompt feedback~\cite{teaching_fp_glossy_games,teaching_art_fp_automated,teaching_fp_macedonian}, and
+  \item introducing IO early (without explaining monads)~\cite{fp_first_year_risks_benefits,haskell_school_hudak,teaching_fp_chalmers} and establishing connections to industry by organising events~\cite{teaching_fp_chalmers} to demonstrate ``real-world'' applicability.
+\end{itemize}
+
 Various articles have been published about
-specific aspects and useful tools when teaching functional programming,
-including work on gamification~\cite{soccerfun},
-I/O testing~\cite{iotest2}, and
-visualisation of program evaluation~\cite{steppingocaml}.
+specific tools to teach functional programming,
+such as I/O testing~\cite{iotest2}
+and visualisation of program evaluation~\cite{steppingocaml}.
 While our work contributes to this realm,
 it also describes more general strategies
 to run engaging (functional) programming courses.
 
-Some case studies of engaging programming courses are given in~\cite{next_1100,engagingprogramming,largeprogrammingclass}.
-In particular,~\cite{next_1100}
+Finally,~\cite{next_1100}
 introduces a previous iteration of our course,
 focusing on the lecture material,
 specific exercises, and a custom-made testing infrastructure.
@@ -35,19 +54,3 @@ the challenges laid out in~\cref{sec:intro},
 i.e.\ the drastic increase in student enrolments,
 the challenges of online teaching,
 and the difficulty of demonstrating the practicality of functional programming.
-To the best of our knowledge,
-there are only few papers about converting physical computer science classes to virtual ones
-and none that deal with all the challenges outlined by us.
-% We also give an account of the improved testing infrastructure
-% that supersedes the one introdued in~\cite{next_1100}.
-
-Some of our findings are corroborated by previous experience reports, e.g.
-\begin{itemize}
-  \item increasing engagement using live programming~\cite{fp_first_year_risks_benefits}, pair-programming~\cite{teaching_fp_first_year}, and gamification~\cite{soccerfun,teaching_fp_glossy_games,teaching_fp_macedonian},
-  \item introducing IO early without explaining monads~\cite{fp_first_year_risks_benefits,teaching_fp_chalmers} to demonstrate that functional is no less powerful than imperative programming as Hudak does in their textbook~\cite{haskell_school_hudak},
-  \item establishing connections to industry by organising events~\cite{teaching_fp_chalmers},
-  \item using automated grading for instantaneous feedback~\cite{teaching_art_fp_automated,teaching_fp_macedonian,teaching_fp_glossy_games}, and
-  \item letting students ask questions during the lecture via chat~\cite{increase_interest_fp}.
-   
-\end{itemize}
-

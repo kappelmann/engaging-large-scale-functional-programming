@@ -140,7 +140,7 @@ When \mintinline{Haskell}{Mock.evalIO} encounters any such operation,
 it transfers control between the user and the program as indicated by the black arrows.
 Control is also transferred if the computation runs until completion without meeting a \texttt{pause}.
 The horizontal axis with white arrows illustrates the return values of \texttt{stepPauseT}.
-Focussing on \mintinline{Haskell}{main},
+Focusing on \mintinline{Haskell}{main},
 we see that \texttt{stepPauseT}
 returns the remaining computation \mintinline{Haskell}{putStrLn $ "Hello " ++ x} wrapped in a \mintinline{Haskell}{Left}
 when encountering \texttt{getLine}.
@@ -149,7 +149,7 @@ Similarly, the user is blocked on \mintinline{Haskell}{Mock.hGetLine},
 which means that the remaining computation only consists of the \texttt{when} check, which is executed as soon as \mintinline{Haskell}{main} is done.
 This explains why we need to run \mintinline{Haskell}{Mock.runUser} after \mintinline{Haskell}{Sub.main} since the crucial \texttt{when} check would never be executed otherwise.
 
-All in all, the mocking framework lets us uniformly test student submissions with common frameworks like QuickCheck and Smallcheck regardless of whether they contain I/O effects.
+All in all, the mocking framework lets us uniformly test student submissions with common frameworks like QuickCheck and SmallCheck regardless of whether they contain I/O effects.
 \begin{figure}[ht]
   \centering
 \scalebox{0.75}{
