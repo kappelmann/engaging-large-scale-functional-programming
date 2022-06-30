@@ -45,6 +45,7 @@ In our case, we proceed to prove the statement by structural induction on \lstin
         (by def ++) .=. ([] ++ ys) ++ zs
       QED
 \end{lstlisting}
+
 In above listing, the first \lstinline[style=cyp]!Proof! marks the beginning of an inductive proof whereas the second \lstinline[style=cyp]!Proof!, which has no further arguments, starts an equational proof.
 While CYP allows to arbitrarily nest proofs
 by case analysis or induction,
@@ -90,6 +91,7 @@ The simplicity of CYP both in its usage and its implementation comes with some c
     \item Computation induction is unsound if there are recursive calls in branches of an if-then-else expression.
       This is because the induction hypotheses would have to be conditional rewrite rules in such cases, which CYP does not support.
 \end{itemize}
+
 Renz et al.~\cite{cyp_holes} discuss the inner workings of CYP in detail and develop an extension that introduces types,
 thus solving the first issue.
 They also made it possible to leave holes in proofs and in expressions, which then have to be filled in by students.

@@ -26,6 +26,7 @@ copyFile source target = do
   content <- readFile source
   writeFile target content
 \end{minted}
+
 Due to the definition of \mintinline{Haskell}{MonadFileSystem}, the instance for \mintinline{Haskell}{IO} is trivial.
 The mocked version can be implemented as a map from file names to file contents wrapped by the \mintinline{Haskell}{State} monad transformer to make it mutable.
 We omit this instantiation of \mintinline{Haskell}{MonadFileSystem} for brevity.
@@ -41,6 +42,7 @@ instance MonadFileSystem (State MockFileSystem) where
   readFile = ...
   writeFile = ...
 \end{minted}
+
 While this approach is sufficient for many use cases,
 it lacks one important property: transparency.
 More specifically, the code submitted by students must contain or import \mintinline{Haskell}{MonadFileSystem} and the signatures of terms that use \mintinline{Haskell}{IO} must be adapted.
@@ -76,6 +78,7 @@ Again, this type is wrapped by the \mintinline{Haskell}{State} monad transformer
 newtype IO a =
   IO { unwrapIO :: ExceptT IOException (PauseT (State RealWorld)) a }
 \end{minted}
+
 While the transformer \mintinline{Haskell}{ExceptT} simply adds I/O exceptions,
 such as errors for insufficient permissions,
 the purpose of \mintinline{Haskell}{PauseT} is not obvious.
@@ -108,6 +111,7 @@ class Monad m => MonadPause m where
   pause :: m ()
   stepPauseT :: m a -> m (Either (m a) a)
 \end{minted}
+
 We exemplify the mechanics of the mocking framework with a simple test of above \mintinline{Haskell}{main} function.
 To this end, we first implement a mock user that takes a name and supplies it to the standard input of \mintinline{Haskell}{main}.
 The user then reads the output of the program and checks whether it printed the expected greeting.
@@ -170,6 +174,7 @@ prop_hello = forAll (elements ["Karl", "Friedrich", "Rosa"]) $ \s ->
   The black dot signifies the end of the interaction.\label{fig:iomocking}
 }
 \end{figure}
+
 \cref{fig:iomocking} illustrates the evaluation steps of \mintinline{Haskell}{Mock.evalIO}.
 Note that there are two blocking operations (i.e.\ operations that call \texttt{pause} internally),
 namely \texttt{getLine} and \mintinline{Haskell}{Mock.hGetLine Mock.stdout}.
