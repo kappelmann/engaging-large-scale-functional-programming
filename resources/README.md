@@ -35,18 +35,17 @@ of the corresponding directories.
    - Requirements: IO and algebraic datatypes
    - Challenge: creativity
 
-## Game Simulations
-
-TODO: to be published
+## Game Tournament Framework
 
 When offering exercises in which students implement strategies for games,
-one faces the challenge of having to run each student's submissions against every other submissions (round-robin).
-We will provide a framework for this purpose that organises this simulation task.
-The framework continuously accepts new submissions and accordingly updates the results for each game and student.
+one faces the challenge of having to run each student's submissions against every other submission (round-robin).
+In [game\_tournament\_framework](game_tournament_framework),
+you can find a framework to run such tournaments,
+continously accepting and executing games in parallel while collecting statistics for each game and player.
 The generated score data can then easily be displayed, for example, on a tournament website.
 
-We will also provide a sample game &ndash; [Chain Reaction](https://brilliant.org/wiki/chain-reaction-game/) &ndash;
-that can be used together with the framework.
+Some of the code is specific to the game [Chain Reaction](https://brilliant.org/wiki/chain-reaction-game/)
+but in general may be adapted to other games.
 An example website for this setup can be found [here](https://vmnipkow16.in.tum.de/christmas2020/).
 
 ## IO Mocking

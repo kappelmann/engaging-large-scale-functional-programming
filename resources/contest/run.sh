@@ -56,7 +56,7 @@ stack exec test --allow-different-user
 
 #### Retrieve team name ####
 
-# TODO: this retrieves the team name from the repostiory URL in Artemis;
+# TODO: this retrieves the team name from the repository URL in Artemis;
 # you will have to replace to fetch team names according to your setup
 remote=$(cd ./assignment/ && git config --get remote.origin.url)
 studentId=$(echo $remote | cut -d"-" -f2 | cut -d"." -f1)
@@ -82,7 +82,7 @@ echo $(curl -s -X POST \
   ${SERVER_URL})
 exitStatus=$?
 if [ $exitStatus -ne 0 ]; then
-  echo "Could not upload Wettbewerb file to our server."
+  echo "Could not upload file to our contest server."
 fi
 
 # return 0

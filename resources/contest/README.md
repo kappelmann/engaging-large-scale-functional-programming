@@ -23,7 +23,7 @@ You only need to make sure to include all data required by the scoreboard server
 In `run.sh`, you can find an example script that tests a Haskell submission on Artemis
 (like the ones that can be found in [this repository](https://github.com/kappelmann/engaging-large-scale-functional-programming/tree/main/resources))
 uploading its result to the scoreboard server, serving the `upload.php` script (e.g. by using nginx).
-If your test ans scoreboard server run on the same machine, you may simply copy the data to the appropriate location.
+If your test and scoreboard server run on the same machine, you may simply copy the data to the appropriate location.
 
 ## Scoreboard Server
 

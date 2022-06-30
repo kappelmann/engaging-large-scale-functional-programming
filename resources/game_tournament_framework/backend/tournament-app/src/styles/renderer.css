@@ -1,0 +1,262 @@
+html {
+  font-family: -apple-system, "Segoe UI", "Roboto", "Oxygen", "Ubuntu",
+    "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+}
+
+.loading {
+  color: #888;
+  text-align: center;
+}
+
+.gameContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.gameEmbed {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.board {
+  border: solid 2px black;
+  border-spacing: 0;
+  position: relative;
+}
+
+.boardRow {
+  line-height: 0;
+}
+
+.boardCell {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  border: solid 2px black;
+  padding: 0;
+}
+
+.atomContainer {
+  position: absolute;
+  transition-property: top, left;
+  transition-duration: 1000ms;
+}
+
+.atom {
+  width: 0;
+  height: 0;
+  border-radius: 100%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  transition-property: border-color, border-width;
+  transition-duration: 1000ms;
+}
+
+.currentSpeed_0_25 .atomContainer,
+.currentSpeed_0_25 .atom,
+.currentSpeed_0_5 .atomContainer,
+.currentSpeed_0_5 .atom,
+.currentSpeed_1 .atomContainer,
+.currentSpeed_1 .atom {
+  transition-duration: 1000ms;
+}
+
+.currentSpeed_1_5 .atomContainer,
+.currentSpeed_1_5 .atom {
+  transition-duration: 666ms;
+}
+
+.currentSpeed_2 .atomContainer,
+.currentSpeed_2 .atom {
+  transition-duration: 500ms;
+}
+
+.currentSpeed_3 .atomContainer,
+.currentSpeed_3 .atom {
+  transition-duration: 333ms;
+}
+
+.currentSpeed_4 .atomContainer,
+.currentSpeed_4 .atom {
+  transition-duration: 250ms;
+}
+
+.currentSpeed_5 .atomContainer,
+.currentSpeed_5 .atom {
+  transition-duration: 200ms;
+}
+
+.currentSpeed_7_5 .atomContainer,
+.currentSpeed_7_5 .atom {
+  transition-duration: 133ms;
+}
+
+.currentSpeed_10 .atomContainer,
+.currentSpeed_10 .atom {
+  transition-duration: 100ms;
+}
+
+.atom.shadow {
+  border-style: solid;
+  border-width: 8px;
+}
+
+.atom.core {
+  border-style: solid;
+  border-width: 7px;
+}
+
+.atom.red {
+  border-color: red;
+  background-color: red;
+}
+
+.atom.green {
+  border-color: green;
+  background-color: green;
+}
+
+.spawn {
+  background-color: lightblue;
+}
+
+.reactionSource {
+  background-color: lightpink;
+}
+
+.fallback.red {
+  color: red;
+}
+
+.fallback.green {
+  color: green;
+}
+
+.playbackControlContainer {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.playbackControlRow {
+  margin-top: 5px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.playbackControlRow,
+.noSelect,
+.controlButton {
+  -ms-user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.playbackControlRow > *:not(:first-child) {
+  margin-left: 3px;
+}
+
+.controlButton {
+  cursor: pointer;
+  font-size: 140%;
+  font-family: apple color emoji, segoe ui emoji, noto color emoji,
+    android emoji, emojisymbols, emojione mozilla, twemoji mozilla,
+    segoe ui symbol;
+}
+
+.currentFrameBox {
+  width: 30px;
+  margin-top: 2px;
+  text-align: center;
+}
+
+#playbackSliderBar {
+  position: relative;
+  height: 8px;
+  background: #aaa;
+  width: 200px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+#playbackSliderBarFilling {
+  background: #0078d7;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+#playbackSliderBar,
+#playbackSliderBarFilling {
+  border-radius: 3px;
+}
+
+#playbackSliderBtn {
+  position: absolute;
+  margin-left: -7px;
+  margin-top: -4px;
+  width: 15px;
+  height: 15px;
+  border: solid 1px #3a3a3a;
+  background: #fff;
+  border-radius: 100%;
+  cursor: grab;
+}
+
+.speedControlRow span,
+.playbackControlRow span {
+  font-weight: 500;
+}
+
+.speedControlRow {
+  display: flex;
+  flex-direction: row;
+  margin-top: 2px;
+}
+
+.currentSpeedLabelContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+}
+
+.currentSpeedLabel {
+  user-select: none;
+}
+
+body.dark-theme .board {
+  border-color: #555;
+}
+
+body.dark-theme .boardCell {
+  border-color: #555;
+}
+
+body.dark-theme .atom.shadow {
+  border-color: #555;
+}
+
+@media (prefers-color-scheme: dark) {
+  body.auto-theme .board {
+    border-color: #555;
+  }
+
+  body.auto-theme .boardCell {
+    border-color: #555;
+  }
+
+  body.auto-theme .atom.shadow {
+    border-color: #555;
+  }
+}

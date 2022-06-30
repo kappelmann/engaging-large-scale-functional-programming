@@ -1,0 +1,7 @@
+resolver: lts-16.26
+
+extra-deps:
+  - utf8-string-0.3@sha256:ead943aaae40105383ea2c1d268dea9c88cd40d58c9fa22a9dd849271a3d1874,813
+
+packages:
+  - .

@@ -1,0 +1,13 @@
+cabal-version: 2.2
+name: 
+version: 0.1
+build-type: Simple
+
+library
+  default-language: Haskell2010
+  build-depends: base, random == 1.1, array, containers, unordered-containers, binary, bytestring, hashable, QuickCheck, text
+  default-extensions: Safe
+  hs-source-dirs: .
+  exposed-modules: Interface
+  other-modules: Exercise08
+  ghc-options: -O2

@@ -1,0 +1,39 @@
+cabal-version: 2.2
+name: competition-runner
+version: 0.1
+build-type: Simple
+
+common user-submissions
+  build-depends:
+-- begin generated code
+-- end generated code
+
+common common-all
+  default-language: Haskell2010
+  build-depends:
+    base,
+    random,
+    containers,
+    unordered-containers,
+    deepseq,
+    aeson,
+    directory,
+    bytestring,
+    time,
+    filepath,
+    process,
+    clock,
+    array,
+    utf8-string == 0.3
+
+executable prepare-competition
+  import: common-all
+  hs-source-dirs: src/
+  main-is: Competition/SubmissionListGenerator.hs
+
+executable competition
+  import: common-all
+  import: user-submissions
+  hs-source-dirs: src/
+  main-is: Competition/Competition.hs
+  ghc-options: -O2
