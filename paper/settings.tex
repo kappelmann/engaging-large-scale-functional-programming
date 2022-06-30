@@ -46,13 +46,16 @@
  citecolor=pastelblue,
  urlcolor=pastelblue
 }
-% break urls at dash
-\def\UrlBreaks{\do\/\do-}
 %
 \usepackage[inline]{enumitem}
 %
 %% Coding
+% Use in development
 \usepackage[outputdir=build]{minted}
+% Use before upload on arxiv
+% \usepackage[outputdir=build,cachedir=minted-cache,finalizecache]{minted}
+% Use for upload on arxiv
+% \usepackage[outputdir=build,cachedir=minted-cache,frozencache,cachedir=minted-cache]{minted}
 \usemintedstyle{friendly}
 \BeforeBeginEnvironment{minted}{\smallskip}
 \AfterEndEnvironment{minted}{\smallskip}

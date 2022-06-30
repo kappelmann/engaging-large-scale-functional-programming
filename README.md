@@ -1,6 +1,10 @@
 # Engaging, Large-Scale Functional Programming Education in Physical and Virtual Space
 
-This is a work-in-progress paper about teaching experiences,
+This repository contains the resources of the
+paper "Engaging, Large-Scale Functional Programming Education in Physical and Virtual Space"
+published at "Trends in Functional Programming in Education 2021/2022" ([TFPIE 2021/2022](https://wiki.tfpie.science.ru.nl/TFPIE2022)).
+
+The paper reports about teaching experiences,
 engagement mechanisms,
 and (automation) tools to successfully run a
 functional programming
