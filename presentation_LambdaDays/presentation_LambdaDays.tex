@@ -61,7 +61,7 @@
 
 \title{Engaging, Large-Scale Functional Programming Education in Physical and Virtual Space} % the title on the title page
 
-\author{\underline{Kevin Kappelmann}, \underline{Jonas Rädle}, Lukas Stevens} % Your name
+\author{\underline{Kevin Kappelmann}, Jonas Rädle, \underline{Lukas Stevens}} % Your name
 \institute[TU Munich]{Technical University of Munich}
 \date{March 16, 2022} % Date, can be changed to a custom date
 
@@ -418,6 +418,162 @@ bernoulli = genericIndex $ map head $ iterate ((*) `zipWith` enumFrom 1 <<< zipW
 \end{frame}
 
 
+%------------------------------------------------
+\section{IO Mocking}
+
+\begin{frame}{Motivation}
+
+\begin{itemize}[<+->]
+  \item Homework submissions are (primarily) tested with QuickCheck
+  \item I/O is an important part of the syllabus
+\end{itemize}
+\vfill
+\pause
+\begin{center}
+\Large \alert{So how do we test I/O in Haskell?}
+\end{center}
+
+\end{frame}
+
+\begin{frame}[fragile]{The Standard Way}
+\begin{visibleenv}<3->
+\begin{minted}[fontsize=\small]{haskell}
+import qualified Prelude
+import Prelude hiding (readFile, writeFile)
+
+class Monad m => MonadFileSystem m where
+  readFile :: FilePath -> m String
+  writeFile :: FilePath -> String -> m ()
+\end{minted}
+\end{visibleenv}
+
+\vspace{1.5em}
+
+\begin{onlyenv}<1>
+\begin{minted}[fontsize=\small]{haskell}
+copyFile :: FilePath -> FilePath -> IO ()
+copyFile = _ 
+\end{minted}
+\end{onlyenv}
+
+\begin{onlyenv}<2-3>
+\begin{minted}[fontsize=\small]{haskell}
+copyFile :: MonadFileSystem m =>
+            FilePath -> FilePath -> m ()
+copyFile = _ 
+\end{minted}
+\end{onlyenv}
+
+\begin{visibleenv}<4->
+\begin{minted}[fontsize=\small]{haskell}
+copyFile :: MonadFileSystem m =>
+            FilePath -> FilePath -> m ()
+copyFile source target = do
+  content <- readFile source
+  writeFile target content
+\end{minted}
+\end{visibleenv}
+\end{frame}
+
+\begin{frame}[fragile]{Multiple Instantiations}
+\begin{visibleenv}<1>
+\begin{minted}[fontsize=\small]{haskell}
+instance MonadFileSystem IO where
+  readFile = Prelude.readFile
+  writeFile = Prelude.readFile
+\end{minted}
+\end{visibleenv}
+\begin{onlyenv}<2>
+\begin{minted}[fontsize=\small]{haskell}
+instance MonadFileSystem IO where
+  readFile = Prelude.readFile
+  writeFile = Prelude.readFile
+
+data MockFileSystem =
+  MockFileSystem (Map FilePath String)
+instance MonadFileSystem (State MockFileSystem) where
+  readFile = _
+  writeFile = _
+\end{minted}
+\end{onlyenv}
+\end{frame}
+
+\begin{frame}[fragile]{The Problem}
+What is the problem with
+\begin{minted}[fontsize=\small]{haskell}
+copyFile :: MonadFileSystem m =>
+            FilePath -> FilePath -> m ()
+copyFile = _ 
+\end{minted}
+\pause
+\vfill
+\begin{center}
+  \alert{\Large Lack of transparency!}
+\end{center}
+\end{frame}
+
+\begin{frame}{The Solution}
+  \large
+  Delay mocking to the compliation stage\\[1.5em]
+  \pause
+  \qquad by replacing the \texttt{IO} module with a mixin.
+\end{frame}
+
+\begin{frame}[fragile]{The Mixin}
+\begin{onlyenv}<1>
+\begin{minted}[fontsize=\small]{haskell}
+data RealWord = RealWord {
+  workDir :: FilePath,
+  files :: Map File Text,
+  handles :: Map Handle HandleData,
+  user :: IO (),
+  ...
+}
+\end{minted}
+\end{onlyenv}
+\begin{visibleenv}<2->
+\begin{minted}[fontsize=\small]{haskell}
+data RealWord = RealWord {
+  workDir :: FilePath,
+  files :: Map File Text,
+  handles :: Map Handle HandleData,
+  user :: IO (),
+  ...
+}
+
+newtype IO a = IO { unwrapIO :: 
+  ExceptT IOException (PauseT (State RealWorld)) a }
+\end{minted}
+\end{visibleenv}
+\end{frame}
+
+\begin{frame}[fragile]{The \texttt{Pause} Monad}
+\begin{minted}[fontsize=\small]{haskell}
+class Monad m => MonadPause m where
+  pause :: m ()
+  stepPauseT :: m a -> m (Either (m a) a)
+\end{minted}
+\end{frame}
+
+\begin{frame}[fragile]{An Example Interaction}
+  \begin{columns}
+    \begin{column}{0.5\textwidth}
+\begin{minted}[fontsize=\small, highlightlines={1}]{haskell}
+main = do
+  x <- getLine
+  putStrLn $ "Hello " ++ x
+\end{minted}
+    \end{column}
+    \begin{column}{0.5\textwidth}
+\begin{minted}[fontsize=\small, highlightlines={1}]{haskell}
+user s = do
+  hPutStrLn stdin s
+  output <- hGetLine stdout
+  when (_)
+\end{minted}
+    \end{column}
+  \end{columns}
+\end{frame}
 
 %------------------------------------------------
 \section{Check Your Proof}
