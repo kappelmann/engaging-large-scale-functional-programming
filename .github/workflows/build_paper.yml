@@ -5,6 +5,7 @@ on:
       - '.github/workflows/build_paper.yml'
       - 'paper/**'
       - 'presentation_TFPIE2022/**'
+      - 'presentation_LambdaDays/**'
 jobs:
   paper:
     runs-on: ubuntu-20.04
@@ -29,8 +30,15 @@ jobs:
           working_directory: presentation_TFPIE2022
           args: -xelatex -latexoption="-shell-escape" -interaction=nonstopmode -outdir=build
 
+      - name: Build presentation Lambda Days 2022 
+        uses: xu-cheng/latex-action@v2
+        with:
+          root_file: presentation_LambdaDays.tex
+          working_directory: presentation_LambdaDays
+          args: -xelatex -latexoption="-shell-escape" -interaction=nonstopmode -outdir=build
+
       - name: Consolidate pdfs
-        run: mkdir -p build/ && cp paper/build/engaging_fp_education.pdf presentation_TFPIE2022/build/presentation_TFPIE2022.pdf build/
+        run: mkdir -p build/ && cp paper/build/engaging_fp_education.pdf presentation_TFPIE2022/build/presentation_TFPIE2022.pdf presentation_LambdaDays/build/presentation_LambdaDays.pdf build/
 
       - name: Upload pdf artifact
         uses: actions/upload-artifact@v2
