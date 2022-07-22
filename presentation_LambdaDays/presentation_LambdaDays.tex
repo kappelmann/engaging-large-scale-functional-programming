@@ -7,6 +7,9 @@
 \usepackage[english]{babel}
 \usepackage[utf8]{inputenc}
 
+\usepackage{xcolor}
+\usepackage{float}
+\usepackage{subcaption}
 \usepackage{graphicx} % Allows including images
 \usepackage{pgfplots}
 \usepackage{caption}
@@ -63,28 +66,18 @@
 
 \author{\underline{Kevin Kappelmann}, Jonas Rädle, \underline{Lukas Stevens}} % Your name
 \institute[TU Munich]{Technical University of Munich}
-\date{March 16, 2022} % Date, can be changed to a custom date
+\date{July 28, 2022} % Date, can be changed to a custom date
 
 \begin{document}
 
 \maketitle
-
-\begin{frame}
-Supported by
-\begin{itemize}
-  \item Lecturer: Tobias Nipkow
-  \item Manuel Eberl
-  \item 2019: 13 student assistants
-  \item 2020: 22 student assistants
-\end{itemize}
-\end{frame}
 
 %------------------------------------------------
 \section{Challenges}
 % Soaring Enrolments
 \begin{frame}{Soaring Enrolments}
 \only<1>{\centerline{\Large{\alert{1. Number of Computer Science students exploded}}}}
-\only<2->{\centerline{Example: Computer Science at TU Munich}
+\only<2-3>{\centerline{Example: Computer Science at TU Munich}
 
 \pause
 \begin{multicols}{2}
@@ -146,7 +139,16 @@ Supported by
 \end{figure}
 \end{multicols}
 }
+\only<1-3>{
 \visible<3>{\centerline{\Large{\alert{1000+ students per course are the new normal}}}}
+}
+\only<4>{
+Faced by
+\begin{itemize}
+  \item 2019: 13 student assistants
+  \item 2020: 22 student assistants
+\end{itemize}
+}
 \end{frame}
 
 \begin{frame}{The Pandemic}
@@ -242,22 +244,22 @@ Note: We used Haskell, but most ideas apply to any functional programming course
 %------------------------------------------------
 \section{Practical Part}
 \subsection{Engagement Mechanisms}
-\begin{frame}{Grade Bonus}
-\centerline{\Large{\alert{Incentives do work!}}}
-\pause
-\begin{itemize}[<+->]
-\item Bonus of one grade step on final exam if certain goals are achieved
-\item Offer multiple ways to obtain points: homework exercises, participation in workshops, programming contests,\dots
-\item Was once abolished\dots\\
-\item[] Result: number of homework submissions severely decreased
-\end{itemize}
-\end{frame}
+% \begin{frame}{Grade Bonus}
+% \centerline{\Large{\alert{Incentives do work!}}}
+% \pause
+% \begin{itemize}[<+->]
+% \item Bonus on final exam if certain goals are achieved
+% \item Multiple ways to obtain points: homework exercises, participation in workshops, programming contests,\dots
+% % \item Was once abolished\dots\\
+% % \item[] Result: number of homework submissions severely decreased
+% \end{itemize}
+% \end{frame}
 
 \begin{frame}{Instant Feedback}
 \centerline{\Large{\alert{Feedback must come fast!}}}
 \pause
 \begin{itemize}[<+->]
-\item Asynchronous Q\&A forum
+% \item Asynchronous Q\&A forum
 \item Automated testing and feedback
 \begin{itemize}
   \item \emph{ArTEMiS} runs tests, manages scores, offers exam mode,\dots
@@ -267,7 +269,7 @@ Note: We used Haskell, but most ideas apply to any functional programming course
 \item Manual reviews turned out to be inefficient\dots
 \begin{itemize}
   \item \emph{HLint} offers feedback more directly
-  \item Student assistants create engaging exercises instead
+  % \item Student assistants create engaging exercises instead
 \end{itemize}
 \end{itemize}
 \end{frame}
@@ -286,7 +288,7 @@ Note: We used Haskell, but most ideas apply to any functional programming course
 \end{enumerate}
 \item<4-> Great success: 120 registrations for 105 spots
 \item<5-> In some cases, workshop extended for multiple hours
-\item<6-> Little organisational work
+% \item<6-> Little organisational work
 \end{itemize}
 \end{frame}
 % \begin{frame}{Workshops With Industry Partners}
@@ -323,21 +325,21 @@ Note: We used Haskell, but most ideas apply to any functional programming course
 % \includegraphics[width=0.9\linewidth]{assets/workshop_slide_ui.pdf}}
 % \end{frame}
 
-\begin{frame}{Social Interactions}
-\centerline{\Large{\alert{The social environment matters!}}}
-\pause
-\begin{itemize}[<+->]
-% \item Truism: students spend more time on courses they like
-\item Online courses are isolating\dots
-\item[] so let us foster social interaction:
-\begin{itemize}[<4->]
-  \item Pair-programming in tutorials
-  \item ACM-ICPC-like programming contest
-  \item Get-together hangout sessions
-  \item Award ceremonies
-\end{itemize}
-\end{itemize}
-\end{frame}
+% \begin{frame}{Social Interactions}
+% \centerline{\Large{\alert{The social environment matters!}}}
+% \pause
+% \begin{itemize}[<+->]
+% % \item Truism: students spend more time on courses they like
+% \item Online courses are isolating\dots
+% \item[] so let us foster social interaction:
+% \begin{itemize}[<4->]
+  % \item Pair-programming in tutorials
+  % \item ACM-ICPC-like programming contest
+  % \item Get-together hangout sessions
+  % \item Award ceremonies
+% \end{itemize}
+% \end{itemize}
+% \end{frame}
 
 \begin{frame}[fragile]{Competitions}
 \centerline{\Large{\alert{Offer challenges to go beyond the syllabus!}}}
@@ -349,46 +351,59 @@ Note: We used Haskell, but most ideas apply to any functional programming course
 
 %------------------------------------------------
 \begin{frame}[fragile]{Competitions}
-\begin{onlyenv}<1>
 
-\centerline{Code Golf}
-\vspace{15pt}
-\begin{minted}[fontsize=\tiny]{haskell}
-numberToEo = unwords <<< catMaybes <<< reverse <<< flip lookup `zipWith` table <<< chunksOf 3
-  <<< pack <<< reverse
-\end{minted}
-\begin{minted}[fontsize=\tiny]{haskell}
-topCycle = concatMap snd . ap zip (iterate . fmap nub . concatMap . dominators <*> copeland)
-\end{minted}
-\begin{minted}[fontsize=\tiny]{haskell}
-traceFractran rs n = n : fromMaybe [] (traceFractran rs <$> numerator <$>
-  (liftM2 eqInteger truncate numerator) `find` map (fromIntegral n *) rs)
-\end{minted}
-\begin{minted}[fontsize=\tiny]{haskell}
-bernoulli = genericIndex $ map head $ iterate ((*) `zipWith` enumFrom 1 <<< zipWith subtract `ap` tail)
-  $ recip `map` enumFrom 1
-\end{minted}
+% \begin{onlyenv}<1>
 
+% \centerline{Code Golf}
+% \vspace{15pt}
+% \begin{minted}[fontsize=\tiny]{haskell}
+% numberToEo = unwords <<< catMaybes <<< reverse <<< flip lookup `zipWith` table <<< chunksOf 3
+  % <<< pack <<< reverse
+% \end{minted}
+% \begin{minted}[fontsize=\tiny]{haskell}
+% topCycle = concatMap snd . ap zip (iterate . fmap nub . concatMap . dominators <*> copeland)
+% \end{minted}
+% \begin{minted}[fontsize=\tiny]{haskell}
+% traceFractran rs n = n : fromMaybe [] (traceFractran rs <$> numerator <$>
+  % (liftM2 eqInteger truncate numerator) `find` map (fromIntegral n *) rs)
+% \end{minted}
+% \begin{minted}[fontsize=\tiny]{haskell}
+% bernoulli = genericIndex $ map head $ iterate ((*) `zipWith` enumFrom 1 <<< zipWith subtract `ap` tail)
+  % $ recip `map` enumFrom 1
+% \end{minted}
+% \end{onlyenv}
 
-\end{onlyenv}
-\only<2>{\centerline{Optimization}
+% \only<2>{\centerline{Optimization}
+% \begin{figure}
+% \includegraphics[width=\linewidth]{assets/optimization}
+% \end{figure}
+% }
+
+\only<1>{
+  % \centerline{Strategy}
 \begin{figure}
-\includegraphics[width=\linewidth]{assets/optimization}
+\includegraphics[height=0.9\textheight]{assets/strategy}
 \end{figure}
 }
-\only<3>{\centerline{Strategy}
+
+\only<2>{
+  % \centerline{Creativity}
 \begin{figure}
-\includegraphics[height=0.85\textheight]{assets/strategy}
+% \includegraphics[height=0.85\textheight]{assets/creativity}
+\includegraphics[width=\linewidth]{assets/contest}
 \end{figure}
 }
-\only<4>{\centerline{Creativity}
+\only<3>{
+  % \centerline{Creativity}
 \begin{figure}
-\includegraphics[height=0.85\textheight]{assets/creativity}
+% \includegraphics[height=0.85\textheight]{assets/creativity}
+\includegraphics[height=0.9\textheight]{assets/creativity}
 \end{figure}
 }
-\only<5>{\centerline{Creativity}
+\only<4>{
+  % \centerline{Creativity}
 \begin{figure}
-\includegraphics[width=0.95\linewidth]{assets/creativity2}
+\includegraphics[width=\linewidth]{assets/creativity2}
 \end{figure}
 }
 \end{frame}
@@ -405,8 +420,8 @@ bernoulli = genericIndex $ map head $ iterate ((*) `zipWith` enumFrom 1 <<< zipW
 % \end{itemize}
 % \item Accompanied by humorously written blog posts
 \item Awards for top 30 students
-\item<2-> Works extremely well to motivate talented students\dots
-\item[]<3-> \emph{but it is very time-consuming}.
+\item<2-> Works extremely well to motivate talented students.
+% \item[]<3-> \emph{but it is very time-consuming}.
 \end{itemize}
 % \begin{onlyenv}<2>
 % \begin{minted}[fontsize=\small]{haskell}
@@ -419,18 +434,19 @@ bernoulli = genericIndex $ map head $ iterate ((*) `zipWith` enumFrom 1 <<< zipW
 
 
 %------------------------------------------------
-\section{IO Mocking}
+\section{I/O Mocking}
 
 \begin{frame}{Motivation}
 
 \begin{itemize}[<+->]
-  \item Homework submissions are (primarily) tested with QuickCheck
+  \item Submissions (primarily) tested with QuickCheck
   \item I/O is an important part of the syllabus
 \end{itemize}
 \vfill
-\pause
+\visible<3->{
 \begin{center}
 \Large \alert{So how do we test I/O in Haskell?}
+}
 \end{center}
 
 \end{frame}
@@ -452,7 +468,7 @@ class Monad m => MonadFileSystem m where
 \begin{onlyenv}<1>
 \begin{minted}[fontsize=\small]{haskell}
 copyFile :: FilePath -> FilePath -> IO ()
-copyFile = _ 
+copyFile = _
 \end{minted}
 \end{onlyenv}
 
@@ -460,7 +476,7 @@ copyFile = _
 \begin{minted}[fontsize=\small]{haskell}
 copyFile :: MonadFileSystem m =>
             FilePath -> FilePath -> m ()
-copyFile = _ 
+copyFile = _
 \end{minted}
 \end{onlyenv}
 
@@ -476,18 +492,13 @@ copyFile source target = do
 \end{frame}
 
 \begin{frame}[fragile]{Multiple Instantiations}
-\begin{visibleenv}<1>
 \begin{minted}[fontsize=\small]{haskell}
 instance MonadFileSystem IO where
   readFile = Prelude.readFile
   writeFile = Prelude.readFile
 \end{minted}
-\end{visibleenv}
-\begin{onlyenv}<2>
+\begin{visibleenv}<2>
 \begin{minted}[fontsize=\small]{haskell}
-instance MonadFileSystem IO where
-  readFile = Prelude.readFile
-  writeFile = Prelude.readFile
 
 data MockFileSystem =
   MockFileSystem (Map FilePath String)
@@ -495,7 +506,7 @@ instance MonadFileSystem (State MockFileSystem) where
   readFile = _
   writeFile = _
 \end{minted}
-\end{onlyenv}
+\end{visibleenv}
 \end{frame}
 
 \begin{frame}[fragile]{The Problem}
@@ -503,7 +514,7 @@ What is the problem with
 \begin{minted}[fontsize=\small]{haskell}
 copyFile :: MonadFileSystem m =>
             FilePath -> FilePath -> m ()
-copyFile = _ 
+copyFile = _
 \end{minted}
 \pause
 \vfill
@@ -520,7 +531,6 @@ copyFile = _
 \end{frame}
 
 \begin{frame}[fragile]{The Mixin}
-\begin{onlyenv}<1>
 \begin{minted}[fontsize=\small]{haskell}
 data RealWord = RealWord {
   workDir :: FilePath,
@@ -530,18 +540,10 @@ data RealWord = RealWord {
   ...
 }
 \end{minted}
-\end{onlyenv}
 \begin{visibleenv}<2->
 \begin{minted}[fontsize=\small]{haskell}
-data RealWord = RealWord {
-  workDir :: FilePath,
-  files :: Map File Text,
-  handles :: Map Handle HandleData,
-  user :: IO (),
-  ...
-}
 
-newtype IO a = IO { unwrapIO :: 
+newtype IO a = IO { unwrapIO ::
   ExceptT IOException (PauseT (State RealWorld)) a }
 \end{minted}
 \end{visibleenv}
@@ -583,7 +585,7 @@ user s = do
 \begin{itemize}[<+->]
   \item Operates on a strict, untyped subset of Haskell
   \item Automatically checks simple inductive proofs
-  \item Provides instant feedback
+  % \item Provides instant feedback
   \item Integrates with Tasty
 \end{itemize}
 \end{frame}
@@ -645,7 +647,7 @@ QED
 \begin{frame}
 \centerline{\alert{\huge{Find more in our repository!}}}
 \begin{itemize}
-\item IO mocking framework
+% \item I/O mocking framework
 \item ACM-ICPC-like programming contest framework
 \item A music synthesiser
 \item More engagement mechanisms and insights, our technical setup,\dots
@@ -669,8 +671,13 @@ QED
 
 %------------------------------------------------
 \begin{frame}[standout]
-\Large{\alert{Any questions?}}
+\Huge{\alert{Any questions?}}
 
+\vfill
+\small{
+Thanks to Tobias Nipkow, Manuel Eberl, our student assistants,
+our industry partners (Active Group, QAware, TNG Technology Consulting, and Well-Typed),
+and our 2000 Haskell students}
 \end{frame}
 %----------------------------------------------------------------------------------------
 %\begin{frame}[allowframebreaks]{References}
