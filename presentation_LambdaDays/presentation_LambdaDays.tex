@@ -27,8 +27,18 @@
 \usepackage[normalem]{ulem}
 \usepackage[absolute,overlay]{textpos}
 
+% Coloured boxes
+\usepackage{tcolorbox}
+\colorlet{alert}{mLightBrown}
+\colorlet{mLightBrownTransparent}{white!70!mLightBrown}
+\newtcolorbox{alertbox}
+{standard jigsaw, opacityback=0,colframe=alert}
+\newtcolorbox{tbox}
+{standard jigsaw, opacityback=0,opacityframe=0}
+
 %% Coding
 \usepackage[outputdir=build]{minted}
+\setminted{highlightcolor=mLightBrown!70}
 \usepackage{listings}
 \lstdefinelanguage{cyp}{
   keywords={Lemma,goal,Proof,QED,To,show,Case},
@@ -51,15 +61,6 @@
   breaklines=true,
   showtabs=false
 }
-
-% Coloured boxes
-\usepackage{tcolorbox}
-\colorlet{alert}{mLightBrown}
-\colorlet{mLightBrownTransparent}{white!70!mLightBrown}
-\newtcolorbox{alertbox}
-{standard jigsaw, opacityback=0,colframe=alert}
-\newtcolorbox{tbox}
-{standard jigsaw, opacityback=0,opacityframe=0}
 
 % \newcommand{\haskell}[1]{\mintinline{haskell}{#1}}
 \newcommand{\backgroundimage}{
@@ -578,21 +579,125 @@ class Monad m => MonadPause m where
 \end{frame}
 
 \begin{frame}[fragile]{An Example Interaction}
-  \begin{columns}
+  \begin{columns}[t]
     \begin{column}{0.5\textwidth}
-\begin{minted}[fontsize=\small, highlightlines={1}]{haskell}
+\begin{onlyenv}<1>
+\begin{minted}[fontsize=\small, frame=topline, framesep=10pt, label={Student submission}, labelposition=topline, highlightlines={1}]{haskell}
 main = do
   x <- getLine
-  putStrLn $ "Hello " ++ x
+  putStrLn $ "Hi " ++ x
 \end{minted}
+\end{onlyenv}
+\begin{onlyenv}<2>
+\begin{minted}[fontsize=\small, frame=topline, framesep=10pt, label={Student submission}, labelposition=topline, highlightlines={2}]{haskell}
+main = do
+  x <- getLine
+  putStrLn $ "Hi " ++ x
+\end{minted}
+\end{onlyenv}
+\begin{onlyenv}<3-5>
+\begin{minted}[fontsize=\small, frame=topline, framesep=10pt, label={Student submission}, labelposition=topline, highlightlines={2}, highlightcolor=lightgray]{haskell}
+main = do
+  x <- getLine
+  putStrLn $ "Hi " ++ x
+\end{minted}
+\end{onlyenv}
+\begin{onlyenv}<6>
+\begin{minted}[fontsize=\small, frame=topline, framesep=10pt, label={Student submission}, labelposition=topline, highlightlines={2}]{haskell}
+main = do
+  x <- getLine
+  putStrLn $ "Hi " ++ x
+\end{minted}
+\end{onlyenv}
+\begin{onlyenv}<7>
+\begin{minted}[fontsize=\small, frame=topline, framesep=10pt, label={Student submission}, labelposition=topline, highlightlines={3}]{haskell}
+main = do
+  x <- getLine
+  putStrLn $ "Hi " ++ x
+\end{minted}
+\end{onlyenv}
+\begin{onlyenv}<8->
+\begin{minted}[fontsize=\small, frame=topline, framesep=10pt, label={Student submission}, labelposition=topline]{haskell}
+main = do
+  x <- getLine
+  putStrLn $ "Hi " ++ x
+\end{minted}
+\end{onlyenv}
     \end{column}
+%-----------------------------------
     \begin{column}{0.5\textwidth}
-\begin{minted}[fontsize=\small, highlightlines={1}]{haskell}
+\begin{onlyenv}<1-2>
+\begin{minted}[fontsize=\small, frame=topline, framesep=10pt, label={Mock user}, labelposition=topline, highlightlines={1},highlightcolor=lightgray]{haskell}
 user s = do
   hPutStrLn stdin s
-  output <- hGetLine stdout
-  when (_)
+  out <- hGetLine stdout
+  when (out /= _)
+       (fail $ _)
 \end{minted}
+\end{onlyenv}
+\begin{onlyenv}<3>
+\begin{minted}[fontsize=\small, frame=topline, framesep=10pt, label={Mock user}, labelposition=topline, highlightlines={1}]{haskell}
+user s = do
+  hPutStrLn stdin s
+  out <- hGetLine stdout
+  when (out /= _)
+       (fail $ _)
+\end{minted}
+\end{onlyenv}
+\begin{onlyenv}<4>
+\begin{minted}[fontsize=\small, frame=topline, framesep=10pt, label={Mock user}, labelposition=topline, highlightlines={2}]{haskell}
+user s = do
+  hPutStrLn stdin s
+  out <- hGetLine stdout
+  when (out /= _)
+       (fail $ _)
+\end{minted}
+\end{onlyenv}
+\begin{onlyenv}<5>
+\begin{minted}[fontsize=\small, frame=topline, framesep=10pt, label={Mock user}, labelposition=topline, highlightlines={3}]{haskell}
+user s = do
+  hPutStrLn stdin s
+  out <- hGetLine stdout
+  when (out /= _)
+       (fail $ _)
+\end{minted}
+\end{onlyenv}
+\begin{onlyenv}<6-7>
+\begin{minted}[fontsize=\small, frame=topline, framesep=10pt, label={Mock user}, labelposition=topline, highlightlines={3}, highlightcolor=lightgray]{haskell}
+user s = do
+  hPutStrLn stdin s
+  out <- hGetLine stdout
+  when (out /= _)
+       (fail $ _)
+\end{minted}
+\end{onlyenv}
+\begin{onlyenv}<8>
+\begin{minted}[fontsize=\small, frame=topline, framesep=10pt, label={Mock user}, labelposition=topline, highlightlines={3}]{haskell}
+user s = do
+  hPutStrLn stdin s
+  out <- hGetLine stdout
+  when (out /= _)
+       (fail $ _)
+\end{minted}
+\end{onlyenv}
+\begin{onlyenv}<9>
+\begin{minted}[fontsize=\small, frame=topline, framesep=10pt, label={Mock user}, labelposition=topline, highlightlines={4,5}]{haskell}
+user s = do
+  hPutStrLn stdin s
+  out <- hGetLine stdout
+  when (out /= _)
+       (fail $ _)
+\end{minted}
+\end{onlyenv}
+\begin{onlyenv}<10>
+\begin{minted}[fontsize=\small, frame=topline, framesep=10pt, label={Mock user}, labelposition=topline]{haskell}
+user s = do
+  hPutStrLn stdin s
+  out <- hGetLine stdout
+  when (out /= _)
+       (fail $ _)
+\end{minted}
+\end{onlyenv}
     \end{column}
   \end{columns}
 \end{frame}
