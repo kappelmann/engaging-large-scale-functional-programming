@@ -267,7 +267,8 @@ Note: We used Haskell, but most ideas apply to any functional programming course
 % \end{itemize}
 % \end{frame}
 
-\begin{frame}{Instant Feedback}
+\begin{frame}[fragile]{Instant Feedback}
+\only<1-5,7->{
 \centerline{\Large{\alert{Feedback must come fast!}}}
 \pause
 \begin{itemize}[<+->]
@@ -278,12 +279,29 @@ Note: We used Haskell, but most ideas apply to any functional programming course
   \item \emph{Tasty} combines QuickCheck, SmallCheck, and HUnit tests
   \item \emph{Check Your Proof} for automated proof checking
 \end{itemize}
+\pause
 \item Manual reviews turned out to be inefficient\dots
 \begin{itemize}
   \item \emph{HLint} offers feedback more directly
   % \item Student assistants create engaging exercises instead
 \end{itemize}
 \end{itemize}
+}
+
+\begin{onlyenv}<6>
+\begin{lstlisting}
+Lemma: xs ++ (ys ++ zs) .=. (xs ++ ys) ++ zs
+Proof by induction on List xs
+Case []
+  To show: [] ++ (ys ++ zs) .=. ([] ++ ys) ++ zs
+  Proof
+                    [] ++ (ys ++ zs)
+    (by def ++) .=. ys ++ zs
+    (by def ++) .=. ([] ++ ys) ++ zs
+  QED
+\end{lstlisting}
+\end{onlyenv}
+
 \end{frame}
 
 \begin{frame}{Workshops With Industry Partners}
@@ -703,78 +721,77 @@ user s = do
 \end{frame}
 
 %------------------------------------------------
-\section{Check Your Proof}
+% \section{Check Your Proof}
 
-\begin{frame}{CYP In A Nutshell}
+% \begin{frame}{CYP In A Nutshell}
 
-\begin{itemize}[<+->]
-  \item Operates on a strict, untyped subset of Haskell
-  \item Automatically checks simple inductive proofs
-  % \item Provides instant feedback
-  \item Integrates with Tasty
-\end{itemize}
-\end{frame}
+% \begin{itemize}[<+->]
+  % \item Operates on a strict, untyped subset of Haskell
+  % \item Automatically checks simple inductive proofs
+  % % \item Provides instant feedback
+  % \item Integrates with Tasty
+% \end{itemize}
+% \end{frame}
 
-\begin{frame}[fragile]{Background Theory}
-\lstset{language=CYP}
-  \begin{lstlisting}
-data List a = [] | a : List a
+% \begin{frame}[fragile]{Background Theory}
+% \lstset{language=CYP}
+  % \begin{lstlisting}
+% data List a = [] | a : List a
 
-[] ++ ys = ys
-(x : xs) ++ ys = x : (xs ++ ys)
+% [] ++ ys = ys
+% (x : xs) ++ ys = x : (xs ++ ys)
 
-goal xs ++ (ys ++ zs) .=. (xs ++ ys) ++ zs
-  \end{lstlisting}
-\end{frame}
+% goal xs ++ (ys ++ zs) .=. (xs ++ ys) ++ zs
+  % \end{lstlisting}
+% \end{frame}
 
-\begin{frame}[fragile]{The \texttt{[]} Case}
-  \begin{lstlisting}
-Lemma: xs ++ (ys ++ zs) .=. (xs ++ ys) ++ zs
-Proof by induction on List xs
-  Case []
-    To show: [] ++ (ys ++ zs) .=. ([] ++ ys) ++ zs
-    Proof
-                      [] ++ (ys ++ zs)
-      (by def ++) .=. ys ++ zs
-      (by def ++) .=. ([] ++ ys) ++ zs
-    QED
-  \end{lstlisting}
-\end{frame}
+% \begin{frame}[fragile]{The \texttt{[]} Case}
+  % \begin{lstlisting}
+% Lemma: xs ++ (ys ++ zs) .=. (xs ++ ys) ++ zs
+% Proof by induction on List xs
+  % Case []
+    % To show: [] ++ (ys ++ zs) .=. ([] ++ ys) ++ zs
+    % Proof
+                      % [] ++ (ys ++ zs)
+      % (by def ++) .=. ys ++ zs
+      % (by def ++) .=. ([] ++ ys) ++ zs
+    % QED
+  % \end{lstlisting}
+% \end{frame}
 
-\begin{frame}[fragile]{The \texttt{Cons} Case}
-  \begin{lstlisting}
-  Case x : xs
-    To show: (x : xs) ++ (ys ++ zs)
-         .=. ((x : xs) ++ ys) ++ zs
-    IH: xs ++ (ys ++ zs) .=. (xs ++ ys) ++ zs
-    Proof
-                        (x : xs) ++ (ys ++ zs)
-      (by def ++)   .=. x : (xs ++ (ys ++ zs))
-      (by IH)       .=. x : ((xs ++ ys) ++ zs)
+% \begin{frame}[fragile]{The \texttt{Cons} Case}
+  % \begin{lstlisting}
+  % Case x : xs
+    % To show: (x : xs) ++ (ys ++ zs)
+         % .=. ((x : xs) ++ ys) ++ zs
+    % IH: xs ++ (ys ++ zs) .=. (xs ++ ys) ++ zs
+    % Proof
+                        % (x : xs) ++ (ys ++ zs)
+      % (by def ++)   .=. x : (xs ++ (ys ++ zs))
+      % (by IH)       .=. x : ((xs ++ ys) ++ zs)
 
-                        ((x : xs) ++ ys) ++ zs
-      (by def ++)   .=. (x : (xs ++ ys)) ++ zs
-      (by def ++)   .=. x : ((xs ++ ys) ++ zs)
-    QED
-QED
-  \end{lstlisting}
-\end{frame}
+                        % ((x : xs) ++ ys) ++ zs
+      % (by def ++)   .=. (x : (xs ++ ys)) ++ zs
+      % (by def ++)   .=. x : ((xs ++ ys) ++ zs)
+    % QED
+% QED
+  % \end{lstlisting}
+% \end{frame}
 
-\begin{frame}{Our Experience With CYP}
-\begin{itemize}[<+->]
-  \item Student feedback 18 positive, 3 negative
-  \item Main criticism: lack of documentation
-  \item Mostly well-structured inductive proofs in the exam
-\end{itemize}
-\end{frame}
-
+% \begin{frame}{Our Experience With CYP}
+% \begin{itemize}[<+->]
+  % \item Student feedback 18 positive, 3 negative
+  % \item Main criticism: lack of documentation
+  % \item Mostly well-structured inductive proofs in the exam
+% \end{itemize}
+% \end{frame}
 
 \begin{frame}
 \centerline{\alert{\huge{Find more in our repository!}}}
 \begin{itemize}
 % \item I/O mocking framework
-% \item ACM-ICPC-like programming contest framework
 \item A music synthesiser, UNO framework, turtle graphics,\dots
+\item Proof checker for inductive and equational reasoning
 \item More engagement mechanisms and insights, our technical setup,\dots
 \end{itemize}
 
@@ -782,17 +799,15 @@ QED
 \centerline{\small\url{github.com/kappelmann/engaging-large-scale-functional-programming}}
 \end{frame}
 
-
-
 %------------------------------------------------
-\section{Future Work}
+% \section{Future Work}
 
-\begin{frame}{Future Work}
-\centerline{Preventing collaboration/cheating}
-\begin{figure}
-\includegraphics[height=0.75\textheight]{assets/group}
-\end{figure}
-\end{frame}
+% \begin{frame}{Future Work}
+% \centerline{Preventing collaboration/cheating}
+% \begin{figure}
+% \includegraphics[height=0.75\textheight]{assets/group}
+% \end{figure}
+% \end{frame}
 
 %------------------------------------------------
 {\usebackgroundtemplate{\backgroundimage}
