@@ -11,6 +11,7 @@
 \usepackage{float}
 \usepackage{subcaption}
 \usepackage{graphicx} % Allows including images
+\usepackage[export]{adjustbox}
 \usepackage{pgfplots}
 \usepackage{caption}
 \usepackage{booktabs} % Allows the use of \toprule, \midrule and \bottomrule in tables
@@ -61,6 +62,8 @@
 {standard jigsaw, opacityback=0,opacityframe=0}
 
 % \newcommand{\haskell}[1]{\mintinline{haskell}{#1}}
+\newcommand{\backgroundimage}{
+\adjincludegraphics[height=\paperheight,trim={{.15\width} 0 {.15\width} 0},clip]{assets/krakowbridge}}
 
 \title{Engaging, Large-Scale Functional Programming Education in Physical and Virtual Space} % the title on the title page
 
@@ -70,7 +73,15 @@
 
 \begin{document}
 
-\maketitle
+{\usebackgroundtemplate{\backgroundimage}
+\begin{frame}[plain]
+\titlepage
+
+\tikz[remember picture, overlay]
+{\node[anchor=south east, outer sep=0pt] at (current page.south east)
+{\includegraphics[width=0.25\textwidth]{assets/lambdadays}};}
+\end{frame}
+}
 
 %------------------------------------------------
 \section{Challenges}
@@ -665,20 +676,23 @@ QED
 \begin{frame}{Future Work}
 \centerline{Preventing collaboration/cheating}
 \begin{figure}
-\includegraphics[width=0.85\linewidth]{assets/group}
+\includegraphics[height=0.75\textheight]{assets/group}
 \end{figure}
 \end{frame}
 
 %------------------------------------------------
-\begin{frame}[standout]
-\Huge{\alert{Any questions?}}
+{\usebackgroundtemplate{\backgroundimage}
+\begin{frame}
+\begin{center}
+\Huge{\textbf{\alert{Any questions?}}}
 
 \vfill
 \small{
 Thanks to Tobias Nipkow, Manuel Eberl, our student assistants,
 our industry partners (Active Group, QAware, TNG Technology Consulting, and Well-Typed),
 and our 2000 Haskell students}
-\end{frame}
+\end{center}
+\end{frame}}
 %----------------------------------------------------------------------------------------
 %\begin{frame}[allowframebreaks]{References}
   %\bibliography{../paper/sources.bib}
