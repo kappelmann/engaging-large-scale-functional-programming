@@ -1,4 +1,5 @@
-\documentclass{beamer}
+% \documentclass{beamer}
+\documentclass[aspectratio=169]{beamer}
 \usepackage{appendixnumberbeamer}
 
 \mode<presentation>{\usetheme[subsectionpage=progressbar,block=fill,numbering=none]{metropolis}}
@@ -41,7 +42,7 @@
 \setminted{highlightcolor=mLightBrown!70}
 \usepackage{listings}
 \lstdefinelanguage{cyp}{
-  keywords={Lemma,goal,Proof,QED,To,show,Case},
+  keywords={Lemma,goal,Proof,QED,To,show,Case,IH},
   keywordstyle=\color{blue}\bfseries,
   keywords=[2]{data},
   keywordstyle=[2]{\color{purple}\bfseries},
@@ -64,7 +65,9 @@
 
 % \newcommand{\haskell}[1]{\mintinline{haskell}{#1}}
 \newcommand{\backgroundimage}{
-\adjincludegraphics[height=\paperheight,trim={{.15\width} 0 {.15\width} 0},clip]{assets/krakowbridge}}
+% \adjincludegraphics[height=\paperheight,trim={{.15\width} 0 {.15\width} 0},clip]{assets/krakowbridge}
+\adjincludegraphics[height=\paperheight]{assets/krakowbridge}
+}
 
 \title{Engaging, Large-Scale Functional Programming Education in Physical and Virtual Space} % the title on the title page
 
@@ -97,7 +100,7 @@
 \centering
 \captionsetup{justification=centering}
 % somehow this needs to be 1.02 when it is 1 below
-\resizebox{1.03\linewidth}{!}{
+\resizebox{0.75\linewidth}{!}{
 \begin{tikzpicture}
 \begin{axis}[
     ymin=0,
@@ -126,7 +129,7 @@
 \begin{figure}
 \centering
 \captionsetup{justification=centering}
-\resizebox{\linewidth}{!}{
+\resizebox{0.75\linewidth}{!}{
 \begin{tikzpicture}
 \begin{axis}[
     ymin=0,
@@ -147,7 +150,7 @@
 \end{axis}
 \end{tikzpicture}
 }
-\caption*{Number of CS academic staff (31\% increase)}
+\caption*{Number of CS academic staff\\(31\% increase)}
 \end{figure}
 \end{multicols}
 }
@@ -167,17 +170,17 @@ Faced by
 \only<1>{\centerline{\Large{\alert{2. Radical transition to online classes}}}}
 \only<2>{\centerline{How can we go from here\dots}
 \begin{figure}
-\includegraphics[width=0.75\linewidth]{assets/class}
+\includegraphics[height=0.80\textheight]{assets/class}
 \end{figure}
 }
 \only<3>{\centerline{to here\dots}
 \begin{figure}
-\includegraphics[width=0.85\linewidth]{assets/zoom}
+\includegraphics[height=0.80\textheight]{assets/zoom}
 \end{figure}
 }
 \only<4>{\centerline{without ending up here?}
 \begin{figure}
-\includegraphics[width=0.85\linewidth]{assets/zoom_fatigue}
+\includegraphics[height=0.80\textheight]{assets/zoom_fatigue}
 \end{figure}
 }
 \end{frame}
@@ -189,14 +192,14 @@ Faced by
 \begin{multicols}{2}
 
 \begin{figure}
-\includegraphics[width=0.8\linewidth]{assets/xkcd_haskell}
+\includegraphics[height=0.80\textheight]{assets/xkcd_haskell}
 \caption*{\url{xkcd.com/1312}}
 \end{figure}
 
 \columnbreak
 
 \begin{figure}
-\includegraphics[width=0.8\linewidth]{assets/xkcd_tailrec}
+\includegraphics[height=0.80\textheight]{assets/xkcd_tailrec}
 \caption*{\url{xkcd.com/1270}}
 \end{figure}
 \end{multicols}
@@ -299,6 +302,11 @@ Case []
     (by def ++) .=. ys ++ zs
     (by def ++) .=. ([] ++ ys) ++ zs
   QED
+Case x : xs
+  To show: (x : xs) ++ (ys ++ zs) .=. ((x : xs) ++ ys) ++ zs
+  IH: xs ++ (ys ++ zs) .=. (xs ++ ys) ++ zs
+  Proof
+  ...
 \end{lstlisting}
 \end{onlyenv}
 
@@ -424,7 +432,7 @@ Case []
   % \centerline{Creativity}
 \begin{figure}
 % \includegraphics[height=0.85\textheight]{assets/creativity}
-\includegraphics[width=\linewidth]{assets/contest}
+\includegraphics[height=0.9\textheight]{assets/contest}
 \end{figure}
 }
 \only<3>{
@@ -437,7 +445,7 @@ Case []
 \only<4>{
   % \centerline{Creativity}
 \begin{figure}
-\includegraphics[width=\linewidth]{assets/creativity2}
+\includegraphics[height=0.7\textheight]{assets/creativity2}
 \end{figure}
 }
 \end{frame}
@@ -819,7 +827,7 @@ user s = do
 \small{
 Thanks to Tobias Nipkow, Manuel Eberl, our student assistants,
 our industry partners (Active Group, QAware, TNG Technology Consulting, and Well-Typed),
-and our 2000 Haskell students}
+and\\ our 2000 Haskell students}
 \end{center}
 \end{frame}}
 %----------------------------------------------------------------------------------------
