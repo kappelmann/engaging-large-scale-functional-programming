@@ -271,7 +271,7 @@ Note: We used Haskell, but most ideas apply to any functional programming course
 % \end{frame}
 
 \begin{frame}[fragile]{Instant Feedback}
-\only<1-5,7->{
+\only<1-6>{
 \centerline{\Large{\alert{Feedback must come fast!}}}
 \pause
 \begin{itemize}[<+->]
@@ -280,18 +280,19 @@ Note: We used Haskell, but most ideas apply to any functional programming course
 \begin{itemize}
   \item \emph{ArTEMiS} runs tests, manages scores, offers exam mode,\dots
   \item \emph{Tasty} combines \only<4>{\underline}{QuickCheck}, SmallCheck, and HUnit tests
+  \item \emph{HLint} for stylistic feedback
   \item \emph{Check Your Proof} for automated proof checking
 \end{itemize}
-\pause
-\item Manual reviews turned out to be inefficient\dots
-\begin{itemize}
-  \item \emph{HLint} offers feedback more directly
+% \pause
+% \item Manual reviews turned out to be inefficient\dots
+% \begin{itemize}
+  % \item \emph{HLint} offers feedback more directly
   % \item Student assistants create engaging exercises instead
-\end{itemize}
+% \end{itemize}
 \end{itemize}
 }
 
-\begin{onlyenv}<6>
+\begin{onlyenv}<7>
 \begin{lstlisting}
 Lemma: xs ++ (ys ++ zs) .=. (xs ++ ys) ++ zs
 Proof by induction on List xs
