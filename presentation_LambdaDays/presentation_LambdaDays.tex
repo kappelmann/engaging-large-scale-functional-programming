@@ -157,13 +157,13 @@
 \only<1-3>{
 \visible<3>{\centerline{\Large{\alert{1000+ students per course are the new normal}}}}
 }
-\only<4>{
-Faced by
-\begin{itemize}
-  \item 2019: 13 student assistants
-  \item 2020: 22 student assistants
-\end{itemize}
-}
+% \only<4>{
+% Faced by
+% \begin{itemize}
+  % \item 2019: 13 student assistants
+  % \item 2020: 22 student assistants
+% \end{itemize}
+% }
 \end{frame}
 
 \begin{frame}{The Pandemic}
@@ -279,7 +279,7 @@ Note: We used Haskell, but most ideas apply to any functional programming course
 \item Automated testing and feedback
 \begin{itemize}
   \item \emph{ArTEMiS} runs tests, manages scores, offers exam mode,\dots
-  \item \emph{Tasty} combines QuickCheck, SmallCheck, and HUnit tests
+  \item \emph{Tasty} combines \only<4>{\underline}{QuickCheck}, SmallCheck, and HUnit tests
   \item \emph{Check Your Proof} for automated proof checking
 \end{itemize}
 \pause
@@ -436,17 +436,23 @@ Case x : xs
 \end{figure}
 }
 \only<3>{
+\begin{columns}[t]
+\begin{column}{0.35\textwidth}
   % \centerline{Creativity}
 \begin{figure}
 % \includegraphics[height=0.85\textheight]{assets/creativity}
-\includegraphics[height=0.9\textheight]{assets/creativity}
+\includegraphics[width=\textwidth]{assets/creativity}
 \end{figure}
-}
-\only<4>{
+\end{column}
+\begin{column}{0.65\textwidth}
+% }
+% \only<4>{
   % \centerline{Creativity}
 \begin{figure}
-\includegraphics[height=0.7\textheight]{assets/creativity2}
+\includegraphics[width=\textwidth]{assets/creativity2}
 \end{figure}
+\end{column}
+\end{columns}
 }
 \end{frame}
 
