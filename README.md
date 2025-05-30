@@ -10,7 +10,7 @@ and (automation) tools to successfully run a
 functional programming
 course with more than 1000 students
 in physical and virtual space.
-You can find the paper [here](https://github.com/kappelmann/engaging-large-scale-functional-programming/blob/pdfs/engaging_fp_education.pdf).
+You can find the paper [here](https://doi.org/10.4204/EPTCS.363.6).
 
 As part of the paper, we also share a selected set of exercises and tools.
 You can find them [here](resources).
@@ -49,6 +49,10 @@ We explain and share our tools and exercises so that they can be reused by other
 - [Kevin Kappelmann](https://www21.in.tum.de/team/kappelmk/index.html)
 - [Jonas Rädle](https://home.in.tum.de/~raedle/)
 - [Lukas Stevens](https://www21.in.tum.de/team/stevensl/index.html)
+
+## Addendum: Missing credit in published paper
+
+The I/O-Mocking library from Section 4.3 was first conceived of by [Manuel Eberl](http://pruvisto.org/).
 
 ## Acknowledgements
 
